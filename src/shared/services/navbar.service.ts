@@ -23,7 +23,13 @@ export class NavbarService {
         name: 'Services',
         isScrollOnly: false,
         link:'/services'
-      }, {
+      },
+      {
+        name:'logo',
+        type:'logo',
+        image:'someImage'
+      },
+       {
         name: 'Menu',
         isScrollOnly: true
       }, {
