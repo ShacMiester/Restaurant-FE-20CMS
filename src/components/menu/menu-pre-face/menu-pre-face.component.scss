@@ -1,0 +1,14 @@
+a:hover {
+  color: red;
+  text-decoration: line-through;
+  transition: all 1.3s ease 0.2s;
+}
+
+.example-card {
+  max-width: 500px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

@@ -1,0 +1,86 @@
+// body {
+//   background: linear-gradient(70deg, #e6e6e6, #f7f7f7);
+//   color: #514b64;
+//   min-height: 100vh;
+// }
+// :host ::ng-deep .mat-badge-content{
+//   color : yellow !important;
+//backgroundColor:red;
+// }
+// .user-container{
+// }
+.navbar-collapse {
+  transition: all 1s ease 0.1s;
+}
+
+.removeOpacity {
+  // background-color: #754C00 !important;
+  transition: all 1s ease 0.1s;
+}
+.navbar {
+  background: linear-gradient(
+      330deg,
+      #A03534,
+      rgba(167, 87, 41, .1),
+      #C6823C
+    );
+    // url(http://cdn.cnn.com/cnnnext/dam/assets/200120161356-cnn-worlds-best-new-restaurants---madera---simon-brown-photography-1-1.jpg);
+  background-size: cover;
+  box-shadow: 1px 1.01px 20px 10px #A03534 !important;
+  align-items: baseline !important;
+  // position: absolute;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  z-index: 2;
+  transition: all 1s ease 0.1s;
+  background-color: rgba(255, 255, 255, 0.35);
+  & ul {
+    width: fit-content;
+    margin: auto;
+    align-items: center;
+    & li {
+      align-self: center !important;
+      background-color: #573b14bd !important;
+      margin-top: 10px;
+      border-radius: 50px;
+      padding: 3px;
+      width: 100%;
+      display: inline-block;
+      white-space: nowrap;
+      :hover{
+          background-color: #A03534 !important;
+          transition: all 15.1s ease 1.4s;
+          border-bottom: 10px solid red;
+        }
+      > a {
+        color: orange;
+      }
+    }
+  }
+  @media (max-width: 1050px) {
+    justify-content: center;
+  }
+  & .main-links {
+    & .nav-link {
+      font-family: Trade Gothic LT Bold, Helvetica Neue, Arial, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+      font-weight: 700;
+      color: orange !important;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+}
+button {
+  & mat-icon {
+    color: orange !important;
+  }
+}
+
+:host ::ng-deep .mat-badge-content {
+  background-color: #93550d;
+}
+
+//to change
