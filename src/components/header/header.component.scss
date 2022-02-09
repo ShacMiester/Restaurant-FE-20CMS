@@ -1,32 +1,16 @@
 img{
-  height: calc(100vh - 118.7px) !important;
+  height: calc(100vh) !important;
   width: 100vw;
   object-fit: cover;
 }
 
 :host ::ng-deep .carousel-item {
-  // display: block !important;
-  // position: absolute;
-  // opacity: 0;
-  transition: all 1.5s ease-out 10s;
-  transition-delay: 0.25s;
+  transition: all 1.6s;
 }
-:host ::ng-deep .carousel-item.carousel-item-left,
-.carousel-item.carousel-item-right {
-  position: relative;
-  opacity: .8;
-}
-
 :host ::ng-deep carousel-item.active {
   z-index: 1;
   opacity: 1;
   transition-delay: 1s;
-}
-
-:host ::ng-deep .carousel-item.active.carousel-item-left,
-.carousel-item.active.carousel-item-right {
-  opacity: 0;
-  transform: unset;
 }
 h3{
   color: orange;
