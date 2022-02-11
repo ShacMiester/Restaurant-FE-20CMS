@@ -11,7 +11,7 @@ export class NavbarService {
 
   getNavBarConfigs(): Observable<NavBar> {
     return of({
-      logo: 'https://s.tmimgcdn.com/scr/1200x627/212900/spoon-and-fork-restaurant-logo_212966-original.png', name: 'LoaziTech Restaurant', items: [{
+      logo: 'assets/images/logoCropped-removebg-preview.png', name: 'LoaziTech Restaurant', items: [{
         name: 'Home',
         isScrollOnly: true,
         link:'/home'
