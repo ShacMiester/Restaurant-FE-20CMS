@@ -23,3 +23,31 @@ p {
     color: white;
     font-size: 1.5rem !important;
 }
+
+:host ::ng-deep .carousel-control-prev-icon {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/123/123285.png');
+    background-color: #a13a24;
+    border-radius: 55px;
+    height: 32px;
+    width: 32px;
+    transform: rotate(90deg);
+    &:hover {
+        width: 50px;
+        height: 50px;
+        transition: all .2s ease-in-out .2s;
+    }
+}
+
+:host ::ng-deep .carousel-control-next-icon {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/123/123285.png');
+    background-color: #a13a24;
+    border-radius: 55px;
+    height: 32px;
+    width: 32px;
+    transform: rotate(-90deg);
+    &:hover {
+        width: 50px;
+        height: 50px;
+        transition: all .2s ease .1s;
+    }
+}
