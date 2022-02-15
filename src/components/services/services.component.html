@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 col-lg-6 col-sm-12 zoom-in" *ngFor="let service of services; let i = index"
-      style="height: 500px; background-color: black;" [ngStyle]="getImage(i)">
+      [ngStyle]="getImage(i)">
       <div
         class="ml-auto d-flex flex-column justify-content-center align-self-center text-center align-items-center h-100">
         <h1>{{service.title}} </h1>

@@ -22,7 +22,8 @@ export class ServicesComponent implements OnInit {
   }
   getImage(i: number) {
     const style = {
-      'background-image': `url(${this.services[i].image})`
+      'background-image': `url(${this.services[i].image})`,
+      "height": "500px"
     }
     return style
   }
