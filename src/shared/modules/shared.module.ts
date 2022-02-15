@@ -10,13 +10,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgbCarouselModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from '../components/footer/footer.component'
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsComponent } from '../components/forms/forms.component';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
+import { RouterModule } from "@angular/router";
+
 
 
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, CarouselComponent],
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule],
   exports: [NavbarComponent, FooterComponent, CarouselComponent],
   providers: [UserService, AuthInterceptorService],
 })

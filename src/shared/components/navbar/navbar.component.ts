@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
   getUserInfo() {
     this.UserService.login().subscribe((user) => {
-      user ? (this.isLoggedIn = true) : false, (this.user = user);
+      user ? (this.isLoggedIn = false) : false, (this.user = user);
     });
   }
 }

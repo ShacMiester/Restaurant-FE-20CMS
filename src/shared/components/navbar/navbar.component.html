@@ -20,13 +20,16 @@
         </a>
 
         <div class="d-flex flex-column user-container">
-          <span>
+          <span *ngIf="isLoggedIn">
             <button mat-button>
               <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">shopping_cart</mat-icon>
             </button>
             <button mat-button>
               <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">person</mat-icon>
             </button>
+          </span>
+          <span *ngIf="!isLoggedIn">
+            <a style="color:white" mat-button [routerLink]="['login']">login</a>
           </span>
         </div>
       </div>
