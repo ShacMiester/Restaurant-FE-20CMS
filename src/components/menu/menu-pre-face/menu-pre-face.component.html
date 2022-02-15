@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="d-flex flex-row justify-content-between text-section w-100 flex flex-wrap">
-    <h2>Hungry?</h2>
+    <h2 class="floating">Hungry?</h2>
     <div class="d-flex flex-column content-descreption">
       <p>
         Each location has a menu that's curated just for them. See what's new on the menu at your Kabab Grill.</p>
       <a href="#">view full menu</a>
     </div>
   </div>
-  <div class="mt-5 d-flex justify-content-center flex-row flex-wrap flex-grow-1">
-    <mat-card class="card m-2 bg-transparent" *ngFor="let items of preMenuItems">
+  <div class="mt-5 d-flex justify-content-center flex-row flex-wrap flex-grow-1" style="z-index: 10000;">
+    <mat-card class="card m-2" *ngFor="let items of preMenuItems">
       <mat-card-header>
         <mat-card-title>{{items.title}}</mat-card-title>
       </mat-card-header>

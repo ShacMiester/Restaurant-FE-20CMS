@@ -10,10 +10,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from "@angular/material/card";
 import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [MainComponent, HeaderComponent, MenuPreFaceComponent, MenuItemsComponent, ServicesComponent, StoryPreFaceComponent],
-  imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule],
+  imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule,MatIconModule],
   exports: [MainComponent],
   providers: []
 })

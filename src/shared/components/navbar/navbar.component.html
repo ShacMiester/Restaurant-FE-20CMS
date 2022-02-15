@@ -41,7 +41,7 @@
       </button>
       <div id="navbar-collapse" class="collapse navbar-collapse flex-grow-0 text-center" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav justify-content-center">
-          <li *ngFor="let nav of navBarConfigs.items"><a href="#" class="nav-link">{{nav.name}} <span
+          <li *ngFor="let nav of navBarConfigs.items" [ngClass]="{'floating':nav.name == 'Order Now'? true : false}"><a href="#" class="nav-link">{{nav.name}} <span
                 class="sr-only"></span></a></li>
         </ul>
       </div>
