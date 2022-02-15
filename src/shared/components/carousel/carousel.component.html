@@ -1,0 +1,9 @@
+<ngb-carousel [interval]="5000" [animation]="true">
+  <ng-template ngbSlide *ngFor="let item of carouselItems;">
+    <img [src]="item.image" width="100%" height="100vh">
+    <div class="carousel-caption">
+      <h3>{{item.label}}</h3>
+      <p>{{item.description}}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>

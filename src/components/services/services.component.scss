@@ -1,0 +1,21 @@
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: cursive;
+  // line-height: 32px;
+  line-height: 3rem;
+  margin-bottom: 30px;
+  color: white;
+  background-color: brown;
+  padding: 10px 10px;
+  border-radius: 50px;
+}
+
+.zoom-in :hover {
+  top: 0%;
+  top: 0%;
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(360deg);
+  transform: skewX(100);
+  transform: scale(0.94);
+}

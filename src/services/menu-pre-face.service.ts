@@ -12,17 +12,17 @@ export class MenuPreFaceService {
     {
       title: 'kabab special',
       description: `kebab - cubes of meat marinated and cooked on a skewer usually with vegetables kabob , shish kebab dish - a particular item of prepared food; "she prepared a special dish for dinner"`,
-      image: 'https://static.toiimg.com/photo/74254234/Pune.jpg?width=748&resize=4'
+      image: 'https://c4.wallpaperflare.com/wallpaper/1/371/728/carne-kabab-koobideh-plato-wallpaper-preview.jpg'
     },
     {
       title: 'kabab special',
       description: `kebab - cubes of meat marinated and cooked on a skewer usually with vegetables kabob , shish kebab dish - a particular item of prepared food; "she prepared a special dish for dinner"`,
-      image: 'https://static.toiimg.com/photo/74254234/Pune.jpg?width=748&resize=4'
+      image: 'https://img.freepik.com/free-photo/adana-kebab-served-with-flatbread-grilled-pepper-tomato-caramelized-onion_140725-2466.jpg?size=626&ext=jpg'
     },
     {
       title: 'kabab special',
       description: `kebab - cubes of meat marinated and cooked on a skewer usually with vegetables kabob , shish kebab dish - a particular item of prepared food; "she prepared a special dish for dinner"`,
-      image: 'https://static.toiimg.com/photo/74254234/Pune.jpg?width=748&resize=4'
+      image: 'http://lambert.kwst.net/site/images/bg/13.jpg'
     }]
 
   getPreFaceItems(): Observable<preMenuItems[]> {

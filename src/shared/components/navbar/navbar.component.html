@@ -1,45 +1,47 @@
 <div class="position-absolute w-100 main-container">
-    <div class="justify-content-around d-flex info-container">
-        <div class="d-flex flex-wrap justify-content-between">
-            <p>Email: hello@fryio.com</p>
-            <p>Phone: +0 008 652 5124</p>
-        </div>
-        <div>
-            <p>Opening Hours : 8:00am - 11:30pm</p>
-            <p>
-                test
-            </p>
-        </div>
+  <div class="justify-content-around d-flex info-container container">
+    <div class="d-flex flex-wrap justify-content-between">
+      <p>Email: Lorem ipsum dolor sit</p>
+      <p>Phone: +0 123 456 7890</p>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" [ngClass]="{'removeOpacity pb-3':!isCollapsed}">
-        <div class="container-fluid justify-content-around pt-3">
-            <div class="d-flex flex-row justify-content-center align-items-center">
-                <a href="#" class="navbar-brand">
-                    <img [src]="navBarConfigs.logo" width="150" alt="" class="d-inline-block align-middle mr-2">
-                    <!-- <span class="text-uppercase font-weight-bold">Restaurant</span> -->
-                </a>
+    <div>
+      <p>Opening Hours : 8:00am - 11:30pm</p>
+      <p>
+        Lorem ipsum dolor sit
+      </p>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" [ngClass]="{'removeOpacity pb-3':!isCollapsed}">
+    <div class="container-fluid justify-content-around pt-3">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <a href="#" class="navbar-brand">
+          <img [src]="navBarConfigs.logo" width="150" alt="" class="d-inline-block align-middle mr-2">
+          <!-- <span class="text-uppercase font-weight-bold">Restaurant</span> -->
+        </a>
 
-                <div class="d-flex flex-column user-container">
-                    <span>
-                        <button mat-button>
-                            <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">shopping_cart</mat-icon>
-                        </button>
-                        <button mat-button>
-                            <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">person</mat-icon>
-                        </button>
-                    </span>
-                </div>
-            </div>
-            <button type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbar-collapse" aria-label="Toggle navigation" class="navbar-toggler">
-                <mat-icon *ngIf="!isCollapsed">restaurant_menu</mat-icon>
-                <mat-icon *ngIf="isCollapsed"> restaurant</mat-icon>
+        <div class="d-flex flex-column user-container">
+          <span>
+            <button mat-button>
+              <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">shopping_cart</mat-icon>
             </button>
-            <div id="navbar-collapse" class="collapse navbar-collapse flex-grow-0 text-center" [ngbCollapse]="isCollapsed">
-                <ul class="navbar-nav justify-content-center">
-                    <li *ngFor="let nav of navBarConfigs.items"><a href="#" class="nav-link">{{nav.name}} <span
-                                class="sr-only"></span></a></li>
-                </ul>
-            </div>
+            <button mat-button>
+              <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">person</mat-icon>
+            </button>
+          </span>
         </div>
-    </nav>
+      </div>
+      <button type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="navbar-collapse" aria-label="Toggle navigation"
+        class="navbar-toggler">
+        <mat-icon *ngIf="!isCollapsed">restaurant_menu</mat-icon>
+        <mat-icon *ngIf="isCollapsed"> restaurant</mat-icon>
+      </button>
+      <div id="navbar-collapse" class="collapse navbar-collapse flex-grow-0 text-center" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav justify-content-center">
+          <li *ngFor="let nav of navBarConfigs.items"><a href="#" class="nav-link">{{nav.name}} <span
+                class="sr-only"></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
