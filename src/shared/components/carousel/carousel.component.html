@@ -1,5 +1,6 @@
-<ngb-carousel [interval]="5000" [animation]="true">
+<ngb-carousel  [@fadeInUp] [interval]="5000" [animation]="true"  class="pickgradient position-relative" [ngStyle]="getHeight()" id="ngb-carousel">
   <ng-template ngbSlide *ngFor="let item of carouselItems;">
+    <div class="overlay"></div>
     <img [src]="item.image" width="100%" height="100vh">
     <div class="carousel-caption">
       <h3>{{item.label}}</h3>

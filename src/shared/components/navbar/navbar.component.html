@@ -1,5 +1,5 @@
-<div class="position-absolute w-100 main-container">
-  <div class="justify-content-around d-flex info-container container">
+<div class="navbar-container position-absolute w-100 main-container main-app-container" >
+  <!-- <div class="justify-content-around d-flex info-container container">
     <div class="d-flex flex-wrap justify-content-between">
       <p>Email: Lorem ipsum dolor sit</p>
       <p>Phone: +0 123 456 7890</p>
@@ -10,13 +10,13 @@
         Lorem ipsum dolor sit
       </p>
     </div>
-  </div>
+  </div> -->
   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" [ngClass]="{'removeOpacity pb-3':!isCollapsed}">
-    <div class="container-fluid justify-content-around pt-3">
+    <div class="container-fluid justify-content-center pt-3">
       <div class="d-flex flex-row justify-content-center align-items-center">
-        <a href="#" class="navbar-brand">
+        <a href="#" class="navbar-brand toHide">
           <img [src]="navBarConfigs.logo" width="150" alt="" class="d-inline-block align-middle mr-2">
-          <!-- <span class="text-uppercase font-weight-bold">Restaurant</span> -->
+        <!-- <span class="text-uppercase font-weight-bold">Restaurant</span> -->
         </a>
 
         <div class="d-flex flex-column user-container">
@@ -39,10 +39,18 @@
         <mat-icon *ngIf="!isCollapsed">restaurant_menu</mat-icon>
         <mat-icon *ngIf="isCollapsed"> restaurant</mat-icon>
       </button>
-      <div id="navbar-collapse" class="collapse navbar-collapse flex-grow-0 text-center" [ngbCollapse]="isCollapsed">
+      <div id="navbar-collapse" class="collapse navbar-collapse flex-grow-0 text-center hero" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav justify-content-center">
-          <li *ngFor="let nav of navBarConfigs.items" [ngClass]="{'floating':nav.name == 'Order Now'? true : false}"><a href="#" class="nav-link">{{nav.name}} <span
-                class="sr-only"></span></a></li>
+          <ng-container *ngFor="let nav of navBarConfigs.items" class="hero">
+            <li  [ngClass]="{'floating':nav.name == 'Order Now'? true : false, 'hero':true}"  *ngIf="nav.type !='logo'">
+              <a href="#" class="nav-link">{{nav.name}} <span class="sr-only"></span></a>
+            </li>
+            <li [ngClass]="{'floating':nav.name == 'Order Now'? true : false,'toHide':true}" class="toHide" *ngIf="nav.type == 'logo' && isCollapsed">
+              <a href="#" class="navbar-brand" >
+                <img [src]="navBarConfigs.logo" width="150" alt="" class="d-inline-block align-middle mr-2">
+              </a>
+            </li>
+          </ng-container>
         </ul>
       </div>
     </div>

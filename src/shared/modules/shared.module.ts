@@ -12,13 +12,15 @@ import { FooterComponent } from '../components/footer/footer.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { RouterModule } from "@angular/router";
+import { DynamicFormBuilderModule } from "../components/forms/form builder/dynamic-form-builder.module";
+import { FormsComponent } from "../components/forms/forms.component";
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, CarouselComponent],
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule],
-  exports: [NavbarComponent, FooterComponent, CarouselComponent],
+  declarations: [NavbarComponent, FooterComponent, CarouselComponent, FormsComponent],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule, DynamicFormBuilderModule],
+  exports: [NavbarComponent, FooterComponent, CarouselComponent, DynamicFormBuilderModule, FormsComponent],
   providers: [UserService, AuthInterceptorService],
 })
 export class SharedModule { }

@@ -3,7 +3,7 @@
 }
 
 .removeOpacity {
-  transition: all 1s ease 0.1s;
+  transition: all .4s ease 0.1s;
   background-color: white;
   color: black !important;
   & * {
@@ -15,13 +15,32 @@
   }
 }
 
+.navbar-container{
+  position: absolute;
+  transition: all .6s ease-in-out .1s !important;
+  z-index: 10000 !important;
+}
+.white-BG{
+  background-color: white !important;
+  transition: all .1s ease 2.9s;
+  position: fixed !important;
+  top: 0 !important;
+}
+
+@media (min-width:991px) {
+  .toHide{
+    display: none;
+    transition: all .1s ease-in .1s;
+  }
+}
+
 .navbar {
   background-size: cover;
   align-items: baseline !important;
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  z-index: 2;
+  z-index: 100000 !important;
   transition: all 1s ease 0.1s;
   & ul {
     width: fit-content;
@@ -70,7 +89,7 @@ button {
 .main-container {
   z-index: 4;
   line-height: 24px;
-  background: linear-gradient(181deg, #000000e6, #ffffff75) !important;
+  // background: linear-gradient(181deg, #000000e6, #1e1a1abf) !important;
 }
 
 .info-container {

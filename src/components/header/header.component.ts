@@ -1,6 +1,6 @@
 import { HeaderService } from './../../services/header.service';
 import { HeaderCarouselItem } from './../../entities/header-carousel-item.entity';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   carouselItems!: HeaderCarouselItem[]
   currentPage: number = 0;
-
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event : any) {
+      if ($event.path[1].pageYOffset> 1) {
+        this.height = $event.path[1].pageYOffset+'px'
+      }
+  }
   constructor(private headerService: HeaderService) { }
-
+  height: string = ''
   ngOnInit(): void {
     this.getHeaderCarouselItems()
+  }
+
+  getHeight(){
+    return `transform: translateX(${this.height})`
   }
 
   getHeaderCarouselItems() {

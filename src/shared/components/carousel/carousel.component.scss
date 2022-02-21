@@ -1,13 +1,22 @@
 img {
-    height: calc(100vh) !important;
-    width: 100vw;
+    height: calc(122vh) !important;
+    width: 100%;
     object-fit: cover;
 }
 
 :host ::ng-deep .carousel-item {
     transition: all 1.6s;
 }
-
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  z-index: 0;
+}
 :host ::ng-deep carousel-item.active {
     z-index: 1;
     opacity: 1;
@@ -51,4 +60,7 @@ p {
         height: 50px;
         transition: all .2s ease .1s;
     }
+}
+.carousel-caption{
+  top: 37% !important;
 }

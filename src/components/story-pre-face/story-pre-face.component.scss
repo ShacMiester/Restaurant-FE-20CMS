@@ -2,23 +2,23 @@
 h4::before {
   content: "";
   position: absolute;
-  top: -20px;
   background: url(https://cdn-icons-png.flaticon.com/128/14/14480.png) no-repeat
     center;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   background-size: cover;
   left: -46px;
 }
-
+.container {
+  padding-top: 5%;
+}
 h4::after {
   content: "";
   position: absolute;
-  top: -20px;
   background: url(https://cdn-icons-png.flaticon.com/128/14/14480.png) no-repeat
     center;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   background-size: cover;
   right: -46px;
 }
@@ -32,11 +32,13 @@ h4 {
   display: inline-table;
   padding-bottom: 20px;
   font-family: "Original Surfer", cursive;
+  margin-top: 30px;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 58px;
   font-family: "Original Surfer", cursive;
+  color: #c59d5f;
 }
 
 .shawerma-grill {
@@ -53,8 +55,19 @@ h3 {
 }
 
 .container-fluid {
-  background: url(https://images7.alphacoders.com/348/348725.jpg) no-repeat;
+  // background: url(https://images7.alphacoders.com/348/348725.jpg) no-repeat;
   background-size: cover;
-  padding-top: 5%;
+  // padding-top: 5%;
   padding-bottom: 5%;
+}
+a {
+  font-size: 17px;
+  padding: 10px 15px;
+  display: inline-table;
+  font-weight: bold;
+  font-family: "Playball", cursive;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  transition: all 200ms linear;
+  text-transform: uppercase;
 }

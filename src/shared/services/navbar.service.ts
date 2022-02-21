@@ -19,21 +19,14 @@ export class NavbarService {
         name: 'Our Story',
         isScrollOnly: false,
         link:'/ourStory'
-      }, {
-        name: 'Services',
-        isScrollOnly: false,
-        link:'/services'
       },
       {
         name:'logo',
         type:'logo',
-        image:'someImage'
+        image:'assets/images/logoCropped-removebg-preview.png'
       },
        {
         name: 'Menu',
-        isScrollOnly: true
-      }, {
-        name: 'Contact',
         isScrollOnly: true
       },
       {

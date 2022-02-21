@@ -7,8 +7,10 @@
       <a href="#">view full menu</a>
     </div>
   </div>
-  <div class="mt-5 d-flex justify-content-center flex-row flex-wrap flex-grow-1" style="z-index: 10000;">
-    <mat-card class="card m-2" *ngFor="let items of preMenuItems">
+
+  <div class="mt-5 d-flex justify-content-center flex-row flex-wrap flex-grow-1" style="z-index: 10000;"
+    [@filterAnimation]="1">
+    <mat-card class="card m-2 hero" *ngFor="let items of preMenuItems">
       <mat-card-header>
         <mat-card-title>{{items.title}}</mat-card-title>
       </mat-card-header>
