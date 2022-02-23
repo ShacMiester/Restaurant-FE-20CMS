@@ -9,6 +9,14 @@ import { FormGroup } from '@angular/forms';
           <option *ngFor="let opt of field.options" [value]="opt.key">{{opt.label}}</option>
         </select>
       </div>
+      <mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let opt of field.options" [value]="opt.key">
+      {{opt.label}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
     `
 })
 export class DropDownComponent {

@@ -27,6 +27,7 @@ export class NavbarService {
       },
        {
         name: 'Menu',
+        link:'menu',
         isScrollOnly: true
       },
       {

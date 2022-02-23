@@ -1,0 +1,9 @@
+<div class="container-fluid position-relative main-container" [ngStyle]="getBackground()" style="padding: 200px;">
+  <div class="overlay"></div>
+  <div class="container text-center position-relative text-white">
+    <h2 class="title">{{title}}</h2>
+    <p class="sub-title">{{subtitle}}</p>
+    <p class="description">{{content}}</p>
+    <button *ngIf="containsButton" mat-raised-button class="generic" [routerLink]="[buttonLink]">{{buttonText}}</button>
+  </div>
+</div>

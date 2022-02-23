@@ -1,0 +1,26 @@
+:host::ng-deep .mat-tab-label {
+  color: #C59D5F;
+}
+
+:host::ng-deep .mat-card-header {
+  color: #C59D5F !important;
+}
+
+:host::ng-deep .mat-card-subtitle{
+  color: #C59D5F !important;
+
+}
+
+:host::ng-deep .mat-card-content{
+  color: #C59D5F !important;
+
+}
+button{
+  background-color: #C59D5F;
+  width: 100%;
+}
+
+:host::ng-deep .mat-tab-label-active{
+  background-color: #C59D5F;
+  color: black;
+}

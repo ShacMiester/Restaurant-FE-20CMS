@@ -1,10 +1,11 @@
-<ngb-carousel  [@fadeInUp] [interval]="5000" [animation]="true"  class="pickgradient position-relative" [ngStyle]="getHeight()" id="ngb-carousel">
+<ngb-carousel  [@fadeInUp] [interval]="52000" [animation]="true"  class="pickgradient position-relative" [ngStyle]="getHeight()" id="ngb-carousel">
   <ng-template ngbSlide *ngFor="let item of carouselItems;">
     <div class="overlay"></div>
     <img [src]="item.image" width="100%" height="100vh">
     <div class="carousel-caption">
       <h3>{{item.label}}</h3>
       <p>{{item.description}}</p>
+      <button *ngIf="item.buttonLink" mat-raised-button [routerLink]="['menu']" class="generic">{{item.buttonText}}</button>
     </div>
   </ng-template>
 </ngb-carousel>

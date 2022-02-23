@@ -42,8 +42,8 @@
       <div id="navbar-collapse" class="collapse navbar-collapse flex-grow-0 text-center hero" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav justify-content-center">
           <ng-container *ngFor="let nav of navBarConfigs.items" class="hero">
-            <li  [ngClass]="{'floating':nav.name == 'Order Now'? true : false, 'hero':true}"  *ngIf="nav.type !='logo'">
-              <a href="#" class="nav-link">{{nav.name}} <span class="sr-only"></span></a>
+            <li *ngIf="nav.type !='logo'">
+              <a href="#" class="nav-link" [routerLink]="nav.link">{{nav.name}} <span class="sr-only"></span></a>
             </li>
             <li [ngClass]="{'floating':nav.name == 'Order Now'? true : false,'toHide':true}" class="toHide" *ngIf="nav.type == 'logo' && isCollapsed">
               <a href="#" class="navbar-brand" >

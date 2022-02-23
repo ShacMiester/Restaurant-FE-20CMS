@@ -3,4 +3,6 @@ export interface HeaderCarouselItem {
   show: boolean;
   description: string;
   image: string;
+  buttonLink?:string
+  buttonText?:string
 }

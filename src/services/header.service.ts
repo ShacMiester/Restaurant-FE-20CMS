@@ -11,9 +11,9 @@ import { HttpClient } from "@angular/common/http";
 export class HeaderService {
   controller: string = 'products'
   someMenu: HeaderCarouselItem[] = [
-    { label: 'Lorem ipsum dolor sit', show: true, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image: 'https://production-media.gousto.co.uk/cms/mood-image/888.Spiced_Seekh-Kebabs-Rice--Lime-Salad.jpg' },
-    { label: 'Lorem ipsum dolor sit', show: false, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: 'https://images5.alphacoders.com/656/656041.jpg' },
-    { label: 'Lorem ipsum dolor sit', show: true, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: 'https://ilovearabicfood.com/wp-content/uploads/2020/02/18-kebab-with-spiced-rice.jpg' }
+    { label: 'Lorem ipsum dolor sit', show: true, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image: '../assets/images/original-_1_.png', buttonText: 'Lorem Ipsum', buttonLink: 'Lorem Ipsum' },
+    { label: 'Lorem ipsum dolor sit', show: false, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: '../assets/images/original-_2_.png',buttonText:'Catering',buttonLink:'catering'},
+    { label: 'Lorem ipsum dolor sit', show: true, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: '../assets/images/original_1.png',buttonText:'Lorem Ipsum',buttonLink:'LoremIpsum' }
   ]
   constructor(private HttpClient: HttpClient, private auth: AuthInterceptorService) { }
   nextPage: number = 0

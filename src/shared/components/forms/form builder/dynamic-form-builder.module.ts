@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatSelectModule
   ],
   declarations: [
     DynamicFormBuilderComponent,

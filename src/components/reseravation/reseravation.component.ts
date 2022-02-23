@@ -36,17 +36,17 @@ export class ReservationComponent implements OnInit {
     //   required: true,
     //   onUpload: this.onUpload.bind(this)
     // },
-    // {
-    //   type: 'dropdown',
-    //   name: 'country',
-    //   label: 'Country',
-    //   value: 'in',
-    //   required: true,
-    //   options: [
-    //     { key: 'in', label: 'India' },
-    //     { key: 'us', label: 'USA' }
-    //   ]
-    // },
+    {
+      type: 'dropdown',
+      name: 'country',
+      label: 'Country',
+      value: 'in',
+      required: true,
+      options: [
+        { key: 'in', label: 'India' },
+        { key: 'us', label: 'USA' }
+      ]
+    },
     // {
     //   type: 'radio',
     //   name: 'country',

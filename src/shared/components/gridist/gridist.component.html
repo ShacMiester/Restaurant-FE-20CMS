@@ -1,0 +1,11 @@
+<mat-grid-list cols="4" [rowHeight]="350">
+  <mat-grid-tile
+      *ngFor="let item of list"
+      [colspan]="item.cols"
+      [rowspan]="item.rows"
+      [style.background-repeat] ="'no-repeat'"
+      [style.background-size] ="'cover'">
+    <!-- {{item.text}} -->
+ <img [src]="item.image" alt="">
+  </mat-grid-tile>
+</mat-grid-list>
