@@ -1,3 +1,4 @@
+import { DynamicFormsAppModule } from './../shared/dynamic-forms-app/dynamic-forms-app.module';
 import { HeaderService } from './../services/header.service';
 import { AuthInterceptorService } from 'src/shared/services/auth-interceptor.service';
 import { SharedModule } from './../shared/modules/shared.module';
@@ -22,7 +23,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     SharedModule,
     BrowserAnimationsModule,
     NgbModule, MainModule,
-    HttpClientModule
+    HttpClientModule,
+    DynamicFormsAppModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, HeaderService],
   bootstrap: [AppComponent]

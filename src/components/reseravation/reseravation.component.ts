@@ -1,76 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FormBase } from 'src/shared/dynamic-forms-app/atoms/form-base';
+import { QuestionService } from 'src/shared/dynamic-forms-app/question.service';
 
 @Component({
   selector: 'app-reseravation',
   templateUrl: './reseravation.component.html',
-  styleUrls: ['./reseravation.component.scss']
+  styleUrls: ['./reseravation.component.scss'],
+  providers: [QuestionService]
 })
 export class ReservationComponent implements OnInit {
-  public reservationFields: any[] = [
-    {
-      type: 'text',
-      name: 'name',
-      label: 'Full Name',
-      value: '',
-      required: true,
-    },
-    {
-      type: 'number',
-      name: 'phoneNumber',
-      label: 'Phone Number',
-      value: '',
-      required: true,
-    },
-    {
-      type: 'text',
-      name: 'email',
-      label: 'Email',
-      value: '',
-      required: true,
-    },
+  reservationForm$: Observable<FormBase<any>[]>;
 
-    // {
-    //   type: 'file',
-    //   name: 'picture',
-    //   label: 'Picture',
-    //   required: true,
-    //   onUpload: this.onUpload.bind(this)
-    // },
-    {
-      type: 'dropdown',
-      name: 'country',
-      label: 'Country',
-      value: 'in',
-      required: true,
-      options: [
-        { key: 'in', label: 'India' },
-        { key: 'us', label: 'USA' }
-      ]
-    },
-    // {
-    //   type: 'radio',
-    //   name: 'country',
-    //   label: 'Country',
-    //   value: 'in',
-    //   required: true,
-    //   options: [
-    //     { key: 'm', label: 'Male' },
-    //     { key: 'f', label: 'Female' }
-    //   ]
-    // },
-    // {
-    //   type: 'checkbox',
-    //   name: 'hobby',
-    //   label: 'Hobby',
-    //   required: true,
-    //   options: [
-    //     { key: 'f', label: 'Fishing' },
-    //     { key: 'c', label: 'Cooking' }
-    //   ]
-    // }
-  ];
-  constructor() { }
-
+  constructor(service: QuestionService) {
+    this.reservationForm$ = service.getQuestions();
+    console.log(this.reservationForm$)
+  }
   ngOnInit(): void {
   }
 

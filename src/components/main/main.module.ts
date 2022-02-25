@@ -1,3 +1,4 @@
+import { DynamicFormsAppModule } from './../../shared/dynamic-forms-app/dynamic-forms-app.module';
 import { MainRoutingModule } from './main-routing.module';
 import { GalleryComponent } from './../gallery/gallery.component';
 import { FancyListComponent } from './../../shared/components/fancy-list/fancy-list.component';
@@ -20,7 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [MainComponent, HeaderComponent, MenuPreFaceComponent, MenuItemsComponent, ServicesComponent, StoryPreFaceComponent, ReservationComponent, WeeklyDealsComponent, FancyListComponent, GalleryComponent],
-  imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule, MatIconModule, MainRoutingModule, MatTabsModule],
+  imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule, MatIconModule, MainRoutingModule, MatTabsModule, DynamicFormsAppModule],
   exports: [],
   providers: []
 })

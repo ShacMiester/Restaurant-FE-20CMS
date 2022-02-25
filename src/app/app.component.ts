@@ -8,11 +8,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RestaurantCMS';
- /**
-  *
-  */
- constructor() {
-  //  console.log(environment.name)
-
- }
 }
