@@ -1,3 +1,4 @@
+import { DateField } from './atoms/form-date';
 import { CheckBoxField } from './atoms/form-checkbox';
 import { Injectable } from '@angular/core';
 
@@ -5,6 +6,7 @@ import { DropdownField } from './atoms/form-dropdown';
 import { FormBase } from './atoms/form-base';
 import { TextBoxField } from './atoms/form-textbox';
 import { of } from 'rxjs';
+import { Validators } from '@angular/forms';
 
 @Injectable()
 export class QuestionService {
@@ -14,38 +16,62 @@ export class QuestionService {
 
     const questions: FormBase<string>[] = [
 
-      new DropdownField({
-        key: 'brave',
-        label: 'Bravery Rating',
-        options: [
-          { key: 'solid', value: 'Solid' },
-          { key: 'great', value: 'Great' },
-          { key: 'good', value: 'Good' },
-          { key: 'unproven', value: 'Unproven' }
-        ],
-        order: 3
+      new DateField({
+        // key: 'brave',
+        // label: 'Bravery Rating',
+        // options: [
+        //   { key: 'solid', value: 'Solid' },
+        //   { key: 'great', value: 'Great' },
+        //   { key: 'good', value: 'Good' },
+        //   { key: 'unproven', value: 'Unproven' }
+        // ],
+        // order: 3
+        key: 'date',
+        label: 'Date',
+        value: '',
+        type:'date',
+        required: true,
+        order: 5,
+        errorMessage:'Date is required'
       }),
 
       new TextBoxField({
-        key: 'firstName',
-        label: 'First name',
-        value: 'Bombasto',
+        key: 'name',
+        label: 'Full name',
+        value: '',
+        type:'text',
         required: true,
-        order: 1
+        order: 1,
+        errorMessage:'Name is required'
       }),
 
       new TextBoxField({
         key: 'emailAddress',
+        required:true,
         label: 'Email',
         type: 'email',
-        order: 2
+        order: 2,
+        errorMessage:'Email is required'
       }),
-      new CheckBoxField(
+      new TextBoxField(
         {
-          key: 'isGood',
-          label: 'topping?',
-          type: 'radio',
-          order: 2
+          key: 'phoneNumber',
+          label: 'Phone number',
+          type: 'text',
+          required:true,
+          order: 2,
+          errorMessage:'Phone is required',
+          Validators:[Validators.pattern('[- +()0-9]+')],
+          value:1
+        }),
+        new TextBoxField({
+          label:'Number of people',
+          controlType:'number',
+          required:true,
+          key:'people',
+          type:'number',
+          errorMessage:'Please provide number of people',
+          order:3
         })
     ];
 

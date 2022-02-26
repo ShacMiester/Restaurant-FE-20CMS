@@ -1,3 +1,4 @@
+import { MenuItemsService } from './menu-items.service';
 import { ModalComponent } from './../../../shared/components/modal/modal.component';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,42 +11,12 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class MenuItemsComponent implements OnInit {
   animal: string = '';
   name: string = '';
-  public formFields: any[] = [
-    {
-      type: 'dropdown',
-      name: 'extras',
-      label: 'Rice Portion',
-      value: '',
-      required: true,
-      options: [
-        { key: '0', label: 'regular', },
-        { key: '4', label: 'Large' }
-      ]
-    },
-    // {
-    //   type: 'radio',
-    //   name: 'country',
-    //   label: 'Country',
-    //   value: 'in',
-    //   required: true,
-    //   options: [
-    //     { key: 'm', label: 'Male' },
-    //     { key: 'f', label: 'Female' }
-    //   ]
-    // },
-    // {
-    //   type: 'checkbox',
-    //   name: 'hobby',
-    //   label: 'Hobby',
-    //   required: true,
-    //   options: [
-    //     { key: 'f', label: 'Fishing' },
-    //     { key: 'c', label: 'Cooking' }
-    //   ]
-    // }
-  ];
+  public formFields: any;
+
   someItems = [{name:'kebab',price:12}]
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,public form:MenuItemsService) {
+    this.formFields = form.getSpecificItemForm()
+   }
 
   ngOnInit(): void {
   }

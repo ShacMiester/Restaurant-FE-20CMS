@@ -1,16 +1,16 @@
-<div class="col-md-12">
-  <form (ngSubmit)="onSubmit()" [formGroup]="form" style="width: 100%;">
+<div class="h-100">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="d-flex flex-column justify-content-between h-100" style="width: 100%;">
 
-    <div *ngFor="let field of formFields" class="form-row">
+    <div *ngFor="let field of formFields">
       <app-fields [field]="field" [form]="form"></app-fields>
     </div>
 
-    <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
+    <div class="" >
+      <button mat-button type="submit" [disabled]="!form.valid"  style="background-color: black; color: #c59d5f;">Send</button>
     </div>
   </form>
 
-  <div *ngIf="payLoad" class="form-row">
+  <div *ngIf="payLoad" class="">
     <strong>Saved the following values</strong><br>{{payLoad}}
   </div>
 </div>

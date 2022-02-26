@@ -6,6 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DynamicFormComponent } from './dynamic-form-component/dynamic-form-component.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule, } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 @NgModule({
   declarations: [DynamicFormFieldComponent, DynamicFormComponent],
   imports: [
@@ -13,8 +18,12 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,MatIconModule
   ],
-  exports:[DynamicFormComponent, DynamicFormFieldComponent]
+  exports: [DynamicFormComponent, DynamicFormFieldComponent]
 })
 export class DynamicFormsAppModule { }

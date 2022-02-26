@@ -19,10 +19,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from '../components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
+import { DynamicFormsAppModule } from '../dynamic-forms-app/dynamic-forms-app.module';
 
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent],
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule, MatGridListModule, MatDialogModule, FormsModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule, MatGridListModule, MatDialogModule, FormsModule,DynamicFormsAppModule],
   exports: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent],
   providers: [UserService, AuthInterceptorService],
 })
