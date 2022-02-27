@@ -11,8 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainModule } from 'src/components/main/main.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { MatBadgeModule } from "@angular/material/badge";
 @NgModule({
   declarations: [
     AppComponent
@@ -25,6 +27,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     NgbModule, MainModule,
     HttpClientModule,
     DynamicFormsAppModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatBadgeModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }, HeaderService],
   bootstrap: [AppComponent]

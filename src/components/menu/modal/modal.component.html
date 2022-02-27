@@ -2,10 +2,10 @@
   <h1 mat-dialog-title>Lorem Ipsum</h1>
   <div mat-dialog-content>
     <img src="../../../assets/images/gallery/chikenkabseh.png" style="object-fit: contain; width: 100%;" alt="">
-    <app-dynamic-form [formFields]="reservationForm$"></app-dynamic-form>
+    <app-dynamic-form (newItemEvent)="doSomething($event)" [formFields]="reservationForm$"></app-dynamic-form>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add to cart</button>
+    <button mat-button [mat-dialog-close]="reservationForm$.value" cdkFocusInitial>Add to cart</button>
   </div>
 </div>

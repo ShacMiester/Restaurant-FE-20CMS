@@ -1,3 +1,75 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<mat-sidenav-container class="example-container">
+  <div class="overlay"></div>
+  <mat-sidenav #sidenav mode="over" [opened]="false" [position]="'start'"
+    style="position: fixed; background-color: white; color: #c59d5f;width: 50vw;">
+    <mat-icon (click)="sidenav.toggle()" class="mat-18" style="cursor: pointer; position: absolute;">close</mat-icon>
+    <div class="content-container d-flex h-100 justify-content-between flex-column" style="padding-top: 15px;">
+
+      <div style=" padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div *ngFor="let i of shoppingCart"
+          style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; padding:10px 0px;">
+          <img style="    width: 100px;
+        border: 4px solid grey;
+        border-radius: 25px;" src="../assets/images/full.png" width="30%" alt="">
+          <div class="d-flex flex-column justify-content-between text-center" style="height: fit-content;">
+            <p>Kebab</p>
+            <div class="quantity d-flex flex-row" style="    width: 100px;
+            justify-content: space-between;">
+              <!-- <button style="min-width: fit-content; padding:0px; background:#c59d5f; border-radius: 40px;"
+                mat-raised-button>
+                <mat-icon class="mat-18">remove</mat-icon>
+              </button> -->
+              <mat-icon style="min-width: fit-content; padding:0px; background:#c59d5f; border-radius: 40px; color: #000;" class="mat-18">remove</mat-icon>
+
+              <div>
+                <p >1</p>
+              </div>
+              <!-- <button
+                mat-raised-button> -->
+                <mat-icon style="min-width: fit-content; padding:0px; background:#c59d5f; border-radius: 40px; color: #000;" class="mat-18">add</mat-icon>
+              <!-- </button> -->
+            </div>
+          </div>
+          <p style="margin:30px">10$</p>
+        </div>
+      </div>
+
+      <div class="checkout d-flex flex-column justify-content-around pb-4" style="padding: 0 10px">
+        <app-hr style="margin-bottom: 15px;"></app-hr>
+        <div class="total-items d-flex justify-content-between flex-row">
+          <p>Items total</p>
+          <p>12$</p>
+        </div>
+        <div class="total-items d-flex justify-content-between flex-row">
+          <p>Delivery</p>
+          <p>7$</p>
+        </div>
+        <div class="total-items d-flex justify-content-between flex-row">
+          <p>Tax</p>
+          <p>2.34$</p>
+        </div>
+        <div class="total-items d-flex justify-content-between flex-row">
+          <p>Total</p>
+          <p>313.34$</p>
+        </div>
+      <div class="actions d-flex flex-row flex-wrap justify-content-around">
+        <button mat-raised-button style="background-color: black; color:#c59d5f;">Proceed to checkout</button>
+        <button mat-raised-button style="background-color: red; color:#c59d5f;" (click)="shoppingCart.length = 0">
+          <mat-icon class="mat-18" >remove_shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-button class="position-fixed cart" (click)="sidenav.toggle()" *ngIf="shoppingCart.length">
+      <mat-icon class="mat-18" [matBadge]="shoppingCart.length">shopping_cart</mat-icon>
+    </button>
+    <button class="position-fixed cart" mat-button *ngIf="!shoppingCart.length" [routerLink]="['menu']">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

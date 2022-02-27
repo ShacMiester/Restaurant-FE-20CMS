@@ -17,7 +17,7 @@ import { RouterModule } from "@angular/router";
 import { DescriptiveBlockComponent } from '../components/descriptive-block/descriptive-block.component'
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ModalComponent } from '../components/modal/modal.component';
+import { ModalComponent } from '../../components/menu/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { DynamicFormsAppModule } from '../dynamic-forms-app/dynamic-forms-app.module';
 

@@ -9,12 +9,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ModalComponent implements OnInit {
   service: any
   reservationForm$:any
+  payLoad:any
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    this.service = data.service
-    console.log(data)
      data.form.subscribe((a:any)=>{ this.reservationForm$ = a})
   }
 
@@ -24,6 +23,9 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  doSomething($event : any){
+console.log($event)
   }
 
 }

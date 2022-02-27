@@ -27,6 +27,10 @@ export class DynamicFormComponent implements OnInit {
     this.payLoad = JSON.stringify(this.form.getRawValue());
     const payload = this.form.value
     console.log(payload,'gge')
-    this.newItemEvent.emit()
+    this.newItemEvent.emit(this.payLoad)
+  }
+  emitEvent(){
+    const payload = JSON.stringify(this.form.getRawValue());
+    this.newItemEvent.emit(payload)
   }
 }

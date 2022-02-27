@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [{ path: '', component: MainComponent }, { path: 'menu', component: MenuItemsComponent }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration:'top'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

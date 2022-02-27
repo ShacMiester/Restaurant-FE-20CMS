@@ -4,9 +4,7 @@ import { GalleryComponent } from './../gallery/gallery.component';
 import { FancyListComponent } from './../../shared/components/fancy-list/fancy-list.component';
 import { ReservationComponent } from './../reseravation/reseravation.component';
 import { SharedModule } from './../../shared/modules/shared.module';
-import { ServicesComponent } from './../services/services.component';
 import { MenuItemsComponent } from './../menu/menu-items/menu-items.component';
-import { MenuPreFaceComponent } from './../menu/menu-pre-face/menu-pre-face.component';
 import { HeaderComponent } from './../header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,9 +16,10 @@ import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.componen
 import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [MainComponent, HeaderComponent, MenuPreFaceComponent, MenuItemsComponent, ServicesComponent, StoryPreFaceComponent, ReservationComponent, WeeklyDealsComponent, FancyListComponent, GalleryComponent],
+  declarations: [MainComponent, HeaderComponent, MenuItemsComponent, StoryPreFaceComponent, ReservationComponent, WeeklyDealsComponent, FancyListComponent, GalleryComponent],
   imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule, MatIconModule, MainRoutingModule, MatTabsModule, DynamicFormsAppModule],
   exports: [],
   providers: []

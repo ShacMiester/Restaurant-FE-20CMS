@@ -28,9 +28,9 @@
               <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">person</mat-icon>
             </button>
           </span>
-          <span *ngIf="!isLoggedIn">
+          <!-- <span *ngIf="!isLoggedIn">
             <a style="color:white" mat-button [routerLink]="['login']">login</a>
-          </span>
+          </span> -->
         </div>
       </div>
       <button type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
@@ -43,7 +43,7 @@
         <ul class="navbar-nav justify-content-center">
           <ng-container *ngFor="let nav of navBarConfigs.items" class="hero">
             <li *ngIf="nav.type !='logo'">
-              <a href="#" class="nav-link" [routerLink]="nav.link">{{nav.name}} <span class="sr-only"></span></a>
+              <a [href]="nav.link" class="nav-link" [routerLink]="nav.link">{{nav.name}} <span class="sr-only"></span></a>
             </li>
             <li [ngClass]="{'floating':nav.name == 'Order Now'? true : false,'toHide':true}" class="toHide" *ngIf="nav.type == 'logo' && isCollapsed">
               <a [routerLink]="['']" class="navbar-brand" >

@@ -1,5 +1,5 @@
 img {
-    height: calc(122vh) !important;
+    height: calc(100vh) !important;
     width: 100%;
     object-fit: cover;
 }
@@ -24,7 +24,9 @@ img {
     opacity: 1;
     transition-delay: 1s;
 }
-
+:host ::ng-deep .carousel-indicators{
+  padding-bottom: 10px;
+}
 h3 {
     color: white;
     font-size: 1.3rem !important;
@@ -32,8 +34,8 @@ h3 {
 
 p {
     color: white;
-    font-size: 1.5rem !important;
-    line-height: 2.5rem;
+    font-size: 1.2rem !important;
+    line-height: 2.2rem;
 }
 
 :host ::ng-deep .carousel-control-prev-icon {

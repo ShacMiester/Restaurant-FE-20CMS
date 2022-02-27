@@ -18,7 +18,7 @@ export class NavbarService {
       }, {
         name: 'Our Story',
         isScrollOnly: false,
-        link:'/ourStory'
+        link:'#story'
       },
       {
         name:'logo',

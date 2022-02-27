@@ -29,50 +29,50 @@ export class QuestionService {
         key: 'date',
         label: 'Date',
         value: '',
-        type:'date',
+        type: 'date',
         required: true,
         order: 5,
-        errorMessage:'Date is required'
+        errorMessage: 'Date is required'
       }),
 
       new TextBoxField({
         key: 'name',
         label: 'Full name',
         value: '',
-        type:'text',
+        type: 'text',
         required: true,
         order: 1,
-        errorMessage:'Name is required'
+        errorMessage: 'Name is required'
       }),
 
       new TextBoxField({
         key: 'emailAddress',
-        required:true,
+        required: true,
         label: 'Email',
         type: 'email',
         order: 2,
-        errorMessage:'Email is required'
+        errorMessage: 'Email is required'
       }),
       new TextBoxField(
         {
           key: 'phoneNumber',
           label: 'Phone number',
           type: 'text',
-          required:true,
+          required: true,
           order: 2,
-          errorMessage:'Phone is required',
-          Validators:[Validators.pattern('[- +()0-9]+')],
-          value:1
+          errorMessage: 'Phone is required',
+          Validators: [Validators.pattern('[- +()0-9]+')]
         }),
-        new TextBoxField({
-          label:'Number of people',
-          controlType:'number',
-          required:true,
-          key:'people',
-          type:'number',
-          errorMessage:'Please provide number of people',
-          order:3
-        })
+      new TextBoxField({
+        label: 'Number of people',
+        controlType: 'number',
+        required: true,
+        key: 'people',
+        value: 1,
+        type: 'number',
+        errorMessage: 'Please provide number of people',
+        order: 3
+      })
     ];
 
     return of(questions.sort((a, b) => a.order - b.order));
