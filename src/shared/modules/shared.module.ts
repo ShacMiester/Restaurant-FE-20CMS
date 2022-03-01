@@ -31,7 +31,7 @@ import { MatCardModule } from "@angular/material/card";
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, TableComponent],
   imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule, MatGridListModule, MatDialogModule, FormsModule, DynamicFormsAppModule, MatSidenavModule, MatTableModule, MatTooltipModule],
-  exports: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, MatSidenavModule, MatButtonModule, MatIconModule, MatBadgeModule, MatExpansionModule, FormsModule, DynamicFormsAppModule, MatTableModule, TableComponent, MatTooltipModule,MatCardModule],
+  exports: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, MatSidenavModule, MatButtonModule, MatIconModule, MatBadgeModule, MatExpansionModule, FormsModule, DynamicFormsAppModule, MatTableModule, TableComponent, MatTooltipModule,MatCardModule,RouterModule],
   providers: [UserService, AuthInterceptorService],
 })
 export class SharedModule { }

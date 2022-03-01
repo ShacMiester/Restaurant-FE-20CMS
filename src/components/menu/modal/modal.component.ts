@@ -8,24 +8,23 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ModalComponent implements OnInit {
   service: any
-  reservationForm$:any
-  payLoad:any
+  reservationForm$: any
+  payLoad: any
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-     data.form.subscribe((a:any)=>{ this.reservationForm$ = a})
+    data.form.subscribe((a: any) => { this.reservationForm$ = a })
   }
 
-  quantity:number = 1
+  quantity: number = 1
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   ngOnInit(): void {
   }
-  doSomething($event : any){
-console.log($event)
+  doSomething($event: any) {
   }
 
 }

@@ -17,15 +17,6 @@ export class QuestionService {
     const questions: FormBase<string>[] = [
 
       new DateField({
-        // key: 'brave',
-        // label: 'Bravery Rating',
-        // options: [
-        //   { key: 'solid', value: 'Solid' },
-        //   { key: 'great', value: 'Great' },
-        //   { key: 'good', value: 'Good' },
-        //   { key: 'unproven', value: 'Unproven' }
-        // ],
-        // order: 3
         key: 'date',
         label: 'Date',
         value: '',

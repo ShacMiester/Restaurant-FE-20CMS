@@ -1,5 +1,6 @@
 <mat-drawer-container class="example-container" style="height: 100vh;" >
-  <mat-drawer mode="side" opened #sidenav style="    background-image:  linear-gradient(135deg, rgb(47 62 160 / 68%), rgb(174 52 45 / 96%)), url(../../../assets/images/full.png); width: 250px; background-repeat: no-repeat; background-size: cover;">
+  <mat-drawer mode="side" opened #sidenav style="    background-image: linear-gradient(135deg, rgb(47 62 160 / 92%), rgba(174, 52, 45, 0.96)), url(../../../assets/images/full.png), url(../../../assets/images/full.png); width: 250px; background-repeat: no-repeat; background-size: cover;">
+    <img src="../../../assets/images/logoCropped-removebg-preview.png" alt="">
     <mat-accordion *ngFor="let item of sideMenuItems$">
       <mat-expansion-panel style="background-color: transparent;">
         <mat-expansion-panel-header>
@@ -18,8 +19,6 @@
     <div class="container" style="padding:20px; margin-top: 3.95rem; background-color: #f7f7f8;">
       <mat-card>
           <mat-card-header>
-              <mat-card-title>Title</mat-card-title>
-              <mat-card-subtitle>Subtitle</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
             <router-outlet></router-outlet>

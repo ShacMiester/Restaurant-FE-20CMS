@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuTableComponent implements OnInit {
   dataSource = []
-  constructor(private MenuService: MenuService,private router:Router) { }
+  constructor(private MenuService: MenuService, private router: Router) { }
 
   ngOnInit(): void {
     this.MenuService.getMenuItems().subscribe(items => {
@@ -17,27 +17,21 @@ export class MenuTableComponent implements OnInit {
     })
   }
 
-  performAction(event: { row: any, action: 'edit' | 'delete' }) {
+  performAction(event: { row: any, action: 'edit' | 'delete' | 'add' }) {
     console.log(event.row)
     switch (event.action) {
       case 'edit':
-        console.log('editing')
-        this.router.navigate(['/admin','menu-items-forms'],{queryParams:{id:event.row.id,type:event.action}})
+        this.router.navigate(['/admin', 'menu-items-forms'], { queryParams: { id: event.row.id, type: event.action } })
         break;
       case 'delete':
-        //delete
-        this.dataSource.forEach((element:any,index) => {
-          if(element.id == event.row.id)
-          {
-            console.log('found')
-            this.dataSource.splice(index,10)
-            console.log(this.dataSource)
+        this.dataSource.forEach((element: any, index) => {
+          if (element.id == event.row.id) {
+            this.dataSource.splice(index, 10)
           }
         });
-        // this.MenuService.removeItem(event.row.id)
-        console.log('delete')
         break;
-      default:
+      case 'add':
+        this.router.navigate(['/admin', 'menu-items-forms'], { queryParams: { id: event.row.id, type: event.action } })
         break;
     }
   }

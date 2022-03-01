@@ -12,6 +12,7 @@ import { AdminComponent } from './admin.component'
 import { MatListModule } from "@angular/material/list";
 
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatDividerModule } from '@angular/material/divider';
     AdminRoutingModule,
     SharedModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    RouterModule
   ],
   providers: [AdminPanelService]
 })

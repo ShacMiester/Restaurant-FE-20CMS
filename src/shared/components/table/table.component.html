@@ -2,12 +2,14 @@
   <h1 style=" font-weight: 500;
   font-size: 1.6rem;
   margin-bottom: .25rem;">Menu Table</h1>
-  <button class="position-absolute" style="right: 0;" mat-raised-button float="right">Add new {{button_title}}</button>
+  <button class="position-absolute" style="right: 0;" mat-raised-button float="right" (click)="performAction(0,'add')">Add new item</button>
 </div>
 <table mat-table [dataSource]="dataSource" class="" style="width: 100%; background-color: transparent !important;">
   <ng-container *ngFor="let col of displayedColumns">
     <ng-container matColumnDef="{{col}}" *ngIf="col != 'actions'">
-      <th mat-header-cell *matHeaderCellDef style="width: fit-content; text-align: center;"> {{col}}</th>
+      <th mat-header-cell *matHeaderCellDef style="width: fit-content; text-align: center;color: #495057;
+      background-color: #e9ecef;
+      border-color: #e0e0e0"> {{col}}</th>
       <td mat-cell *matCellDef="let element" class="truncate-cell text-center">
         <ng-container *ngIf="col != 'Image_URL'">{{element[col]}}</ng-container>
         <ng-container *ngIf="col == 'Image_URL'"><img [src]="element[col]" alt="" width="100%"
@@ -18,7 +20,9 @@
 
   <ng-container matColumnDef="actions">
     <tr>
-      <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+      <th mat-header-cell *matHeaderCellDef class="text-center" style="color: #495057;
+      background-color: #e9ecef;
+      border-color: #e0e0e0"> Action </th>
     </tr>
     <tr>
       <td mat-cell *matCellDef="let row" style="width:20%" class="text-center">

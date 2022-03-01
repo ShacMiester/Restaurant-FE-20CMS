@@ -1,7 +1,7 @@
 <div [formGroup]="form" class="h-100">
   <div [ngSwitch]="field.controlType">
     <!-- new Form Design  -->
-    <mat-form-field *ngSwitchCase="'textbox'" style="width: 100%;">
+    <mat-form-field *ngSwitchCase="'textbox'" appearance="fill" style="width: 100%;">
       <mat-label>{{field.label}}</mat-label>
       <input matInput [formControlName]="field.key" [id]="field.key" [type]="field.type">
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
@@ -35,7 +35,7 @@
       <p><mat-checkbox  *ngFor="let check of field.options" [id]="field.key" [formControlName]="check.key">{{check.key}}</mat-checkbox></p>
     </section> -->
     <section *ngSwitchCase="'checkbox'">
-      <mat-checkbox *ngIf="!field.options.length" [id]="field.key" [formControlName]="field.key">{{field.label}}</mat-checkbox>
+      <mat-checkbox *ngIf="!field.options.length" [id]="field.key" [formControlName]="field.key" appearance="fill">{{field.label}}</mat-checkbox>
       <mat-form-field  style="width: 100%;" *ngIf="field.options.length">
 
           <mat-label>{{field.label}}</mat-label>

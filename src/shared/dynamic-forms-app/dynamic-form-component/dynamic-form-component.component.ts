@@ -14,6 +14,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() formFields: FormBase<string>[] | null = [];
   @Output() newItemEvent = new EventEmitter<any>();
   @Input() formValues: any = {}
+  @Input() title!: string
 
   form!: FormGroup;
   payLoad = '';
