@@ -13,6 +13,7 @@ export class DynamicFormComponent implements OnInit {
 
   @Input() formFields: FormBase<string>[] | null = [];
   @Output() newItemEvent = new EventEmitter<any>();
+  @Input() formValues: any = {}
 
   form!: FormGroup;
   payLoad = '';
@@ -21,6 +22,8 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.qcs.toFormGroup(this.formFields as FormBase<string>[]);
+    if(this.formValues)
+    this.form.patchValue(this.formValues)
   }
 
   onSubmit() {

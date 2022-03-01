@@ -29,21 +29,27 @@
     </mat-form-field>
     <!--  -->
     <!--  -->
-    <!-- <mat-checkbox [id]="field.key" *ngSwitchCase="'checkbox'" [formControlName]="field.key">Check me!</mat-checkbox> -->
     <!-- <section class="example-section" *ngSwitchCase="'checkbox'">
       {{field | json}}
       <h4>Select your toppings:</h4>
       <p><mat-checkbox  *ngFor="let check of field.options" [id]="field.key" [formControlName]="check.key">{{check.key}}</mat-checkbox></p>
     </section> -->
-    <mat-form-field *ngSwitchCase="'checkbox'" style="width: 100%;">
-      <mat-label>{{field.label}}</mat-label>
-      <mat-select [id]="field.key" [formControlName]="field.key">
-        <mat-option *ngFor="let option of field.options" [value]="option.value">
-          {{option.key}}
-          <mat-hint *ngIf="option.additionalInfo"> ({{option.additionalInfo}}) </mat-hint>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <section *ngSwitchCase="'checkbox'">
+      <mat-checkbox *ngIf="!field.options.length" [id]="field.key" [formControlName]="field.key">{{field.label}}</mat-checkbox>
+      <mat-form-field  style="width: 100%;" *ngIf="field.options.length">
+
+          <mat-label>{{field.label}}</mat-label>
+        <mat-select [id]="field.key" [formControlName]="field.key" >
+          <mat-option *ngFor="let option of field.options" [value]="option.value">
+            {{option.key}}
+            <mat-hint *ngIf="option.additionalInfo"> ({{option.additionalInfo}}) </mat-hint>
+          </mat-option>
+        </mat-select>
+
+
+      </mat-form-field>
+    </section>
+
     <!--  -->
   </div>
   <!-- {{form.controls|json}} -->

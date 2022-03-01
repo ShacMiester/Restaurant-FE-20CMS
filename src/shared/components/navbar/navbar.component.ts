@@ -4,6 +4,7 @@ import { UserService } from './../../services/user.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { user } from 'src/shared/entities/user.entity';
 import { NavBar } from '../../entities/navbar-item.entity';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit {
       this.height = $event.path[1].pageYOffset + 'px'
     }
   }
-  constructor(private UserService: UserService, private navbArService: NavbarService, private domHelper: DomManipulationHelper) { }
+  constructor(private UserService: UserService, private navbArService: NavbarService, private routerLink:Router ) { }
   public animatePage = true;
 
   someBadge: number = 1;

@@ -1,0 +1,32 @@
+.truncate-cell {
+  max-width: 60px; /* feel free to include any other value */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+    // display: inline-flex;
+    // min-width: 100%;
+}
+tr.mat-row{
+  height: 100px;
+}
+
+th.mat-header-cell:last-of-type{
+  padding-right: 0;
+}
+
+td.mat-cell:last-of-type{
+  padding-right: 0;
+}
+
+th.mat-header-cell:first-of-type{
+  padding-left: 0;
+}
+
+td.mat-cell:first-of-type{
+  padding-left: 0;
+}

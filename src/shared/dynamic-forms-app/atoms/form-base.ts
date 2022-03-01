@@ -1,7 +1,7 @@
 import { Validators } from "@angular/forms";
 
 export class FormBase<T> {
-  value: T | number | string | undefined;
+  value: T | number | string | undefined | boolean;
   key: string;
   label: string;
   required: boolean;
@@ -10,10 +10,10 @@ export class FormBase<T> {
   type: any;
   options: { key: string, value: string, additionalInfo?: string }[];
   errorMessage: string;
-  Validators: Validators[]
+  Validators: Validators[];
 
   constructor(options: {
-    value?: T | number | string | undefined;
+    value?: T | number | string | undefined | boolean;
     key?: string;
     label?: string;
     required?: boolean;

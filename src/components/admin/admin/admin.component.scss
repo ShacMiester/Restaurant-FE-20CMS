@@ -1,0 +1,11 @@
+a {
+  &:hover {
+    background-color: rgb(250 250 250 / 33%) !important;
+    transition: all 0.3s ease-in 0.1s;
+  }
+}
+:host::ng-deep .mat-expansion-indicator {
+  &::after {
+    color: white !important;
+  }
+}
