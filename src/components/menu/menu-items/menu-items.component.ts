@@ -22,7 +22,6 @@ export class MenuItemsComponent implements OnInit {
   ngOnInit(): void {
   }
   addToCart(item:any){
-    this.cart.push({name:'kebab'})
     this.CartService.addToCart({name:'kebab'})
   }
   openModal(item: any): void {

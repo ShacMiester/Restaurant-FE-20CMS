@@ -5,14 +5,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems:any[] = []
+  cartItems: any[] = []
   constructor() { }
 
-  addToCart(item: any){
-    this.cartItems.push({name:'kebab'})
+  addToCart(item: any) {
+    this.cartItems.push({ name: 'kebab' })
+    this.getCartItems().subscribe(items => { localStorage.setItem('cart', JSON.stringify(items)) })
   }
 
-  getCartItems():Observable<any>{
+  getCartItems(): Observable<any> {
     return of(this.cartItems)
   }
 }

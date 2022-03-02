@@ -1,3 +1,5 @@
+import { HideElementDirective } from './../../Directives/hide-element.directive';
+import { CartComponent } from '../cart/cart.component';
 import { DynamicFormsAppModule } from './../../shared/dynamic-forms-app/dynamic-forms-app.module';
 import { MainRoutingModule } from './main-routing.module';
 import { GalleryComponent } from './../gallery/gallery.component';
@@ -16,12 +18,11 @@ import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.componen
 import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [MainComponent, HeaderComponent, MenuItemsComponent, StoryPreFaceComponent, ReservationComponent, WeeklyDealsComponent, FancyListComponent, GalleryComponent],
+  declarations: [MainComponent, HeaderComponent, MenuItemsComponent, StoryPreFaceComponent, ReservationComponent, WeeklyDealsComponent, FancyListComponent, GalleryComponent, CartComponent, HideElementDirective],
   imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule, MatIconModule, MainRoutingModule, MatTabsModule, DynamicFormsAppModule],
-  exports: [],
+  exports: [CartComponent, HideElementDirective],
   providers: []
 })
 export class MainModule { }
