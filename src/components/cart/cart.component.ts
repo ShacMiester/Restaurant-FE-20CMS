@@ -1,5 +1,6 @@
 import { CartService } from './../../shared/services/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-cart',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  @ViewChild('sidenav') sidenav!: MatSidenav
   currentRoute = ''
   constructor(private CartService: CartService) { }
   shoppingCart = []
@@ -16,5 +18,11 @@ export class CartComponent implements OnInit {
 
   getCartItems(){
     this.CartService.getCartItems().subscribe(items => { this.shoppingCart = items })
+  }
+
+  clearCart(){
+    this.CartService.deleteCart()
+    this.getCartItems()
+    this.sidenav.toggle()
   }
 }

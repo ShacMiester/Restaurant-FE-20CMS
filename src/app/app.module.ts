@@ -1,7 +1,7 @@
-import { DynamicFormsAppModule } from './../shared/dynamic-forms-app/dynamic-forms-app.module';
-import { HeaderService } from './../services/header.service';
+import { DynamicFormsAppModule } from '../shared/dynamic-forms-app/dynamic-forms-app.module';
+import { HeaderService } from '../services/header.service';
 import { AuthInterceptorService } from 'src/shared/services/auth-interceptor.service';
-import { SharedModule } from './../shared/modules/shared.module';
+import { SharedModule } from '../shared/modules/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

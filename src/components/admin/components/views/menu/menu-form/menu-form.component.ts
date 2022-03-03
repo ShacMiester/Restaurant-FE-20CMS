@@ -1,3 +1,7 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DropdownField } from './../../../../../../shared/dynamic-forms-app/atoms/form-dropdown';
+import { CheckBoxField } from './../../../../../../shared/dynamic-forms-app/atoms/form-checkbox';
+import { TextBoxField } from './../../../../../../shared/dynamic-forms-app/atoms/form-textbox';
 import { ActivatedRoute, Router } from '@angular/router'
 import { MenuFormService } from './../services/menu-form.service'
 import { Component, OnInit } from '@angular/core'
@@ -18,7 +22,7 @@ export class MenuFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   this.getQueryParams();
+    this.getQueryParams();
     this.getMenuItems();
   }
 
@@ -28,7 +32,7 @@ export class MenuFormComponent implements OnInit {
     })
   }
 
-  getQueryParams(){
+  getQueryParams() {
     this.router.queryParams.subscribe((params: any) => {
       this.menuService.getMenuItems().subscribe(items => {
         items.map((item: any) => {
@@ -36,5 +40,13 @@ export class MenuFormComponent implements OnInit {
         })
       })
     })
+  }
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
+  addNewSection(){
+    // let newlyCreatedForm = new FormGroup([])
+    this.profileForm.addControl(`name${Math.random()*100}`, new FormControl('', Validators.required));
   }
 }

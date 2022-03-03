@@ -5,15 +5,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: any[] = []
+  cartItems!: any
   constructor() { }
 
   addToCart(item: any) {
     this.cartItems.push({ name: 'kebab' })
-    this.getCartItems().subscribe(items => { localStorage.setItem('cart', JSON.stringify(items)) })
+    localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
 
   getCartItems(): Observable<any> {
+    this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]')
     return of(this.cartItems)
+  }
+
+  deleteCart() {
+    localStorage.setItem('cart', JSON.stringify([]))
   }
 }

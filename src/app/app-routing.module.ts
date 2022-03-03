@@ -1,5 +1,5 @@
-import { MenuItemsComponent } from './../components/menu/menu-items/menu-items.component';
-import { MainComponent } from './../components/main/main.component';
+import { MenuItemsComponent } from '../components/menu/menu-items/menu-items.component';
+import { MainComponent } from '../components/main/main.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
