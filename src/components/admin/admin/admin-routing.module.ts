@@ -1,3 +1,4 @@
+import { MenuCategoriesFormComponent } from './../components/views/menu/menu-categories-form/menu-categories-form.component';
 import { MenuFormComponent } from './../components/views/menu/menu-form/menu-form.component';
 import { MenuCategoriesComponent } from './../components/views/menu/menu-categories/menu-categories.component';
 import { MenuTableComponent } from './../components/views/menu/menu-table/menu-table.component';
@@ -12,7 +13,8 @@ const routes: Routes = [{
     [
       { path: 'menu-items', component: MenuTableComponent },
       { path: 'menu-categories', component: MenuCategoriesComponent },
-      { path: "menu-items-forms", component: MenuFormComponent }
+      { path: "menu-items-forms", component: MenuFormComponent },
+      { path: 'menu-categories-form', component: MenuCategoriesFormComponent },
     ]
 }];
 

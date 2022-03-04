@@ -195,15 +195,11 @@ export class MenuService {
       "Is_Special": true
     }])
   }
-  getMenuCategories(): Observable<any> {
-    return of([])
-  }
-
   removeItem(id: number) {
     this.getMenuItems().subscribe(items => {
-      items.map((item: any,index:number) => {
+      items.map((item: any, index: number) => {
         if (item.id == id)
-          items.splice(index,0)
+          items.splice(index, 0)
       })
       console.log(items)
     })
