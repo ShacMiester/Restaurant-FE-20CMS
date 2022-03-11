@@ -1,29 +1,40 @@
-<mat-drawer-container class="example-container" style="height: 100vh;" >
-  <mat-drawer mode="side" opened #sidenav style="    background-image: linear-gradient(135deg, rgb(47 62 160 / 92%), rgba(174, 52, 45, 0.96)), url(../../../assets/images/full.png), url(../../../assets/images/full.png); width: 250px; background-repeat: no-repeat; background-size: cover;">
-    <img src="../../../assets/images/logoCropped-removebg-preview.png" alt="">
-    <mat-accordion *ngFor="let item of sideMenuItems$">
-      <mat-expansion-panel style="background-color: transparent;">
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: white;">
-            {{item.title}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
+<mat-drawer-container class="vh-100">
+  <mat-drawer mode="over" opened #sidenav>
+    <app-user-info></app-user-info>
+    <ng-container >
+      <mat-accordion >
+        <mat-expansion-panel class="bg-transparent" *ngFor="let item of sideMenuItems$">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="text-white">
+              {{item.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
           <mat-nav-list>
-            <a style="color: white;" *ngFor="let child of item.children" [routerLink]="[child.link]" mat-list-item>{{child.title}}<mat-divider></mat-divider></a>
+            <a class="text-white" *ngFor="let child of item.children" [routerLink]="[child.link]"
+              mat-list-item>{{child.title}}</a>
           </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-accordion>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+
+
   </mat-drawer>
-  <mat-drawer-content >
-    <button mat-button (click)="sidenav.toggle()" style=" left: 0;"><mat-icon class="mat-18">menu</mat-icon></button>
-    <div class="container" style="padding:20px; margin-top: 3.95rem; background-color: #f7f7f8;">
-      <mat-card>
-          <mat-card-header>
-          </mat-card-header>
-          <mat-card-content>
-            <router-outlet></router-outlet>
-          </mat-card-content>
-      </mat-card>
+  <mat-drawer-content>
+    <div class="w-100 upper-nav" style="margin-bottom: 10px;">
+      <div style="position: absolute; right: 0; top: 10px;">
+        <button mat-button><mat-icon>notifications</mat-icon></button>
+        <button mat-button><mat-icon>settings</mat-icon></button>
+      </div>
+
+    <div style="position: absolute; left: 0; top: 10px;">
+    <button mat-button (click)="sidenav.toggle()" class="position-absolute"
+      style=" left: 0; position: absolute; top: 0;">
+      <mat-icon class="mat-18">menu</mat-icon>
+    </button>
+  </div>
+</div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  storeApi:'https://api.stripe.com/v1/'
+  storeApi:'http://mmuwafi-001-site1.itempurl.com/api'
 };
 
 /*

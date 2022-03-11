@@ -1,16 +1,20 @@
 <div class="h-100">
+  <div class="container-fluid">
   <h1>{{title}}</h1>
   <form (ngSubmit)="onSubmit()" [formGroup]="form" class="d-flex flex-column justify-content-between h-100" style="width: 100%;">
      <div *ngFor="let field of formFields">
       <app-fields [field]="field" [form]="form"></app-fields>
     </div>
 
-    <div class="" >
-      <button mat-button type="submit" [disabled]="!form.valid"  style="background-color: black; color: #c59d5f;">Send</button>
+    <div class="d-flex flex-row justify-content-between">
+      <button mat-raised-button type="submit" [disabled]="!form.valid"  style="background-color: black; color: #c59d5f;">Send</button>
+      <button mat-raised-button (click)="form.enable()" *ngIf="form.disabled" color="secondary">Edit</button>
+      <button mat-raised-button (click)="form.disable()" *ngIf="form.enabled" color="warn">Cancel</button>
     </div>
   </form>
 
   <div *ngIf="payLoad" class="">
     <strong>Saved the following values</strong><br>{{payLoad}}
   </div>
+</div>
 </div>

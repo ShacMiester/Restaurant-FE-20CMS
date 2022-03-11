@@ -11,6 +11,7 @@ import { MatDatepickerModule, } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 @NgModule({
   declarations: [DynamicFormFieldComponent, DynamicFormComponent],
   imports: [
@@ -22,7 +23,9 @@ import { MatIconModule } from "@angular/material/icon";
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule,MatIconModule
+    MatButtonModule,
+    MatIconModule,
+    NgxMatTimepickerModule
   ],
   exports: [DynamicFormComponent, DynamicFormFieldComponent]
 })

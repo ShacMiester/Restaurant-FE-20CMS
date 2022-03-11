@@ -8,16 +8,26 @@ export class AdminPanelService {
 
   constructor() { }
 
-  getAdminPanelSections():Observable<any>{
+  getAdminPanelSections(): Observable<any> {
     return of(
       [
-      {
-        title: 'Menu',
-        children: [
-          { title: 'Menu items', link: 'menu-items' },
-          { title: 'Menu categories', link: 'menu-categories' }
-        ]
-      }
-    ])
+        {
+          title: 'Dashboard',
+          children: [{ title: 'Dashboard page', link: 'dashboard' }]
+        },
+        {
+          title: 'Menu',
+          children: [
+            { title: 'Menu items', link: 'menu-items' },
+            { title: 'Menu categories', link: 'menu-categories' }
+          ]
+        },
+        {
+          title: 'Catering',
+          children: [
+            { title: 'Requests', link: 'menu-items' }
+          ]
+        }
+      ])
   }
 }

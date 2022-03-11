@@ -8,9 +8,10 @@ export class FormBase<T> {
   order: number;
   controlType: string;
   type: any;
-  options: { key: string, value: string, additionalInfo?: string }[];
+  options: { key: string, value: string | number, additionalInfo?: string }[];
   errorMessage: string;
   Validators: Validators[];
+  disabled:boolean;
 
   constructor(options: {
     value?: T | number | string | undefined | boolean;
@@ -20,9 +21,10 @@ export class FormBase<T> {
     order?: number;
     controlType?: string;
     type?: any;
-    options?: { key: string, value: string, additionalInfo?: string }[];
+    options?: { key: string, value: string | number, additionalInfo?: string }[];
     errorMessage?: string;
-    Validators?: Validators[],
+    Validators?: Validators[];
+    disabled?:boolean;
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -33,6 +35,7 @@ export class FormBase<T> {
     this.type = options.type || '';
     this.options = options.options || [];
     this.errorMessage = options.errorMessage || 'Unknown wrong input';
-    this.Validators = []
+    this.Validators = [];
+    this.disabled = options.disabled || false;
   }
 }

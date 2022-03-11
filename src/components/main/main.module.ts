@@ -18,11 +18,37 @@ import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.componen
 import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CateringComponent } from '../catering/catering.component';
 
 @NgModule({
-  declarations: [MainComponent, HeaderComponent, MenuItemsComponent, StoryPreFaceComponent, ReservationComponent, WeeklyDealsComponent, FancyListComponent, GalleryComponent, CartComponent, HideElementDirective],
-  imports: [CommonModule, NgbModule, MatButtonModule, MatCardModule, SharedModule, MatIconModule, MainRoutingModule, MatTabsModule, DynamicFormsAppModule],
-  exports: [CartComponent, HideElementDirective],
+  declarations: [
+    MainComponent,
+    HeaderComponent,
+    MenuItemsComponent,
+    StoryPreFaceComponent,
+    ReservationComponent,
+    WeeklyDealsComponent,
+    FancyListComponent,
+    GalleryComponent,
+    CartComponent,
+    HideElementDirective,
+    CateringComponent
+  ],
+  imports: [
+    CommonModule,
+    NgbModule,
+    MatButtonModule,
+    MatCardModule,
+    SharedModule,
+    MatIconModule,
+    MainRoutingModule,
+    MatTabsModule,
+    DynamicFormsAppModule
+  ],
+  exports: [
+    CartComponent,
+    HideElementDirective
+  ],
   providers: []
 })
 export class MainModule { }

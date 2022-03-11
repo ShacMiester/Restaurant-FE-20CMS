@@ -11,10 +11,11 @@ const routes: Routes = [{
   path: '',
   children:
     [
-      { path: 'menu-items', component: MenuTableComponent },
-      { path: 'menu-categories', component: MenuCategoriesComponent },
-      { path: "menu-items-forms", component: MenuFormComponent },
-      { path: 'menu-categories-form', component: MenuCategoriesFormComponent },
+      { path: 'dashboard', loadChildren: () => import('../components/views/dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'menu-items', component: MenuTableComponent },//review
+      { path: 'menu-categories', component: MenuCategoriesComponent },//review
+      { path: "menu-items-forms", component: MenuFormComponent },//review
+      { path: 'menu-categories-form', component: MenuCategoriesFormComponent },//review
     ]
 }];
 

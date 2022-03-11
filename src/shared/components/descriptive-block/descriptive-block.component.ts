@@ -20,12 +20,16 @@ export class DescriptiveBlockComponent implements OnInit {
   @Input() containsButton: boolean = false
 
   @Input() backGroundImage!: string
+
+  @Input() styling!: any
+
+  @Input() buttonAction!: Function
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  getBackground(){
-    return this.backGroundImage ? {'background-image':`url(${this.backGroundImage})`} : {'background-color' :'#C59D5F'}
+  getStyle(){
+    return this.styling;
   }
 }

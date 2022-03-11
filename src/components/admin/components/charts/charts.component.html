@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div style="height: 200px;">
+    <ngx-charts-number-card [results]="saleData" [scheme]="'forest'" [valueFormatting]="myYAxisTickFormatting">
+    </ngx-charts-number-card>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div [chart]="chart"></div>
+    </div>
+    <div class="col-md-5">
+      <div [chart]="chartB"></div>
+    </div>
+  </div>
+</div>

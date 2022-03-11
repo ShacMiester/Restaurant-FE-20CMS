@@ -1,0 +1,13 @@
+<div class="container-fluid" #catering>
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-md-6"> <img class="w-100 h-100" style="object-fit: cover;"
+          src="http://www.indiancatering.sg/blog/wp-content/uploads/2017/06/Catering-in-Singapore-Indian-Catering-1.jpg"
+          alt=""> </div>
+      <div class="col-md-6 pb-3">
+        <app-dynamic-form [formFields]="cateringForm$ | async" [title]="'Catering'" (newItemEvent)="cater($event)">
+        </app-dynamic-form>
+      </div>
+    </div>
+  </div>
+</div>

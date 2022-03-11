@@ -9,7 +9,7 @@ export class CartService {
   constructor() { }
 
   addToCart(item: any) {
-    this.cartItems.push({ name: 'kebab' })
+    this.cartItems.push(item)
     localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
 
