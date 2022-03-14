@@ -22,7 +22,7 @@ export class CateringService {
               label: 'Status',
               key: 'Status',
               options: [
-                { key: 'Waiting_for_approval', value: "Waiting for approval" },
+                { key: 'Waiting for approval', value: "Waiting for approval" },
                 { key: 'Accepted', value: 'Accepted' },
                 { key: 'Rejected', value: 'Rejected'},
                 { key: 'Cancelled', value: 'Cancelled' }

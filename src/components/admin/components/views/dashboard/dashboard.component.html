@@ -1,12 +1,4 @@
 <app-charts></app-charts>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6">
-      <app-catering-table></app-catering-table>
-    </div>
-    <div class="col-md-6">
-      <app-catering-table></app-catering-table>
-    </div>
-  </div>
+  <app-catering-table [displayedColumns]="['name','description','time','date','Status']"></app-catering-table>
 </div>
-

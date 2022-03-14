@@ -1,6 +1,6 @@
 import { CateringDetailsComponent } from './catering-details/catering-details.component';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CateringTableComponent extends CrudService<any, number> implements OnInit {
 
-  displayedColumns: string[] = []
+  @Input() displayedColumns: string[] = []
   dataSource: any = []
   hideBar: boolean = false
   constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'catering'); }
@@ -43,8 +43,7 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     this.constructColumns(tableData)
   }
   constructColumns(columnData: any) {
-    this.displayedColumns = []
-    if (columnData.length) {
+    if (!this.displayedColumns.length) {
       this.displayedColumns = Object.keys(columnData[0]).map(col => { return col })
     }
   }
