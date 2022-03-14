@@ -12,7 +12,6 @@ export class DomManipulationHelper {
   }
 
   addClass(selector: string | HTMLElement, classes: string[] | string): void {
-    console.log(selector)
     const element = this.getElement(selector);
 
     if (!element || !classes?.length) return;

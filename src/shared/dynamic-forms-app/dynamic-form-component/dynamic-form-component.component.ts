@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBase } from '../atoms/form-base';
 import { FieldControlService } from '../field-control.service';
@@ -9,13 +9,14 @@ import { FieldControlService } from '../field-control.service';
   templateUrl: './dynamic-form.component.html',
   providers: [FieldControlService]
 })
-export class DynamicFormComponent implements OnInit {
+export class DynamicFormComponent implements OnInit, OnChanges {
 
   @Input() formFields: FormBase<string>[] | null = [];
   @Output() newItemEvent = new EventEmitter<any>();
   @Input() formValues: any = {}
   @Input() title!: string
   @Input() disabled: boolean = false;
+  @Input() type: string = 'add' || 'edit'
 
   form!: FormGroup;
   payLoad = '';
@@ -29,13 +30,16 @@ export class DynamicFormComponent implements OnInit {
     this.disabled ? this.form.disable() : this.form.enable()
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes)
+    if (changes['formValues'].currentValue != changes['formValues'].previousValue)
+      if (this.form)
+        this.form.patchValue(changes['formValues'].currentValue)
+  }
+
   onSubmit() {
     this.payLoad = JSON.stringify(this.form.getRawValue());
     const payload = this.form.value
-    this.newItemEvent.emit(this.payLoad)
-  }
-  emitEvent() {
-    const payload = JSON.stringify(this.form.getRawValue());
-    this.newItemEvent.emit(payload)
+    this.newItemEvent.emit({ payload:payload, type: this.type })
   }
 }

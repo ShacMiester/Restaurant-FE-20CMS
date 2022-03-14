@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { CrudService } from 'src/components/admin/services/crud.service';
 import { MenuCategoriesService } from './../services/menu-categories.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -8,32 +10,27 @@ import { MenuService } from '../services/menu.service';
   templateUrl: './menu-categories.component.html',
   // styleUrls: ['./menu-categories.component.scss']
 })
-export class MenuCategoriesComponent implements OnInit {
+export class MenuCategoriesComponent extends CrudService<any, number> implements OnInit {
   dataSource: any
-  constructor(private menuCategoryForm: MenuCategoriesService, private router: Router) { }
+  constructor(private router: Router, protected override _http: HttpClient) {
+    super(_http, 'menuCategories');
+  }
 
   ngOnInit(): void {
     this.getMenuItemCategoryForm();
   }
 
   getMenuItemCategoryForm() {
-    this.menuCategoryForm.getMenuCategories().subscribe(rows => {
-      this.dataSource = rows;
-    })
+    this.findAll().subscribe({ next: (v) => { this.dataSource = v } })
   }
 
   performAction(event: { row: any, action: 'edit' | 'delete' | 'add' }) {
-    console.log(event.row)
     switch (event.action) {
       case 'edit':
         this.router.navigate(['/admin', 'menu-categories-form'], { queryParams: { id: event.row.id, type: event.action } })
         break;
       case 'delete':
-        this.dataSource.forEach((element: any, index: number) => {
-          if (element.id == event.row.id) {
-            this.dataSource.splice(index, 10)
-          }
-        });
+        this.delete(event.row.id).subscribe()
         break;
       case 'add':
         this.router.navigate(['/admin', 'menu-categories-form'], { queryParams: { id: event.row.id, type: event.action } })

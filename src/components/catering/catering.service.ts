@@ -20,12 +20,12 @@ export class CateringService {
           new DropdownField(
             {
               label: 'Status',
-              key: 'status',
+              key: 'Status',
               options: [
-                { key: '0', value: 2 },
-                { key: '1', value: 1 },
-                { key: '2', value: 'Rejected' },
-                { key: '3', value: 'Cancelled' }
+                { key: 'Waiting_for_approval', value: "Waiting for approval" },
+                { key: 'Accepted', value: 'Accepted' },
+                { key: 'Rejected', value: 'Rejected'},
+                { key: 'Cancelled', value: 'Cancelled' }
               ]
             }))
       }
@@ -34,13 +34,12 @@ export class CateringService {
   }
   getCateringForm() {
     this.cateringForm = [
-      new TextBoxField({ key: 'id', label: 'id', required: true, disabled: true }),
       new DropdownField({
-        key: 'BranchID',
+        key: 'branchID',
         label: "Select Branch",
-        value: 1,
+        value: '',
         order: 10,
-        options: [{ key: 'Branch_1', value: '1', }, { key: 'Branch2', value: '2', }]
+        options: [{ key: 'Branch 1', value: 1, }, { key: 'Branch2', value: 2, }]
       }),
       new DateField({
         key: 'date',

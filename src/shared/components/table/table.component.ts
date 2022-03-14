@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 })
 export class TableComponent implements OnInit, OnChanges {
   @Input() displayedColumns: string[] = []
-  @Input() dataSource: any
+  @Input() dataSource: any[] = []
   @Input() title: string = 'Table'
   @Input() button_title = 'title'
   @Input() containsActionButtons!: boolean
@@ -14,12 +14,18 @@ export class TableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    if (!this.displayedColumns.length)
+    if (!this.displayedColumns.length && this.dataSource) {
       this.displayedColumns = Object.keys(this.dataSource[0]).map(col => { return col })
-    this.displayedColumns.push('actions')
+      this.displayedColumns.push('actions')
+    }
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = changes['dataSource'].currentValue
+    if (!this.displayedColumns.length && this.dataSource) {
+      this.displayedColumns = Object.keys(this.dataSource[0]).map(col => { return col })
+      this.displayedColumns.push('actions')
+    }
   }
 
   performAction(row: any, action: 'edit' | 'delete' | 'add') {

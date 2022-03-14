@@ -14,6 +14,7 @@ import { CrudService } from 'src/components/admin/services/crud.service';
 export class MenuItemsComponent extends CrudService<any, number> implements OnInit {
   animal: string = '';
   name: string = '';
+  menuCategories = []
   public formFields: any;
   cart:any[] = []
   someItems = [{ name: 'kebab', price: 12 }]
@@ -23,6 +24,10 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
   }
 
   ngOnInit(): void {
+    this.getCategories();
+  }
+  getCategories(){
+    this._http.get('')
   }
   addToCart(item:any){
     this.CartService.addToCart(item)
@@ -40,7 +45,6 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.animal = result;
     });
   }

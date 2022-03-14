@@ -19,8 +19,9 @@ export abstract class CrudService<T, ID> implements CrudOperations<T, ID> {
     return this._http.post<T>(`${environment.storeApi}/` + this._base, t);
   }
 
-  update(t: T | any): Observable<T> {
-    return this._http.put<T>(`${environment.storeApi}/` + this._base , t);
+  update(t: T | any, id: number): Observable<T> {
+    console.log(t)
+    return this._http.put<T>(`${environment.storeApi}/` + this._base + `/${id}`, t);
   }
 
   findOne(id: ID): Observable<T> {

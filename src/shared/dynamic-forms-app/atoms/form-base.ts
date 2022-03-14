@@ -12,6 +12,7 @@ export class FormBase<T> {
   errorMessage: string;
   Validators: Validators[];
   disabled:boolean;
+  hidden:boolean;
 
   constructor(options: {
     value?: T | number | string | undefined | boolean;
@@ -25,6 +26,7 @@ export class FormBase<T> {
     errorMessage?: string;
     Validators?: Validators[];
     disabled?:boolean;
+    hidden?:boolean
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -37,5 +39,6 @@ export class FormBase<T> {
     this.errorMessage = options.errorMessage || 'Unknown wrong input';
     this.Validators = [];
     this.disabled = options.disabled || false;
+    this.hidden = options.hidden || false
   }
 }

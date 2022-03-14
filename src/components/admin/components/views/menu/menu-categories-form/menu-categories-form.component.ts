@@ -1,24 +1,34 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MenuCategoriesService } from './../services/menu-categories.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CrudService } from 'src/components/admin/services/crud.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu-categories-form',
   templateUrl: './menu-categories-form.component.html',
   // styleUrls: ['./menu-categories-form.component.scss']
 })
-export class MenuCategoriesFormComponent implements OnInit {
+export class MenuCategoriesFormComponent extends CrudService<any, number> implements OnInit {
 
   form$: any
   formValues: any
+  paramID: number = 0
+  type: string = 'add' || 'edit'
   constructor(
+    protected override _http: HttpClient,
     private router: ActivatedRoute,
+    private route: Router,
     private menuCategoriesService: MenuCategoriesService,
-  ) { }
+    private _snackBar: MatSnackBar
+  ) {
+    super(_http, 'menuCategories');
+  }
 
   ngOnInit(): void {
-    this.getQueryParams();
     this.getMenuItems();
+    this.getQueryParams();
   }
 
   getMenuItems() {
@@ -29,14 +39,32 @@ export class MenuCategoriesFormComponent implements OnInit {
 
   getQueryParams() {
     this.router.queryParams.subscribe((params: any) => {
-      this.menuCategoriesService.getMenuCategories().subscribe(items => {
-        items.map((item: any) => {
-          if (item.id == params.id) this.formValues = item
+      if (params.id && params.type == 'edit') {
+        this.type = 'edit'
+        this.paramID = params.id
+        this.findOne(params.id).subscribe(item => {
+          this.formValues = item
         })
-      })
+      }
+
     })
   }
-  save($event: any) {
-    this.menuCategoriesService.save($event)
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'ok', { duration: 5000 });
+  }
+
+  saveItem($event: any) {
+    switch ($event.type) {
+      case 'add':
+        this.save($event.payload).subscribe({ next: () => this.openSnackBar('Category added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-categories']) })
+        break;
+      case 'edit':
+        {
+          $event.payload.id = this.paramID
+          this.update($event.payload,this.paramID).subscribe({ next: () => this.openSnackBar('Category added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-categories']) })
+        }
+        break;
+    }
   }
 }

@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('testsetset')
     const token = 'sk_test_51KQqaBLfcqnoO5VBPNdFgYf5xeZs1rH1Ml9FZuGJNqN9n0z4MgYVVcekYzjtAU2oThdRikJ9ilAMsKBIFFBxxB2P000lmdgrsb'
     req = req.clone({
       setHeaders: {

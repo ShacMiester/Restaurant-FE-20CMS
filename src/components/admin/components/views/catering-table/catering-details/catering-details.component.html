@@ -1,2 +1,31 @@
-<app-dynamic-form mat-dialog-content [formFields]="cateringForm$" [formValues]="cateringFormValues" [title]="'Catering'" [disabled]="true" (newItemEvent)="cater($event)">
+<div class="col-md-12"><button mat-button *ngIf="edit" (click)="edit = !edit">
+    <mat-icon class="mat-18">arrow_back</mat-icon>
+  </button></div>
+<ng-container *ngIf="!edit">
+  <ul class="recipe-details d-flex list-unstyled m-0 justify-content-between" style="padding: 1.4em 0 1em;">
+    <li>
+      <div class="d-flex align-middle">
+        <mat-icon>access_time</mat-icon>
+        <span class="icon-details"> {{cateringFormValues.time}}</span>
+      </div>
+    </li>
+    <li>
+      <div class="d-flex align-middle">
+        <mat-icon>calendar_today</mat-icon>
+        <span class="icon-details"> {{cateringFormValues.date | date}}</span>
+      </div>
+    </li>
+    <li>
+      <div class="d-flex align-middle">
+        <mat-icon>person</mat-icon>
+        <span class="icon-details">{{cateringFormValues.numberOfPeople}}</span>
+      </div>
+    </li>
+  </ul>
+  <p class="description">
+    {{cateringFormValues.description? cateringFormValues.description: 'No description provided'}}</p>
+  <footer><button mat-raised-button (click)="edit = !edit" class="edit__button">Edit</button></footer>
+</ng-container>
+<app-dynamic-form *ngIf="edit" mat-dialog-content [formFields]="cateringForm$" [formValues]="cateringFormValues"
+  [title]="'Catering'" [disabled]="true" (newItemEvent)="cater($event)">
 </app-dynamic-form>

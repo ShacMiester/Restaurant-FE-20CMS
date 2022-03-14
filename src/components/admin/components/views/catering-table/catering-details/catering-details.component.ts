@@ -12,13 +12,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class CateringDetailsComponent extends CrudService<any, number> implements OnInit {
   cateringForm$: any
   cateringFormValues: any
+  edit: boolean = false;
 
   constructor(private CateringService: CateringService, protected override _http: HttpClient, public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,) {
     super(_http, 'catering');
   }
   ngOnInit(): void {
-    this.getCateringForm()
+    this.getCateringForm();
   }
   getCateringForm() {
     this.CateringService.getCateringForm().subscribe(
@@ -29,15 +30,16 @@ export class CateringDetailsComponent extends CrudService<any, number> implement
         },
         complete: () => {
           this.cateringFormValues = this.data.item
+          console.log(this.data.item, 'gegegege')
         }
       }
     )
   }
   cater(event: any) {
-    this.update(event).subscribe({
+    this.update(event.payload, this.data.item.id).subscribe({
       next: (v) => console.log(v),
       error: (e) => console.log(e),
-      complete: () => console.log('completed')
+      complete: () => { this.dialogRef.close(true) }
     })
   }
 }

@@ -62,7 +62,6 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     })
   }
   getRecord(row: any) {
-    console.log(row)
     const dialogRef = this.dialog.open(CateringDetailsComponent, {
       width: '50vw',
       // height:'80vh',
@@ -70,8 +69,8 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(result);
-      // this.animal = result;
+      if (result)
+        this.getCateringData()
     });
   }
 }

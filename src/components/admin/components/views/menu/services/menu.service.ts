@@ -201,7 +201,6 @@ export class MenuService {
         if (item.id == id)
           items.splice(index, 0)
       })
-      console.log(items)
     })
   }
   getMenuItemForm(): Observable<any> {

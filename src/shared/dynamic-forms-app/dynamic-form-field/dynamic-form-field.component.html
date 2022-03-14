@@ -1,19 +1,20 @@
 <div [formGroup]="form" class="h-100">
-  <div [ngSwitch]="field.controlType">
+  <div [ngSwitch]="field.controlType" [hidden]="field.hidden">
     <mat-form-field *ngSwitchCase="'textbox'" appearance="outline" style="width: 100%;">
       <mat-label>{{field.label}}</mat-label>
       <input *ngIf="field.type !='textarea'" matInput [formControlName]="field.key" [id]="field.key" [type]="field.type" [disabled]="field.disabled">
       <textarea *ngIf="field.type =='textarea'" matInput [formControlName]="field.key" [id]="field.key" [type]="field.type"></textarea>
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
-    <mat-form-field *ngSwitchCase="'dropdown'" style="width: 100%;"  appearance="outline">
+    <mat-form-field *ngSwitchCase="'dropdown'" style="width: 100%;"  appearance="outline" >
       <mat-label>{{field.label}}</mat-label>
-      <mat-select [id]="field.key" [formControlName]="field.key">
+      <mat-select [id]="field.key" [formControlName]="field.key" [(value)]="selectedDropDownOption" [compareWith]="compareFn">
         <mat-option>--</mat-option>
         <mat-option *ngFor="let opt of field.options" [value]="opt.value">
           {{opt.key}}
         </mat-option>
       </mat-select>
+
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
     <mat-form-field *ngSwitchCase="'date'" style="width: 100%;"  appearance="outline">

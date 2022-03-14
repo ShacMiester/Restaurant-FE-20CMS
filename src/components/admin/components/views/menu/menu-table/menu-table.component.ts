@@ -18,7 +18,6 @@ export class MenuTableComponent implements OnInit {
   }
 
   performAction(event: { row: any, action: 'edit' | 'delete' | 'add' }) {
-    console.log(event.row)
     switch (event.action) {
       case 'edit':
         this.router.navigate(['/admin', 'menu-items-forms'], { queryParams: { id: event.row.id, type: event.action } })

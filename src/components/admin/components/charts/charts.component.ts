@@ -169,7 +169,6 @@ export class ChartsComponent implements OnInit {
     // this.chartB.
   }
   myYAxisTickFormatting(val: any) {
-    // console.log(val)
     return '$' + `${val.value}`;
   }
 }
