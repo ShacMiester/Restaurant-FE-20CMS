@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CateringComponent extends CrudService<any, number> implements OnInit {
   cateringForm$: Observable<FormBase<any>[]>;
 
-  constructor(service: CateringService, protected override _http: HttpClient, private _snackBar: MatSnackBar,) {
+  constructor(service: CateringService, protected override _http: HttpClient, private _snackBar: MatSnackBar) {
     super(_http, 'catering');
     this.cateringForm$ = service.getCateringForm();
   }
