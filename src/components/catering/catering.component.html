@@ -5,7 +5,7 @@
           src="http://www.indiancatering.sg/blog/wp-content/uploads/2017/06/Catering-in-Singapore-Indian-Catering-1.jpg"
           alt=""> </div>
       <div class="col-md-6 pb-3">
-        <app-dynamic-form [formFields]="cateringForm$ | async" [title]="'Catering'" (newItemEvent)="cater($event)">
+        <app-dynamic-form [editable]='false' [formFields]="cateringForm$ | async" [title]="'Catering'" (newItemEvent)="cater($event)">
         </app-dynamic-form>
       </div>
     </div>

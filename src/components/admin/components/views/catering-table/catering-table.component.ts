@@ -1,6 +1,6 @@
 import { CateringDetailsComponent } from './catering-details/catering-details.component';
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -46,7 +46,6 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     this.displayedColumns = []
     if (columnData.length) {
       this.displayedColumns = Object.keys(columnData[0]).map(col => { return col })
-      // this.displayedColumns.push('actions')
     }
   }
 
@@ -64,13 +63,12 @@ export class CateringTableComponent extends CrudService<any, number> implements 
   getRecord(row: any) {
     const dialogRef = this.dialog.open(CateringDetailsComponent, {
       width: '50vw',
-      // height:'80vh',
       data: { item: row }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result)
-        this.getCateringData()
+        this.getCateringData();
     });
   }
 }
