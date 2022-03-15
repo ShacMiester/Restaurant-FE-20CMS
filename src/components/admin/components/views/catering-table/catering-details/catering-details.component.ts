@@ -30,7 +30,6 @@ export class CateringDetailsComponent extends CrudService<any, number> implement
         },
         complete: () => {
           this.cateringFormValues = this.data.item
-          console.log(this.data.item, 'gegegege')
         }
       }
     )

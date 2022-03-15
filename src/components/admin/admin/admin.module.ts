@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatDialogModule } from "@angular/material/dialog";
+import { ReservationDetailsComponent } from "../components/views/reservation-table/reservation-details/reservation-details.component";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     MenuTableComponent,
     MenuFormComponent,
     UserInfoComponent,
-    CateringDetailsComponent
+    CateringDetailsComponent,
+    ReservationDetailsComponent
   ],
   imports: [
     CommonModule,

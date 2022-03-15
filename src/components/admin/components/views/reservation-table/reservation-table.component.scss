@@ -1,0 +1,83 @@
+.truncate-cell {
+  max-width: 100px; /* feel free to include any other value */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+  // display: inline-flex;
+  // min-width: 100%;
+}
+tr.mat-row {
+  height: 100px;
+  &:hover {
+    background: linear-gradient(190deg, #43e97b 0%, #38f9d7 100%);
+    cursor: pointer;
+  }
+}
+
+th.mat-header-cell:last-of-type {
+  padding-right: 0;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0;
+}
+
+th.mat-header-cell:first-of-type {
+  padding-left: 0;
+}
+
+td.mat-cell:first-of-type {
+  padding-left: 0;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+.header {
+  height: 50px;
+}
+
+.add-button {
+  right: 0;
+}
+
+table {
+  width: 100%;
+}
+
+img {
+  object-fit: contain;
+}
+
+th {
+  width: fit-content;
+  text-align: center !important;
+  color: #495057;
+  background: #70dd70;
+  border-color: #e0e0e0;
+}
+
+.main-container {
+  background-color: white !important;
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.title {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid black;
+}
+
+h3 {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}

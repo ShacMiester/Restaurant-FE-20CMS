@@ -1,14 +1,37 @@
+import { DropdownField } from './atoms/form-dropdown';
 import { TimeField } from './atoms/form-time';
 import { DateField } from './atoms/form-date';
 import { Injectable } from '@angular/core';
 import { FormBase } from './atoms/form-base';
 import { TextBoxField } from './atoms/form-textbox';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Validators } from '@angular/forms';
 
 @Injectable()
 export class QuestionService {
-  getQuestions() {
+  reservationForm: any
+
+  applyNewField(): Observable<any> {
+    this.getReservationForm().subscribe({
+      next: (v) => this.reservationForm = v,
+      complete: () => {
+        this.reservationForm.push(
+          new DropdownField(
+            {
+              label: 'Status',
+              key: 'Status',
+              options: [
+                { key: 'Waiting for approval', value: "Waiting for approval" },
+                { key: 'Accepted', value: 'Accepted' },
+                { key: 'Rejected', value: 'Rejected' },
+                { key: 'Cancelled', value: 'Cancelled' }
+              ]
+            }))
+      }
+    })
+    return of(this.reservationForm)
+  }
+  getReservationForm() {
     const questions: FormBase<string>[] = [
       new DateField({
         key: 'date',

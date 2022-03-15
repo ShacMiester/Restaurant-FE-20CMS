@@ -23,9 +23,9 @@ export class AdminPanelService {
           ]
         },
         {
-          title: 'Catering',
+          title: 'Reservations',
           children: [
-            { title: 'Requests', link: 'menu-items' }
+            { title: 'Requests', link: 'reservations' }
           ]
         }
       ])

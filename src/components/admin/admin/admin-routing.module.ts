@@ -12,6 +12,7 @@ const routes: Routes = [{
   children:
     [
       { path: 'dashboard', loadChildren: () => import('../components/views/dashboard/dashboard.module').then(m => m.DashboardModule) },
+      { path: 'reservations', loadChildren: () => import('../components/views/reservation-table/reservation-table.module').then(m => m.ReservationTableModule) },
       { path: 'menu-items', component: MenuTableComponent },//review
       { path: 'menu-categories', component: MenuCategoriesComponent },//review
       { path: "menu-items-forms", component: MenuFormComponent },//review

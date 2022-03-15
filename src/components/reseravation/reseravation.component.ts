@@ -17,7 +17,7 @@ export class ReservationComponent extends CrudService<any, number> implements On
 
   constructor(service: QuestionService, protected override _http: HttpClient, private _snackBar: MatSnackBar) {
     super(_http, 'reservations');
-    this.reservationForm$ = service.getQuestions();
+    this.reservationForm$ = service.getReservationForm();
   }
   ngOnInit(): void {
   }

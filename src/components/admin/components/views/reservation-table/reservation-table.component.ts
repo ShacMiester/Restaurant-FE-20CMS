@@ -1,30 +1,29 @@
-import { CateringDetailsComponent } from './catering-details/catering-details.component';
+import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { CrudService } from 'src/components/admin/services/crud.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CrudService } from 'src/components/admin/services/crud.service';
 
 @Component({
-  selector: 'app-catering-table',
-  templateUrl: './catering-table.component.html',
-  styleUrls: ['./catering-table.component.scss']
+  selector: 'app-reservation-table',
+  templateUrl: './reservation-table.component.html',
+  styleUrls: ['./reservation-table.component.scss']
 })
-export class CateringTableComponent extends CrudService<any, number> implements OnInit {
-
+export class ReservationTableComponent extends CrudService<any, number> implements OnInit {
   @Input() displayedColumns: string[] = []
   dataSource: any = []
   hideBar: boolean = false
-  constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'catering'); }
+  constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'reservations'); }
 
   ngOnInit(): void {
-    this.getCateringData()
+    this.getReservationsData()
   }
   openSnackBar(message: string) {
     this._snackBar.open(message, 'ok', { duration: 5000 });
   }
 
-  getCateringData() {
+  getReservationsData() {
     this.hideBar = false
     this.findAll().subscribe(
       {
@@ -51,7 +50,7 @@ export class CateringTableComponent extends CrudService<any, number> implements 
   removeItem(row: any) {
     this.hideBar = false
     this.delete(row.id).subscribe({
-      next: (v) => this.getCateringData(),
+      next: (v) => this.getReservationsData(),
       error: (e) => this.openSnackBar('An error has occurred'),
       complete: () => {
         this.openSnackBar('item was deleted successfully')
@@ -60,16 +59,20 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     })
   }
   getRecord(row: any) {
-    const dialogRef = this.dialog.open(CateringDetailsComponent, {
-      width: '70vw',
+    const dialogRef = this.dialog.open(ReservationDetailsComponent, {
+      width: '50vw',
       data: { item: row }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.getCateringData();
-        this.openSnackBar('item was updated Successfully')
+        this.getReservationsData();
+        this.openSnackBar('Item was updated successfully')
+
       }
+
     });
   }
 }
+
+
