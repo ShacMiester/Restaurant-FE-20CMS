@@ -14,26 +14,31 @@ export class NavbarService {
       logo: 'assets/images/logoCropped-removebg-preview.png', name: 'LoaziTech Restaurant', items: [{
         name: 'Home',
         isScrollOnly: true,
-        link:'/home'
+        link: '/home'
       }, {
         name: 'Our Story',
         isScrollOnly: false,
-        link:'#story'
+        link: '#story'
       },
       {
-        name:'logo',
-        type:'logo',
-        image:'assets/images/logoCropped-removebg-preview.png'
+        name: 'logo',
+        type: 'logo',
+        image: 'assets/images/logoCropped-removebg-preview.png'
       },
-       {
+      {
         name: 'Menu',
-        link:'menu',
+        link: 'menu',
         isScrollOnly: true
       },
       {
         name: 'Order Now',
         isScrollOnly: true
-      }],
+      },
+      {
+        name: 'Online catering',
+        link: 'catering'
+      }
+      ],
     })
   }
 

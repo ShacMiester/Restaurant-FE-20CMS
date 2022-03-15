@@ -33,6 +33,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes)
+    if(changes['formValues']?.currentValue != undefined)
       if (changes['formValues'].currentValue != changes['formValues'].previousValue)
         if (this.form)
           this.form.patchValue(changes['formValues'].currentValue)

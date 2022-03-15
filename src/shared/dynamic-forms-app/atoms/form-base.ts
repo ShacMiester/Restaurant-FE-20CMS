@@ -11,8 +11,9 @@ export class FormBase<T> {
   options: { key: string, value: string | number, additionalInfo?: string }[];
   errorMessage: string;
   Validators: Validators[];
-  disabled:boolean;
-  hidden:boolean;
+  disabled: boolean;
+  hidden: boolean;
+  multiple: boolean;
 
   constructor(options: {
     value?: T | number | string | undefined | boolean;
@@ -25,8 +26,9 @@ export class FormBase<T> {
     options?: { key: string, value: string | number, additionalInfo?: string }[];
     errorMessage?: string;
     Validators?: Validators[];
-    disabled?:boolean;
-    hidden?:boolean
+    disabled?: boolean;
+    hidden?: boolean
+    multiple?: boolean;
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -39,6 +41,7 @@ export class FormBase<T> {
     this.errorMessage = options.errorMessage || 'Unknown wrong input';
     this.Validators = [];
     this.disabled = options.disabled || false;
-    this.hidden = options.hidden || false
+    this.hidden = options.hidden || false;
+    this.multiple = options.multiple || false;
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import * as Highcharts from 'highcharts'
-import dark from 'highcharts/themes/avocado'
+import dark from 'highcharts/themes/sunset'
 dark(Highcharts)
 @Component({
   selector: 'app-charts',

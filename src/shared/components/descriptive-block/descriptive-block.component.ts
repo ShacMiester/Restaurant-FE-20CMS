@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -15,7 +16,7 @@ export class DescriptiveBlockComponent implements OnInit {
 
   @Input() buttonText!: string;
 
-  @Input() buttonLink!: string
+  @Input() buttonLink!: any[]
 
   @Input() containsButton: boolean = false
 
@@ -25,11 +26,14 @@ export class DescriptiveBlockComponent implements OnInit {
 
   @Input() buttonAction!: Function
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void { }
 
   getStyle(){
     return this.styling;
+  }
+  navigate(){
+    this.router.navigate(this.buttonLink)
   }
 }

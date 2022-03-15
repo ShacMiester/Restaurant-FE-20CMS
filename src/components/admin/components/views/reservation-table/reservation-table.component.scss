@@ -14,7 +14,15 @@
 tr.mat-row {
   height: 100px;
   &:hover {
-    background: linear-gradient(190deg, #43e97b 0%, #38f9d7 100%);
+    background: linear-gradient(
+      177deg,
+      rgba(197, 157, 95, 1) 0%,
+      rgba(163, 61, 36, 1) 60%,
+      rgba(189, 47, 68, 1) 88%
+    );
+    td {
+      color: white;
+    }
     cursor: pointer;
   }
 }
@@ -60,7 +68,7 @@ th {
   width: fit-content;
   text-align: center !important;
   color: #495057;
-  background: #70dd70;
+  background: #c59d5f;
   border-color: #e0e0e0;
 }
 

@@ -18,7 +18,6 @@ import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.componen
 import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CateringComponent } from '../catering/catering.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { CateringComponent } from '../catering/catering.component';
     GalleryComponent,
     CartComponent,
     HideElementDirective,
-    CateringComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +45,8 @@ import { CateringComponent } from '../catering/catering.component';
   ],
   exports: [
     CartComponent,
-    HideElementDirective
+    HideElementDirective,
+
   ],
   providers: []
 })

@@ -10,7 +10,9 @@ a {
   }
 }
 mat-drawer {
-  background-image: linear-gradient(190deg, #43e97b 0%, #38f9d7 100%);
+  background-image: linear-gradient(
+    177deg
+    , rgba(197,157,95,1) 0%, rgba(163,61,36,1) 60%, rgba(189,47,68,1) 88%);
   width: 250px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +26,12 @@ mat-drawer {
 
 .upper-nav {
   height: 50px;
-  background-image: linear-gradient(120deg, #43e97b 0%, #38f9d7 100%);
+  background-image: linear-gradient(
+    177deg,
+    rgba(197, 157, 95, 1) 0%,
+    rgba(163, 61, 36, 1) 60%,
+    rgba(189, 47, 68, 1) 88%
+  );
   width: 250px;
   background-repeat: no-repeat;
   background-size: cover;

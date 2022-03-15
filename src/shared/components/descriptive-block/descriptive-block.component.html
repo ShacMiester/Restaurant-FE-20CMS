@@ -4,6 +4,6 @@
     <h2 class="title">{{title}}</h2>
     <p class="sub-title">{{subtitle}}</p>
     <p class="description">{{content}}</p>
-    <button *ngIf="containsButton" mat-raised-button class="generic" [routerLink]="[buttonLink]">{{buttonText}}</button>
+    <button *ngIf="containsButton" mat-raised-button class="generic" (click)="navigate()">{{buttonText}}</button>
   </div>
 </div>
