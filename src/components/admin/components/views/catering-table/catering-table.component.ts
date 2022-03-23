@@ -44,7 +44,8 @@ export class CateringTableComponent extends CrudService<any, number> implements 
   }
   constructColumns(columnData: any) {
     if (!this.displayedColumns.length) {
-      this.displayedColumns = Object.keys(columnData[0]).map(col => { return col })
+      this.displayedColumns = Object.keys(columnData[0]).map(col =>  { return col })
+
     }
   }
 
@@ -61,7 +62,7 @@ export class CateringTableComponent extends CrudService<any, number> implements 
   }
   getRecord(row: any) {
     const dialogRef = this.dialog.open(CateringDetailsComponent, {
-      width: '70vw',
+      width: '100vw',
       data: { item: row }
     });
 

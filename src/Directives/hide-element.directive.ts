@@ -12,7 +12,6 @@ export class HideElementDirective {
       if (event instanceof NavigationEnd) {
         if (event.url.includes(this.routerString))
           this.removeElement()
-
       }
     });
   }

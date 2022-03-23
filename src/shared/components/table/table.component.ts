@@ -8,7 +8,7 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() displayedColumns: string[] = []
   @Input() dataSource: any[] = []
   @Input() title: string = 'Table'
-  @Input() button_title = 'title'
+  @Input() button_title = 'Add new item'
   @Input() containsActionButtons!: boolean
   @Output() action = new EventEmitter<any>()
   constructor() { }

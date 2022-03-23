@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/components/admin/services/crud.service';
-import { MenuCategoriesService } from './../services/menu-categories.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-menu-categories',

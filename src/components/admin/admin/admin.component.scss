@@ -11,15 +11,18 @@ a {
 }
 mat-drawer {
   background-image: linear-gradient(
-    177deg
-    , rgba(197,157,95,1) 0%, rgba(163,61,36,1) 60%, rgba(189,47,68,1) 88%);
+    177deg,
+    rgba(197, 157, 95, 1) 0%,
+    rgba(163, 61, 36, 1) 60%,
+    rgba(189, 47, 68, 1) 88%
+  );
   width: 250px;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.container-fluid {
-  padding: 20px;
+mat-drawer-content {
+  // padding: 20px;
   // margin-top: 3.95rem;
   background-color: #f0f0fa;
 }
@@ -35,4 +38,13 @@ mat-drawer {
   width: 250px;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.admin-actions {
+  right: 0;
+  top: 10px;
+}
+.sidenav-tab {
+  left: 0;
+  top: 10px;
 }

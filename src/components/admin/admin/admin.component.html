@@ -1,8 +1,8 @@
-<mat-drawer-container class="vh-100">
+<mat-drawer-container class="h-100">
   <mat-drawer mode="over" opened #sidenav>
     <app-user-info></app-user-info>
-    <ng-container >
-      <mat-accordion >
+    <ng-container>
+      <mat-accordion>
         <mat-expansion-panel class="bg-transparent" *ngFor="let item of sideMenuItems$">
           <mat-expansion-panel-header>
             <mat-panel-title class="text-white">
@@ -21,19 +21,22 @@
   </mat-drawer>
   <mat-drawer-content>
     <div class="w-100 upper-nav">
-      <div style="position: absolute; right: 0; top: 10px;">
-        <button mat-button><mat-icon>notifications</mat-icon></button>
-        <button mat-button><mat-icon>settings</mat-icon></button>
+      <div class="position-absolute admin-actions">
+        <button mat-button>
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-button>
+          <mat-icon>settings</mat-icon>
+        </button>
       </div>
 
-    <div style="position: absolute; left: 0; top: 10px;">
-    <button mat-button (click)="sidenav.toggle()" class="position-absolute"
-      style=" left: 0; position: absolute; top: 0;">
-      <mat-icon class="mat-18">menu</mat-icon>
-    </button>
-  </div>
-</div>
-    <div class="container-fluid">
+      <div class="position-absolute sidenav-tab">
+        <button mat-button (click)="sidenav.toggle()" class="position-absolute" style=" left: 0; top: 0;">
+          <mat-icon class="mat-18">menu</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="container-fluid" style="padding: 20px;">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>

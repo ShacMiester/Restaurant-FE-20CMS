@@ -8,12 +8,13 @@ export class FormBase<T> {
   order: number;
   controlType: string;
   type: any;
-  options: { key: string, value: string | number, additionalInfo?: string }[];
+  options: { key: string, value: string | number, additionalInfo?: string }[] | undefined;
   errorMessage: string;
   Validators: Validators[];
   disabled: boolean;
   hidden: boolean;
   multiple: boolean;
+  callback:any;
 
   constructor(options: {
     value?: T | number | string | undefined | boolean;
@@ -29,6 +30,7 @@ export class FormBase<T> {
     disabled?: boolean;
     hidden?: boolean
     multiple?: boolean;
+    callback?:any
   } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -43,5 +45,6 @@ export class FormBase<T> {
     this.disabled = options.disabled || false;
     this.hidden = options.hidden || false;
     this.multiple = options.multiple || false;
+    this.callback = options.callback
   }
 }

@@ -2,7 +2,7 @@
   <div class="title">
     <h3>Caterings</h3>
   </div>
-  <div class="" style="margin-top: 10px;">
+  <div class="" style="margin-top: 10px; overflow: overlay;">
     <mat-progress-bar *ngIf="!hideBar" mode="indeterminate"></mat-progress-bar>
     <table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
       <ng-container *ngFor="let col of displayedColumns">

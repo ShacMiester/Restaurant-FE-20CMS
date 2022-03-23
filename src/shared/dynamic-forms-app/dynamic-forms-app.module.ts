@@ -8,10 +8,10 @@ import { DynamicFormComponent } from './dynamic-form-component/dynamic-form-comp
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule, } from '@angular/material/datepicker';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 @NgModule({
   declarations: [DynamicFormFieldComponent, DynamicFormComponent],
   imports: [

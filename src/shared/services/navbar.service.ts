@@ -11,7 +11,7 @@ export class NavbarService {
 
   getNavBarConfigs(): Observable<NavBar> {
     return of({
-      logo: 'assets/images/logoCropped-removebg-preview.png', name: 'LoaziTech Restaurant', items: [{
+      logo: 'assets/images/gallery/JASMINE_GRILL_KABAB2.png', name: 'LoaziTech Restaurant', items: [{
         name: 'Home',
         isScrollOnly: true,
         link: '/home'
@@ -28,11 +28,12 @@ export class NavbarService {
       {
         name: 'Menu',
         link: 'menu',
-        isScrollOnly: true
+        isScrollOnly: true,
       },
       {
         name: 'Order Now',
-        isScrollOnly: true
+        isScrollOnly: true,
+        link: 'catering',
       },
       {
         name: 'Online catering',

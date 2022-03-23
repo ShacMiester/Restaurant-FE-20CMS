@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FormBase } from '../atoms/form-base';
@@ -8,7 +8,7 @@ import { FormBase } from '../atoms/form-base';
   templateUrl: './dynamic-form-field.component.html',
   styles: [`.mat-form-field-invalid{ color:#c7a166}; .mat-error{color:#c7a166} mat-hint{color:#c7a166}`]
 })
-export class DynamicFormFieldComponent implements OnInit {
+export class DynamicFormFieldComponent implements OnInit, OnChanges {
   selectedDropDownOption: any
   @ViewChild("timepicker") timepicker: any;
 
@@ -22,7 +22,10 @@ export class DynamicFormFieldComponent implements OnInit {
   ngOnInit(): void {
     this.selectedDropDownOption = this.field.value
   }
+  ngOnChanges(changes: SimpleChanges): void {
+  }
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1 === c2 : false
   }
+
 }

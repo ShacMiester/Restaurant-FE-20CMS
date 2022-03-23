@@ -60,7 +60,8 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
   }
   getRecord(row: any) {
     const dialogRef = this.dialog.open(ReservationDetailsComponent, {
-      width: '50vw',
+      width: '100vw',
+      minWidth: '100vw',
       data: { item: row }
     });
 

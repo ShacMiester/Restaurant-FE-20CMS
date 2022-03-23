@@ -86,6 +86,13 @@ export class QuestionService {
         key: 'time',
         errorMessage: 'Please provide number of people',
         order: 3
+      }),
+      new TextBoxField({
+        key:'description',
+        label:'Have more details?',
+        value:'',
+        type:'textarea',
+        order:100
       })
     ];
     return of(questions.sort((a, b) => a.order - b.order));

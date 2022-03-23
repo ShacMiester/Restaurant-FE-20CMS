@@ -2,13 +2,16 @@
   <div [ngSwitch]="field.controlType" [hidden]="field.hidden">
     <mat-form-field *ngSwitchCase="'textbox'" appearance="outline" style="width: 100%;">
       <mat-label>{{field.label}}</mat-label>
-      <input *ngIf="field.type !='textarea'" matInput [formControlName]="field.key" [id]="field.key" [type]="field.type" [disabled]="field.disabled">
-      <textarea *ngIf="field.type =='textarea'" matInput [formControlName]="field.key" [id]="field.key" [type]="field.type"></textarea>
-      <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
+      <input *ngIf="field.type !='textarea'" matInput [formControlName]="field.key" [id]="field.key" [type]="field.type"
+        [disabled]="field.disabled" (change)="field.callback? field.callback(this.form.controls[field.key]):false">
+      <textarea *ngIf="field.type =='textarea'" matInput [formControlName]="field.key" [id]="field.key"
+        [type]="field.type" (change)="field.callback? field.callback(this.form.controls[field.key]):false"></textarea>
+      <mat-error *ngIf="form.controls[field.key]?.hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
-    <mat-form-field *ngSwitchCase="'dropdown'" style="width: 100%;"  appearance="outline" >
+    <mat-form-field *ngSwitchCase="'dropdown'" style="width: 100%;" appearance="outline">
       <mat-label>{{field.label}}</mat-label>
-      <mat-select [id]="field.key" [formControlName]="field.key" [(value)]="selectedDropDownOption" [compareWith]="compareFn" [multiple]="field.multiple">
+      <mat-select (change)="field.callback? field.callback(this.form.controls[field.key]):false" [id]="field.key" [formControlName]="field.key"
+        [(value)]="selectedDropDownOption" [compareWith]="compareFn" [multiple]="field.multiple">
         <mat-option>--</mat-option>
         <mat-option *ngFor="let opt of field.options" [value]="opt.value">
           {{opt.key}}
@@ -16,44 +19,36 @@
       </mat-select>
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
-    <mat-form-field *ngSwitchCase="'date'" style="width: 100%;"  appearance="outline">
+    <mat-form-field *ngSwitchCase="'date'" style="width: 100%;" appearance="outline">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" [formControlName]="field.key" [id]="field.key">
+      <input matInput [matDatepicker]="picker" [formControlName]="field.key" [id]="field.key"
+        (change)="field.callback? field.callback(this.form.controls[field.key]):false">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
     <section *ngSwitchCase="'checkbox'">
-      <mat-checkbox *ngIf="!field.options.length" [id]="field.key" [formControlName]="field.key" appearance="outline">{{field.label}}</mat-checkbox>
-      <mat-form-field  style="width: 100%;" *ngIf="field.options.length" appearance="outline">
-
-          <mat-label>{{field.label}}</mat-label>
-        <mat-select [id]="field.key" [formControlName]="field.key" >
+      <mat-checkbox *ngIf="!field.options?.length" [id]="field.key" [formControlName]="field.key" appearance="outline"
+        (change)="field.callback? field.callback(this.form.controls[field.key]):false">{{field.label}}</mat-checkbox>
+      <mat-form-field  style="width: 100%;" *ngIf="field.options?.length"
+        appearance="outline">
+        <mat-label>{{field.label}}</mat-label>
+        <mat-select (change)="field.callback? field.callback(this.form.controls[field.key]):false" [id]="field.key" [formControlName]="field.key">
           <mat-option *ngFor="let option of field.options" [value]="option.value">
             {{option.key}}
             <mat-hint *ngIf="option.additionalInfo"> ({{option.additionalInfo}}) </mat-hint>
           </mat-option>
         </mat-select>
-
-
       </mat-form-field>
     </section>
     <ng-container *ngSwitchCase="'time'">
       <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>{{field.label}}</mat-label>
-        <input
-          type="text"
-          matInput
-          [ngxMatTimepicker]="timepicker"
-          [format]="12"
-           [id]="field.key" [formControlName]="field.key"
-        />
-        <mat-icon
-          matSuffix
-          (click)="openFromIcon(timepicker)"
-          >schedule</mat-icon
-        >
-      </mat-form-field><ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
+        <input (change)="field.callback? field.callback(this.form.controls[field.key]):false" type="text" [disabled]="true" matInput [ngxMatTimepicker]="timepicker" [format]="12"
+          [id]="field.key" [formControlName]="field.key" />
+        <mat-icon matSuffix (click)="openFromIcon(timepicker)">schedule</mat-icon>
+      </mat-form-field>
+      <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
     </ng-container>
   </div>
 </div>

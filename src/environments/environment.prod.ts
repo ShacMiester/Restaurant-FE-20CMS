@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  storeApi:'https://api.stripe.com/v1/'
+  storeApi:'http://mmuwafi-001-site1.itempurl.com/api/'
 };

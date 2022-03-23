@@ -18,7 +18,14 @@ import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReservationDetailsComponent } from "../components/views/reservation-table/reservation-details/reservation-details.component";
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule, } from '@angular/material/datepicker';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { OptionsFormComponent } from "../components/views/menu/options-form/options-form.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +36,8 @@ import { ReservationDetailsComponent } from "../components/views/reservation-tab
     MenuFormComponent,
     UserInfoComponent,
     CateringDetailsComponent,
-    ReservationDetailsComponent
+    ReservationDetailsComponent,
+    OptionsFormComponent
   ],
   imports: [
     CommonModule,
@@ -39,8 +47,15 @@ import { ReservationDetailsComponent } from "../components/views/reservation-tab
     MatDividerModule,
     RouterModule,
     MatSnackBarModule,
-    MatDialogModule
-    ],
+    MatDialogModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    NgxMatTimepickerModule,
+    MatDatepickerModule
+  ],
   providers: [AdminPanelService]
 })
 export class AdminModule { }

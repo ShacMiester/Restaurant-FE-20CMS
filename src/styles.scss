@@ -8,7 +8,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  // zoom: 82%;
+  zoom: 82%;
 }
 
 /* Importing Bootstrap SCSS file. */
@@ -135,4 +135,18 @@ button {
   margin-bottom: 2rem;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.styled-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 1px #00000042;
+  padding: 10px;
+}
+
+.table-title {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
 }

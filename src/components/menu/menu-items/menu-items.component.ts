@@ -24,7 +24,7 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
   }
 
   ngOnInit(): void {
-    this.getCategories();
+    // this.getCategories();
   }
   getCategories(){
     this._http.get('')

@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit {
       this.height = $event.path[1].pageYOffset + 'px'
     }
   }
-  constructor(private UserService: UserService, private navbArService: NavbarService, private routerLink:Router ) { }
+
+  constructor(private UserService: UserService, private navbArService: NavbarService, private routerLink: Router) { }
   public animatePage = true;
 
   someBadge: number = 1;

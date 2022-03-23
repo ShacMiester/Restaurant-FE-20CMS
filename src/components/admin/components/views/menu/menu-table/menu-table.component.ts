@@ -1,20 +1,23 @@
 import { Router } from '@angular/router';
 import { MenuService } from '../services/menu.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu-table',
   templateUrl: './menu-table.component.html',
   // styleUrls: ['./menu-table.component.scss']
 })
-export class MenuTableComponent implements OnInit {
+export class MenuTableComponent implements OnInit, OnDestroy {
   dataSource = []
   constructor(private MenuService: MenuService, private router: Router) { }
+  subscriptions: Subscription = new Subscription();
 
   ngOnInit(): void {
-    this.MenuService.getMenuItems().subscribe(items => {
+    this.subscriptions.add(this.MenuService.getMenuItems().subscribe(items => {
       this.dataSource = items
-    })
+    }))
+
   }
 
   performAction(event: { row: any, action: 'edit' | 'delete' | 'add' }) {
@@ -34,4 +37,8 @@ export class MenuTableComponent implements OnInit {
         break;
     }
   }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
+  }
+
 }

@@ -1,1 +1,4 @@
-<p>weekly-deals-table works!</p>
+<div class="container-fluid styled-container">
+  <app-table [title]="'Weekly offers'" [button_title]="'Add Offer'" [dataSource]="dataSource"
+    (action)="performAction($event)"></app-table>
+</div>

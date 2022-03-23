@@ -1,1 +1,135 @@
-  <app-dynamic-form [formFields]="form$" [formValues]="formValues" [title]="'Menu item'"></app-dynamic-form>
+<!-- <app-dynamic-form [formFields]="form$" [formValues]="formValues" [title]="'Menu item'"
+  (newItemEvent)="saveMenuItem($event)"></app-dynamic-form> -->
+
+
+<!-- <app-dynamic-form *ngFor="let form of otherForms" [formFields]="form" [title]="'test'" (newItemEvent)="doSomething($event)"></app-dynamic-form> -->
+<!-- {{otherForms | json}} -->
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-stepper [linear]="isLinear" #stepper *ngIf="specialDayActivated">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper> -->
+<div class="container-fluid styled-container">
+<form [formGroup]="menuForm" (ngSubmit)="callingFunction()">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Item Name</mat-label>
+    <input matInput [formControlName]="'Name'">
+    <mat-error *ngIf="menuForm.controls['Name']?.hasError('required')">Name is Required</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Description</mat-label>
+    <textarea matInput [formControlName]="'Description'"></textarea>
+    <mat-error *ngIf="menuForm.controls['Description']?.hasError('required')">Description is Required</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Price</mat-label>
+    <input matInput [formControlName]="'Description'" type="number">
+    <mat-error *ngIf="menuForm.controls['Price']?.hasError('required')">Price is Required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Select Categories</mat-label>
+    <mat-select [formControlName]="'Menu_Item_Category'" multiple="false">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="menuForm.controls['Menu_Item_Category'].hasError('required')">At least one is required</mat-error>
+  </mat-form-field>
+  <input [formControlName]="'Image_URL'" (change)="onFileSelected()" #fileInput type="file" id="file" class="w-100">
+
+  <mat-checkbox [formControlName]="'Is_Temporarily_Unavailable'" class="w-100">Hide from menu?</mat-checkbox>
+  <!-- <mat-error *ngIf="menuForm.controls['Is_Temporarily_Unavailable']?.hasError('required')">Price is Required
+    </mat-error> -->
+
+  <mat-checkbox [formControlName]="'Is_Special'" class="w-100"
+    (change)="specialActivated(menuForm.controls['Is_Special'].value)">Special Item?</mat-checkbox>
+  <!-- <mat-error *ngIf="menuForm.controls['Is_Special']?.hasError('required')">Price is Required</mat-error> -->
+</form>
+<form [formGroup]='Menu_ItemSpecialForm' *ngIf="menuForm.controls['Is_Special'].value" (ngSubmit)="submitSpecialForm()">
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Available on</mat-label>
+    <mat-select [formControlName]="'Special_Type'" multiple="false" (valueChange)="doSomething($event)">
+      <mat-option *ngFor="let type of spicIalTypes" [value]="type.label">
+        {{type.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" *ngIf="Menu_ItemSpecialForm.controls['Days']" class="w-100">
+    <mat-label>Day/s (repeatedly)</mat-label>
+    <mat-select [formControlName]="'Days'" multiple="true"
+      [disabled]="Menu_ItemSpecialForm.controls['Special_Type'].value == 'Only for this day' ">
+      <mat-option *ngFor="let day of days" [value]="day">
+        {{day}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="w-100" *ngIf="Menu_ItemSpecialForm.controls['from_date']" appearance="outline">
+    <mat-label>From</mat-label>
+    <input matInput [matDatepicker]="picker" [formControlName]="'from_date'">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field *ngIf="Menu_ItemSpecialForm.controls['to_date']" class="w-100" appearance="outline">
+    <mat-label>To</mat-label>
+    <input matInput [matDatepicker]="picker" [formControlName]="'to_date'">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <ng-container *ngIf="Menu_ItemSpecialForm.controls['From_Hours']">
+    <mat-form-field appearance="outline" style="cursor: pointer;" (click)="openFromIcon(timepicker)" class="w-100">
+      <mat-label>Starting time</mat-label>
+      <input type="text" matInput [ngxMatTimepicker]="timepicker" [format]="12" [disabled]="true"
+        [formControlName]="'From_Hours'" />
+      <mat-icon matSuffix>schedule</mat-icon>
+    </mat-form-field>
+    <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
+  </ng-container>
+
+  <ng-container *ngIf="Menu_ItemSpecialForm.controls['To_Hours']">
+    <mat-form-field appearance="outline" style="cursor: pointer;" (click)="openFromIcon(timepicker)" class="w-100">
+      <mat-label>Ending time</mat-label>
+      <input type="text" matInput [ngxMatTimepicker]="timepicker" [format]="12" [disabled]="true"
+        [formControlName]="'To_Hours'" />
+      <mat-icon matSuffix>schedule</mat-icon>
+    </mat-form-field>
+    <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
+  </ng-container>
+</form>
+<app-options-form [menuID]="menuID"></app-options-form>
+<button class="m-1" mat-raised-button type="submit" (click)="menuFormSubmitting()">Submit Application</button>
+</div>

@@ -27,6 +27,20 @@ export class AdminPanelService {
           children: [
             { title: 'Requests', link: 'reservations' }
           ]
+        },
+        {
+          title: 'Caterings',
+          children: [
+            { title: 'Table', link: 'catering-table' }
+          ]
+        },
+        {
+          title: 'Weekly offers',
+          children: [{ title: 'Table', link: 'weekly-deals-table' }]
+        },
+        {
+          title: 'Main page slider',
+          children: [{ title: 'Table', link: 'carousel-items-table' }]
         }
       ])
   }

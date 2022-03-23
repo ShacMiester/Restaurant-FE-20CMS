@@ -18,6 +18,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() disabled: boolean = false;
   @Input() type: string = 'add' || 'edit'
   @Input() editable: boolean = true;
+  @Input() buttonTitle : string = 'Save'
 
   form!: FormGroup;
   payLoad = '';
