@@ -1,3 +1,4 @@
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { WeeklyDealsTableComponent } from './weekly-deals-table.component';
 import { SharedModule } from './../../../../../../shared/modules/shared.module';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,8 @@ import { WeeklyDealsTableRoutingModule } from './weekly-deals-table-routing.modu
   imports: [
     CommonModule,
     WeeklyDealsTableRoutingModule,
-    SharedModule
+    SharedModule,
+    MatProgressBarModule
   ]
 })
 export class WeeklyDealsTableModule { }

@@ -1,4 +1,5 @@
 <div class="container-fluid styled-container">
   <app-table [title]="'Weekly offers'" [button_title]="'Add Offer'" [dataSource]="dataSource"
     (action)="performAction($event)"></app-table>
+  <mat-progress-bar #progressBar mode="query" *ngIf="toShow" color="primary"></mat-progress-bar>
 </div>
