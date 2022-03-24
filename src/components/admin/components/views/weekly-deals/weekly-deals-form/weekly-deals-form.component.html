@@ -1,1 +1,4 @@
-<p>weekly-deals-form works!</p>
+<div class="container-fluid styled-container">
+  <app-dynamic-form [editable]='true' [returnTo]="['/admin','weekly-deals-table']" [buttonTitle]="'Save'" [formFields]="weeklyDealsForm$ | async" [title]="'Weekly deals'">
+  </app-dynamic-form>
+</div>

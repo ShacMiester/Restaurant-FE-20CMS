@@ -12,7 +12,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class WeeklyDealsTableComponent extends CrudService<any, number> implements OnInit {
   dataSource: any = []
-  constructor(private weeklyDealsService: WeeklyDealsService, protected override _http: HttpClient, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(
+    private weeklyDealsService: WeeklyDealsService,
+    protected override _http: HttpClient,
+    private router: Router,
+    private _snackBar: MatSnackBar) {
     super(_http, 'weekly-deals')
   }
 
@@ -20,7 +24,7 @@ export class WeeklyDealsTableComponent extends CrudService<any, number> implemen
     this.getDeals();
   }
   getDeals() {
-    this.findAll().subscribe({
+    this.weeklyDealsService.getOfferItems().subscribe({
       next: (v) => { this.dataSource = v },
       error: (err) => { console.log(err) },
       complete: () => {

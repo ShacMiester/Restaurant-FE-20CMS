@@ -1,6 +1,9 @@
 <div class="h-100 pb-3" >
   <div class="container-fluid">
-    <h1>{{title}}</h1>
+    <div class="d-flex justify-content-between mb-3">
+      <h1>{{title}}</h1>
+      <button mat-raised-button (click)="returnToPage()" *ngIf="returnTo != undefined" style="height: fit-content;">Return to table</button>
+    </div>
     <form (ngSubmit)="onSubmit()" [formGroup]="form" class="d-flex flex-column justify-content-between h-100"
       style="width: 100%;">
       <div *ngFor="let field of formFields">
