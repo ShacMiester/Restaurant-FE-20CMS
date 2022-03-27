@@ -41,6 +41,10 @@ export class AdminPanelService {
         {
           title: 'Main page slider',
           children: [{ title: 'Table', link: 'carousel-items-table' }]
+        },
+        {
+          title: 'Branches',
+          children: [{ title: 'Manage Branches', link: 'branches' }]
         }
       ])
   }
