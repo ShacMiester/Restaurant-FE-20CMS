@@ -43,7 +43,7 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     this.constructColumns(tableData)
   }
   constructColumns(columnData: any) {
-    if (!this.displayedColumns.length) {
+    if (!this.displayedColumns.length && columnData[0]) {
       this.displayedColumns = Object.keys(columnData[0]).map(col =>  { return col })
 
     }

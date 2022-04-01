@@ -5,52 +5,48 @@
     <div class="content-container d-flex h-100 justify-content-between flex-column">
 
       <div style=" padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div *ngFor="let i of shoppingCart" class="shopping-cart"
-          >
-          <img  src="../assets/images/full.png" width="30%" alt="">
+        <div *ngFor="let i of shoppingCart" class="shopping-cart">
+          <img src="../assets/images/full.png" width="30%" alt="">
           <div class="d-flex flex-column justify-content-between text-center " style="height: fit-content;">
-            <p>Kebab</p>
-            <div class="quantity d-flex flex-row" >
-
+            <p>{{i.name}}</p>
+            <div class="quantity d-flex flex-row">
               <mat-icon class="mat-18">remove</mat-icon>
-
               <div>
-                <p >1</p>
+                <p>{{i.quantity}}</p>
               </div>
-                <mat-icon class="mat-18">add</mat-icon>
+              <mat-icon class="mat-18" (click)="add(i)">add</mat-icon>
             </div>
           </div>
-          <p class="specific-item-price">10$</p>
+          <p class="specific-item-price">{{i.price * i.quantity}} $</p>
         </div>
       </div>
-
       <div class="checkout d-flex flex-column justify-content-around pb-4">
         <app-hr></app-hr>
         <ng-container class="total-items-container">
-        <div class="total-items d-flex justify-content-between flex-row">
-          <p>Items total</p>
-          <p>12$</p>
+          <div class="total-items d-flex justify-content-between flex-row">
+            <p>Items total</p>
+            <p>12$</p>
+          </div>
+          <div class="total-items d-flex justify-content-between flex-row">
+            <p>Delivery</p>
+            <p>7$</p>
+          </div>
+          <div class="total-items d-flex justify-content-between flex-row">
+            <p>Tax</p>
+            <p>2.34$</p>
+          </div>
+          <div class="total-items d-flex justify-content-between flex-row">
+            <p>Total</p>
+            <p>313.34$</p>
+          </div>
+        </ng-container>
+        <div class="actions d-flex flex-row flex-wrap justify-content-around">
+          <button mat-raised-button class="ptc">Proceed to checkout</button>
+          <button mat-raised-button class="clear-cart" (click)="clearCart()">
+            <mat-icon class="mat-18">remove_shopping_cart</mat-icon>
+          </button>
         </div>
-        <div class="total-items d-flex justify-content-between flex-row">
-          <p>Delivery</p>
-          <p>7$</p>
-        </div>
-        <div class="total-items d-flex justify-content-between flex-row">
-          <p>Tax</p>
-          <p>2.34$</p>
-        </div>
-        <div class="total-items d-flex justify-content-between flex-row">
-          <p>Total</p>
-          <p>313.34$</p>
-        </div>
-      </ng-container>
-      <div class="actions d-flex flex-row flex-wrap justify-content-around">
-        <button mat-raised-button class="ptc">Proceed to checkout</button>
-        <button mat-raised-button class="clear-cart" (click)="clearCart()">
-          <mat-icon class="mat-18" >remove_shopping_cart</mat-icon>
-        </button>
       </div>
-    </div>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>

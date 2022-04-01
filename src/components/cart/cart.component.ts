@@ -16,13 +16,16 @@ export class CartComponent implements OnInit {
     this.getCartItems()
   }
 
-  getCartItems(){
+  getCartItems() {
     this.CartService.getCartItems().subscribe(items => { this.shoppingCart = items })
   }
 
-  clearCart(){
+  clearCart() {
     this.CartService.deleteCart()
     this.getCartItems()
     this.sidenav.toggle()
+  }
+  add(i) {
+    this.CartService.addToCart(i)
   }
 }

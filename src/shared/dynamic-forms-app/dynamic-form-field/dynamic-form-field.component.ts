@@ -1,3 +1,5 @@
+import { environment } from './../../../environments/environment.prod';
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, ViewChild, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
@@ -6,26 +8,59 @@ import { FormBase } from '../atoms/form-base';
 @Component({
   selector: 'app-fields',
   templateUrl: './dynamic-form-field.component.html',
-  styles: [`.mat-form-field-invalid{ color:#c7a166}; .mat-error{color:#c7a166} mat-hint{color:#c7a166}`]
+  styleUrls: ['./dynamic-form-field.css']
 })
 export class DynamicFormFieldComponent implements OnInit, OnChanges {
   selectedDropDownOption: any
   @ViewChild("timepicker") timepicker: any;
-
+  @Input() image: any
+  preview!: string;
   @Input() field!: FormBase<string>;
   @Input() form!: FormGroup;
   openFromIcon(timepicker: { open: () => void }) {
     timepicker.open();
   }
+  constructor(private http: HttpClient) { }
   get isValid() { return this.form.controls[this.field.key].valid }
 
   ngOnInit(): void {
     this.selectedDropDownOption = this.field.value
   }
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes != null && changes['form']?.currentValue != undefined)
+      if (changes['form'].currentValue?.controls != null)
+        Object.keys(changes['form'].currentValue.controls).map(keys => {
+          if (keys.includes('image')) {
+            this.form.controls[this.field.key].patchValue(changes['form'].currentValue.controls[keys].value)
+            this.preview = changes['form'].currentValue.controls[keys].value
+          }
+        })
+    if (this.field.key.toLocaleLowerCase().includes('image'))
+      this.preview = this.form.controls[this.field.key].value
   }
+
   compareFn(c1: any, c2: any): boolean {
     return c1 && c2 ? c1 === c2 : false
   }
 
+  uploadFile(event: any) {
+    this.form.get('imageURL')?.updateValueAndValidity()
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.preview = reader.result as string;
+      this.image = reader.result as string;
+    }
+    let formData = new FormData()
+    formData.append('file', event.target.files[0])
+    reader.readAsDataURL((event.target as HTMLInputElement).files[0])
+    this.http.post(environment.imagesAPI, formData).subscribe(
+      res => { this.form.controls['imageURL'].patchValue(JSON.stringify(res['image']))
+    console.log(res)}
+    )
+  }
+
+  removeImage() {
+    this.image = ''
+    this.form.controls['imageURL'].reset()
+  }
 }

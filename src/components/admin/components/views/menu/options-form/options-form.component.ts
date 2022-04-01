@@ -12,11 +12,12 @@ export class OptionsFormComponent implements OnInit, OnChanges {
   fieldTypes = ['Check box', 'Multi select', 'Single select']
   testingForm!: FormGroup
   @Input('menuID') id!: number
+  @Output() formValue: EventEmitter<any> = new EventEmitter<any>()
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.optionsForm = this.fb.group({
-      options: this.fb.array([])
+      menuItemOptions: this.fb.array([])
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -27,17 +28,18 @@ export class OptionsFormComponent implements OnInit, OnChanges {
   }
 
   options(): FormArray {
-    return this.optionsForm.get('options') as FormArray;
+    return this.optionsForm.get('menuItemOptions') as FormArray;
   }
 
   newOption(): FormGroup {
     return this.fb.group({
       Menu_Item_ID: new FormControl(),
-      type: new FormControl('', Validators.required),
-      label: new FormControl('', Validators.required),
-      RequiredLimit: new FormControl(),
+      isRequired: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      min: new FormControl(),
+      max: new FormControl(),
       limit: new FormControl({ value: 0, disabled: true }),
-      options: this.fb.array([])
+      menuItemOptions: this.fb.array([])
     });
   }
 
@@ -52,13 +54,15 @@ export class OptionsFormComponent implements OnInit, OnChanges {
   optionOptions(empIndex: number): FormArray {
     return this.options()
       .at(empIndex)
-      .get('options') as FormArray;
+      .get('menuItemOptions') as FormArray;
   }
 
   newOptionOptions(): FormGroup {
     return this.fb.group({
-      item: '',
-      price: ''
+      name: '',
+      description:'',
+      imageURL:'',
+      addtionalPrice: ''
     });
   }
 
@@ -71,16 +75,19 @@ export class OptionsFormComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
+    console.log(this.optionsForm)
+    this.formValue.emit(this.optionsForm.value)
   }
   nonTextOptions() {
 
   }
   fields: any = []
   hasLimitChanged($event: any, index: number) {
-    if ($event.checked)
-      this.options().controls[index].get('limit')?.enable()
-    else
-      this.options().controls[index].get('limit')?.disable()
+    // console.log($event)
+    // if ($event.checked)
+    //   this.options().controls[index].get('limit')?.enable()
+    // else
+    //   this.options().controls[index].get('limit')?.disable()
     // console.log(this.optionsForm.controls['options'].controls)
     // this.optionsForm.controls['options'].
     // this.
@@ -102,7 +109,7 @@ export class OptionsFormComponent implements OnInit, OnChanges {
 
   }
   optionsAvailable(optionIndex: number) {
-    return this.options().controls[optionIndex].get('type')?.value != 'Multi select' && this.options().controls[optionIndex].get('type')?.value != 'Single select'
+    // return this.options().controls[optionIndex].get('type')?.value != 'Multi select' && this.options().controls[optionIndex].get('type')?.value != 'Single select'
   }
 }
 

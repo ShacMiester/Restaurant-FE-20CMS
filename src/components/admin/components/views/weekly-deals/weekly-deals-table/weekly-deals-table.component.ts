@@ -27,7 +27,6 @@ export class WeeklyDealsTableComponent extends CrudService<any, number> implemen
 
   ngOnInit(): void {
     this.subscriptions.add(this.getDeals())
-    // this.progressBar.mode = 'determinate'
   }
   getDeals() {
     this.weeklyDealsService.getOfferItems().subscribe({

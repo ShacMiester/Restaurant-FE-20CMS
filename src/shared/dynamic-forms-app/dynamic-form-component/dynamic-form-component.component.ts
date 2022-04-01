@@ -21,6 +21,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() editable: boolean = true;
   @Input() buttonTitle: string = 'Save';
   @Input() returnTo: any = undefined;
+  image:string = '';
 
   form!: FormGroup;
   payLoad = '';
@@ -40,6 +41,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         if (changes['formValues'].currentValue != changes['formValues'].previousValue)
           if (this.form)
             this.form.patchValue(changes['formValues'].currentValue)
+            if(changes['formValues']?.currentValue?.imageURL)
+            this.image = changes['formValues'].currentValue.imageURL
   }
 
   onSubmit() {

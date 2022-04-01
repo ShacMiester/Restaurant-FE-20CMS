@@ -1,3 +1,4 @@
+import { WorkingHoursComponent } from './../working-hours/working-hours.component';
 import { HideElementDirective } from './../../Directives/hide-element.directive';
 import { CartComponent } from '../cart/cart.component';
 import { DynamicFormsAppModule } from './../../shared/dynamic-forms-app/dynamic-forms-app.module';
@@ -31,6 +32,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     GalleryComponent,
     CartComponent,
     HideElementDirective,
+    WorkingHoursComponent
   ],
   imports: [
     CommonModule,

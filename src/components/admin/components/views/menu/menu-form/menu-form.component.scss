@@ -1,0 +1,52 @@
+.buttonContainer>* {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.buttonContainer>input {
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+}
+
+.imagesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  justify-content: center;
+}
+.imageItem {
+  max-height: 250px;
+  max-width: 250px;
+  width: calc(33.3333% - 16px);
+  object-fit: contain;
+  object-position: center;
+  border: 1px solid #ddd;
+  margin: 8px;
+}
+img {
+  max-width: 100%;
+  height: calc(250px - 41px);
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+  display: block;
+}
+label {
+  padding: 8px 12px;
+  background-color: #ddd;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 2px;
+
+}
+.deleteButton {
+  width: 100%;
+  display: block;
+  padding: 8px 12px;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+  text-align: center;
+}

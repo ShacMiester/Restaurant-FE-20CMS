@@ -1,3 +1,5 @@
+import { environment } from './../../environments/environment.prod';
+import { HttpClient } from '@angular/common/http';
 import { DropdownField } from './../../shared/dynamic-forms-app/atoms/form-dropdown';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
@@ -10,6 +12,7 @@ import { TimeField } from 'src/shared/dynamic-forms-app/atoms/form-time';
   providedIn: 'root'
 })
 export class CateringService {
+  constructor(private _http: HttpClient) { }
   cateringForm: any
   applyNewField(): Observable<any> {
     this.getCateringForm().subscribe({
@@ -19,26 +22,38 @@ export class CateringService {
           new DropdownField(
             {
               label: 'Status',
-              key: 'Status',
+              key: 'cateringStatus',
               options: [
-                { key: 'Waiting for approval', value: "Waiting for approval" },
-                { key: 'Accepted', value: 'Accepted' },
-                { key: 'Rejected', value: 'Rejected'},
-                { key: 'Cancelled', value: 'Cancelled' }
+                { key: 'Waiting for approval', value: 0 },
+                { key: 'Accepted', value: 1 },
+                { key: 'Rejected', value: 2 },
+                { key: 'Cancelled', value: 3 }
               ]
+            }))
+        this.cateringForm.push(
+          new TextBoxField(
+            {
+              label: 'Rejection reason',
+              key: 'rejectionReason',
             }))
       }
     })
     return of(this.cateringForm)
   }
   getCateringForm() {
+    let branchesList = [];
+    this._http.get(environment.storeApi + 'branch').subscribe((branches: any) => {
+      branches.map(branch => {
+        branchesList.push({ key: branch.name, value: branch.id })
+      })
+    })
     this.cateringForm = [
       new DropdownField({
         key: 'branchID',
         label: "Select Branch",
         value: '',
         order: 10,
-        options: [{ key: 'Branch 1', value: 1, }, { key: 'Branch2', value: 2, }]
+        options: branchesList
       }),
       new DateField({
         key: 'date',

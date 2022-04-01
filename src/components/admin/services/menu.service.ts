@@ -1,48 +1,15 @@
 import { CheckBoxField } from './../../../shared/dynamic-forms-app/atoms/form-checkbox';
 import { TextBoxField } from './../../../shared/dynamic-forms-app/atoms/form-textbox';
-import { DateField } from './../../../shared/dynamic-forms-app/atoms/form-date';
 import { FormBase } from 'src/shared/dynamic-forms-app/atoms/form-base';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  constructor() { }
-
-  addMenuCategory() {
-
-  }
-
-  addMenuItem() {
-
-  }
-
-  delete(category: string, itemToDelete: number) {
-    switch (category) {
-      case 'Item':
-        break;
-      case 'category':
-
-      default:
-        break;
-    }
-  }
-
-  getMenuItems(): Observable<any[]> {
-    return of([])
-  }
-
-  getMenuCategories(): Observable<any[]> {
-    return of([])
-  }
-
-  getMenuItemForm(){}
-
-  getMenuCategoryForm():Observable<any>{
+  getMenuCategoryForm(): Observable<any> {
     const questions: FormBase<string>[] = [
 
       new TextBoxField({
@@ -75,7 +42,7 @@ export class MenuService {
         required: false,
         key: 'Has_Options',
         type: 'number',
-        value:false
+        value: false
       }),
       new TextBoxField({
         key: 'Image_URL',

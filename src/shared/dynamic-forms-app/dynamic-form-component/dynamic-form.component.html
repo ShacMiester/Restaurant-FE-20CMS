@@ -7,7 +7,7 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="form" class="d-flex flex-column justify-content-between h-100"
       style="width: 100%;">
       <div *ngFor="let field of formFields">
-        <app-fields [field]="field" [form]="form"></app-fields>
+        <app-fields [field]="field" [form]="form" [image]="image"></app-fields>
       </div>
 
       <div class="d-flex flex-row justify-content-between">

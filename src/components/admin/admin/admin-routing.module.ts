@@ -40,7 +40,22 @@ const routes: Routes = [{
       {
         path: 'carousel-items-table', loadChildren: () =>
           import('../components/views/carousel-table/carousel-table-routing.module').then(m => m.CarouselTableRoutingModule)
-
+      },
+      {
+        path: 'branches', loadChildren: () =>
+          import('../components/views/branches/branches/branches.module').then(m => m.BranchesModule)
+      },
+      {
+        path: 'branches-form', loadChildren: () =>
+          import('../components/views/branches/branches-managment/branches-management.module').then(m => m.BranchesManagementModule)
+      },
+      {
+        path: 'working-hours', loadChildren: () =>
+          import('../components/views/working-hours/working-hours.module').then(m => m.WorkingHoursModule)
+      },
+      {
+        path: 'working-hours-form', loadChildren: () =>
+          import('../components/views/working-hours/working-hours-form/working-hours-form.module').then(m => m.WorkingHoursFormModule)
       }
     ]
 }];

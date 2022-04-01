@@ -5,11 +5,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems!: any
+  cartItems: any = []
   constructor() { }
 
   addToCart(item: any) {
-    this.cartItems.push(item)
+    console.log(item)
+    const menuItem = this.cartItems.findIndex(x => x.id === item.id)
+    if (menuItem == -1)
+      this.cartItems.push({ id: item.id, name: item.name, quantity: 1, price:item.price })
+    else
+      this.cartItems[menuItem].quantity += 1;
     localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
 

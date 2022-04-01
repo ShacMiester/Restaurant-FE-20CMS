@@ -12,25 +12,31 @@ import { CrudService } from 'src/components/admin/services/crud.service';
   styleUrls: ['./menu-items.component.scss']
 })
 export class MenuItemsComponent extends CrudService<any, number> implements OnInit {
-  animal: string = '';
   name: string = '';
   menuCategories = []
   public formFields: any;
   cart:any[] = []
   someItems = [{ name: 'kebab', price: 12 }]
   constructor(public dialog: MatDialog, public form: MenuItemsService, private CartService: CartService,protected override _http:HttpClient) {
-    super(_http, '');
+    super(_http, 'menuCategories/withItems');
     this.formFields = form.getSpecificItemForm()
   }
-
+items = []
   ngOnInit(): void {
     // this.getCategories();
+    this.findAll().subscribe(data=>{
+      this.items =data
+    })
   }
   getCategories(){
     this._http.get('')
   }
   addToCart(item:any){
-    this.CartService.addToCart(item)
+    // this.CartService.addToCart(item)
+    const dialogRef = this.dialog.open(ModalComponent, {
+      // width: '250px',
+      data: { item: item, form: this.formFields }
+    });
   }
 
   getMenuItems(){
@@ -45,7 +51,6 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.animal = result;
     });
   }
 }

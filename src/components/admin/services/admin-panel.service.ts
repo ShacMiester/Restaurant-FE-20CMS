@@ -34,10 +34,10 @@ export class AdminPanelService {
             { title: 'Table', link: 'catering-table' }
           ]
         },
-        {
-          title: 'Weekly offers',
-          children: [{ title: 'Table', link: 'weekly-deals-table' }]
-        },
+        // {
+        //   title: 'Weekly offers',
+        //   children: [{ title: 'Table', link: 'weekly-deals-table' }]
+        // }, //to be removed
         {
           title: 'Main page slider',
           children: [{ title: 'Table', link: 'carousel-items-table' }]
@@ -45,6 +45,10 @@ export class AdminPanelService {
         {
           title: 'Branches',
           children: [{ title: 'Manage Branches', link: 'branches' }]
+        },
+        {
+          title: 'Working hours',
+          children: [{ title: 'Manage', link: 'working-hours' }]
         }
       ])
   }

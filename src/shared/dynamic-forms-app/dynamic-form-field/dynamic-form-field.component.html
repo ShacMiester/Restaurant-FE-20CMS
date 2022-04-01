@@ -10,8 +10,9 @@
     </mat-form-field>
     <mat-form-field *ngSwitchCase="'dropdown'" style="width: 100%;" appearance="outline">
       <mat-label>{{field.label}}</mat-label>
-      <mat-select (change)="field.callback? field.callback(this.form.controls[field.key]):false" [id]="field.key" [formControlName]="field.key"
-        [(value)]="selectedDropDownOption" [compareWith]="compareFn" [multiple]="field.multiple">
+      <mat-select (change)="field.callback? field.callback(this.form.controls[field.key]):false" [id]="field.key"
+        [formControlName]="field.key" [(value)]="selectedDropDownOption" [compareWith]="compareFn"
+        [multiple]="field.multiple">
         <mat-option>--</mat-option>
         <mat-option *ngFor="let opt of field.options" [value]="opt.value">
           {{opt.key}}
@@ -30,10 +31,10 @@
     <section *ngSwitchCase="'checkbox'">
       <mat-checkbox *ngIf="!field.options?.length" [id]="field.key" [formControlName]="field.key" appearance="outline"
         (change)="field.callback? field.callback(this.form.controls[field.key]):false">{{field.label}}</mat-checkbox>
-      <mat-form-field  style="width: 100%;" *ngIf="field.options?.length"
-        appearance="outline">
+      <mat-form-field style="width: 100%;" *ngIf="field.options?.length" appearance="outline">
         <mat-label>{{field.label}}</mat-label>
-        <mat-select (change)="field.callback? field.callback(this.form.controls[field.key]):false" [id]="field.key" [formControlName]="field.key">
+        <mat-select (change)="field.callback? field.callback(this.form.controls[field.key]):false" [id]="field.key"
+          [formControlName]="field.key">
           <mat-option *ngFor="let option of field.options" [value]="option.value">
             {{option.key}}
             <mat-hint *ngIf="option.additionalInfo"> ({{option.additionalInfo}}) </mat-hint>
@@ -44,11 +45,29 @@
     <ng-container *ngSwitchCase="'time'">
       <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>{{field.label}}</mat-label>
-        <input (change)="field.callback? field.callback(this.form.controls[field.key]):false" type="text" [disabled]="true" matInput [ngxMatTimepicker]="timepicker" [format]="12"
-          [id]="field.key" [formControlName]="field.key" />
+        <input (change)="field.callback? field.callback(this.form.controls[field.key]):false" type="text"
+          [disabled]="true" matInput [ngxMatTimepicker]="timepicker" [format]="12" [id]="field.key"
+          [formControlName]="field.key" />
         <mat-icon matSuffix (click)="openFromIcon(timepicker)">schedule</mat-icon>
       </mat-form-field>
       <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
     </ng-container>
+    <div  *ngSwitchCase="'image'" class="pt-3 pb-3">
+
+      <div class="imagesContainer" *ngIf="image !==''">
+        <div class="imageItem">
+          <img [src]="image" alt="" />
+          <span class="deleteButton" (click)="removeImage()">Remove</span>
+        </div>
+      </div>
+      <label class="buttonContainer">
+        <input
+          type="file"
+          name="imageURL"
+          (change)="uploadFile($event)"
+        />
+        {{"Upload media"}}
+      </label>
+    </div>
   </div>
 </div>
