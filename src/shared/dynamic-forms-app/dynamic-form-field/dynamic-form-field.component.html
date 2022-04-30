@@ -21,7 +21,7 @@
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
     <mat-form-field *ngSwitchCase="'date'" style="width: 100%;" appearance="outline">
-      <mat-label>Choose a date</mat-label>
+      <mat-label>{{field.label}}</mat-label>
       <input matInput [matDatepicker]="picker" [formControlName]="field.key" [id]="field.key"
         (change)="field.callback? field.callback(this.form.controls[field.key]):false">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

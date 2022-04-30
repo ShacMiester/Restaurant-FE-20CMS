@@ -15,32 +15,32 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
   name: string = '';
   menuCategories = []
   public formFields: any;
-  cart:any[] = []
+  cart: any[] = []
   someItems = [{ name: 'kebab', price: 12 }]
-  constructor(public dialog: MatDialog, public form: MenuItemsService, private CartService: CartService,protected override _http:HttpClient) {
+  constructor(public dialog: MatDialog, public form: MenuItemsService, private CartService: CartService, protected override _http: HttpClient) {
     super(_http, 'menuCategories/withItems');
     this.formFields = form.getSpecificItemForm()
   }
-items = []
+  items = []
   ngOnInit(): void {
     // this.getCategories();
-    this.findAll().subscribe(data=>{
-      this.items =data
+    this.findAll().subscribe(data => {
+      this.items = data
     })
   }
-  getCategories(){
+  getCategories() {
     this._http.get('')
   }
-  addToCart(item:any){
-    // this.CartService.addToCart(item)
-    const dialogRef = this.dialog.open(ModalComponent, {
-      // width: '250px',
-      data: { item: item, form: this.formFields }
-    });
+  addToCart(item: any) { //rama
+    this.CartService.addToCart(item)
+    // const dialogRef = this.dialog.open(ModalComponent, {
+    //   // width: '250px',
+    //   data: { item: item, form: this.formFields }
+    // });
   }
 
-  getMenuItems(){
-    this._http.get('').subscribe(menuItems=>{
+  getMenuItems() {
+    this._http.get('').subscribe(menuItems => {
       //Comment
     })
   }

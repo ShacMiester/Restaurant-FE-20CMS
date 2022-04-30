@@ -13,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { ToastrModule } from 'ngx-toastr';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [DynamicFormFieldComponent, DynamicFormComponent],
@@ -29,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatIconModule,
     NgxMatTimepickerModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgSelectModule
   ],
   exports: [DynamicFormComponent, DynamicFormFieldComponent]
 })

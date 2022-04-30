@@ -18,8 +18,9 @@ export class AdminPanelService {
         {
           title: 'Menu',
           children: [
-            { title: 'Menu items', link: 'menu-items' },
-            { title: 'Menu categories', link: 'menu-categories' }
+            { title: 'Menu categories', link: 'menu-categories' },
+            { title: 'Menu items', link: 'menu-standAlone-table' },
+            { title: 'Special menu item form', link: 'menu-item-special-form' }
           ]
         },
         {
@@ -34,10 +35,6 @@ export class AdminPanelService {
             { title: 'Table', link: 'catering-table' }
           ]
         },
-        // {
-        //   title: 'Weekly offers',
-        //   children: [{ title: 'Table', link: 'weekly-deals-table' }]
-        // }, //to be removed
         {
           title: 'Main page slider',
           children: [{ title: 'Table', link: 'carousel-items-table' }]

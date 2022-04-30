@@ -1,37 +1,39 @@
 <div class="w-100 position-relative d-flex header table-title">
   <h1>{{title}}</h1>
-    <button class="position-absolute add-button" mat-raised-button float="right"
-      (click)="performAction(0,'add')">{{button_title}}</button>
-  </div>
-  <table mat-table [dataSource]="dataSource">
-    <ng-container *ngFor="let col of displayedColumns">
-      <ng-container matColumnDef="{{col}}" *ngIf="col != 'actions'">
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{col}}</th>
-        <td mat-cell *matCellDef="let element" class="truncate-cell text-center">
-          <ng-container *ngIf="col != 'imageURL'">{{element[col]}}</ng-container>
-          <ng-container *ngIf="col == 'imageURL'"><img [src]="'http://mmuwafi-001-site1.itempurl.com/api/'+element[col]" alt="" width="40%"
-              style="object-fit: contain;"></ng-container>
-        </td>
-      </ng-container>
+  <button class="position-absolute add-button" mat-raised-button float="right"
+    (click)="performAction(0,'add')">{{button_title}}</button>
+</div>
+<table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
+  <ng-container *ngFor="let col of displayedColumns">
+    <ng-container matColumnDef="{{col}}" *ngIf="col != 'actions'">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> {{col}}</th>
+      <td mat-cell *matCellDef="let element" class="truncate-cell text-center">
+        <ng-container *ngIf="col != 'imageURL'">{{element[col]}}</ng-container>
+        <ng-container *ngIf="col == 'imageURL'"><img [src]="'http://mmuwafi-001-site1.itempurl.com/api/'+element[col]"
+            alt="" width="40%" style="object-fit: contain;"></ng-container>
+      </td>
     </ng-container>
+  </ng-container>
 
-    <ng-container matColumnDef="actions" *ngIf="containsActionButtons">
-      <tr>
-        <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
-      </tr>
-      <tr>
-        <td mat-cell *matCellDef="let row" style="width:20%" class="text-center">
-          <button mat-icon-button color="primary" matTooltip="edit" (click)="performAction(row,'edit')">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" matTooltip="delete" (click)="performAction(row,'delete')">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      <tr>
-    </ng-container>
+  <ng-container matColumnDef="actions" *ngIf="containsActionButtons">
+    <tr>
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+    </tr>
+    <tr>
+      <td mat-cell *matCellDef="let row" style="width:20%" class="text-center">
+        <button mat-icon-button color="primary" matTooltip="edit" (click)="performAction(row,'edit')">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="delete" (click)="performAction(row,'delete')">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    <tr>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <!-- <ng-container *ngIf="!dataSource.length">no data was found</ng-container> -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+</table>
+<ng-container *ngIf="!dataSource.length">no data was found</ng-container>

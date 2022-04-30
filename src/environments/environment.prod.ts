@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  storeApi:'http://mmuwafi-001-site1.itempurl.com/api',
-  imagesAPI:'http://mmuwafi-001-site1.itempurl.com/api/Images/UploadImage'
+  storeApi:'http://geriksousi-001-site1.ftempurl.com/api',
+  imagesAPI:'http://geriksousi-001-site1.ftempurl.com/api/Images/UploadImage'
 };

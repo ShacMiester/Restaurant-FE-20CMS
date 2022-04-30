@@ -17,7 +17,7 @@ export class OptionsFormComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.optionsForm = this.fb.group({
-      menuItemOptions: this.fb.array([])
+      itemOptions: this.fb.array([])
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -28,7 +28,7 @@ export class OptionsFormComponent implements OnInit, OnChanges {
   }
 
   options(): FormArray {
-    return this.optionsForm.get('menuItemOptions') as FormArray;
+    return this.optionsForm.get('itemOptions') as FormArray;
   }
 
   newOption(): FormGroup {
@@ -39,7 +39,7 @@ export class OptionsFormComponent implements OnInit, OnChanges {
       min: new FormControl(),
       max: new FormControl(),
       limit: new FormControl({ value: 0, disabled: true }),
-      menuItemOptions: this.fb.array([])
+      itemOptions: this.fb.array([])
     });
   }
 
@@ -54,7 +54,7 @@ export class OptionsFormComponent implements OnInit, OnChanges {
   optionOptions(empIndex: number): FormArray {
     return this.options()
       .at(empIndex)
-      .get('menuItemOptions') as FormArray;
+      .get('itemOptions') as FormArray;
   }
 
   newOptionOptions(): FormGroup {

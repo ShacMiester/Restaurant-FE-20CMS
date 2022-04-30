@@ -59,7 +59,7 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
     private menuService: MenuService,
     protected override _http: HttpClient,
     private MatSnackBar: MatSnackBar,
-  ) { super(_http, 'menuItems'); }
+  ) { super(_http, 'menuItems/addWithOptions'); }
   otherForms!: any
 
   ngOnInit(): void {
@@ -88,8 +88,14 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
 
   getQueryParams() {
     this.router.queryParams.subscribe((params: any) => {
-      this.findOne(params.id).subscribe(item=>{
-        console.log('test',item)
+      this._http.get(environment.storeApi+'/menuItems/'+params.id).subscribe(menuItem=>{
+        console.log(menuItem)
+        if(menuItem['type'])
+        this.constructSpecialItemForm()
+        this.menuForm.patchValue(menuItem)
+      })
+      this.findOne(params.id).subscribe(item => {
+        console.log(item)
         this.menuForm.patchValue(item)
         this.Menu_ItemSpecialForm.patchValue(item.itemSpecial)
       })
@@ -138,7 +144,6 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
   ]
   doSomething($event: any) {
     this.initSpecialItemForm()
-    console.log('veeeve', $event)
     this.Menu_ItemSpecialForm.controls['type'].patchValue($event)
     switch ($event) {
       case 'Day':
@@ -200,7 +205,6 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
     })
   }
   callingFunction() {
-    console.log(this.menuForm)
   }
   // doSomething(){}
   getCategories() {
@@ -223,7 +227,6 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
   }
 
   submitOptions(event: any) {
-    console.log('emitted obj =>', event)
   }
 
   menuFormOptions!: FormArray
@@ -237,21 +240,17 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
     // })
   }
   menuFormSubmitting(optionsForm) {
-    console.log(this.menuForm.value)
-    console.log(this.Menu_ItemSpecialForm.value)
     this.menuID = 1
     // this.Menu_ItemSpecialForm.controls['day'].value ?this.Menu_ItemSpecialForm.controls['day'].setValue([this.Menu_ItemSpecialForm?.controls['day']?.value.reduce((a, b) => a + b, 0)]) : 0
     this.menuForm.controls['itemSpecial'].setValue(this.Menu_ItemSpecialForm.value)
     let menuForm = Object.assign({}, this.menuForm.value)
     menuForm['itemSpecial'].days = this.Menu_ItemSpecialForm?.controls['days']?.value.reduce((a, b) => a + b, 0)
     menuForm['itemSpecial'].type == 'Day' ? menuForm['itemSpecial'].type = 0 : menuForm['itemSpecial'].type == 'Day_Time' ? menuForm['itemSpecial'].type = 1 : menuForm['itemSpecial'].type == 'Interval' ? menuForm['itemSpecial'].type = 2 : menuForm['itemSpecial'].type = 0
-    menuForm['itemOptionCategories'] = optionsForm.menuItemOptions
+    menuForm['itemOptionCategories'] = optionsForm.itemOptions
     // menuForm['itemOptionCategories']= []
-    console.log(menuForm)
     this.testSomething(menuForm)
     this.save(menuForm).subscribe()
     // this.save(Object.assign(this.menuForm.value,))
-    // console.log(this.menuForm.value)
   }
   addNewControl() {
     this.menuFormOptions.push(new FormGroup({ 'isRequired': new FormControl('') }))
@@ -272,7 +271,6 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
     this._http.post(environment.imagesAPI, formData).subscribe(
       res => {
         this.menuForm.controls['imageURL'].patchValue(JSON.stringify(res['image']))
-        console.log(res)
       }
     )
   }
@@ -283,7 +281,6 @@ export class MenuFormComponent extends CrudService<any, number> implements OnIni
   }
 
   testSomething(menuForm) {
-    console.log(bitToFormValue(Days, menuForm['itemSpecial'].days))
   }
 }
 

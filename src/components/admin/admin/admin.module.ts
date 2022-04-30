@@ -1,3 +1,6 @@
+import { MenuItemSpecialStandAloneFormComponent } from './../components/views/menu/menu-item-special-stand-alone-form/menu-item-special-stand-alone-form.component';
+import { UnifiedTableModule } from './../../../shared/components/unified-table/unified-table.module';
+import { MenuStandAloneFormComponent } from './../components/views/menu/menu-stand-alone-form/menu-stand-alone-form.component';
 import { CateringDetailsComponent } from './../components/views/catering-table/catering-details/catering-details.component';
 import { AdminPanelService } from './../services/admin-panel.service';
 import { MenuFormComponent } from './../components/views/menu/menu-form/menu-form.component';
@@ -37,7 +40,8 @@ import { OptionsFormComponent } from "../components/views/menu/options-form/opti
     UserInfoComponent,
     CateringDetailsComponent,
     ReservationDetailsComponent,
-    OptionsFormComponent
+    OptionsFormComponent,
+    MenuItemSpecialStandAloneFormComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +58,7 @@ import { OptionsFormComponent } from "../components/views/menu/options-form/opti
     MatSelectModule,
     MatCheckboxModule,
     NgxMatTimepickerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ],
   providers: [AdminPanelService]
 })

@@ -1,3 +1,6 @@
+import { MenuItemSpecialStandAloneFormComponent } from './../components/views/menu/menu-item-special-stand-alone-form/menu-item-special-stand-alone-form.component';
+import { MenuStandALoneTableComponent } from './../components/views/menu/menu-stand-alone-table/menu-stand-alone-table.component';
+import { MenuStandAloneFormComponent } from './../components/views/menu/menu-stand-alone-form/menu-stand-alone-form.component';
 import { OptionsFormComponent } from './../components/views/menu/options-form/options-form.component';
 import { MenuCategoriesFormComponent } from './../components/views/menu/menu-categories-form/menu-categories-form.component';
 import { MenuFormComponent } from './../components/views/menu/menu-form/menu-form.component';
@@ -56,6 +59,18 @@ const routes: Routes = [{
       {
         path: 'working-hours-form', loadChildren: () =>
           import('../components/views/working-hours/working-hours-form/working-hours-form.module').then(m => m.WorkingHoursFormModule)
+      },
+      {
+        path: 'menu-standAlone-form', loadChildren: () =>
+          import('../components/views/menu/menu-stand-alone-form/menu-stand-alone-form.module').then(m => m.MenuStandAloneFormModule)
+      },//review
+      {
+        path: 'menu-standAlone-table', loadChildren: () =>
+          import('../components/views/menu/menu-stand-alone-table/menu-item-stand-alone-table-module.module').then(m => m.MenuItemStandAloneTableModule)
+      },
+      {
+        path:'menu-item-special-form',
+        component:MenuItemSpecialStandAloneFormComponent
       }
     ]
 }];

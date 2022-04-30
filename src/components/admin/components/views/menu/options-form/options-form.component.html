@@ -1,6 +1,6 @@
 <div class="">
   <form *ngIf="optionsForm != null && optionsForm != undefined" [formGroup]="optionsForm">
-    <div formArrayName="menuItemOptions" style="padding: 20px 0px;">
+    <div formArrayName="itemOptions" style="padding: 20px 0px;">
       <div *ngFor="let option of options().controls; let optionIndex=index" style="position: relative;">
 
         <div [formGroupName]="optionIndex" style="box-shadow: 0 2px 1px -1px rgba(0,0,0,1),
@@ -43,7 +43,7 @@
             <!-- <mat-error *ngIf="opt.controls['Name']?.hasError('required')">Name is Required</mat-error> -->
           </mat-form-field>
 
-          <div formArrayName="menuItemOptions" [hidden]="optionsAvailable(optionIndex)">
+          <div formArrayName="itemOptions" [hidden]="optionsAvailable(optionIndex)">
             <div *ngFor="let skill of optionOptions(optionIndex).controls; let skillIndex=index">
               <div [formGroupName]="skillIndex">
                 <mat-form-field appearance="outline">

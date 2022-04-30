@@ -20,11 +20,24 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
   openFromIcon(timepicker: { open: () => void }) {
     timepicker.open();
   }
+  selectedStates: any = []
+
   constructor(private http: HttpClient) { }
   get isValid() { return this.form.controls[this.field.key].valid }
 
   ngOnInit(): void {
+    if (this.field.hasOwnProperty('options'))
+      this.selectedStates = this.field.options?.length ? this.field.options : null
     this.selectedDropDownOption = this.field.value
+  }
+  onKey(value) {
+    if (this.selectedStates != null)
+      this.selectedStates = this.search(value);
+  }
+  search(value: string) {
+    let filter = value.toLowerCase();
+    return this.field.options.filter(option =>
+      option.key.toLowerCase().startsWith(filter));
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes != null && changes['form']?.currentValue != undefined)
@@ -46,6 +59,7 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
   uploadFile(event: any) {
     this.form.get('imageURL')?.updateValueAndValidity()
     const reader = new FileReader();
+    0
     reader.onload = () => {
       this.preview = reader.result as string;
       this.image = reader.result as string;
@@ -54,8 +68,10 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
     formData.append('file', event.target.files[0])
     reader.readAsDataURL((event.target as HTMLInputElement).files[0])
     this.http.post(environment.imagesAPI, formData).subscribe(
-      res => { this.form.controls['imageURL'].patchValue(JSON.stringify(res['image']))
-    console.log(res)}
+      res => {
+        this.form.controls['imageURL'].patchValue(JSON.stringify(res['image']))
+        console.log(res)
+      }
     )
   }
 

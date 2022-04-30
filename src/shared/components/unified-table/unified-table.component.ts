@@ -15,7 +15,7 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    if (!this.displayedColumns.length && this.dataSource.length) {
+    if (!this.displayedColumns?.length && this.dataSource?.length) {
       this.displayedColumns = Object.keys(this.dataSource[0]).map(col => { return col })
       this.displayedColumns.push('actions')
     }
@@ -23,7 +23,7 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = changes['dataSource'].currentValue
-    if (!this.displayedColumns.length && this.dataSource.length > 0) {
+    if (!this.displayedColumns?.length && this.dataSource?.length > 0) {
       this.displayedColumns = Object.keys(this.dataSource[0]).map(col => { return col })
       this.displayedColumns.push('actions')
     }
