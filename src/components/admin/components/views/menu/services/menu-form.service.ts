@@ -73,7 +73,7 @@ export class MenuFormService extends CrudService<any, number> {
         label: 'Special?',
         value: false,
         type: 'checkbox',
-        required: true,
+        required: false,
         errorMessage: 'This field is required',
         callback: ($event: any) => { this.activateSpecialItemForm($event) }
       }),
