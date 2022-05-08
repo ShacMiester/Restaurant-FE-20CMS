@@ -19,6 +19,7 @@ import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.componen
 import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-categories/menu-item-option-categories.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     GalleryComponent,
     CartComponent,
     HideElementDirective,
-    WorkingHoursComponent
+    WorkingHoursComponent,
+    MenuItemOptionCategoriesComponent
+
   ],
   imports: [
     CommonModule,
