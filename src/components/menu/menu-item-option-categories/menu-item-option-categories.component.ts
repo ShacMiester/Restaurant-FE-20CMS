@@ -3,6 +3,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CrudService } from 'src/components/admin/services/crud.service';
+import { CategoryOption, ItemOption } from 'src/entities/category-option';
 import { MenuItemsService } from '../menu-items/menu-items.service';
 
 @Component({
@@ -11,42 +12,52 @@ import { MenuItemsService } from '../menu-items/menu-items.service';
   styleUrls: ['./menu-item-option-categories.component.scss']
 })
 export class MenuItemOptionCategoriesComponent extends CrudService<any, number> implements OnInit {
-  id:number;
-  data$: any
-  menu: any;
+  categoryOptionList: CategoryOption[] = [];
   menuItem: any;
-  formField$: any;
+  quantity: number = 0;
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     protected override _http: HttpClient,
-    private router: ActivatedRoute,
-    public form: MenuItemsService,
 
 
-  ) {
-    super(_http, 'menuCategories/withItems');
-
+  )
+  {
+    super(_http, 'MenuItemOptionCategories/GetByItemId?id=');
   }
 
   ngOnInit(): void {
-    this.getOptionsForm();
+
     this.menuItem = this.data.item;
-    // this.data.item.subscribe((a: any) => { this.menu = a;
-    // console.log("fix",this.menu) })
-    console.log(this.data)
+    this.getCategoryOptionItem(this.menuItem.id);
+
     console.log("menuItem",this.menuItem)
-    this.router.params.subscribe(params => this.id = params['id']);
-    console.log("id",this.id)
+
 
   }
-  getOptionsForm() {
-    this.form.getSpecificItemForm().subscribe({
-      next: (v) => {
-        this.formField$ = v
-      }
+  onPlus(quantity: number){
+   this.quantity = quantity + 1;
+  }
+  onMinus(quantity){
+    if(quantity > 0){
+      this.quantity = quantity - 1;
+    }
+  }
+
+  getCategoryOptionItem(id: number){
+    this.findAllById(id).subscribe( data =>{
+      this.categoryOptionList = data;
+      console.log("this.categoryOptionList  : ", this.categoryOptionList );
+
     })
   }
+  OnSelected(category: CategoryOption ,option: ItemOption){
+    console.log("Selected:",category)
+    option.isSelected = !option.isSelected;
+  }
 
+  CloseDialog(){
+    this.dialogRef.close();
+  }
 
 }

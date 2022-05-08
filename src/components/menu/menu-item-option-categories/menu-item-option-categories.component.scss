@@ -2,6 +2,10 @@
     margin-top: 7.5rem !important;
 }
 
+::ng-deep .mat-dialog-container {
+    padding-bottom: 0px !important;
+}
+
 .text-primary {
     color: #c59d5f !important;
 }
@@ -16,4 +20,64 @@
 
 .title {
     font: 500 30px/35px "League Gothic", "Arial", "Helvetica" !important;
+}
+
+.card-selected {
+    border: 3px solid #ff5e14;
+}
+
+.card-default {
+    box-shadow: 5px 2px 4px 1px rgb(0 0 0 / 10%);
+}
+
+.counter {
+    width: 50%;
+    margin: auto;
+}
+
+mat-icon {
+    color: #FFF;
+    background: #68645e;
+    border-radius: 4px;
+    &:hover {
+        background-color: #90112e;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #c59d5f;
+    color: #FFF;
+    border: none;
+    &:hover {
+        background-color: #db9e15;
+        transition: all 0.3s ease-in-out 0.1s;
+    }
+}
+
+.text-second {
+    color: #db9e15;
+}
+
+.card {
+    box-shadow: 5px 2px 4px 1px rgb(0 0 0 / 10%);
+    transition: all .2s ease-in-out;
+    border: none;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.btn-light {
+    color: #db9e15;
+}
+
+.footer {
+    background: #FFF;
+    padding: 6px;
+    position: sticky;
+    bottom: 0px;
 }
