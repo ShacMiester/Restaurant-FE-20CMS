@@ -28,14 +28,6 @@ export class MenuItemSpcialService {
     })
     const questions: FormBase<string>[] = [
       new DropdownField({
-        key: 'menuItemId',
-        label: 'Select menu item',
-        value: 11,
-        required: true,
-        hidden: false,
-        options: menuItems
-      }),
-      new DropdownField({
         key: 'daysArray',
         label: 'Days',
         value: '',
