@@ -9,6 +9,7 @@ import { MenuTableComponent } from './../components/views/menu/menu-table/menu-t
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MenuItemSpecialStandAloneTableComponent } from '../components/views/menu/menu-item-special-stand-alone-table/menu-item-special-stand-alone-table.component';
 
 const routes: Routes = [{
   component: AdminComponent,
@@ -69,8 +70,13 @@ const routes: Routes = [{
           import('../components/views/menu/menu-stand-alone-table/menu-item-stand-alone-table-module.module').then(m => m.MenuItemStandAloneTableModule)
       },
       {
-        path:'menu-item-special-form',
-        component:MenuItemSpecialStandAloneFormComponent
+        path: 'menu-item-special-form',
+        component: MenuItemSpecialStandAloneFormComponent
+      },
+      {
+        path: 'menu-items-special-table',
+        loadChildren: () =>
+        import('../components/views/menu/special-items-table/special-items-table.module').then(m => m.SpecialItemsTableModule)
       }
     ]
 }];

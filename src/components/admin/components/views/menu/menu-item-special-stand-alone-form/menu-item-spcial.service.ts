@@ -2,7 +2,7 @@ import { DateField } from 'src/shared/dynamic-forms-app/atoms/form-date';
 import { TimeField } from 'src/shared/dynamic-forms-app/atoms/form-time';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, map } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { FormBase } from 'src/shared/dynamic-forms-app/atoms/form-base';
 import { CheckBoxField } from 'src/shared/dynamic-forms-app/atoms/form-checkbox';
@@ -16,16 +16,17 @@ export class MenuItemSpcialService {
 
   constructor(private _http: HttpClient) { }
   getStandAloneMenuForm(): Observable<any> {
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map(item => {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map(item => {
       return { key: item, value: item }
     })
+    let menuItems = [];
+    this._http.get(`${environment.storeApi}/MenuItems`).subscribe((items: any) => {
+      items.map(items => {
+        if (items.isSpecial == true)
+        menuItems.push({ key: items.name, value: items.id })
+      })
+    })
     const questions: FormBase<string>[] = [
-      new DropdownField({
-        key: 'menuItemId',
-        value: 11,
-        required: true,
-        hidden: true
-      }),
       new DropdownField({
         key: 'daysArray',
         label: 'Days',

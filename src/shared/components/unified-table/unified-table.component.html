@@ -1,9 +1,9 @@
 <div class="w-100 position-relative d-flex header table-title">
   <h1>{{title}}</h1>
   <button class="position-absolute add-button" mat-raised-button float="right"
-    (click)="performAction(0,'add')">{{button_title}}</button>
+    (click)="performAction(0,'add')" *ngIf="containsTableAction">{{button_title}}</button>
 </div>
-<table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
+<table mat-table [dataSource]="dataSource" *ngIf="!noDataWasFound">
   <ng-container *ngFor="let col of displayedColumns">
     <ng-container matColumnDef="{{col}}" *ngIf="col != 'actions'">
       <th mat-header-cell *matHeaderCellDef class="text-center"> {{col}}</th>
@@ -36,4 +36,4 @@
   <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
   </mat-paginator>
 </table>
-<ng-container *ngIf="!dataSource.length">no data was found</ng-container>
+<ng-container *ngIf="noDataWasFound">no data was found</ng-container>
