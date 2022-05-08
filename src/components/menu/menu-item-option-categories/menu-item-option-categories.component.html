@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="">
+        <h1 class="text-primary">Choose Option</h1>
+
+        <div class="row align-items-center justify-content-center">
+            <div class="col-6 mb-4">
+
+
+                <div>
+                    <img src="../../../assets/images/original-_1_.png" class=" m-auto img-custom" alt="..." width="100%">
+                </div>
+            </div>
+            <div class="col-6">
+                <h1 class="title"> {{menuItem.name}} </h1>
+                <h5 class=""> {{menuItem.description}} </h5>
+                <p class=" text-primary"> {{menuItem.price}}$ </p>
+            </div>
+
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <app-dynamic-form [formFields]="formField$"></app-dynamic-form>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
