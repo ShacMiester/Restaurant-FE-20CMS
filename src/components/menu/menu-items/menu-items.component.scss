@@ -1,58 +1,99 @@
 :host::ng-deep .mat-tab-label {
-  color: #c59d5f;
+    color: #c59d5f;
 }
 
 :host::ng-deep .mat-card-header {
-  color: #c59d5f !important;
+    color: #c59d5f !important;
 }
 
 :host::ng-deep .mat-card-subtitle {
-  color: #c59d5f !important;
+    color: #c59d5f !important;
 }
 
 :host::ng-deep .mat-card-content {
-  color: #c59d5f !important;
-  padding-top: 10px;
+    color: #c59d5f !important;
+    padding-top: 10px;
 }
+
 button {
-  background-color: #c59d5f;
-  width: 100%;
-  &:hover {
-    background-color: #db9e15;
-    transition: all 0.3s ease-in-out 0.1s;
-  }
+    background-color: #c59d5f;
+    color: #FFF;
+    width: 100%;
+    &:hover {
+        background-color: #db9e15;
+        transition: all 0.3s ease-in-out 0.1s;
+    }
 }
 
 :host::ng-deep .mat-tab-label {
-  opacity: 1 !important;
-  &-active {
-    background-color: #c59d5f;
-    color: white;
-  }
+    opacity: 1 !important;
+    &-active {
+        color: #c59d5f;
+    }
 }
+
 .overlay {
-  opacity: 0.2 !important;
+    opacity: 0.2 !important;
 }
 
 .tab-container {
-  background-image: url(../../../assets/images/gallery/mainDishes.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+    background: #d9d7de;
+}
+
+::ng-deep .mat-tab-body-content {
+    overflow-x: hidden !important;
 }
 
 mat-card {
-  transition: all 1s ease-in-out 0.1s;
-  width: 300px;
-  margin: 15px;
-  background: #191919cc;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
     transition: all 1s ease-in-out 0.1s;
-    .overlay {
-      opacity: 0 !important;
-      transition: all 1s ease-out 0.1s;
+    width: 300px;
+    margin: 15px;
+    background: #191919cc;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+        transition: all 1s ease-in-out 0.1s;
+        .overlay {
+            opacity: 0 !important;
+            transition: all 1s ease-out 0.1s;
+        }
     }
-  }
+}
+
+//
+::ng-deep .mat-tab-list {
+    background-color: #FFF;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+::ng-deep .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #c59d5f;
+    height: 2px;
+}
+
+.text-primary {
+    color: #c59d5f !important;
+}
+
+.float-end {
+    float: right;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0px 5px 20px #DADADA;
+    transition: all .2s ease-in-out;
+    img {
+        border-radius: 12px;
+        height: 160px;
+        object-fit: cover;
+    }
+    &:hover {
+        transform: scale(0.9);
+    }
 }
