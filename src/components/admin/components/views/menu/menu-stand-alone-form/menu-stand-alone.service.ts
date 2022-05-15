@@ -38,13 +38,13 @@ export class MenuStandAloneService {
         required: true,
         errorMessage: 'Description is required'
       }),
-      // new ImageBoxField({
-      //   key: 'imageURL',
-      //   label: 'Image',
-      //   value: '',
-      //   required: true,
-      //   errorMessage: 'Image is required'
-      // }),
+      new ImageBoxField({
+        key: 'imageURL',
+        label: 'Image',
+        value: '',
+        required: true,
+        errorMessage: 'Image is required'
+      }),
       new TextBoxField({
         key: 'price',
         label: 'Price',
