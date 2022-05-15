@@ -1,4 +1,10 @@
 <div class="container-fluid styled-container">
   <app-unified-table [dataSource]="dataSource" [button_title]="'Return to table'" [containsActionButtons]="true"
-    [button_title]="'Add menu item'" (action)="performAction($event)"></app-unified-table>
+    [button_title]="'Add menu item'" (action)="performAction($event)">
+    <ng-template let-data="data">
+      <button mat-icon-button color="primary" matTooltip="edit options" (click)="editOptions(data)">
+        <mat-icon> edit_attributes </mat-icon>
+      </button>
+    </ng-template>
+  </app-unified-table>
 </div>
