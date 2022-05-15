@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-unified-table',
@@ -13,6 +13,8 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
   @Input() containsActionButtons!: boolean
   @Output() action = new EventEmitter<any>()
   @Input() containsTableAction = true
+  @ContentChild(TemplateRef) actions!: TemplateRef<Element>;
+
   noDataWasFound = true
   constructor() { }
 
@@ -37,5 +39,4 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
   performAction(row: any, action: 'edit' | 'delete' | 'add') {
     this.action.emit({ row: row, action })
   }
-
 }

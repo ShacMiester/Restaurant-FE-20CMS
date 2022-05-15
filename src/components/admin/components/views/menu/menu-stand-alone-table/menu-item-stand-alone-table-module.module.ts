@@ -1,3 +1,6 @@
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { UnifiedTableModule } from './../../../../../../shared/components/unified-table/unified-table.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +14,10 @@ import { MenuStandALoneTableComponent } from './menu-stand-alone-table.component
   imports: [
     CommonModule,
     MenuItemStandAloneTableRoutingModule,
-    UnifiedTableModule
+    UnifiedTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class MenuItemStandAloneTableModule { }

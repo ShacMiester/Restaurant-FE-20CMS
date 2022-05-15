@@ -1,7 +1,7 @@
 <div class="w-100 position-relative d-flex header table-title">
   <h1>{{title}}</h1>
-  <button class="position-absolute add-button" mat-raised-button float="right"
-    (click)="performAction(0,'add')" *ngIf="containsTableAction">{{button_title}}</button>
+  <button class="position-absolute add-button" mat-raised-button float="right" (click)="performAction(0,'add')"
+    *ngIf="containsTableAction">{{button_title}}</button>
 </div>
 <table mat-table [dataSource]="dataSource" *ngIf="!noDataWasFound">
   <ng-container *ngFor="let col of displayedColumns">
@@ -24,6 +24,8 @@
         <button mat-icon-button color="primary" matTooltip="edit" (click)="performAction(row,'edit')">
           <mat-icon>edit</mat-icon>
         </button>
+        <ng-container [ngTemplateOutlet]="actions" [ngTemplateOutletContext]="{data:row}">
+        </ng-container>
         <button mat-icon-button color="warn" matTooltip="delete" (click)="performAction(row,'delete')">
           <mat-icon>delete</mat-icon>
         </button>

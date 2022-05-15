@@ -51,4 +51,8 @@ export class MenuStandALoneTableComponent extends CrudService<any, number> imple
   openSnackBar(message: string, button: string) {
     this._snackBar.open(message, button, { duration: 5000 })
   }
+
+  editOptions(event) {
+    this.router.navigate(['/admin', 'menu-items-options'], { queryParams: { id: event.id } })
+  }
 }
