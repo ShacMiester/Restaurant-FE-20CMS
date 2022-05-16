@@ -1,7 +1,4 @@
 import { MenuItemSpecialStandAloneFormComponent } from './../components/views/menu/menu-item-special-stand-alone-form/menu-item-special-stand-alone-form.component';
-import { MenuStandALoneTableComponent } from './../components/views/menu/menu-stand-alone-table/menu-stand-alone-table.component';
-import { MenuStandAloneFormComponent } from './../components/views/menu/menu-stand-alone-form/menu-stand-alone-form.component';
-import { OptionsFormComponent } from './../components/views/menu/options-form/options-form.component';
 import { MenuCategoriesFormComponent } from './../components/views/menu/menu-categories-form/menu-categories-form.component';
 import { MenuFormComponent } from './../components/views/menu/menu-form/menu-form.component';
 import { MenuCategoriesComponent } from './../components/views/menu/menu-categories/menu-categories.component';
@@ -9,7 +6,6 @@ import { MenuTableComponent } from './../components/views/menu/menu-table/menu-t
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuItemSpecialStandAloneTableComponent } from '../components/views/menu/menu-item-special-stand-alone-table/menu-item-special-stand-alone-table.component';
 
 const routes: Routes = [{
   component: AdminComponent,
@@ -32,7 +28,6 @@ const routes: Routes = [{
         path: 'catering-table', loadChildren: () =>
           import('../components/views/catering-table/catering-table.module').then(m => m.CateringTableModule)
       },
-      { path: 'options-form', component: OptionsFormComponent },
       {
         path: 'weekly-deals-table', loadChildren: () =>
           import('../components/views/weekly-deals/weekly-deals-table/weekly-deals-table.module').then(m => m.WeeklyDealsTableModule)

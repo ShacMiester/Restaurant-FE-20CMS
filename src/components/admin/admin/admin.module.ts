@@ -28,7 +28,6 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule, } from '@angular/material/datepicker';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
-import { OptionsFormComponent } from "../components/views/menu/options-form/options-form.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { OptionsFormComponent } from "../components/views/menu/options-form/opti
     UserInfoComponent,
     CateringDetailsComponent,
     ReservationDetailsComponent,
-    OptionsFormComponent,
     MenuItemSpecialStandAloneFormComponent
   ],
   imports: [
