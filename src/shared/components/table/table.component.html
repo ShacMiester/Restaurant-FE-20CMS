@@ -27,6 +27,7 @@
         <button mat-icon-button color="warn" matTooltip="delete" (click)="performAction(row,'delete')">
           <mat-icon>delete</mat-icon>
         </button>
+        <ng-content select="selector"></ng-content>
       </td>
     <tr>
   </ng-container>

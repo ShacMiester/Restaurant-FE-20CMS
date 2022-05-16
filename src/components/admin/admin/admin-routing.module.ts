@@ -76,7 +76,12 @@ const routes: Routes = [{
       {
         path: 'menu-items-special-table',
         loadChildren: () =>
-        import('../components/views/menu/special-items-table/special-items-table.module').then(m => m.SpecialItemsTableModule)
+          import('../components/views/menu/special-items-table/special-items-table.module').then(m => m.SpecialItemsTableModule)
+      },
+      {
+        path: 'menu-items-options',
+        loadChildren: () =>
+          import('../components/views/menu/options-form-to-be-renamed/options-form-to-be-renamed.module').then(m => m.OptionsFormToBeRenamedModule)
       }
     ]
 }];

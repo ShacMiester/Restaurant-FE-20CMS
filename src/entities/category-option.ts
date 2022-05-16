@@ -5,6 +5,7 @@ export class CategoryOption{
   max: number;
   itemId: number;
   itemOptions: ItemOption[];
+  length: number = 0; // for design
 }
 
 export class ItemOption{
