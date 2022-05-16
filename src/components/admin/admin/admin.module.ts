@@ -1,9 +1,6 @@
 import { MenuItemSpecialStandAloneFormComponent } from './../components/views/menu/menu-item-special-stand-alone-form/menu-item-special-stand-alone-form.component';
-import { UnifiedTableModule } from './../../../shared/components/unified-table/unified-table.module';
-import { MenuStandAloneFormComponent } from './../components/views/menu/menu-stand-alone-form/menu-stand-alone-form.component';
 import { CateringDetailsComponent } from './../components/views/catering-table/catering-details/catering-details.component';
 import { AdminPanelService } from './../services/admin-panel.service';
-import { MenuFormComponent } from './../components/views/menu/menu-form/menu-form.component';
 import { MenuTableComponent } from './../components/views/menu/menu-table/menu-table.component';
 import { MenuCategoriesFormComponent } from './../components/views/menu/menu-categories-form/menu-categories-form.component';
 import { MenuCategoriesComponent } from './../components/views/menu/menu-categories/menu-categories.component';
@@ -35,7 +32,6 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MenuCategoriesComponent,
     MenuCategoriesFormComponent,
     MenuTableComponent,
-    MenuFormComponent,
     UserInfoComponent,
     CateringDetailsComponent,
     ReservationDetailsComponent,

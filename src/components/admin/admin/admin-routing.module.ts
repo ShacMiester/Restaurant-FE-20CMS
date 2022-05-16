@@ -1,6 +1,5 @@
 import { MenuItemSpecialStandAloneFormComponent } from './../components/views/menu/menu-item-special-stand-alone-form/menu-item-special-stand-alone-form.component';
 import { MenuCategoriesFormComponent } from './../components/views/menu/menu-categories-form/menu-categories-form.component';
-import { MenuFormComponent } from './../components/views/menu/menu-form/menu-form.component';
 import { MenuCategoriesComponent } from './../components/views/menu/menu-categories/menu-categories.component';
 import { MenuTableComponent } from './../components/views/menu/menu-table/menu-table.component';
 import { AdminComponent } from './admin.component';
@@ -22,7 +21,6 @@ const routes: Routes = [{
       },
       { path: 'menu-items', component: MenuTableComponent },//review
       { path: 'menu-categories', component: MenuCategoriesComponent },//review
-      { path: "menu-items-forms", component: MenuFormComponent },//review
       { path: 'menu-categories-form', component: MenuCategoriesFormComponent },//review
       {
         path: 'catering-table', loadChildren: () =>
