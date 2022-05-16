@@ -56,7 +56,7 @@
 
       <div class="imagesContainer" *ngIf="image !==''">
         <div class="imageItem">
-          <img [src]="environmentImageEndPoint+image" alt="" />
+          <img [src]="image" alt="" />
           <span class="deleteButton" (click)="removeImage()">Remove</span>
         </div>
       </div>
