@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from './../../../shared/services/cart.service';
 import { MenuItemsService } from './menu-items.service';
@@ -19,6 +20,7 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
   name: string = '';
   menuCategories = []
   public formFields: any;
+  environment = `${environment.store}Uploads/`
   cart: any[] = []
   someItems = [{ name: 'kebab', price: 12 }];
   @ViewChildren("popupContent") components: QueryList<any>;
