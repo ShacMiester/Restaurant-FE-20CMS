@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { WorkingHoursComponent } from './../working-hours/working-hours.component';
 import { HideElementDirective } from './../../Directives/hide-element.directive';
 import { CartComponent } from '../cart/cart.component';
@@ -47,12 +48,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     MainRoutingModule,
     MatTabsModule,
     DynamicFormsAppModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   exports: [
     CartComponent,
     HideElementDirective,
-  ],
-  providers: []
+  ]
 })
 export class MainModule { }

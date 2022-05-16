@@ -1,101 +1,101 @@
 .mt-7 {
-    margin-top: 7.5rem !important;
+  margin-top: 7.5rem !important;
 }
 
 ::ng-deep .mat-dialog-container {
-    padding-bottom: 0px !important;
+  padding-bottom: 0px !important;
 }
 
 .text-primary {
-    color: #c59d5f !important;
+  color: #c59d5f !important;
 }
 
 .custom-card {
-    border: none !important;
+  border: none !important;
 }
 
 .img-custom {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .title {
-    font: 500 30px/35px "League Gothic", "Arial", "Helvetica" !important;
+  font: 500 30px/35px 'League Gothic', 'Arial', 'Helvetica' !important;
 }
 
 .card-selected {
-    border: 3px solid #ff5e14 !important;
+  border: 3px solid #ff5e14 !important;
 }
 
 .card-default {
-    border: none;
-    box-shadow: 5px 2px 4px 1px rgb(0 0 0 / 10%);
+  border: none;
+  box-shadow: 5px 2px 4px 1px rgb(0 0 0 / 10%);
 }
 
 .counter {
-    width: 50%;
-    margin: auto;
+  width: 50%;
+  margin: auto;
 }
 
 mat-icon {
-    color: #FFF;
-    background: #68645e;
-    border-radius: 4px;
-    &:hover {
-        background-color: #90112e;
-    }
+  color: #fff;
+  background: #68645e;
+  border-radius: 4px;
+  &:hover {
+    background-color: #90112e;
+  }
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .btn-primary {
-    background-color: #c59d5f;
-    color: #FFF;
-    border: none;
-    &:hover {
-        background-color: #db9e15;
-        transition: all 0.3s ease-in-out 0.1s;
-    }
+  background-color: #c59d5f;
+  color: #fff;
+  border: none;
+  &:hover {
+    background-color: #db9e15;
+    transition: all 0.3s ease-in-out 0.1s;
+  }
 }
 
 .text-second {
-    color: #db9e15;
+  color: #db9e15;
 }
 
 .card {
-    box-shadow: 5px 2px 4px 1px rgb(0 0 0 / 10%);
-    transition: all .2s ease-in-out;
-    border: none;
-    &:hover {
-        transform: scale(1.1);
-    }
+  box-shadow: 5px 2px 4px 1px rgb(0 0 0 / 10%);
+  transition: all 0.2s ease-in-out;
+  border: none;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .btn-light {
-    color: #db9e15;
+  color: #db9e15;
 }
 
 .footer {
-    background: #FFF;
-    padding: 6px;
-    position: sticky;
-    bottom: 0px;
+  background: #fff;
+  padding: 6px;
+  position: sticky;
+  bottom: 0px;
 }
 
 .toast {
-    position: fixed;
-    top: auto!important;
-    top: 0!important;
-    right: 0 !important;
-    left: auto!important;
-    margin: 0.5em;
-    z-index: 1200;
+  position: fixed;
+  top: auto !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  margin: 0.5em;
+  z-index: 1200;
 }
 
 @media (max-width: 760px) {
-    .query-menu {
-        border-bottom: solid 1px #bab4b4;
-        margin-bottom: 16px;
-    }
+  .query-menu {
+    border-bottom: solid 1px #bab4b4;
+    margin-bottom: 16px;
+  }
 }
