@@ -52,20 +52,16 @@
       </mat-form-field>
       <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
     </ng-container>
-    <div  *ngSwitchCase="'image'" class="pt-3 pb-3">
+    <div *ngSwitchCase="'image'" class="pt-3 pb-3">
 
       <div class="imagesContainer" *ngIf="image !==''">
         <div class="imageItem">
-          <img [src]="image" alt="" />
+          <img [src]="environmentImageEndPoint+image" alt="" />
           <span class="deleteButton" (click)="removeImage()">Remove</span>
         </div>
       </div>
       <label class="buttonContainer">
-        <input
-          type="file"
-          name="imageURL"
-          (change)="uploadFile($event)"
-        />
+        <input type="file" name="imageURL" (change)="uploadFile($event)" />
         {{"Upload media"}}
       </label>
     </div>

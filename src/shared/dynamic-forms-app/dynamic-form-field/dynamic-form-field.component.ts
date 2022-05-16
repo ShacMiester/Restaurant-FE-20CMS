@@ -17,6 +17,7 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
   preview!: string;
   @Input() field!: FormBase<string>;
   @Input() form!: FormGroup;
+  environmentImageEndPoint = `${environment.store}Uploads/`
   openFromIcon(timepicker: { open: () => void }) {
     timepicker.open();
   }
@@ -68,9 +69,10 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
     formData.append('file', event.target.files[0])
     reader.readAsDataURL((event.target as HTMLInputElement).files[0])
     this.http.post(environment.imagesAPI, formData).subscribe(
-      res => {
-        this.form.controls['imageURL'].patchValue(JSON.stringify(res['image']))
-        console.log(res)
+      (res: any) => {
+        this.form.controls['imageURL'].patchValue(res.image)
+        this.image = res.image
+        this.preview = res.image
       }
     )
   }
