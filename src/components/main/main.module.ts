@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-categories/menu-item-option-categories.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -34,8 +35,7 @@ import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-cate
     CartComponent,
     HideElementDirective,
     WorkingHoursComponent,
-    MenuItemOptionCategoriesComponent
-
+    MenuItemOptionCategoriesComponent,
   ],
   imports: [
     CommonModule,
@@ -46,12 +46,12 @@ import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-cate
     MatIconModule,
     MainRoutingModule,
     MatTabsModule,
-    DynamicFormsAppModule
+    DynamicFormsAppModule,
+    MatSnackBarModule
   ],
   exports: [
     CartComponent,
     HideElementDirective,
-
   ],
   providers: []
 })

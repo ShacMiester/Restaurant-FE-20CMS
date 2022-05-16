@@ -97,3 +97,21 @@ mat-card {
         transform: scale(0.9);
     }
 }
+
+::ng-deep .mat-dialog-container {
+    overflow-x: hidden !important;
+    min-width: min-content !important;
+}
+
+a {
+    color: #72634e;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #c59d5f;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #c59d5f;
+    //border-radius: 5px;
+}
