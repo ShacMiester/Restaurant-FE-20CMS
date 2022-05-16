@@ -12,28 +12,18 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './options-form-to-be-renamed.component.html',
   styleUrls: ['./options-form-to-be-renamed.component.scss']
 })
-export class OptionsFormToBeRenamedComponent extends CrudService<any, number> implements OnInit, OnChanges {
+export class OptionsFormToBeRenamedComponent extends CrudService<any, number> implements OnInit {
 
   optionsForm: FormGroup = new FormGroup({});
-  fieldTypes = ['Check box', 'Multi select', 'Single select']
-  testingForm!: FormGroup
   type: 'add' | 'edit';
   paramID: number = 0;
-  @Input('menuID') id!: number
-  @Output() formValue: EventEmitter<any> = new EventEmitter<any>()
-  constructor(private fb: FormBuilder, protected override _http: HttpClient, private MatDialog: MatDialog, private router: ActivatedRoute,) {
+  constructor(private fb: FormBuilder, protected override _http: HttpClient, private router: ActivatedRoute,) {
     super(_http, 'MenuItems/CreateCategoryWithOptions');
   }
 
   ngOnInit() {
     this.constructForm();
     this.getFormValues()
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes)
-      console.log(changes)
-    // this.optionsFormValue.emit(this.optionsForm.value)
-
   }
 
   getFormValues() {
@@ -42,7 +32,8 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
         this.paramID = params.id
         this.type = 'edit';
         this._http.get(environment.storeApi + '/MenuItemOptionCategories/getByItemId?id=' + params.id).subscribe((options: any) => {
-          if (options) {
+          console.log('options: ', options)
+          if (options.length) {
             options.map((opt, index) => {
               opt['itemId'] = params.id
               this.addOption(opt)
@@ -52,11 +43,11 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
               })
             })
           }
+          else
+            this.type = 'add';
+
           this.optionsForm.patchValue(options)
         })
-      }
-      else {
-        this.type = 'add';
       }
     })
   }
@@ -66,6 +57,7 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
       itemOptions: this.fb.array([])
     });
   }
+
   options(): FormArray {
     return this.optionsForm.get('itemOptions') as FormArray;
   }
@@ -96,6 +88,7 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
 
   newOptionOptions(obj: any = {}): FormGroup {
     return this.fb.group({
+      id: obj.id || 0,
       name: obj.name || '',
       description: obj.description || '',
       imageURL: obj.imageURL || '',
@@ -113,49 +106,14 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
 
   onSubmit() {
     console.log(this.optionsForm.value)
+    console.log(this.type)
     switch (this.type) {
       case 'add':
-        this.save(this.optionsForm.value).subscribe()
+        this.save(this.optionsForm.controls['itemOptions'].value).subscribe()
         break;
       case 'edit':
-        this.save(this.optionsForm.value).subscribe()
-        break;
-      default:
+        this._http.post(environment.storeApi + '/MenuItems/UpdateCategoryWithOptions', this.optionsForm.controls['itemOptions'].value).subscribe()
         break;
     }
-    // this.formValue.emit(this.optionsForm.value)
-  }
-  nonTextOptions() {
-
-  }
-  fields: any = []
-  hasLimitChanged($event: any, index: number) {
-    // console.log($event)
-    // if ($event.checked)
-    //   this.options().controls[index].get('limit')?.enable()
-    // else
-    //   this.options().controls[index].get('limit')?.disable()
-    // console.log(this.optionsForm.controls['options'].controls)
-    // this.optionsForm.controls['options'].
-    // this.
-    // if($event)
-    // this.optionsForm.controls['limit'].enabled
-  }
-  limit: boolean = false
-  typeChange(event: any, index: number) {
-    switch (event) {
-      case 'Multi select':
-        this.limit = true;
-        break;
-
-      default:
-        this.limit = false;
-        break;
-    }
-    // this.options().insert(index, new FormControl('limit'))
-
-  }
-  optionsAvailable(optionIndex: number) {
-    // return this.options().controls[optionIndex].get('type')?.value != 'Multi select' && this.options().controls[optionIndex].get('type')?.value != 'Single select'
   }
 }

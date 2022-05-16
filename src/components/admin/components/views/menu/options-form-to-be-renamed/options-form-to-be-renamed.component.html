@@ -7,20 +7,14 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Label</mat-label>
             <input matInput [formControlName]="'name'">
-            <!-- <mat-error *ngIf="opt.controls['name']?.hasError('required')">Name is Required</mat-error> -->
           </mat-form-field>
-          <!-- <mat-checkbox [formControlName]="'min'" class="w-100" (change)="hasLimitChanged($event,optionIndex)"
-            [hidden]="this.options().controls[optionIndex].get('type')?.value !='Multi select'">
-            Limit selected Options</mat-checkbox> -->
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Minimum selections</mat-label>
             <input matInput [formControlName]="'min'" type="number" min="0">
-            <!-- <mat-error *ngIf="opt.controls['min']?.hasError('required')">Name is Required</mat-error> -->
           </mat-form-field>
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Maximum selections</mat-label>
             <input matInput [formControlName]="'max'" type="number" min="0">
-            <!-- <mat-error *ngIf="opt.controls['max']?.hasError('required')">Name is Required</mat-error> -->
           </mat-form-field>
 
           <div formArrayName="itemOptions" [hidden]="optionsAvailable(optionIndex)">
@@ -29,17 +23,14 @@
                 <mat-form-field appearance="outline">
                   <mat-label>Item name</mat-label>
                   <input matInput [formControlName]="'name'">
-                  <!-- <mat-error *ngIf="opt.controls['Name']?.hasError('required')">Name is Required</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                   <mat-label>Item description</mat-label>
                   <input matInput [formControlName]="'description'">
-                  <!-- <mat-error *ngIf="opt.controls['Name']?.hasError('required')">Name is Required</mat-error> -->
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                   <mat-label>Price</mat-label>
                   <input matInput [formControlName]="'addtionalPrice'" type="number">
-                  <!-- <mat-error *ngIf="opt.controls['Name']?.hasError('required')">Name is Required</mat-error> -->
                 </mat-form-field>
                 <button mat-button color="warn" (click)="removeOptionOptions(optionIndex,skillIndex)">
                   <mat-icon style="cursor: pointer;" class="mat-18">delete_forever</mat-icon>
@@ -62,8 +53,7 @@
     </div>
   </form>
   <div>
-    <button mat-raised-button type="button"  color="primary" (click)="addOption()"
-      matTooltip="Add new option">
+    <button mat-raised-button type="button" color="primary" (click)="addOption()" matTooltip="Add new option">
       <mat-icon class="mat-18">add</mat-icon>
     </button>
     <button mat-raised-button style="margin:0 10px" type="submit" (click)="onSubmit()"> submit</button>
