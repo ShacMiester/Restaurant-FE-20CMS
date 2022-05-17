@@ -2,30 +2,32 @@
   <mat-icon class="mat-18">arrow_back</mat-icon>
 </button></div>
 <ng-container *ngIf="!edit">
-<ul class="recipe-details d-flex list-unstyled m-0 justify-content-between" style="padding: 1.4em 0 1em;">
-  <li>
-    <div class="d-flex align-middle">
-      <mat-icon>access_time</mat-icon>
-      <span class="icon-details"> {{reservationFormValues.time}}</span>
-    </div>
-  </li>
-  <li>
-    <div class="d-flex align-middle">
-      <mat-icon>calendar_today</mat-icon>
-      <span class="icon-details"> {{reservationFormValues.date | date}}</span>
-    </div>
-  </li>
-  <li>
-    <div class="d-flex align-middle">
-      <mat-icon>person</mat-icon>
-      <span class="icon-details">{{reservationFormValues.numberOfPeople}}</span>
-    </div>
-  </li>
-</ul>
-<p class="description">
-  {{reservationFormValues.description? reservationFormValues.description: 'No description provided'}}</p>
-<footer><button mat-raised-button (click)="edit = !edit" class="edit__button">Edit</button></footer>
+    <ul class="recipe-details d-flex list-unstyled m-0 justify-content-between" style="padding: 1.4em 0 1em;">
+        <li>
+            <div class="d-flex align-middle">
+                <mat-icon class="icon-color">access_time</mat-icon>
+                <span class="icon-details"> {{reservationFormValues.time}}</span>
+            </div>
+        </li>
+        <li>
+            <div class="d-flex align-middle">
+                <mat-icon class="icon-color">calendar_today</mat-icon>
+                <span class="icon-details"> {{reservationFormValues.date | date}}</span>
+            </div>
+        </li>
+        <li>
+            <div class="d-flex align-middle">
+                <mat-icon class="icon-color">person</mat-icon>
+                <span class="icon-details">{{reservationFormValues.numberOfPeople}}</span>
+            </div>
+        </li>
+    </ul>
+    <p class="description">
+        {{reservationFormValues.description? reservationFormValues.description: 'No description provided'}}</p>
+    <footer>
+        <button mat-raised-button (click)="edit = !edit" class="edit__button">Edit</button>
+
+    </footer>
 </ng-container>
-<app-dynamic-form *ngIf="edit" mat-dialog-content [formFields]="reservationForm$" [formValues]="reservationFormValues"
-[title]="'reservation'" [disabled]="true" (newItemEvent)="reserve($event)">
+<app-dynamic-form *ngIf="edit" mat-dialog-content [formFields]="reservationForm$" [formValues]="reservationFormValues" [title]="'reservation'" [disabled]="true" (newItemEvent)="reserve($event)">
 </app-dynamic-form>
