@@ -13,7 +13,13 @@ import { CrudService } from 'src/components/admin/services/crud.service';
 export class ReservationTableComponent extends CrudService<any, number> implements OnInit {
   @Input() displayedColumns: string[] = []
   dataSource: any = []
-  hideBar: boolean = false
+  hideBar: boolean = false;
+  options: [
+    { key: 'Waiting for approval', value: 0 },
+    { key: 'Accepted', value: 1 },
+    { key: 'Rejected', value: 2 },
+    { key: 'Cancelled', value: 3 }
+  ]
   constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'reservations'); }
 
   ngOnInit(): void {
@@ -38,6 +44,7 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
   constructTableData(tableData: any) {
     this.dataSource = tableData
+    console.log("this.dataSource", this.dataSource)
     this.hideBar = true
     this.constructColumns(tableData)
   }
@@ -58,6 +65,7 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
       }
     })
   }
+  //now
   getRecord(row: any) {
     const dialogRef = this.dialog.open(ReservationDetailsComponent, {
       width: '100vw',
@@ -73,6 +81,29 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
       }
 
     });
+  }
+  openRecord(event){
+    console.log(event);
+    const dialogRef = this.dialog.open(ReservationDetailsComponent, {
+     // width: '100vw',
+     // minWidth: '100vw',
+       width: '100vw',
+       minWidth: 'fit-content',
+       maxWidth: '50%',
+      data: { item: event.row }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getReservationsData();
+        this.openSnackBar('Item was updated successfully')
+
+      }
+
+    });
+  }
+  print(data){
+    console.log("data", data)
   }
 }
 
