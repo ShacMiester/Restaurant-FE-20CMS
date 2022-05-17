@@ -10,11 +10,11 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
   @Input() dataSource = []
   @Input() title: string = 'Table'
   @Input() button_title = 'Add new item'
-  @Input() containsActionButtons!: boolean
+  @Input() containsActionButtons!: boolean;
   @Output() action = new EventEmitter<any>()
   @Input() containsTableAction = true
   @ContentChild(TemplateRef) actions!: TemplateRef<Element>;
-
+  @Input() hideDeleteButton: boolean = false;
   noDataWasFound = true
   constructor() { }
 

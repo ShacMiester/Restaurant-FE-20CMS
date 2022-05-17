@@ -9,6 +9,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDialogModule } from "@angular/material/dialog";
+import { UnifiedTableModule } from 'src/shared/components/unified-table/unified-table.module';
+import { BsDropdownModule,BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [ReservationTableComponent],
@@ -20,7 +22,14 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatRippleModule,
     MatProgressBarModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    UnifiedTableModule,
+    BsDropdownModule,
+
+
+  ],
+  providers:[
+    BsDropdownConfig
   ]
 })
 export class ReservationTableModule { }

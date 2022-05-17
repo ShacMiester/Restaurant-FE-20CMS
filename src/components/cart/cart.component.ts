@@ -31,6 +31,14 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
   ngOnInit(): void {
     this.Subscription.add(this.getTotal());
     this.Subscription.add(this.getCartItems());
+    this.CartService.data.subscribe(
+      total => {
+        if(total != null)
+        this.totalPriceItems = total;
+        else
+       this.getTotal();
+      }
+    )
   }
 
   getCartItems() {
@@ -52,7 +60,7 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.sidenav.toggle();
   }
   add(i, op) {
-    this.CartService.addToCart(i, op);//
+    this.CartService.addToCart(i, op, "add");//
     // this.calculateTotalPrice();
     this.Subscription.add(this.getTotal());
 

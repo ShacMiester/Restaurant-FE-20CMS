@@ -1,4 +1,4 @@
-<div class="container-fluid box-shadow main-container">
+<!-- <div class="container-fluid box-shadow main-container">
   <div class="title">
     <h3>Reservations</h3>
   </div>
@@ -29,4 +29,19 @@
     </table>
   </div>
   <ng-container *ngIf="!dataSource.length">no data was found</ng-container>
+</div> -->
+<div class="container-fluid styled-container">
+    <app-unified-table [dataSource]="dataSource" (action)="openRecord($event)" [hideDeleteButton]="true" [containsActionButtons]="true">
+        <ng-template let-data="data">
+
+            <!-- <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+                <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+                 Status <span class="caret"></span>
+              </button>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                    <li role="menuitem" ><a></a></li>
+                </ul>
+            </div> -->
+        </ng-template>
+    </app-unified-table>
 </div>
