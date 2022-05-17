@@ -21,7 +21,7 @@
           max</small>
         <div class="row">
           <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngFor="let option of category.itemOptions; ">
-            <div class="card card-selected mb-3 cursor-pointer" style="max-width: 540px;"
+            <div class="card card-selected mb-3 cursor-pointer"
               (click)="OnSelected(category, option, i)"
               [ngClass]="{'card-selected': option.isSelected , 'card-default': !option.isSelected }">
               <div class="row no-gutters">
