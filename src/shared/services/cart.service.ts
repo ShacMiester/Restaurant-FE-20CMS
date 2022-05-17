@@ -23,8 +23,15 @@ export class CartService {
       this.cartItems[menuItem].quantity -= 1;
 
     }
-      else {
+    else if(operation =="add") {
+      console.log("iddd", menuItem)
       this.cartItems[menuItem].quantity += 1;
+      //this.cartItems.push({ id: item.id, name: item.name, quantity: 1, price: item.price, optionIds: obj.optionIds})
+
+    }
+      else {
+      //this.cartItems[menuItem].quantity += 1;
+      this.cartItems.push({ id: item.id, name: item.name, quantity: 1, price: item.price, optionIds: obj.optionIds})
 
     }
     this.calculateTotalPrice();
@@ -52,13 +59,18 @@ export class CartService {
   calculateTotalPrice(){
     this.total_price = 0;
    let totalOptions = 0;
-
   this.cartItems.forEach(
     el => {
+      totalOptions = 0;
+
       el.optionIds.forEach( e =>{
       totalOptions += e.addtionalPrice;
-    })
-     this.total_price +=  el.price * el.quantity + totalOptions;
+    });
+    console.log("totalOptions",totalOptions, "el.id:" ,el.id)
+    console.log(" this.total_price",  this.total_price)
+
+     this.total_price +=  el.price * el.quantity + totalOptions *el.quantity;
+
     }
   );
   }
