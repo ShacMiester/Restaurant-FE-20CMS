@@ -14,7 +14,7 @@ export class WorkingHoursComponent extends CrudService<any, number> implements O
   subscriptions: Subscription = new Subscription();
   dataSource: any = [];
   constructor(protected override _http: HttpClient, private MatSnackBar: MatSnackBar, private router: Router) {
-    super(_http, 'working-hours');
+    super(_http, 'WorkingHours');
   }
 
   ngOnInit(): void {
