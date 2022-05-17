@@ -82,14 +82,14 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     });
   }
-  openRecord(event){
+  openRecord(event) {
     console.log(event);
     const dialogRef = this.dialog.open(ReservationDetailsComponent, {
-     // width: '100vw',
-     // minWidth: '100vw',
-       width: '100vw',
-       minWidth: 'fit-content',
-       maxWidth: '50%',
+      // width: '100vw',
+      // minWidth: '100vw',
+      width: '100vw',
+      minWidth: 'fit-content',
+      maxWidth: '50%',
       data: { item: event.row }
     });
 
@@ -102,8 +102,13 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     });
   }
-  print(data){
-    console.log("data", data)
+  changeStatus(data, status: number) {
+    data['reservationStatus'] = status
+    this.update(data, data.id).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.log(e),
+      complete: () => { this.getReservationsData() }
+    })
   }
 }
 
