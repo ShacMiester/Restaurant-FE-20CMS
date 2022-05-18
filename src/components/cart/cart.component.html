@@ -1,60 +1,60 @@
 <mat-sidenav-container [hidden]="currentRoute.includes('/admin')">
-    <div class="overlay"></div>
-    <mat-sidenav #sidenav mode="over" [opened]="false" [position]="'end'">
-        <mat-icon (click)="sidenav.toggle()" class="mat-18 close">close</mat-icon>
-        <div class="content-container d-flex h-100 flex-column">
+  <div class="overlay"></div>
+  <mat-sidenav #sidenav mode="over" [opened]="false" [position]="'end'">
+    <mat-icon (click)="sidenav.toggle()" class="mat-18 close">close</mat-icon>
+    <div class="content-container d-flex h-100 flex-column">
 
-            <div style=" padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div *ngFor="let i of shoppingCart; let id=index" class="shopping-cart">
-                    <img src="../assets/images/full.png" width="30%" alt="">
-                    <div class="d-flex flex-column justify-content-between text-center " style="height: fit-content;">
-                        <p>{{i.name}}</p>
-                        <div class="quantity d-flex flex-row">
-                            <mat-icon class="mat-18 cursor-pointer operation-icon" (click)="minus(i)">remove</mat-icon>
-                            <div>
-                                <p>{{i.quantity}}</p>
-                            </div>
-                            <mat-icon class="mat-18 cursor-pointer operation-icon" (click)="add(i)">add</mat-icon>
-                        </div>
-                    </div>
-                    <p class="specific-item-price mt-4">{{i.price * i.quantity}} $</p>
-                    <div class="border-dashed mt-1"></div>
-
-                </div>
-
+      <div style=" padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div *ngFor="let i of shoppingCart; let id=index" class="shopping-cart">
+          <img src="../assets/images/full.png" width="30%" alt="">
+          <div class="d-flex flex-column justify-content-between text-center " style="height: fit-content;">
+            <p>{{i.name}}</p>
+            <div class="quantity d-flex flex-row">
+              <mat-icon class="mat-18 cursor-pointer operation-icon" (click)="minus(i)">remove</mat-icon>
+              <div>
+                <p>{{i.quantity}}</p>
+              </div>
+              <mat-icon class="mat-18 cursor-pointer operation-icon" (click)="add(i)">add</mat-icon>
             </div>
-            <div class="checkout d-flex flex-column justify-content-around pb-4">
-                <ng-container class="total-items-container mb-2">
-                    <div class="total-items d-flex justify-content-between flex-row ">
-                        <p class="">Total Price</p>
-                        <p>{{totalPriceItems}}$</p>
-                    </div>
+          </div>
+          <p class="specific-item-price mt-4">{{i.price * i.quantity}} $</p>
+          <div class="border-dashed mt-1"></div>
 
-                    <div class="total-items d-flex justify-content-between flex-row">
-                        <p>Tax</p>
-                        <p>7.5$</p>
-                    </div>
-                    <div class="total-items d-flex justify-content-between flex-row">
-                        <p>Total</p>
-                        <p>{{totalPriceItems + 7.5}} $</p>
-                    </div>
-                </ng-container>
-                <div class="actions d-flex flex-row flex-wrap justify-content-around">
-                    <button mat-raised-button class="ptc" (click)="addOrders()">Proceed to checkout</button>
-
-                    <button mat-raised-button class="clear-cart cursor-pointer" (click)="clearCart()">
-                    <mat-icon class="mat-18 cursor-pointer">remove_shopping_cart</mat-icon>
-                    </button>
-                </div>
-            </div>
         </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <button mat-button class="position-fixed cart " (click)="sidenav.toggle()" *ngIf="shoppingCart.length">
+
+      </div>
+      <div class="checkout d-flex flex-column justify-content-around pb-4">
+        <ng-container class="total-items-container mb-2">
+          <div class="total-items d-flex justify-content-between flex-row ">
+            <p class="">Total Price</p>
+            <p>{{totalPriceItems}}$</p>
+          </div>
+
+          <div class="total-items d-flex justify-content-between flex-row">
+            <p>Tax</p>
+            <p>7.5$</p>
+          </div>
+          <div class="total-items d-flex justify-content-between flex-row">
+            <p>Total</p>
+            <p>{{totalPriceItems}} $</p>
+          </div>
+        </ng-container>
+        <div class="actions d-flex flex-row flex-wrap justify-content-around">
+          <button mat-raised-button class="ptc" (click)="addOrders()">Proceed to checkout</button>
+
+          <button mat-raised-button class="clear-cart cursor-pointer" (click)="clearCart()">
+            <mat-icon class="mat-18 cursor-pointer">remove_shopping_cart</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-button class="position-fixed cart " (click)="sidenav.toggle()" *ngIf="shoppingCart.length">
       <mat-icon class="mat-18" [matBadge]="shoppingCart.length">shopping_cart</mat-icon>
     </button>
-        <button class="position-fixed cart" mat-button *ngIf="!shoppingCart.length" [routerLink]="['menu']">
+    <button class="position-fixed cart" mat-button *ngIf="!shoppingCart.length" [routerLink]="['menu']">
       <mat-icon>add_shopping_cart</mat-icon>
     </button>
-    </mat-sidenav-content>
+  </mat-sidenav-content>
 </mat-sidenav-container>
