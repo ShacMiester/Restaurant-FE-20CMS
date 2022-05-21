@@ -41,6 +41,10 @@ export class AdminPanelService {
         title: 'Working hours',
         children: [{ title: 'Manage', link: 'working-hours' }],
       },
+      {
+        title: 'Kitchen',
+        children: [{ title: 'Kitchen Orders', link: 'kitchen' }],
+      },
     ]);
   }
 }
