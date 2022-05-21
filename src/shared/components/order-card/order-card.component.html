@@ -1,0 +1,71 @@
+<div class="card my-2" style=" height: fit-content; overflow-y: auto; overflow-x: hidden;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8 col-lg-8 col-sm-8">
+                        <div class="card-text" *ngIf="order.status !='Accept' && order.status !='Pickup' ">
+                            <h2 class="d-inline text-secondary text-center pb-1">{{order.status}} Order</h2> <span class="ml-2 text-primary">{{order.total}}$</span>
+
+                        </div>
+                        <div class="card-text" *ngIf="order.status =='Accept'">
+                            <h2 class="d-inline text-secondary text-center pb-1">Accepted Order </h2> <span class="ml-2 text-primary">{{order.total}}$</span>
+
+                        </div>
+                        <div class="card-text" *ngIf="order.status =='Pickup'">
+                            <h2 class="d-inline text-secondary text-center pb-1">Pickedup Order </h2> <span class="ml-2 text-primary">{{order.total}}$</span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-4" [ngSwitch]="order.status">
+                        <button *ngSwitchCase="'Pending'" type="button" class="btn btn-primary" (click)="changeStatusToAccepted(order)">Accept order</button>
+                        <button *ngSwitchCase="'Accept'" type="button" class="btn btn-primary" (click)="changeStatusToReady(order)">Ready order</button>
+                        <button *ngSwitchCase="'Ready'" type="button" class="btn btn-primary" (click)="changeStatusToPickup(order)">PickUp Order</button>
+                        <!-- <button *ngSwitchCase="'Pickup'" type="button" class="btn btn-primary">Finish Order</button> -->
+
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-footer" *ngIf=" order.orderItems.length != 0">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <h3 class="text-secondary my-1">Order Items : </h3>
+                        <div class="row">
+                            <div *ngFor="let item of order.orderItems" class="col-md-6 my-2 border-right border-bottom">
+                                <span class="mr-2"> Order Name:</span>
+                                <span class="text-muted">{{item.name}} </span>
+                                <span class="text-primary float-right">x{{item.quantity}}</span>
+                                <span style=" display: block;flex: 1 1 auto;"></span>
+                                <span class=" d-block">
+                          <h4 class="text-primary my-1"> Options: </h4>
+                              <p class="" *ngFor="let option of item.options">
+                            <span class=""> Name: </span>
+                                <span class="text-muted"> {{option.name}} </span>
+                                <span class="">, Description: </span>
+                                <span class="text-muted"> {{option.description}} </span>
+                                </p>
+                                </span>
+                            </div>
+                        </div>
+                        <p>
+
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
