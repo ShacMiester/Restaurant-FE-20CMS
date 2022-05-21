@@ -36,7 +36,7 @@ export class OrderCardComponent extends CrudService<any, number> implements OnIn
   }
   changeStatusToReady(order:any){
     this.save({id:order.id,status: "Ready"}).subscribe(
-     { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An has occurred ', "ok"),
+     { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
      complete:() =>{
       this.UpdateStatus.emit({ id:order.id,status: "Ready" })
      }
@@ -45,7 +45,7 @@ export class OrderCardComponent extends CrudService<any, number> implements OnIn
 
  changeStatusToPickup(order:any){
   this.save({id:order.id,status: "Pickup"}).subscribe(
-   { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An has occurred ', "ok"),
+   { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
    complete:() =>{
     this.UpdateStatus.emit({ id:order.id,status: "Pickup" })
    }
