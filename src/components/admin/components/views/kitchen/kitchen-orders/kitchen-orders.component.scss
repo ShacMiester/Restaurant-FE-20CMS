@@ -1,0 +1,29 @@
+::ng-deep .mat-tab-body-content {
+    overflow: hidden !important;
+}
+
+.card {
+    box-shadow: 0px 4px 10px #efe3e3;
+    border: unset;
+}
+
+.text-primary {
+    color: #c59d5f !important;
+}
+
+.text-secondary {
+    color: #ff5e14 !important;
+}
+
+.card-footer {
+    background-color: rgb(0 0 0 / 0%);
+    border-top: 1px solid rgb(200 167 167 / 13%);
+}
+
+::ng-deep .mat-ink-bar {
+    background-color: #ff5e14 !important;
+}
+
+::ng-deep .mat-tab-label.mat-tab-label-active {
+    color: #000 !important;
+}
