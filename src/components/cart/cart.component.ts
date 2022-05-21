@@ -1,4 +1,6 @@
-import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { Router } from '@angular/router';
+import { Subscription, map } from 'rxjs';
 import { CartService } from './../../shared/services/cart.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -22,9 +24,9 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
   constructor(
     private CartService: CartService,
     protected override _http: HttpClient,
-    private _snackBar: SnackbarService
+    private _snackBar: SnackbarService,
   ) {
-    super(_http, 'orders');
+    super(_http, 'orders/checkout');
   }
 
 
@@ -33,10 +35,10 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.Subscription.add(this.getCartItems());
     this.CartService.data.subscribe(
       total => {
-        if(total != null)
-        this.totalPriceItems = total;
+        if (total != null)
+          this.totalPriceItems = total;
         else
-       this.getTotal();
+          this.getTotal();
       }
     )
   }
@@ -80,32 +82,28 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     return this.totalPriceItems;
   }
   correctionData() {
-    let item = Object.assign({}, this.shoppingCart.map((e): any => {
-      e = {
-        "orderItems": [
-          {
-            "menuItemId": e.id,
-            "quantity": e.quantity,
-            "options": [
-              e.optionIds
-            ]
-          }
-        ]
-      }
+    const orderItems = { orderItems: [] }
+    const item = Object.assign({}, this.shoppingCart.map((e): any => {
+      orderItems['orderItems'].push({
+        "menuItemId": e.id,
+        "quantity": e.quantity,
+        "options": e.optionIds.map(option => { return option.id })
+      })
       return e;
     }
     ));
-    return item;
+    return orderItems;
   }
   addOrders() {
     let orders = this.correctionData();
     this.Subscription.add(this.save(orders).subscribe({
-      next: () => {
+      next: (v: any) => {
         this._snackBar.open("Orders Added Succefuly", "Ok")
-        this.clearCart()
+        window.open(v.url)
+        // this.clearCart()//review
       },
       error: () => this._snackBar.open("error has occurred", "Ok"),
-      complete: () => console.log("Complete")
+      complete: () => { }
     }))
   }
 

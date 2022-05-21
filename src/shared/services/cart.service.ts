@@ -12,14 +12,12 @@ id:number;
   total_price: number = 0;
   constructor() { }
 
-  addToCart(item: any, obj: any, operation?:string) { // obj :  is the complete object
-    console.log("From service : ",obj)
+  addToCart(item: any, obj: any, operation?: string) { // obj :  is the complete object
     const menuItem = this.cartItems.findIndex(x => x.id === item.id)
-    if (menuItem == -1){
-    console.log("service: obj. : ", { id: item.id, name: item.name, quantity: 1, price: item.price, optionIds: obj.optionIds})
-      this.cartItems.push({ id: item.id, name: item.name, quantity: 1, price: item.price, optionIds: obj.optionIds})
-     }
-     else if(operation =="minus"){
+    if (menuItem == -1) {
+      this.cartItems.push({ id: item.id, name: item.name, quantity: 1, price: item.price, optionIds: obj.optionIds })
+    }
+    else if (operation == "minus") {
       this.cartItems[menuItem].quantity -= 1;
 
     }
@@ -39,7 +37,7 @@ id:number;
     return of(this.cartItems)
   }
 
-  getTotalPrice(): Observable<any>{
+  getTotalPrice(): Observable<any> {
     this.total_price = JSON.parse(localStorage.getItem('total_price') || '0')
     return of(this.total_price)
   }
@@ -49,12 +47,12 @@ id:number;
     localStorage.setItem('total_price', JSON.stringify(0));
   }
 
-  calculateTotalPrice(){
+  calculateTotalPrice() {
     this.total_price = 0;
-   let totalOptions = 0;
-  this.cartItems.forEach(
-    el => {
-      totalOptions = 0;
+    let totalOptions = 0;
+    this.cartItems.forEach(
+      el => {
+        totalOptions = 0;
 
       el.optionIds.forEach( e =>{
       totalOptions += e.addtionalPrice *el.quantity;
@@ -63,8 +61,8 @@ id:number;
     console.log(" this.total_price",  this.total_price)
     this.total_price +=  el.price * el.quantity + totalOptions ;
 
-    }
-  );
+      }
+    );
   }
   sendData(data: any) {
     this.dataSource.next(data);

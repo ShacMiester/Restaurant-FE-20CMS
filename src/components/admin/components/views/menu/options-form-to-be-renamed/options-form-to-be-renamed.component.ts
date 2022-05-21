@@ -18,7 +18,7 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
   type: 'add' | 'edit';
   paramID: number = 0;
   constructor(private fb: FormBuilder, protected override _http: HttpClient, private router: ActivatedRoute,) {
-    super(_http, 'MenuItems/CreateCategoryWithOptions');
+    super(_http, 'MenuItems/CreateCategoriesWithOptions');
   }
 
   ngOnInit() {
@@ -112,7 +112,7 @@ export class OptionsFormToBeRenamedComponent extends CrudService<any, number> im
         this.save(this.optionsForm.controls['itemOptions'].value).subscribe()
         break;
       case 'edit':
-        this._http.post(environment.storeApi + '/MenuItems/UpdateCategoryWithOptions', this.optionsForm.controls['itemOptions'].value).subscribe()
+        this._http.post(environment.storeApi + '/MenuItems/UpdateCategoriesWithOptions', this.optionsForm.controls['itemOptions'].value).subscribe()
         break;
     }
   }

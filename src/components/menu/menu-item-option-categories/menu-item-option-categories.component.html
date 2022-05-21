@@ -1,12 +1,8 @@
-<div class="container">
+<img [src]="environment+menuItem.imageURL" class="dialog-headline" alt="">
+<div class="container-fluid">
   <div class="">
-    <h1 mat-dialog-title class="text-primary">Choose Option</h1>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column text-center">
       <div class="col-md-12 col-lg-12 col-sm-12 mb-4">
-        <div>
-          <img src="../../../assets/images/original-_1_.png" class=" m-auto img-custom" alt="..." width="100%"
-            style="object-fit: contain; max-width: 500px;">
-        </div>
       </div>
       <div class="col-md-12 col-lg-12 col-sm-12 query-menu">
         <h1 class="title"> {{menuItem.name}} </h1>
@@ -14,6 +10,7 @@
         <p class=" text-primary"> {{menuItem.price}}$ </p>
       </div>
     </div>
+    <h1 mat-dialog-title class="text-primary">Choose Option</h1>
     <div class="row justify-content-center">
       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngFor="let category of categoryOptionList; let i=index">
         <h3 class="mb-0"> {{category.name}} :</h3>
@@ -21,13 +18,12 @@
           max</small>
         <div class="row">
           <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngFor="let option of category.itemOptions; ">
-            <div class="card card-selected mb-3 cursor-pointer"
-              (click)="OnSelected(category, option, i)"
+            <div class="card card-selected mb-3 cursor-pointer" (click)="OnSelected(category, option, i)"
               [ngClass]="{'card-selected': option.isSelected , 'card-default': !option.isSelected }">
               <div class="row no-gutters">
-                <div class="col-md-4 col-lg-4 col-sm2 col-xs-2">
-                  <img src="../../../assets/images/original-_1_.png" class="card-img" alt="..." style="    height: 100%;
-                                  object-fit: cover;">
+                <div class="">
+                  <img src="../../../assets/images/original-_1_.png" class="card-img" alt="..." style="max-height: 150px;
+                                  object-fit: contain;">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
