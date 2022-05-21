@@ -5,6 +5,7 @@ import { MenuTableComponent } from './../components/views/menu/menu-table/menu-t
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KitchenOrdersComponent } from '../components/views/kitchen/kitchen-orders/kitchen-orders.component';
 
 const routes: Routes = [{
   component: AdminComponent,
@@ -75,7 +76,11 @@ const routes: Routes = [{
         path: 'menu-items-options',
         loadChildren: () =>
           import('../components/views/menu/options-form-to-be-renamed/options-form-to-be-renamed.module').then(m => m.OptionsFormToBeRenamedModule)
-      }
+      },
+      {
+        path: 'kitchen',
+        component: KitchenOrdersComponent
+      },
     ]
 }];
 
