@@ -94,7 +94,11 @@ mat-icon {
   margin: 0.5em;
   z-index: 1200;
 }
-
+@media (min-width: 1019px) {
+  .card-img{
+      max-height: 150px !important;
+  }
+}
 @media (max-width: 760px) {
   .query-menu {
     border-bottom: solid 1px #bab4b4;

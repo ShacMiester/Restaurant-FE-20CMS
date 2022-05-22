@@ -7,26 +7,28 @@ import { MenuCategoriesComponent } from './../components/views/menu/menu-categor
 import { SharedModule } from './../../../shared/modules/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserInfoComponent } from "../components/views/user-info/user-info.component";
+import { UserInfoComponent } from '../components/views/user-info/user-info.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { AdminComponent } from './admin.component'
-import { MatListModule } from "@angular/material/list";
+import { AdminComponent } from './admin.component';
+import { MatListModule } from '@angular/material/list';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { MatDialogModule } from "@angular/material/dialog";
-import { ReservationDetailsComponent } from "../components/views/reservation-table/reservation-details/reservation-details.component";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReservationDetailsComponent } from '../components/views/reservation-table/reservation-details/reservation-details.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepickerModule, } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { KitchenOrdersComponent } from './../components/views/kitchen/kitchen-orders/kitchen-orders.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     CateringDetailsComponent,
     ReservationDetailsComponent,
     MenuItemSpecialStandAloneFormComponent,
-    KitchenOrdersComponent
+    KitchenOrdersComponent,
   ],
   imports: [
     CommonModule,
@@ -56,8 +58,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCheckboxModule,
     NgxMatTimepickerModule,
     MatDatepickerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule,
+    MatRadioModule
   ],
-  providers: [AdminPanelService]
+  providers: [AdminPanelService],
 })
-export class AdminModule { }
+export class AdminModule {}

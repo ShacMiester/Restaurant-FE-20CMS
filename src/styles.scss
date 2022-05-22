@@ -55,6 +55,9 @@ body {
   background-color: #c59d5f;
 }
 
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #c59d5f!important;
+}
 button {
   &.generic {
     border: none;

@@ -36,7 +36,6 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
       next: (order: any) => {
         if (order) {
           this.order = order;
-          this.showMatSpinner = false;
           this.updateStatusMessage(order.status);
         }
         // this.order.status = 'Pending'
@@ -47,9 +46,10 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
 
   getQueryParams() {
     this.router.queryParams.subscribe((params: any) => {
-      console.log(params);
-      if (params['OrderID'] != null || params['OrderID'] != undefined)
+      if (params['OrderID'] != null || params['OrderID'] != undefined){
         this.getOrder(params.OrderID);
+        localStorage.setItem('order',params['OrderID'])
+      }
       else this.navigateToPageNotFound();
     });
   }
@@ -74,5 +74,8 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
       default:
         break;
     }
+    setTimeout(() => {
+    this.showMatSpinner = false;
+    }, 400);
   }
 }

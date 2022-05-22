@@ -16,6 +16,7 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
   @ContentChild(TemplateRef) actions!: TemplateRef<Element>;
   @Input() hideDeleteButton: boolean = false;
   noDataWasFound = true
+  @Input() contentEditable: boolean = true;
   constructor() { }
 
   ngOnInit(): void {

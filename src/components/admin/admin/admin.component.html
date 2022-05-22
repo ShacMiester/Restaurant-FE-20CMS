@@ -6,18 +6,16 @@
         <mat-expansion-panel class="bg-transparent" *ngFor="let item of sideMenuItems$">
           <mat-expansion-panel-header>
             <mat-panel-title class="text-white">
-              {{item.title}}
+              {{ item.title }}
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-nav-list>
-            <a class="text-white" *ngFor="let child of item.children" [routerLink]="[child.link]"
-              mat-list-item>{{child.title}}</a>
+            <a class="text-white" *ngFor="let child of item.children" [routerLink]="[child.link]" mat-list-item>{{
+              child.title }}</a>
           </mat-nav-list>
         </mat-expansion-panel>
       </mat-accordion>
     </ng-container>
-
-
   </mat-drawer>
   <mat-drawer-content>
     <div class="w-100 upper-nav">
@@ -25,18 +23,29 @@
         <button mat-button>
           <mat-icon>notifications</mat-icon>
         </button>
-        <button mat-button>
-          <mat-icon>settings</mat-icon>
+        <button mat-icon-button [matMenuTriggerFor]="menu" color="secondary" matTooltip="Change location">
+          <mat-icon>location_on</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button *ngFor="let branch of branches" mat-menu-item (click)="changeLocation(branch.id)">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+              [(ngModel)]="selectedBranch">
+              <mat-radio-button [value]="branch.id">
+                {{branch.name}}
+              </mat-radio-button>
+            </mat-radio-group>
+            <!-- {{ branch.name }} -->
+          </button>
+        </mat-menu>
       </div>
 
       <div class="position-absolute sidenav-tab">
-        <button mat-button (click)="sidenav.toggle()" class="position-absolute" style=" left: 0; top: 0;">
+        <button mat-button (click)="sidenav.toggle()" class="position-absolute" style="left: 0; top: 0">
           <mat-icon class="mat-18">menu</mat-icon>
         </button>
       </div>
     </div>
-    <div class="container-fluid" style="padding: 20px;">
+    <div class="container-fluid" style="padding: 20px">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>
