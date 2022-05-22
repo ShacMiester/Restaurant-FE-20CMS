@@ -11,9 +11,9 @@ import { HttpClient } from "@angular/common/http";
 export class HeaderService {
   controller: string = 'products'
   someMenu: HeaderCarouselItem[] = [
-    { label: 'Lorem ipsum dolor sit', show: true, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est gege.', image: '../assets/images/gallery/flafelHummus.png', buttonText: 'Lorem Ipsum', buttonLink: 'Lorem Ipsum' },
-    { label: 'Lorem ipsum dolor sit', show: false, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: '../assets/images/original-_2_.png',buttonText:'Catering',buttonLink:'catering'},
-    { label: 'Lorem ipsum dolor sit', show: true, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: '../assets/images/original_1.png',buttonText:'Lorem Ipsum',buttonLink:'LoremIpsum' }
+    { label: 'Lorem ipsum dolor sit', show: true, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est gege.', image: '../assets/images/gallery/flafelHummus.png', buttonText: 'DoorDash', buttonLink: 'https://www.doordash.com/' },
+    { label: 'Lorem ipsum dolor sit', show: false, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: '../assets/images/original-_2_.png', buttonText: 'Catering', buttonLink: 'catering' },
+    { label: 'Lorem ipsum dolor sit', show: true, description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.', image: '../assets/images/original_1.png', buttonText: 'Lorem Ipsum', buttonLink: 'LoremIpsum' }
   ]
   constructor(private HttpClient: HttpClient, private auth: AuthInterceptorService) { }
   nextPage: number = 0

@@ -1,0 +1,87 @@
+<mat-spinner
+  style="margin:0 auto; position: absolute; top: 50%;left: 47%;"
+></mat-spinner>
+<p
+  style="    margin: 0 auto;
+position: absolute;
+top: 54%;
+left: 50%;
+font-size: 19px;
+"
+  class="rotate"
+>
+  loading
+</p>
+<app-descriptive-block
+  [subtitle]="'WE ARE PROCESSING YOUR ORDER'"
+  [content]="'Sit back and chill'"
+  [containsButton]="false"
+  [styling]="{'background-image':'url(http://www.indiancatering.sg/blog/wp-content/uploads/2017/06/Catering-in-Singapore-Indian-Catering-1.jpg)'}"
+>
+</app-descriptive-block>
+<div
+  class="d-flex justify-content-between mb-5 mt-5 container-fluid"
+  style="font-size: 22px;"
+>
+  <p>{{info.date | date}}</p>
+  <p>Order #{{order?.id}}</p>
+  <p>${{order.total}}</p>
+</div>
+<app-hr></app-hr>
+<div class="container-fluid" style="margin-top: 10px;">
+  <div class="header">
+    <div class="order-type" style="font-size: 22px; margin-top: 70px;">
+      <p>Store Pickup</p>
+      <p style="font-weight: 500; font-size: 24px; line-height: 40px;">
+        We're processing your order
+      </p>
+    </div>
+    <div class="kitchen-location" style="font-size: 22px;">
+      <p><span style="font-weight: 500;">Jasmine Grill Location A</span></p>
+      <p class="number">Street O Block A +1 123 456 789</p>
+    </div>
+    <div class="order-percent" style="margin-top: 70px;">
+      <div class="d-flex flex-row align-items-center position-relative">
+        <img
+          style="width:60px;"
+          src="../../assets/images/gallery/order.png"
+          alt=""
+        />
+        <mat-progress-bar
+          [mode]="order.status == 'Pending'? 'indeterminate':'determinate'"
+          [value]="order.status != 'Pending'? 100: 0"
+        ></mat-progress-bar>
+
+        <img
+          src="../../assets//images/gallery/yes.png"
+          alt=""
+          [ngClass]="{'inactive':order.status !='Pending'? false:true}"
+        />
+        <mat-progress-bar
+          [mode]="order.status =='Accepted'?'indeterminate':'determinate'"
+          [value]="order.status != 'Accepted' && order.status != 'Pending'? 100: 0"
+        ></mat-progress-bar>
+
+        <img
+          src="../../assets/images/gallery/cooking.png"
+          alt=""
+          [ngClass]="{'inactive': order.status == 'Ready'? false:true}"
+        />
+        <mat-progress-bar
+          [mode]="order.status =='Preparing'?'indeterminate':'determinate'"
+          [value]="order.status != 'Accepted' && order.status != 'Pending' && order.status != 'Preparing'? 100: 0"
+        >
+        </mat-progress-bar>
+
+        <img
+          src="../../assets/images/gallery/pickup.png"
+          alt=""
+          [ngClass]="{'inactive':order.status == 'Ready'? false:true}"
+        />
+      </div>
+    </div>
+    <div class="text-center" style="margin: 40px 0;">
+      <p>{{statusMessage}}</p>
+    </div>
+  </div>
+</div>

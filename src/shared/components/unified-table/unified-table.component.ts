@@ -34,6 +34,12 @@ export class UnifiedTableComponent implements OnInit, OnChanges {
       this.displayedColumns.push('actions')
       if (this.dataSource.length) this.noDataWasFound = false
     }
+    if(changes['displayedColumns']?.currentValue.length > 0){
+      this.displayedColumns = changes['displayedColumns'].currentValue
+      this.displayedColumns.push('actions')
+      this.dataSource = changes['dataSource'].currentValue
+      if (this.dataSource.length) this.noDataWasFound = false
+    }
   }
 
   performAction(row: any, action: 'edit' | 'delete' | 'add') {
