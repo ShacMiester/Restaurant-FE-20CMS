@@ -22,6 +22,7 @@ import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-categories/menu-item-option-categories.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MenuPageComponent } from '../menu-page/menu-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
     HideElementDirective,
     WorkingHoursComponent,
     MenuItemOptionCategoriesComponent,
+    MenuPageComponent,
+
   ],
   imports: [
     CommonModule,

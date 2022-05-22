@@ -68,17 +68,15 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
    }
 
    changeStatus(event){
-     let order = this.searchForItem(this.allOrderList, event.id);
+     console.log("event", event)
     switch (event.status) {
       case 'Accept':
         this.pendingOrderList = this.deleteItemFromList(this.pendingOrderList, event.id);
-       // this.inProgressOrderList.splice(0,0, order);
-       this.getInProgressOrders();
+        this.inProgressOrderList.splice(0,0, event);
         break;
       case 'Ready':
         this.inProgressOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
-      //  this.readyOrderList.splice(0,0, order);
-      this.getReadyOrders(this.allOrderList);
+        this.readyOrderList.splice(0,0, event);
       console.log("ready",       this.readyOrderList
       )
         console.log("From Ready")
@@ -86,8 +84,7 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
         break;
         case 'Pickup':
           this.readyOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
-        //  this.pickUpOrderList.splice(0,0, order); // waiting for edit response from backend
-          this.getPickUpOrders();
+          this.pickUpOrderList.splice(0,0, event); // waiting for edit response from backend
           console.log("From Pickup")
           break;
 
