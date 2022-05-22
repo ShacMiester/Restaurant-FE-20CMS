@@ -11,10 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainModule } from 'src/components/main/main.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MenuPageComponent } from '../components/menu-page/menu-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuPageComponent,
   ],
   imports: [
     BrowserModule,
