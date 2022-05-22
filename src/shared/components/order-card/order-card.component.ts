@@ -25,29 +25,35 @@ export class OrderCardComponent extends CrudService<any, number> implements OnIn
   }
   changeStatusToAccepted(order:any){
      this.save({id:order.id,status: "Accept"}).subscribe(
-      { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An has occurred ', "ok"),
-      complete:() =>{this.acceptedOrdedrList = this.acceptedOrdedrList.filter(element =>
-        element.id !== order.id
-        );
-        console.log("this.acceptedOrdedrList",this.acceptedOrdedrList)
-        this.UpdateStatus.emit({ id:order.id,status: "Accept" })
-      }
+      { next: (res) => {   console.log("res",res)
+     this.UpdateStatus.emit(res)
+     this._snackbarService.open('Order Updated ', "ok")
+  }
+   , error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
+   complete:() =>{
+   }
     });
   }
   changeStatusToReady(order:any){
     this.save({id:order.id,status: "Ready"}).subscribe(
-     { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
-     complete:() =>{
-      this.UpdateStatus.emit({ id:order.id,status: "Ready" })
-     }
+      { next: (res) => {   console.log("res",res)
+      this.UpdateStatus.emit(res)
+      this._snackbarService.open('Order Updated ', "ok")
+   }
+    , error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
+    complete:() =>{
+    }
    });
  }
 
  changeStatusToPickup(order:any){
   this.save({id:order.id,status: "Pickup"}).subscribe(
-   { next: () => this._snackbarService.open('Order Updated ', "ok"), error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
+   { next: (res) => {   console.log("res",res)
+     this.UpdateStatus.emit(res)
+     this._snackbarService.open('Order Updated ', "ok")
+  }
+   , error: () =>  this._snackbarService.open('An error has occurred ', "ok"),
    complete:() =>{
-    this.UpdateStatus.emit({ id:order.id,status: "Pickup" })
    }
  });
 }
