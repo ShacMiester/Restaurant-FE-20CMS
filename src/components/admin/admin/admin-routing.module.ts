@@ -78,6 +78,11 @@ const routes: Routes = [{
           import('../components/views/menu/options-form-to-be-renamed/options-form-to-be-renamed.module').then(m => m.OptionsFormToBeRenamedModule)
       },
       {
+        path: 'orders',
+        loadChildren: () =>
+          import('../components/views/refunds/refunds.module').then(m => m.RefundsModule)
+      },
+      {
         path: 'kitchen',
         component: KitchenOrdersComponent
       },

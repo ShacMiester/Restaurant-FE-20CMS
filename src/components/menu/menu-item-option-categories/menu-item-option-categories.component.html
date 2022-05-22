@@ -1,53 +1,85 @@
-<img [src]="environment+menuItem.imageURL" class="dialog-headline" alt="">
+<img [src]="environment+menuItem.imageURL" class="dialog-headline" alt="" />
 <div class="container-fluid">
   <div class="">
     <div class="d-flex flex-column text-center">
-      <div class="col-md-12 col-lg-12 col-sm-12 mb-4">
-      </div>
-      <div class="col-md-12 col-lg-12 col-sm-12 query-menu">
-        <h1 class="title"> {{menuItem.name}} </h1>
-        <p class=""> {{menuItem.description}} </p>
-        <p class=" text-primary"> {{menuItem.price}}$ </p>
+      <div class="col-md-12 col-lg-12 col-sm-12 mb-4"></div>
+      <div class="col-md-12 col-lg-12 col-sm-12 query-menu text-left">
+        <h1 class="title">{{menuItem.name}}</h1>
+        <p class="">{{menuItem.description}}</p>
+        <p class=" text-primary">{{menuItem.price}}$</p>
       </div>
     </div>
     <h1 mat-dialog-title class="text-primary">Choose Option</h1>
     <div class="row justify-content-center">
-      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngFor="let category of categoryOptionList; let i=index">
-        <h3 class="mb-0"> {{category.name}} :</h3>
-        <small class="text-muted d-block mb-3">{{category.min}} required to select and {{category.max}} is the
-          max</small>
+      <div
+        class="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+        *ngFor="let category of categoryOptionList; let i=index"
+      >
+        <h3 class="mb-0">{{category.name}} :</h3>
+        <small class="text-muted d-block mb-3"
+          >{{category.min}} required to select and {{category.max}} is the
+          max</small
+        >
         <div class="row">
-          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngFor="let option of category.itemOptions; ">
-            <div class="card card-selected mb-3 cursor-pointer" (click)="OnSelected(category, option, i)"
-              [ngClass]="{'card-selected': option.isSelected , 'card-default': !option.isSelected }">
+          <div
+            class="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+            *ngFor="let option of category.itemOptions; "
+          >
+            <div
+              class="card card-selected mb-3 cursor-pointer"
+              (click)="OnSelected(category, option, i)"
+              [ngClass]="{'card-selected': option.isSelected , 'card-default': !option.isSelected }"
+            >
               <div class="row no-gutters">
                 <div class="">
-                  <img src="../../../assets/images/original-_1_.png" class="card-img" alt="..." style="max-height: 150px;
-                                  object-fit: contain;">
+                  <img
+                    src="../../../assets/images/original-_1_.png"
+                    class="card-img"
+                    alt="..."
+                    style="max-height: 150px;
+                                  object-fit: contain;"
+                  />
                 </div>
                 <div class="col-md-8">
-                  <div class="card-body">
-                    <h2 class="card-title text-primary"> {{option.name}} </h2>
-                    <p class="card-text text-muted"> {{option.description}} </p>
-                    <p class="card-text text-muted"> {{option.addtionalPrice}}<span class="text-primary">$ </span></p>
+                  <div class="card-body start">
+                    <h2 class="card-title text-primary">{{option.name}}</h2>
+                    <p class="card-text text-muted">{{option.description}}</p>
+                    <p class="card-text text-muted">
+                      {{option.addtionalPrice}}<span class="text-primary"
+                        >$
+                      </span>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-  <div mat-dialog-actions class="footer d-flex justify-content-between flex-row flex-wrap  mt-2">
-    <button mat-button mat-dialog-close="false" class="btn btn-light" type="button"
-      (click)="CloseDialog()">Cancel</button>
+  <div
+    mat-dialog-actions
+    class="footer d-flex justify-content-between flex-row flex-wrap  mt-2"
+  >
+    <button
+      mat-button
+      mat-dialog-close="false"
+      class="btn btn-light"
+      type="button"
+      (click)="CloseDialog()"
+    >
+      Cancel
+    </button>
     <div style="flex: 1 1 auto;"></div>
-    <button mat-button mat-dialog-close="true" class="btn btn-primary" type="button" (click)="AddToCart()">Add To
-      Cart</button>
-
+    <button
+      mat-button
+      mat-dialog-close="true"
+      class="btn btn-primary"
+      type="button"
+      (click)="AddToCart()"
+    >
+      Add To Cart
+    </button>
   </div>
-
 </div>

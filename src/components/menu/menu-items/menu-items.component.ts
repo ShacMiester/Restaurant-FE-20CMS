@@ -49,7 +49,7 @@ export class MenuItemsComponent extends CrudService<any, number> implements OnIn
 
   addToCart(item: any) {
     const dialogRef = this.dialog.open(MenuItemOptionCategoriesComponent, {
-      width: '60%',
+      width: '50%',
       height: '80vh', data: { item: item, form: this.formFields }
     });
     dialogRef.afterClosed().subscribe(itemObj => {

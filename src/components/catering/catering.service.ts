@@ -42,7 +42,7 @@ export class CateringService {
   }
   getCateringForm() {
     let branchesList = [];
-    this._http.get(environment.storeApi + 'branch').subscribe((branches: any) => {
+    this._http.get(environment.storeApi + '/branch').subscribe((branches: any) => {
       branches.map(branch => {
         branchesList.push({ key: branch.name, value: branch.id })
       })

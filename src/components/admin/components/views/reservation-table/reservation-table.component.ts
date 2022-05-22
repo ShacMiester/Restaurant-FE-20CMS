@@ -14,12 +14,7 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
   @Input() displayedColumns: string[] = []
   dataSource: any = []
   hideBar: boolean = false;
-  options: [
-    { key: 'Waiting for approval', value: 0 },
-    { key: 'Accepted', value: 1 },
-    { key: 'Rejected', value: 2 },
-    { key: 'Cancelled', value: 3 }
-  ]
+
   constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'reservations'); }
 
   ngOnInit(): void {

@@ -5,7 +5,7 @@
     <div class="carousel-caption">
       <h3>{{item.label}}</h3>
       <p>{{item.description}}</p>
-      <button *ngIf="item.buttonLink" mat-raised-button [routerLink]="['menu']" class="generic">{{item.buttonText}}</button>
+      <button *ngIf="item.buttonLink" mat-raised-button (click)="navigateToLink(item.buttonLink)" class="generic">{{item.buttonText}}</button>
     </div>
   </ng-template>
 </ngb-carousel>
