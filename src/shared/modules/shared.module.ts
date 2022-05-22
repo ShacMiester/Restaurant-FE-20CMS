@@ -27,13 +27,14 @@ import { TableComponent } from '../components/table/table.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from "@angular/material/card";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OrderCardComponent } from '../components/order-card/order-card.component';
 // import { ToastComponent } from '../components/toast/toast.component';
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, TableComponent, ],
+  declarations: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, TableComponent, OrderCardComponent],
   imports: [CommonModule, MatButtonModule, MatIconModule, MatBadgeModule, NgbCollapseModule, ReactiveFormsModule, NgbCarouselModule, RouterModule, MatGridListModule, MatDialogModule, FormsModule, DynamicFormsAppModule, MatSidenavModule, MatTableModule, MatTooltipModule, NgbModule],
-  exports: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, MatSidenavModule, MatButtonModule, MatIconModule, MatBadgeModule, MatExpansionModule, FormsModule, DynamicFormsAppModule, MatTableModule, TableComponent, MatTooltipModule, MatCardModule, RouterModule, ReactiveFormsModule, FormsModule, NgbModule, ],
+  exports: [NavbarComponent, FooterComponent, CarouselComponent, DescriptiveBlockComponent, HrComponent, GridistComponent, ModalComponent, MatSidenavModule, MatButtonModule, MatIconModule, MatBadgeModule, MatExpansionModule, FormsModule, DynamicFormsAppModule, MatTableModule, TableComponent, MatTooltipModule, MatCardModule, RouterModule, ReactiveFormsModule, FormsModule, NgbModule, OrderCardComponent],
   providers: [UserService, AuthInterceptorService],
 })
 export class SharedModule { }

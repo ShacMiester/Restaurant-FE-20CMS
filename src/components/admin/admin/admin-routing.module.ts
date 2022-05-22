@@ -5,6 +5,7 @@ import { MenuTableComponent } from './../components/views/menu/menu-table/menu-t
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KitchenOrdersComponent } from '../components/views/kitchen/kitchen-orders/kitchen-orders.component';
 
 const routes: Routes = [{
   component: AdminComponent,
@@ -80,7 +81,11 @@ const routes: Routes = [{
         path: 'orders',
         loadChildren: () =>
           import('../components/views/refunds/refunds.module').then(m => m.RefundsModule)
-      }
+      },
+      {
+        path: 'kitchen',
+        component: KitchenOrdersComponent
+      },
     ]
 }];
 

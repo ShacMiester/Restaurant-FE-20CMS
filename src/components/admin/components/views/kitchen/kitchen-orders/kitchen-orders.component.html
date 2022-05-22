@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+    <mat-tab-group mat-align-tabs="start">
+
+        <mat-tab label="All Orders">
+            <ng-container *ngTemplateOutlet="all"></ng-container>
+        </mat-tab>
+
+        <mat-tab label="Pending Orders">
+            <ng-container *ngTemplateOutlet="pending"> </ng-container>
+        </mat-tab>
+        <mat-tab label="In Progress Orders">
+            <ng-container *ngTemplateOutlet="inProgress"> </ng-container>
+        </mat-tab>
+        <mat-tab label="Ready Orders">
+
+            <ng-container *ngTemplateOutlet="ready"> </ng-container>
+        </mat-tab>
+        <mat-tab label="Pickedup Orders">
+
+            <ng-container *ngTemplateOutlet="pickup"> </ng-container>
+        </mat-tab>
+
+
+    </mat-tab-group>
+
+</div>
+<ng-template #all>
+
+    <div class="row my-2">
+        <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let order of allOrderList">
+
+            <app-order-card [order]="order" (UpdateStatus)="changeStatus($event)"></app-order-card>
+
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #pending>
+    <div class="row my-2">
+        <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let order of pendingOrderList">
+            <app-order-card [order]="order" (UpdateStatus)="changeStatus($event)"></app-order-card>
+        </div>
+    </div>
+</ng-template>
+<ng-template #inProgress>
+    <div class="row my-2">
+        <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let order of inProgressOrderList">
+            <app-order-card [order]="order" (UpdateStatus)="changeStatus($event)"></app-order-card>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #ready>
+    <div class="row my-2">
+        <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let order of readyOrderList">
+            <app-order-card (UpdateStatus)="changeStatus($event)" [order]="order"></app-order-card>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #pickup>
+    <div class="row my-2">
+        <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let order of pickUpOrderList">
+            <app-order-card [order]="order" (UpdateStatus)="changeStatus($event)"></app-order-card>
+        </div>
+    </div>
+</ng-template>

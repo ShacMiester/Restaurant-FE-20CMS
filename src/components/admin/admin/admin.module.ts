@@ -25,6 +25,8 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule, } from '@angular/material/datepicker';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { KitchenOrdersComponent } from './../components/views/kitchen/kitchen-orders/kitchen-orders.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     UserInfoComponent,
     CateringDetailsComponent,
     ReservationDetailsComponent,
-    MenuItemSpecialStandAloneFormComponent
+    MenuItemSpecialStandAloneFormComponent,
+    KitchenOrdersComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +56,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MatCheckboxModule,
     NgxMatTimepickerModule,
     MatDatepickerModule,
+    MatTabsModule
   ],
   providers: [AdminPanelService]
 })
