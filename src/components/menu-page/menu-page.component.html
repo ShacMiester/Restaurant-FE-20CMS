@@ -1,20 +1,23 @@
 <div class="app-menu">
 
-
     <div class="row">
         <div class="col-md-12" *ngFor="let obj of itemList">
 
-            <div class="container-fluid position-relative main-container" style="height: 400px; background: url(../../assets/images/mccain-fries-and-appetizers.jpg);
+            <!-- <app-descriptive-block [title]="obj.category" [subtitle]="'Delicious'" [containsButton]="false" [styling]="{'background-image':'url(../../assets/images/mccain-fries-and-appetizers.jpg)', 'height': '300px'}">
+            </app-descriptive-block> -->
+
+
+            <div class="container-fluid position-relative main-container" style="height: 300px; background: url(../../assets/images/background_solid.png);
     ">
                 <div class="overlay"></div>
                 <div class="container text-center position-relative text-white">
-                    <h1 class="title font-r text-primary mt-5"> {{obj.category}}</h1>
-                    <p class="sub-title">Delicious </p>
+                    <h1 class="title font-r text-primary pb-0 mb-0 mt-5"> {{obj.category}}</h1>
+                    <p class="sub-title mt-3">Delicious </p>
                 </div>
             </div>
             <app-hr></app-hr>
             <div class="container my-5" style="height: fit-content; ">
-                <h4 class="text-secondary text-center font-items mb-3">{{obj.category}} items</h4>
+                <h3 class="text-secondary text-center font-items mb-3">{{obj.category}} items</h3>
                 <div class="row">
                     <div class="col-md-6 col-lg-6" *ngFor="let item of obj.items">
                         <h1 class=" d-inline"> {{item.name}} </h1>
