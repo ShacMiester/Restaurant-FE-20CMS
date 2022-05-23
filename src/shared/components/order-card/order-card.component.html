@@ -4,33 +4,26 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8 col-lg-8 col-sm-8">
-                        <div class="card-text" *ngIf="order.status !='Accept' && order.status !='Pickup' ">
+                        <div class="card-text" *ngIf="order.status !='InProgress' && order.status !='PickedUp' ">
                             <h2 class="d-inline text-secondary text-center pb-1">{{order.status}} Order</h2> <span class="ml-2 text-primary">{{order.total}}$</span>
 
                         </div>
-                        <div class="card-text" *ngIf="order.status =='Accept'">
+                        <div class="card-text" *ngIf="order.status =='InProgress'">
                             <h2 class="d-inline text-secondary text-center pb-1">Accepted Order </h2> <span class="ml-2 text-primary">{{order.total}}$</span>
 
                         </div>
-                        <div class="card-text" *ngIf="order.status =='Pickup'">
+                        <div class="card-text" *ngIf="order.status =='PickedUp'">
                             <h2 class="d-inline text-secondary text-center pb-1">Pickedup Order </h2> <span class="ml-2 text-primary">{{order.total}}$</span>
 
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-4" [ngSwitch]="order.status">
-                        <button *ngSwitchCase="'Pending'" type="button" class="btn btn-primary" (click)="changeStatusToAccepted(order)">Accept order</button>
-                        <button *ngSwitchCase="'Accept'" type="button" class="btn btn-primary" (click)="changeStatusToReady(order)">Ready order</button>
-                        <button *ngSwitchCase="'Ready'" type="button" class="btn btn-primary" (click)="changeStatusToPickup(order)">PickUp Order</button>
-                        <!-- <button *ngSwitchCase="'Pickup'" type="button" class="btn btn-primary">Finish Order</button> -->
-
+                        <button *ngSwitchCase="'New'" type="button" class="btn btn-primary" (click)="changeStatusToAccepted(order)">Accept order</button>
+                        <button *ngSwitchCase="'InProgress'" type="button" class="btn btn-primary" (click)="changeStatusToReady(order)">Ready order</button>
+                        <button *ngSwitchCase="'OrderReady'" type="button" class="btn btn-primary" (click)="changeStatusToPickup(order)">PickUp Order</button>
+                        <!-- <button *ngSwitchCase="'PickedUp'" type="button" class="btn btn-primary">Finish Order</button> -->
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -47,7 +40,7 @@
                                 <span class="text-muted">{{item.name}} </span>
                                 <span class="text-primary float-right">x{{item.quantity}}</span>
                                 <span style=" display: block;flex: 1 1 auto;"></span>
-                                <span class=" d-block">
+                                <span *ngIf=" item.options.length != 0" class=" d-block">
                           <h4 class="text-primary my-1"> Options: </h4>
                               <p class="" *ngFor="let option of item.options">
                             <span class=""> Name: </span>
