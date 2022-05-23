@@ -20,7 +20,7 @@ export class HeaderService {
       buttonText: 'DoorDash',
       buttonLink: 'https://www.doordash.com/',
       buttons: [
-        { buttonLink: 'https://www.doordash.com/', buttonText: 'DoorDash' },
+        { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'DoorDash' },
         { buttonLink: 'menu', buttonText: 'Order Pickup' },
       ],
     },
