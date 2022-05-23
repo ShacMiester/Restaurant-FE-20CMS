@@ -18,6 +18,7 @@ export class MenuItemOptionCategoriesComponent extends CrudService<any, number> 
   quantity: number = 1;
   SelectedOptios: any[] = [];
   OnSelectClass: string;
+  isDisabledButton: boolean = true;
   environment = environment.store + 'uploads/'
   constructor(
     public dialogRef: MatDialogRef<any>,
@@ -58,8 +59,9 @@ export class MenuItemOptionCategoriesComponent extends CrudService<any, number> 
     return categoryOptionList;
   }
   OnSelected(category: CategoryOption, option: ItemOption, i: number) {
+
     if (this.categoryOptionList[i].length >= category.max && option.isSelected != true) {
-      this._snackBar.open(`Please pay attention you shouldn't select more than ${category.length} options`, "Ok")
+      this._snackBar.open(`Please pay attention you shouldn't select more than ${category.length} options`, "Ok");
     }
 
     else {
@@ -67,10 +69,23 @@ export class MenuItemOptionCategoriesComponent extends CrudService<any, number> 
       if (option.isSelected == true) {
         this.SelectedOptios.push({ id: option.id, addtionalPrice: option.addtionalPrice });
         this.categoryOptionList[i].length = category.length + 1;
+
+        if (this.categoryOptionList[i].length >= category.min ){
+          this.isDisabledButton = false;
+        }
+        else{
+          this.isDisabledButton = true;
+        }
       }
       else {
         this.SelectedOptios = this.SelectedOptios.filter(e => e.id != option.id);
         this.categoryOptionList[i].length = category.length - 1;
+        if (this.categoryOptionList[i].length >= category.min ){
+          this.isDisabledButton = false;
+        }
+        else{
+          this.isDisabledButton = true;
+        }
       }
     }
 
@@ -78,6 +93,8 @@ export class MenuItemOptionCategoriesComponent extends CrudService<any, number> 
 
   AddToCart() {
     let item = { optionIds: this.SelectedOptios, quantity: this.quantity, item: this.menuItem }; // quantity
+    console.log("item", item)
+
     this.dialogRef.close(item);
   }
   CloseDialog() {

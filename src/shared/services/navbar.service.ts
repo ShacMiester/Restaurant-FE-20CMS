@@ -22,6 +22,10 @@ export class NavbarService {
         scrollTo:'story'
       },
       {
+        name: 'Our Menu',
+        link: 'menu-page'
+      },
+      {
         name: 'logo',
         type: 'logo',
         image: 'assets/images/logoCropped-removebg-preview.png'
