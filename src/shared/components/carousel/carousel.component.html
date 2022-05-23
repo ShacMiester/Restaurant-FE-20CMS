@@ -5,7 +5,10 @@
     <div class="carousel-caption">
       <h3>{{item.label}}</h3>
       <p>{{item.description}}</p>
-      <button *ngIf="item.buttonLink" mat-raised-button (click)="navigateToLink(item.buttonLink)" class="generic">{{item.buttonText}}</button>
+      <div *ngIf="item?.buttons.length" class="d-flex justify-content-around">
+        <button *ngFor="let button of item.buttons" mat-raised-button (click)="navigateToLink(button.buttonLink)" class="generic">{{button.buttonText}}</button>
+    </div>
+      <!-- <button *ngIf="!item?.buttons.length" mat-raised-button (click)="navigateToLink(item.buttonLink)" class="generic">{{item.buttonText}}</button> -->
     </div>
   </ng-template>
 </ngb-carousel>

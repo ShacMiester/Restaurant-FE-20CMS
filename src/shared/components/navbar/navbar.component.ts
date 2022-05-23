@@ -51,6 +51,15 @@ export class NavbarComponent implements OnInit {
       this.navBarConfigs = navBarConfigs
     })
   }
+  scrollToElement(id){
+    console.log(id)
+    console.log(document.getElementById(id))
+    document.getElementById(id).scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest',
+    });
+  }
   getUserInfo() {
     this.UserService.login().subscribe((user) => {
       user ? (this.isLoggedIn = false) : false, (this.user = user);

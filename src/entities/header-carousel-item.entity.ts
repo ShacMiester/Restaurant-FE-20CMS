@@ -3,6 +3,10 @@ export interface HeaderCarouselItem {
   show: boolean;
   description: string;
   image: string;
-  buttonLink?:string
-  buttonText?:string
+  buttonLink?: string
+  buttonText?: string;
+  buttons?: {
+    buttonLink?: string;
+    buttonText?: string;
+  }[]
 }

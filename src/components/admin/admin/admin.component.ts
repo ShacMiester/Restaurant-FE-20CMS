@@ -30,7 +30,6 @@ export class AdminComponent implements OnInit {
     });
     this.getLocations();
     this.selectedBranch =  Number(localStorage.getItem('Branch'))
-    console.log(this.selectedBranch)
   }
 
   getLocations() {
