@@ -48,10 +48,9 @@ export class MenuItemsComponent
   }
   items = [];
   ngOnInit(): void {
-    console.log(typeof localStorage.getItem('Branch'))
     if (
-      localStorage.getItem('Branch') != '' &&
-      localStorage.getItem('Branch') != null
+      localStorage.getItem('Branch') == '' ||
+      localStorage.getItem('Branch') == null
     )
     this.dialog.open(LocationComponent,{disableClose:true})
       this.Subscription.add(this.constructItems());

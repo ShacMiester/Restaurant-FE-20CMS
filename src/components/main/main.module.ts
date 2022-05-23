@@ -23,6 +23,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-categories/menu-item-option-categories.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MenuPageComponent } from '../menu-page/menu-page.component';
+import { LocationComponent } from '../location/location.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { MenuPageComponent } from '../menu-page/menu-page.component';
     WorkingHoursComponent,
     MenuItemOptionCategoriesComponent,
     MenuPageComponent,
-
+    LocationComponent
   ],
   imports: [
     CommonModule,

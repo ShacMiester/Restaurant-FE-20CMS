@@ -13,7 +13,7 @@ const routes: Routes = [{ path: '', loadChildren: () => import('../components/ma
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled',anchorScrolling:'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

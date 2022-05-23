@@ -14,11 +14,12 @@ export class NavbarService {
       logo: 'assets/images/gallery/JASMINE_GRILL_KABAB2.png', name: 'LoaziTech Restaurant', items: [{
         name: 'Home',
         isScrollOnly: true,
-        link: '/home'
+        link: '/'
       }, {
         name: 'Our Story',
-        isScrollOnly: false,
-        link: '#story'
+        isScrollOnly: true,
+        link: '/',
+        scrollTo:'story'
       },
       {
         name: 'logo',
@@ -33,7 +34,7 @@ export class NavbarService {
       {
         name: 'Order Now',
         isScrollOnly: true,
-        link: 'catering',
+        link: 'menu',
       },
       {
         name: 'Online catering',

@@ -1,4 +1,4 @@
-<div class="navbar-container position-absolute w-100 main-container main-app-container" >
+<div class="navbar-container position-absolute w-100 main-container main-app-container">
   <!-- <div class="justify-content-around d-flex info-container container">
     <div class="d-flex flex-wrap justify-content-between">
       <p>Email: Lorem ipsum dolor sit</p>
@@ -43,7 +43,9 @@
         <ul class="navbar-nav justify-content-center">
           <ng-container *ngFor="let nav of navBarConfigs.items" class="hero">
             <li *ngIf="nav.type !='logo'">
-              <a [href]="nav.link" class="nav-link" [routerLink]="nav.link">{{nav.name}} <span class="sr-only"></span></a>
+              <!-- <a [href]="nav.link" class="nav-link" [routerLink]="nav.link" [fragment]="nav?.scrollTo" >{{nav.name}} <span class="sr-only"></span></a> -->
+              <!-- <a class="nav-link" (click)="scrollToElement(nav.scrollTo)">{{nav.name}}</a> -->
+              <a class="nav-link" [routerLink]="nav.link" [fragment]="nav?.scrollTo">{{nav.name}}</a>
             </li>
             <li class="toHide" *ngIf="nav.type == 'logo' && isCollapsed">
               <a [routerLink]="['']" class="navbar-brand mr-0">
