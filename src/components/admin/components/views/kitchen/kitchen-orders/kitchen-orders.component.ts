@@ -41,23 +41,23 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
   }
   getPendingOrders(){
    this.pendingOrderList = this.allOrderList.filter(order =>
-      order.status == 'Pending'
+      order.status == 'New'
    );
     console.log("this.pendingOrderList", this.pendingOrderList)
   }
   getInProgressOrders(){
     this.inProgressOrderList = this.allOrderList.filter(order =>
-       order.status == "Accept"
+       order.status == "InProgress"
      );
    }
    getReadyOrders(list: any[]){
     this.readyOrderList = list.filter(order =>
-       order.status == "Ready"
+       order.status == "OrderReady"
      );
    }
    getPickUpOrders(){
     this.pickUpOrderList = this.allOrderList.filter(order =>
-       order.status == "Pickup"
+       order.status == "PickedUp"
      );
    }
    filterOrders(list: any[]){
@@ -70,11 +70,11 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
    changeStatus(event){
      console.log("event", event)
     switch (event.status) {
-      case 'Accept':
+      case 'InProgress':
         this.pendingOrderList = this.deleteItemFromList(this.pendingOrderList, event.id);
         this.inProgressOrderList.splice(0,0, event);
         break;
-      case 'Ready':
+      case 'OrderReady':
         this.inProgressOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
         this.readyOrderList.splice(0,0, event);
       console.log("ready",       this.readyOrderList
@@ -82,7 +82,7 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
         console.log("From Ready")
 
         break;
-        case 'Pickup':
+        case 'PickedUp':
           this.readyOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
           this.pickUpOrderList.splice(0,0, event); // waiting for edit response from backend
           console.log("From Pickup")

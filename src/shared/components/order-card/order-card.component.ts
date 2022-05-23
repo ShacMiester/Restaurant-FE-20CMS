@@ -24,7 +24,7 @@ export class OrderCardComponent extends CrudService<any, number> implements OnIn
   ngOnInit(): void {
   }
   changeStatusToAccepted(order:any){
-     this.save({id:order.id,status: "Accept"}).subscribe(
+     this.save({id:order.id,status: "InProgress"}).subscribe(
       { next: (res) => {   console.log("res",res)
      this.UpdateStatus.emit(res)
      this._snackbarService.open('Order Updated ', "ok")
@@ -35,7 +35,7 @@ export class OrderCardComponent extends CrudService<any, number> implements OnIn
     });
   }
   changeStatusToReady(order:any){
-    this.save({id:order.id,status: "Ready"}).subscribe(
+    this.save({id:order.id,status: "OrderReady"}).subscribe(
       { next: (res) => {   console.log("res",res)
       this.UpdateStatus.emit(res)
       this._snackbarService.open('Order Updated ', "ok")
@@ -47,7 +47,7 @@ export class OrderCardComponent extends CrudService<any, number> implements OnIn
  }
 
  changeStatusToPickup(order:any){
-  this.save({id:order.id,status: "Pickup"}).subscribe(
+  this.save({id:order.id,status: "PickedUp"}).subscribe(
    { next: (res) => {   console.log("res",res)
      this.UpdateStatus.emit(res)
      this._snackbarService.open('Order Updated ', "ok")
