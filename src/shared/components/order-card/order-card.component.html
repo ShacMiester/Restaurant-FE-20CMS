@@ -40,7 +40,7 @@
                                 <span class="text-muted">{{item.name}} </span>
                                 <span class="text-primary float-right">x{{item.quantity}}</span>
                                 <span style=" display: block;flex: 1 1 auto;"></span>
-                                <span class=" d-block">
+                                <span *ngIf=" item.options.length != 0" class=" d-block">
                           <h4 class="text-primary my-1"> Options: </h4>
                               <p class="" *ngFor="let option of item.options">
                             <span class=""> Name: </span>
