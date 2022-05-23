@@ -31,11 +31,6 @@ export class NavbarService {
         image: 'assets/images/logoCropped-removebg-preview.png'
       },
       {
-        name: 'Menu',
-        link: 'menu',
-        isScrollOnly: true,
-      },
-      {
         name: 'Order Now',
         isScrollOnly: true,
         link: 'menu',
