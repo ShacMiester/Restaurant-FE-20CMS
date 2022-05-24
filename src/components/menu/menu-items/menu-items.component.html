@@ -1,4 +1,16 @@
 <app-descriptive-block [subtitle]="'Order Now '" [content]="'Easy and Fast'" [containsButton]="false" [styling]="{'background-image':'url(../../assets/images/mccain-fries-and-appetizers.jpg)'}">
+    <ng-template let-data="data">
+        <div class="text-center container">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label style="color: #c59d5f;">Branch of pickup</mat-label>
+                <mat-select [value]="selectedBranch">
+                    <mat-option *ngFor="let branch of branches" mat-raised-button (click)="changeBranch(branch.id)" co [value]="branch.id">
+                        {{branch.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </ng-template>
 </app-descriptive-block>
 <div class="container-fluid tab-container mt-5">
 
@@ -24,8 +36,8 @@
 
                                 <div class="col-md-8 col-lg-8">
                                     <div class="card-body start">
-                                        <h1 class="text-primary my-0">{{menuItem.name}}</h1>
-                                        <p class="card-text text-muted "> {{menuItem.description}} </p> <br>
+                                        <h1 class="text-primary ">{{menuItem.name}}</h1>
+                                        <p class="card-text text-muted my-0"> {{menuItem.description}} </p> <br>
                                         <p class="card-text text-primary"> {{menuItem.price}}$ </p>
 
                                     </div>

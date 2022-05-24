@@ -14,17 +14,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatButtonModule } from '@angular/material/button'
-import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { StoryPreFaceComponent } from '../story-pre-face/story-pre-face.component';
 import { MatIconModule } from '@angular/material/icon';
 import { WeeklyDealsComponent } from '../weekly-deals/weekly-deals.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MenuItemOptionCategoriesComponent } from '../menu/menu-item-option-categories/menu-item-option-categories.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MenuPageComponent } from '../menu-page/menu-page.component';
 import { LocationComponent } from '../location/location.component';
-
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     MainComponent,
@@ -40,7 +40,7 @@ import { LocationComponent } from '../location/location.component';
     WorkingHoursComponent,
     MenuItemOptionCategoriesComponent,
     MenuPageComponent,
-    LocationComponent
+    LocationComponent,
   ],
   imports: [
     CommonModule,
@@ -53,11 +53,9 @@ import { LocationComponent } from '../location/location.component';
     MatTabsModule,
     DynamicFormsAppModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
   ],
-  exports: [
-    CartComponent,
-    HideElementDirective,
-  ]
+  exports: [CartComponent, HideElementDirective],
 })
-export class MainModule { }
+export class MainModule {}

@@ -1,4 +1,5 @@
-<ngb-carousel  [@fadeInUp] [interval]="52000" [animation]="true"  class="pickgradient position-relative pb-2" [ngStyle]="getHeight()" id="ngb-carousel">
+<ngb-carousel [@fadeInUp] [interval]="52000" [animation]="true" class="pickgradient position-relative pb-2"
+  [ngStyle]="getHeight()" id="ngb-carousel">
   <ng-template ngbSlide *ngFor="let item of carouselItems;">
     <div class="overlay"></div>
     <img [src]="item.image" width="100%" height="110vh">
@@ -6,8 +7,10 @@
       <h3>{{item.label}}</h3>
       <p>{{item.description}}</p>
       <div *ngIf="item?.buttons.length" class="d-flex justify-content-around">
-        <button *ngFor="let button of item.buttons" mat-raised-button (click)="navigateToLink(button.buttonLink)" class="generic">{{button.buttonText}}</button>
-    </div>
+        <button *ngFor="let button of item.buttons" mat-raised-button (click)="navigateToLink(button.buttonLink)"
+          class="generic"><span *ngIf="button?.containsImage"><img [src]="button.imageLink" alt=""
+              style="width: 40px; height: 40px !important;"></span> {{button.buttonText}}</button>
+      </div>
       <!-- <button *ngIf="!item?.buttons.length" mat-raised-button (click)="navigateToLink(item.buttonLink)" class="generic">{{item.buttonText}}</button> -->
     </div>
   </ng-template>

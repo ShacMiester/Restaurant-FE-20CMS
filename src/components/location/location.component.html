@@ -1,6 +1,17 @@
 <h3 mat-dialog-title>Please Select Pickup location in order to proceed:</h3>
 <div mat-dialog-content>
 </div>
-<div  class="text-center">
-    <button class="ml-3" *ngFor="let branch of branches" mat-raised-button (click)="changeBranch(branch.id)" mat-dialog-close>{{branch.name}}</button>
-</div>
+
+<mat-form-field appearance="fill">
+    <mat-label>Branch of pickup</mat-label>
+    <mat-select [value]="selectedBranch">
+        <mat-option *ngFor="let branch of branches" mat-raised-button (click)="changeBranch(branch.id)"
+            [value]="branch.id">
+            {{branch.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button [mat-dialog-close]="selectedBranch" [disabled]="selectedBranch == null">Save</button>
+</mat-dialog-actions>

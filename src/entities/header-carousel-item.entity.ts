@@ -8,5 +8,7 @@ export interface HeaderCarouselItem {
   buttons?: {
     buttonLink?: string;
     buttonText?: string;
+    containsImage?:boolean;
+    imageLink?:string;
   }[]
 }

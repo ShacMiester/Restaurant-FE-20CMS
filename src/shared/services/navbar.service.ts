@@ -22,7 +22,7 @@ export class NavbarService {
         scrollTo:'story'
       },
       {
-        name: 'Our Menu',
+        name: 'Menu',
         link: 'menu-page'
       },
       {
@@ -38,6 +38,12 @@ export class NavbarService {
       {
         name: 'Online catering',
         link: 'catering'
+      },
+      {
+        name:'Reservation',
+        link:'/',
+        isScrollOnly:true,
+        scrollTo:"reservation"
       }
       ],
     })

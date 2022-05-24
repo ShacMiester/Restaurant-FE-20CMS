@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { CrudService } from '../admin/services/crud.service';
 
 @Component({
@@ -21,7 +20,9 @@ export class LocationComponent
 
   ngOnInit(): void {
     this.getBranches();
+    this.selectedBranch = parseInt(localStorage.getItem('Branch'))
   }
+  selectedBranch = null
 
   getBranches() {
     this.Subscription.add(
@@ -37,6 +38,7 @@ export class LocationComponent
     this.Subscription.unsubscribe();
   }
   changeBranch(id: number) {
+    this.selectedBranch = id
     localStorage.setItem('Branch',id.toLocaleString())
   }
 }

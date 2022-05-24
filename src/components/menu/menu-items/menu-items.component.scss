@@ -9,7 +9,9 @@
 :host::ng-deep .mat-card-subtitle {
     color: #c59d5f !important;
 }
-
+::ng-deep .mat-select-arrow {
+    color: #c59d5f !important;
+}
 :host::ng-deep .mat-card-content {
     color: #c59d5f !important;
     padding-top: 10px;
@@ -24,7 +26,16 @@ button {
         transition: all 0.3s ease-in-out 0.1s;
     }
 }
-
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    background-color: #c59d5f !important;
+  }
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: white !important;
+}
+mat-option:hover{
+    background-color: #c59d5f !important;
+    color: white;
+}
 :host::ng-deep .mat-tab-label {
     opacity: 1 !important;
     &-active {

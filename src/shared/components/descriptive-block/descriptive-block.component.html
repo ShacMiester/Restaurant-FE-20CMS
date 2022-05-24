@@ -6,4 +6,6 @@
     <p class="description">{{content}}</p>
     <button *ngIf="containsButton" mat-raised-button class="generic" (click)="navigate()">{{buttonText}}</button>
   </div>
+  <ng-container [ngTemplateOutlet]="extras">
+  </ng-container>
 </div>
