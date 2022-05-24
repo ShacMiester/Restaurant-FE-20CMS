@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="d-flex justify-content-between mb-3">
       <h1>{{title}}</h1>
-      <button mat-raised-button (click)="returnToPage()" *ngIf="returnTo != undefined" style="height: fit-content;">Return to table</button>
+      <!-- <button mat-raised-button (click)="returnToPage()"  style="height: fit-content;">{{cancelText}}</button> -->
     </div>
     <form (ngSubmit)="onSubmit()" [formGroup]="form" class="d-flex flex-column justify-content-between h-100"
       style="width: 100%;">
@@ -14,8 +14,8 @@
         <button mat-raised-button type="submit" [disabled]="!form.valid"
           style="background-color: black; color: #c59d5f;">{{buttonTitle}}</button>
         <ng-container *ngIf="editable">
+          <button mat-raised-button (click)="returnToPage()" *ngIf="returnTo != undefined" color="warn">{{cancelText}}</button>
           <button mat-raised-button (click)="form.enable()" *ngIf="form.disabled" color="secondary">Edit</button>
-          <button mat-raised-button (click)="form.disable()" *ngIf="form.enabled" color="warn">Cancel</button>
         </ng-container>
       </div>
     </form>

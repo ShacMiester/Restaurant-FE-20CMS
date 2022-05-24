@@ -22,7 +22,7 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
     timepicker.open();
   }
   selectedStates: any = []
-
+  env = `${environment.store}Uploads/`
   constructor(private http: HttpClient) { }
   get isValid() { return this.form.controls[this.field.key].valid }
 
@@ -70,9 +70,9 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
     reader.readAsDataURL((event.target as HTMLInputElement).files[0])
     this.http.post(environment.imagesAPI, formData).subscribe(
       (res: any) => {
-        this.form.controls['imageURL'].patchValue(res.image)
-        this.image = res.image
-        this.preview = res.image
+        this.form.controls['imageURL'].patchValue(`${environment.store}Uploads/`+res.image)
+        this.image = `${environment.store}Uploads/`+res.image
+        this.preview = `${environment.store}Uploads/`+res.image
       }
     )
   }

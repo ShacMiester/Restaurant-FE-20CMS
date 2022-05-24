@@ -46,7 +46,7 @@
       <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>{{field.label}}</mat-label>
         <input (change)="field.callback? field.callback(this.form.controls[field.key]):false" type="text"
-          [disabled]="true" matInput [ngxMatTimepicker]="timepicker" [format]="12" [id]="field.key"
+          [disabled]="false" matInput [ngxMatTimepicker]="timepicker" [format]="12" [id]="field.key"
           [formControlName]="field.key" />
         <mat-icon matSuffix (click)="openFromIcon(timepicker)">schedule</mat-icon>
       </mat-form-field>

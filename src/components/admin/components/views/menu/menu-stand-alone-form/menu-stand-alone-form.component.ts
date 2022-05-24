@@ -66,9 +66,10 @@ export class MenuStandAloneFormComponent extends CrudService<any, number> implem
       case 'edit':
         {
           $event.payload.id = this.paramID
-          this.update($event.payload, this.paramID).subscribe({ next: () => this.openSnackBar('Menu item added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-standAlone-table']) })
+          this.update($event.payload, this.paramID).subscribe({ next: () => this.openSnackBar('Menu item updated successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-standAlone-table']) })
         }
         break;
     }
   }
 }
+

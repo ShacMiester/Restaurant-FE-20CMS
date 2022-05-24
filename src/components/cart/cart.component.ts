@@ -41,9 +41,10 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
   }
 
   getCartItems() {
-    this.CartService.getCartItems().subscribe(items => {
-      this.shoppingCart = items;
-    });
+    // this.CartService.getCartItems().subscribe({next:(v)=>{
+    //   console.log(v)
+    //   this.shoppingCart = v;
+    // }});
   }
 
   getTotal() {
@@ -60,6 +61,7 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
   }
   add(i, op) {
     this.CartService.addToCart(i, op, "add");//
+    this.getCartItems();
     // this.calculateTotalPrice();
     this.Subscription.add(this.getTotal());
 

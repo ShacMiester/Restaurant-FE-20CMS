@@ -106,7 +106,7 @@ mat-card {
         object-fit: cover;
     }
     &:hover {
-        transform: scale(0.9);
+        transform: scale(0.98);
     }
 }
 
@@ -117,7 +117,7 @@ mat-card {
 
 a {
     color: #72634e;
-    font-size: 24px;
+    font-size: 1.2rem;
 }
 
 .nav-tabs .nav-link.active,
@@ -127,4 +127,7 @@ a {
     background-color: transparent;
     border-bottom: 2px solid #c59d5f;
     //border-radius: 5px;
+}
+.card-box-shadow{
+    box-shadow: 0 2px 1px -1px rgb(199 185 55), 0 1px 1px 0, 0 1px 9px 0 #c59d5f;
 }
