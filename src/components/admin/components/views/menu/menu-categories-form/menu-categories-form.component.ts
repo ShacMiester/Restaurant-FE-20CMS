@@ -55,7 +55,6 @@ export class MenuCategoriesFormComponent extends CrudService<any, number> implem
   }
 
   saveItem($event: any) {
-    console.log("$event : ", this.save($event.payload).subscribe(e => console.log(e) ));
     switch ($event.type) {
       case 'add':
         this.save($event.payload).subscribe({ next: () => this.openSnackBar('Category added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-categories']) })
