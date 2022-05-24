@@ -77,7 +77,6 @@ export class MenuItemsComponent
   }
   addToCart(item: any) {
     const dialogRef = this.dialog.open(MenuItemOptionCategoriesComponent, {
-      width: '70%',
       height: '80vh',
       data: { item: item, form: this.formFields },
     });
