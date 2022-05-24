@@ -30,16 +30,8 @@ export class AdminPanelService {
         children: [{ title: 'Table', link: 'catering-table' }],
       },
       {
-        title: 'Main page slider',
-        children: [{ title: 'Table', link: 'carousel-items-table' }],
-      },
-      {
         title: 'Branches',
         children: [{ title: 'Manage Branches', link: 'branches' }],
-      },
-      {
-        title: 'Working hours',
-        children: [{ title: 'Manage', link: 'working-hours' }],
       },
       {
         title: 'Kitchen',
