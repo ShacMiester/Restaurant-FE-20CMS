@@ -1,43 +1,46 @@
-<app-descriptive-block [subtitle]="'Having a party? We can cater!'"
-  [content]="'We will be happy to help you and make your event memorable!'" [containsButton]="false">
+<app-descriptive-block [subtitle]="'Order Now '" [content]="'Easy and Fast'" [containsButton]="false" [styling]="{'background-image':'url(../../assets/images/mccain-fries-and-appetizers.jpg)'}">
 </app-descriptive-block>
-<div class="container-fluid  tab-container">
+<div class="container-fluid tab-container mt-5">
 
 
 
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs justify-content-center bg-light">
-    <li [ngbNavItem]="i+1" *ngFor="let item of items; let i =index;">
-      <a ngbNavLink class="nav-link " aria-current="page" (click)="goToTarget(item.category)">{{item.category}} </a>
-
-    </li>
-  </ul>
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-12 " *ngFor="let item of items; let i =index;">
-        <h2 class="text-primary" [id]="item.category"> {{item.category}}</h2>
-        <div class="row  align-items-center">
-          <div class=" col-md-3 col-lg-3 col-sm-6 col-xs-12" *ngFor="let menuItem of item.items">
-            <div class="card my-2 cursor-pointer" (click)="addToCart(menuItem)">
-
-              <img class="m-auto" [src]="environment+menuItem.imageURL" alt="kobbeh" width="100%">
-              <div class="card-body py-1 px-2">
-                <h3 class="text-primary my-0">{{menuItem.name}}</h3>
-
-                <p class="card-text text-muted "> {{menuItem.description}} </p> <br>
-                <p class="card-text text-primary float-end"> {{menuItem.price}}$ </p>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs bg-light">
+        <li [ngbNavItem]="i+1" *ngFor="let item of items; let i =index;">
+            <a ngbNavLink class="nav-link m-0" aria-current="page" (click)="goToTarget(item.category)">{{item.category}} </a>
+        </li>
+    </ul>
 
 
-              </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-12 " *ngFor="let item of items; let i =index;">
+                <h2 class="text-primary mt-2" [id]="item.category"> {{item.category}}</h2>
+                <div class="row  align-items-center">
+                    <div class=" col-md-6 col-lg-6 col-sm-12 col-xs-12" *ngFor="let menuItem of item.items">
 
+
+                        <div class="card">
+                            <div class="row">
+
+                                <div class="col-md-8 col-lg-8">
+                                    <div class="card-body start">
+                                        <h1 class="text-primary my-0">{{menuItem.name}}</h1>
+                                        <p class="card-text text-muted "> {{menuItem.description}} </p> <br>
+                                        <p class="card-text text-primary"> {{menuItem.price}}$ </p>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                    <img class="m-auto" [src]="environment+menuItem.imageURL" alt="kobbeh" width="100%">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
-          </div>
         </div>
 
-      </div>
     </div>
-  </div>
-
-</div>
