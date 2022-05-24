@@ -20,7 +20,7 @@ export class HeaderService {
       buttonText: 'DoorDash',
       buttonLink: 'https://www.doordash.com/',
       buttons: [
-        { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'DoorDash' },
+        { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'DoorDash',containsImage:true,imageLink:'https://img.icons8.com/plasticine/400/doordash.png' },
         { buttonLink: 'menu', buttonText: 'Order Pickup' },
       ],
     },

@@ -61,20 +61,20 @@ body {
 button {
   &.generic {
     border: none;
-    padding: 15px 40px;
-    background: white;
+    padding: 10px 10px;
+    background: #c59d5f;
     line-height: 17px;
     cursor: pointer;
-    font-size: 22px;
-    letter-spacing: 2px;
+    font-size: 1.3rem;
     font-family: 'Playball', cursive;
     -webkit-appearance: none;
     border-radius: 4px;
     transition: all 200ms linear;
-    color: #c59d5f;
+    color: #f8f9fa;
+    font-weight: 600;
     margin-top: 70px;
     &:hover {
-      background-color: #c59d5f;
+      background-color: #f8f9fa;
       color: #000;
     }
   }
