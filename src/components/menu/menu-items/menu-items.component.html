@@ -1,18 +1,25 @@
 <app-descriptive-block [subtitle]="'Having a party? We can cater!'"
   [content]="'We will be happy to help you and make your event memorable!'" [containsButton]="false">
+  <ng-template let-data="data">
+    <div class="text-center container">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label style="color: #c59d5f;">Branch of pickup</mat-label>
+        <mat-select [value]="selectedBranch">
+          <mat-option *ngFor="let branch of branches" mat-raised-button
+            (click)="changeBranch(branch.id)" co [value]="branch.id">
+            {{branch.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </ng-template>
 </app-descriptive-block>
 <div class="container-fluid  tab-container">
-
-
-
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs justify-content-center bg-light">
     <li [ngbNavItem]="i+1" *ngFor="let item of items; let i =index;">
       <a ngbNavLink class="nav-link " aria-current="page" (click)="goToTarget(item.category)">{{item.category}} </a>
-
     </li>
   </ul>
-
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-12 " *ngFor="let item of items; let i =index;">
@@ -20,24 +27,16 @@
         <div class="row  align-items-center">
           <div class=" col-md-3 col-lg-3 col-sm-6 col-xs-12" *ngFor="let menuItem of item.items">
             <div class="card my-2 cursor-pointer" (click)="addToCart(menuItem)">
-
               <img class="m-auto" [src]="environment+menuItem.imageURL" alt="kobbeh" width="100%">
               <div class="card-body py-1 px-2">
                 <h3 class="text-primary my-0">{{menuItem.name}}</h3>
-
                 <p class="card-text text-muted "> {{menuItem.description}} </p> <br>
                 <p class="card-text text-primary float-end"> {{menuItem.price}}$ </p>
-
-
               </div>
-
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
-
 </div>

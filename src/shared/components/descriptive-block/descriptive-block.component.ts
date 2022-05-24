@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-descriptive-block',
@@ -25,6 +25,8 @@ export class DescriptiveBlockComponent implements OnInit {
   @Input() styling!: any
 
   @Input() buttonAction!: Function
+
+  @ContentChild(TemplateRef) extras!: TemplateRef<Element>;
 
   constructor(private router:Router) { }
 

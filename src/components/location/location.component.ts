@@ -20,6 +20,7 @@ export class LocationComponent
 
   ngOnInit(): void {
     this.getBranches();
+    this.selectedBranch = parseInt(localStorage.getItem('Branch'))
   }
   selectedBranch = null
 

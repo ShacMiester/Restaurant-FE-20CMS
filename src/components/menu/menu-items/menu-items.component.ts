@@ -3,21 +3,16 @@ import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from './../../../shared/services/cart.service';
 import { MenuItemsService } from './menu-items.service';
-import { ModalComponent } from '../modal/modal.component';
 import {
   Component,
   OnInit,
-  Output,
-  EventEmitter,
   QueryList,
   ViewChildren,
   OnDestroy,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CrudService } from 'src/components/admin/services/crud.service';
-import { Router } from '@angular/router';
 import { MenuItemOptionCategoriesComponent } from '../menu-item-option-categories/menu-item-option-categories.component';
-import { ViewportScroller } from '@angular/common';
 import { LocationComponent } from 'src/components/location/location.component';
 
 @Component({
@@ -27,7 +22,8 @@ import { LocationComponent } from 'src/components/location/location.component';
 })
 export class MenuItemsComponent
   extends CrudService<any, number>
-  implements OnInit, OnDestroy {
+  implements OnInit, OnDestroy
+{
   active = 1;
   name: string = '';
   menuCategories = [];
@@ -47,20 +43,38 @@ export class MenuItemsComponent
     this.formFields = form.getSpecificItemForm();
   }
   items = [];
+  branches: any = [];
+  selectedBranch = parseInt(localStorage.getItem('Branch'))
   ngOnInit(): void {
     if (
       localStorage.getItem('Branch') == '' ||
       localStorage.getItem('Branch') == null
     )
-    this.dialog.open(LocationComponent,{disableClose:true})
-      this.Subscription.add(this.constructItems());
+      this.changeLocation();
+    this.Subscription.add(this.constructItems());
+    this.getLocations()
   }
   constructItems() {
     this.findAll().subscribe((data) => {
       this.items = data;
     });
   }
-
+  getLocations() {
+    this._http.get(environment.storeApi + '/branch').subscribe({
+      next: (v) => {
+        this.branches = v;
+      },
+    });
+  }
+  changeBranch(id: number) {
+    this.selectedBranch = id
+    localStorage.setItem('Branch',id.toLocaleString())
+  }
+  changeLocation() {
+    this.dialog.open(LocationComponent, { disableClose: true }).afterClosed().subscribe({next:(location)=>{
+      this.selectedBranch = location
+    }})
+  }
   addToCart(item: any) {
     const dialogRef = this.dialog.open(MenuItemOptionCategoriesComponent, {
       width: '70%',

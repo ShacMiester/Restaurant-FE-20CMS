@@ -4,7 +4,7 @@
 
 <mat-form-field appearance="fill">
     <mat-label>Branch of pickup</mat-label>
-    <mat-select>
+    <mat-select [value]="selectedBranch">
         <mat-option *ngFor="let branch of branches" mat-raised-button (click)="changeBranch(branch.id)"
             [value]="branch.id">
             {{branch.name}}
@@ -13,5 +13,5 @@
 </mat-form-field>
 
 <mat-dialog-actions align="end">
-    <button mat-raised-button mat-dialog-close [disabled]="selectedBranch == null">Save</button>
+    <button mat-raised-button [mat-dialog-close]="selectedBranch" [disabled]="selectedBranch == null">Save</button>
 </mat-dialog-actions>
