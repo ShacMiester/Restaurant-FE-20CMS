@@ -10,31 +10,32 @@ import { SnackbarService } from 'src/shared/services/snackbar.service';
 @Component({
   selector: 'app-menu-item-option-categories',
   templateUrl: './menu-item-option-categories.component.html',
-  styleUrls: ['./menu-item-option-categories.component.scss']
+  styleUrls: ['./menu-item-option-categories.component.scss'],
 })
-export class MenuItemOptionCategoriesComponent extends CrudService<any, number> implements OnInit {
+export class MenuItemOptionCategoriesComponent
+  extends CrudService<any, number>
+  implements OnInit
+{
   categoryOptionList: CategoryOption[] = [];
   menuItem: any;
   quantity: number = 1;
   SelectedOptios: any[] = [];
   OnSelectClass: string;
   isDisabledButton: boolean = true;
-  environment = environment.store + 'uploads/'
+  environment = environment.store + 'uploads/';
+  hideOptions: boolean = false;
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     protected override _http: HttpClient,
     private _snackBar: SnackbarService
-
   ) {
     super(_http, 'MenuItemOptionCategories/GetByItemId?id=');
   }
 
   ngOnInit(): void {
-
     this.menuItem = this.data.item;
     this.getCategoryOptionItem(this.menuItem.id);
-
   }
   onPlus(quantity: number) {
     this.quantity = quantity + 1;
@@ -46,59 +47,72 @@ export class MenuItemOptionCategoriesComponent extends CrudService<any, number> 
   }
 
   getCategoryOptionItem(id: number) {
-    this.findAllById(id).subscribe(data => {
-      this.categoryOptionList = data;
-      this.initialCategoryOptionLength(this.categoryOptionList);
-
-    })
+    this.findAllById(id).subscribe({
+      next: (data) => {
+        if (data?.length) {
+          this.categoryOptionList = data;
+          this.initialCategoryOptionLength(this.categoryOptionList);
+        } else {
+          this.isDisabledButton = false;
+          this.hideOptions = true;
+        }
+      },
+    });
   }
   initialCategoryOptionLength(categoryOptionList: CategoryOption[]) {
-    categoryOptionList.forEach(e => {
+    categoryOptionList.forEach((e) => {
       e.length = 0;
     });
     return categoryOptionList;
   }
   OnSelected(category: CategoryOption, option: ItemOption, i: number) {
-
-    if (this.categoryOptionList[i].length >= category.max && option.isSelected != true) {
-      this._snackBar.open(`Please pay attention you shouldn't select more than ${category.length} options`, "Ok");
-    }
-
-    else {
+    if (
+      this.categoryOptionList[i].length >= category.max &&
+      option.isSelected != true
+    ) {
+      this._snackBar.open(
+        `Please pay attention you shouldn't select more than ${category.length} options`,
+        'Ok'
+      );
+    } else {
       option.isSelected = !option.isSelected;
       if (option.isSelected == true) {
-        this.SelectedOptios.push({ id: option.id, addtionalPrice: option.addtionalPrice });
+        this.SelectedOptios.push({
+          id: option.id,
+          addtionalPrice: option.addtionalPrice,
+        });
         this.categoryOptionList[i].length = category.length + 1;
 
-        if (this.categoryOptionList[i].length >= category.min ){
+        if (this.categoryOptionList[i].length >= category.min) {
           this.isDisabledButton = false;
-        }
-        else{
+        } else {
           this.isDisabledButton = true;
         }
-      }
-      else {
-        this.SelectedOptios = this.SelectedOptios.filter(e => e.id != option.id);
+      } else {
+        this.SelectedOptios = this.SelectedOptios.filter(
+          (e) => e.id != option.id
+        );
         this.categoryOptionList[i].length = category.length - 1;
-        if (this.categoryOptionList[i].length >= category.min ){
+        if (this.categoryOptionList[i].length >= category.min) {
           this.isDisabledButton = false;
-        }
-        else{
+        } else {
           this.isDisabledButton = true;
         }
       }
     }
-
   }
 
   AddToCart() {
-    let item = { optionIds: this.SelectedOptios, quantity: this.quantity, item: this.menuItem }; // quantity
-    console.log("item", item)
+    let item = {
+      optionIds: this.SelectedOptios,
+      quantity: this.quantity,
+      item: this.menuItem,
+    }; // quantity
+    console.log('item', item);
 
     this.dialogRef.close(item);
   }
   CloseDialog() {
     this.dialogRef.close();
   }
-
 }

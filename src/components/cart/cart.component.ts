@@ -1,13 +1,10 @@
-import { environment } from 'src/environments/environment.prod';
-import { Router } from '@angular/router';
+
 import { Subscription, map } from 'rxjs';
 import { CartService } from './../../shared/services/cart.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from '../admin/services/crud.service';
-import { json } from 'd3';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
