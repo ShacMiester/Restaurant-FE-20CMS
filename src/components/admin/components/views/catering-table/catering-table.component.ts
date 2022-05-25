@@ -2,8 +2,10 @@ import { CateringDetailsComponent } from './catering-details/catering-details.co
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { CrudService } from 'src/components/admin/services/crud.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { MatDialog } from '@angular/material/dialog';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-catering-table',
@@ -14,27 +16,25 @@ export class CateringTableComponent extends CrudService<any, number> implements 
 
   @Input() displayedColumns: string[] = []
   dataSource: any = []
-  hideBar: boolean = false
-  constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'catering'); }
+  hideBar: boolean = false;
+  Subscription : Subscription = new Subscription();
+  constructor(protected override _http: HttpClient, private _snackBar: SnackbarService, public dialog: MatDialog,) { super(_http, 'catering'); }
 
   ngOnInit(): void {
     this.getCateringData()
   }
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'ok', { duration: 5000 });
-  }
 
   getCateringData() {
     this.hideBar = false
-    this.findAll().subscribe(
+    this.Subscription.add(this.findAll().subscribe(
       {
         next: (v) => this.constructTableData(v),
-        error: (e) => this.openSnackBar('An error has occurred'),
+        error: (e) => this._snackBar.error('An error has occurred'),
         complete: () => {
           this.hideBar = true
         }
       }
-    )
+    ))
   }
 
   constructTableData(tableData: any) {
@@ -53,9 +53,9 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     this.hideBar = false
     this.delete(row.id).subscribe({
       next: (v) => this.getCateringData(),
-      error: (e) => this.openSnackBar('An error has occurred'),
+      error: (e) => this._snackBar.error('An error has occurred'),
       complete: () => {
-        this.openSnackBar('item was deleted successfully')
+        this._snackBar.success('item was deleted successfully')
         this.hideBar = true
       }
     })
@@ -69,7 +69,7 @@ export class CateringTableComponent extends CrudService<any, number> implements 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getCateringData();
-        this.openSnackBar('item was updated Successfully')
+        this._snackBar.success('item was updated Successfully')
       }
     });
   }

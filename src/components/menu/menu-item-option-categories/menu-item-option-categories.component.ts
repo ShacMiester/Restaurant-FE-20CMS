@@ -2,7 +2,7 @@ import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { ActivatedRoute } from '@angular/router';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { CategoryOption, ItemOption } from 'src/entities/category-option';

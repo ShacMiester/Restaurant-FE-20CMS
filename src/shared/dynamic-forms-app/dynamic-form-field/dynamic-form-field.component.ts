@@ -60,7 +60,6 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
   uploadFile(event: any) {
     this.form.get('imageURL')?.updateValueAndValidity()
     const reader = new FileReader();
-    0
     reader.onload = () => {
       this.preview = reader.result as string;
       this.image = reader.result as string;

@@ -77,8 +77,8 @@ export class MenuItemsComponent
   }
   addToCart(item: any) {
     const dialogRef = this.dialog.open(MenuItemOptionCategoriesComponent, {
-      height: '80vh',
       data: { item: item, form: this.formFields },
+      maxHeight:'80vh'
     });
     dialogRef.afterClosed().subscribe((itemObj) => {
       if (itemObj) {

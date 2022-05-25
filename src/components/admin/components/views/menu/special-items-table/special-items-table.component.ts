@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CrudService } from 'src/components/admin/services/crud.service';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-special-items-table',
@@ -19,7 +19,7 @@ export class SpecialItemsTableComponent
   constructor(
     private router: Router,
     protected override _http: HttpClient,
-    private _snackBar: MatSnackBar
+    private _snackBar: SnackbarService
   ) {
     super(_http, 'menuItems');
   }
@@ -33,7 +33,7 @@ export class SpecialItemsTableComponent
       next: (v) => {
         this.dataSource = v.filter((item) => item.isSpecial == true);
       },
-      error: (err) => this.openSnackBar('An error has occurred', 'ok'),
+      error: (err) => this._snackBar.error('An error has occurred'),
     });
   }
 
@@ -49,11 +49,10 @@ export class SpecialItemsTableComponent
           event.row.isSpecial = false;
           this.update(event.row, event.row.id).subscribe({
             next: () =>
-              this.openSnackBar(
-                'Item was removed from special items category',
-                'Ok'
+              this._snackBar.success(
+                'Item was removed from special items category'
               ),
-            error: (err) => this.openSnackBar('An error has occurred', 'Ok'),
+            error: (err) => this._snackBar.error('An error has occurred'),
             complete: () => this.Subscription.add(this.getMenuItems()),
           });
         }
@@ -63,9 +62,5 @@ export class SpecialItemsTableComponent
 
   ngOnDestroy(): void {
     this.Subscription.unsubscribe();
-  }
-
-  openSnackBar(message: string, button: string) {
-    this._snackBar.open(message, button, { duration: 5000 });
   }
 }

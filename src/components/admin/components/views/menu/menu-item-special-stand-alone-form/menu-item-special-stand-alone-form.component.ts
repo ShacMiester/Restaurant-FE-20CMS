@@ -2,10 +2,11 @@ import { environment } from './../../../../../../environments/environment';
 import { MenuItemSpcialService } from './menu-item-spcial.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { MenuStandAloneService } from '../menu-stand-alone-form/menu-stand-alone.service';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-menu-item-special-stand-alone-form',
@@ -25,7 +26,7 @@ export class MenuItemSpecialStandAloneFormComponent extends CrudService<any, num
     private router: ActivatedRoute,
     private route: Router,
     private menuCategoriesService: MenuItemSpcialService,
-    private _snackBar: MatSnackBar
+    private _snackBar: SnackbarService
   ) {
     super(_http, 'menuItems/AddSpecial');
   }
@@ -61,21 +62,18 @@ export class MenuItemSpecialStandAloneFormComponent extends CrudService<any, num
     })
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'ok', { duration: 5000 });
-  }
 
   saveItem($event: any) {
     console.log($event)
     switch (this.type) {
       case 'add':
-        this.save($event.payload).subscribe({ next: () => this.openSnackBar('Menu item added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-items-special-table']) })
+        this.save($event.payload).subscribe({ next: () => this._snackBar.success('Menu item added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-items-special-table']) })
         break;
       case 'edit':
         {
           $event.payload.menuItemId = this.paramID
           $event.payload.id = this.id
-          this.save($event.payload).subscribe({ next: () => this.openSnackBar('Menu item added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-items-special-table']) })
+          this.save($event.payload).subscribe({ next:()=> this._snackBar.success('Menu item added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-items-special-table']) })
         }
         break;
     }

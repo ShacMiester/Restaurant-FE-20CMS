@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { WeeklyDealsService } from './../../../../../../services/weekly-deals.service';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-weekly-deals-table',
@@ -21,7 +21,7 @@ export class WeeklyDealsTableComponent extends CrudService<any, number> implemen
     private weeklyDealsService: WeeklyDealsService,
     protected override _http: HttpClient,
     private router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: SnackbarService) {
     super(_http, 'weekly-deals')
   }
 
@@ -51,9 +51,9 @@ export class WeeklyDealsTableComponent extends CrudService<any, number> implemen
             this.getDeals();
           },
           error: (err) => {
-            this._snackBar.open('An error has occurred', 'ok')
+            this._snackBar.open('An error has occurred')
           },
-          complete: () => this._snackBar.open('Item is deleted successfully', 'ok')
+          complete: () => this._snackBar.open('Item is deleted successfully')
         })
         break;
       case 'add':

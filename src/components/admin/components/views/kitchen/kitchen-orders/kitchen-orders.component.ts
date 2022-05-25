@@ -35,7 +35,7 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
         this.allOrderList = data;
         this.filterOrders(this.allOrderList);
       },
-      error: (err) => this._snackbarService.open('An error has occurred', 'ok'),
+      error: (err) => this._snackbarService.open('An error has occurred'),
 
     })
   }
