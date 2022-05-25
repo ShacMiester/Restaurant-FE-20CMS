@@ -25,13 +25,13 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 col-12 " *ngFor="let item of items; let i =index;">
+            <div class="col-md-12 col-12" *ngFor="let item of items; let i =index;">
                 <h2 class="text-primary mt-2" [id]="item.category"> {{item.category}}</h2>
                 <div class="row  align-items-center">
-                    <div class=" col-md-6 col-lg-6 col-sm-12 col-xs-12" *ngFor="let menuItem of item.items">
+                    <div class=" col-md-6 col-lg-6 col-sm-12 col-xs-12 mb-3" *ngFor="let menuItem of item.items">
 
 
-                        <div class="card">
+                        <div class="card cursor-pointer" (click)="addToCart(menuItem)">
                             <div class="row">
 
                                 <div class="col-md-8 col-lg-8">
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-4">
-                                    <img class="m-auto" [src]="environment+menuItem.imageURL" alt="kobbeh" width="100%">
+                                    <img class="m-auto" [src]="menuItem.imageURL" alt="menu-item" width="100%">
 
                                 </div>
                             </div>
