@@ -3,7 +3,7 @@
   <button class="position-absolute add-button" mat-raised-button float="right"
     (click)="performAction(0,'add')">{{button_title}}</button>
 </div>
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" *ngIf="dataSource?.length">
   <ng-container *ngFor="let col of displayedColumns">
     <ng-container matColumnDef="{{col}}" *ngIf="col != 'actions'">
       <th mat-header-cell *matHeaderCellDef class="text-center"> {{col}}</th>
@@ -35,4 +35,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<ng-container *ngIf="!dataSource.length">no data was found</ng-container>
+<ng-container *ngIf="!dataSource?.length">no data was found</ng-container>

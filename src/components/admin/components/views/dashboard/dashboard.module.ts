@@ -19,7 +19,7 @@ import { MatDialogModule } from "@angular/material/dialog";
   declarations: [
     ChartsComponent,
     DashboardComponent,
-    CateringTableComponent
+    // CateringTableComponent
   ],
   imports: [
     CommonModule,

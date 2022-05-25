@@ -15,12 +15,12 @@ export class HeaderService {
       label: 'Lorem ipsum dolor sit',
       show: true,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est gege.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
       image: '../assets/images/gallery/flafelHummus.png',
       buttonText: 'DoorDash',
       buttonLink: 'https://www.doordash.com/',
       buttons: [
-        { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'DoorDash',containsImage:true,imageLink:'https://img.icons8.com/plasticine/400/doordash.png' },
+        // { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'DoorDash',containsImage:true,imageLink:'../assets/images/logo/doordash-logo@logotyp.us.svg' },
         { buttonLink: 'menu', buttonText: 'Order Pickup' },
       ],
     },

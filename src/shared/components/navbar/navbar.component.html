@@ -20,12 +20,9 @@
         </a>
 
         <div class="d-flex flex-column user-container">
-          <span *ngIf="isLoggedIn">
+          <span>
             <button mat-button>
-              <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">shopping_cart</mat-icon>
-            </button>
-            <button mat-button>
-              <mat-icon [matBadge]="this.someBadge" matBadgeColor="primary">person</mat-icon>
+              <mat-icon [matBadge]="shoppingCart"  matBadgeColor="primary">shopping_cart</mat-icon>
             </button>
           </span>
           <!-- <span *ngIf="!isLoggedIn">

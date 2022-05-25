@@ -1,4 +1,4 @@
 <div class="container-fluid styled-container">
-  <app-dynamic-form [formFields]="form$" [formValues]="formValues" [type]="type" [title]="'Menu Item'"
+  <app-dynamic-form [formFields]="form$" [formValues]="formValues" [type]="type" [title]="'Menu Item'" [editable]='true' [returnTo]="['/admin','menu-standAlone-table']"
     (newItemEvent)="saveItem($event)"></app-dynamic-form>
 </div>

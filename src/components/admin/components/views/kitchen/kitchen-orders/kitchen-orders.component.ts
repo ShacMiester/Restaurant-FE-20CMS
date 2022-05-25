@@ -35,7 +35,7 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
         this.allOrderList = data;
         this.filterOrders(this.allOrderList);
       },
-      error: (err) => this._snackbarService.open('An error has occurred', 'ok'),
+      error: (err) => this._snackbarService.open('An error has occurred'),
 
     })
   }
@@ -43,7 +43,6 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
    this.pendingOrderList = this.allOrderList.filter(order =>
       order.status == 'New'
    );
-    console.log("this.pendingOrderList", this.pendingOrderList)
   }
   getInProgressOrders(){
     this.inProgressOrderList = this.allOrderList.filter(order =>
@@ -84,7 +83,7 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
         break;
         case 'PickedUp':
           this.readyOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
-          this.pickUpOrderList.splice(0,0, event); // waiting for edit response from backend
+          this.pickUpOrderList.splice(0,0, event);
           console.log("From Pickup")
           break;
 

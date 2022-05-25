@@ -25,6 +25,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MenuPageComponent } from '../menu-page/menu-page.component';
 import { LocationComponent } from '../location/location.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     MainComponent,
@@ -55,6 +57,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatDialogModule,
     MatSelectModule,
+    MatCheckboxModule
   ],
   exports: [CartComponent, HideElementDirective],
 })

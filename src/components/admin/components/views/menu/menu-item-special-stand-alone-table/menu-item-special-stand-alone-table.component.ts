@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/components/admin/services/crud.service';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 import { MenuStandAloneService } from '../menu-stand-alone-form/menu-stand-alone.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class MenuItemSpecialStandAloneTableComponent extends CrudService<any, nu
     private router: ActivatedRoute,
     private route: Router,
     private menuCategoriesService: MenuStandAloneService,
-    private _snackBar: MatSnackBar
+    private _snackBar: SnackbarService
   ) {
     super(_http, 'menuItems');
   }
@@ -50,19 +51,17 @@ export class MenuItemSpecialStandAloneTableComponent extends CrudService<any, nu
     })
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'ok', { duration: 5000 });
-  }
+
 
   saveItem($event: any) {
     switch ($event.type) {
       case 'add':
-        this.save($event.payload).subscribe({ next: () => this.openSnackBar('Menu item added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-standAlone-table']) })
+        this.save($event.payload).subscribe({ next:()=>this._snackBar.success('Menu item added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-standAlone-table']) })
         break;
       case 'edit':
         {
           $event.payload.id = this.paramID
-          this.update($event.payload, this.paramID).subscribe({ next: () => this.openSnackBar('Menu item added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-standAlone-table']) })
+          this.update($event.payload, this.paramID).subscribe({ next:()=>this._snackBar.success('Menu item added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-standAlone-table']) })
         }
         break;
     }

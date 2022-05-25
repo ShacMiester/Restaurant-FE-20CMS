@@ -2,8 +2,9 @@ import { ReservationDetailsComponent } from './reservation-details/reservation-d
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { CrudService } from 'src/components/admin/services/crud.service';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-reservation-table',
@@ -15,21 +16,19 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
   dataSource: any = []
   hideBar: boolean = false;
 
-  constructor(protected override _http: HttpClient, private _snackBar: MatSnackBar, public dialog: MatDialog,) { super(_http, 'reservations'); }
+  constructor(protected override _http: HttpClient, private _snackBar: SnackbarService, public dialog: MatDialog,) { super(_http, 'reservations'); }
 
   ngOnInit(): void {
     this.getReservationsData()
   }
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'ok', { duration: 5000 });
-  }
+
 
   getReservationsData() {
     this.hideBar = false
     this.findAll().subscribe(
       {
         next: (v) => this.constructTableData(v),
-        error: (e) => this.openSnackBar('An error has occurred'),
+        error: (e) => this._snackBar.error('An error has occurred'),
         complete: () => {
           this.hideBar = true
         }
@@ -53,9 +52,9 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
     this.hideBar = false
     this.delete(row.id).subscribe({
       next: (v) => this.getReservationsData(),
-      error: (e) => this.openSnackBar('An error has occurred'),
+      error: (e) => this._snackBar.error('An error has occurred'),
       complete: () => {
-        this.openSnackBar('item was deleted successfully')
+        this._snackBar.success('item was deleted successfully')
         this.hideBar = true
       }
     })
@@ -70,8 +69,9 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.update(result,result.id).subscribe()
         this.getReservationsData();
-        this.openSnackBar('Item was updated successfully')
+        this._snackBar.success('Item was updated successfully')
 
       }
 
@@ -80,8 +80,6 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
   openRecord(event) {
     console.log(event);
     const dialogRef = this.dialog.open(ReservationDetailsComponent, {
-      // width: '100vw',
-      // minWidth: '100vw',
       width: '100vw',
       minWidth: 'fit-content',
       maxWidth: '50%',
@@ -90,8 +88,9 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.update(result,result.id).subscribe();
         this.getReservationsData();
-        this.openSnackBar('Item was updated successfully')
+        this._snackBar.success('Item was updated successfully')
 
       }
 

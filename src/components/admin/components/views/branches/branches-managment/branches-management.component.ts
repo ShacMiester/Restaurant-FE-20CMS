@@ -1,10 +1,11 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { forkJoin, map, mergeMap, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { BranchesService } from './../branches.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-branches-management',
@@ -18,7 +19,7 @@ export class BranchesManagementComponent extends CrudService<number, any> implem
   subscriptions: Subscription = new Subscription();
   paramID: number = 0;
   constructor(private branchesService: BranchesService, protected override _http: HttpClient, private router: ActivatedRoute, private route: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: SnackbarService
   ) {
     super(_http, 'branch')
   }
@@ -39,20 +40,18 @@ export class BranchesManagementComponent extends CrudService<number, any> implem
     switch ($event.type) {
       case 'add':
         {
-          this.save($event.payload).subscribe({ next: () => this.openSnackBar('Branch added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'branches']) })
+          this.save($event.payload).subscribe({ next: () => this._snackBar.success('Branch added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'branches']) })
         }
         break;
       case 'edit':
         {
           $event.payload.id = this.paramID
-          this.update($event.payload, this.paramID).subscribe({ next: () => this.openSnackBar('Category added successfully'), error: () => this.openSnackBar('error has occurred'), complete: () => this.route.navigate(['admin', 'branches']) })
+          this.update($event.payload, this.paramID).subscribe({ next: () => this._snackBar.success('Category added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'branches']) })
         }
         break;
     }
   }
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'Ok', { duration: 5000 })
-  }
+
   getQueryParams() {
     this.router.queryParams.subscribe((params: any) => {
       if (params.id && params.type == 'edit') {

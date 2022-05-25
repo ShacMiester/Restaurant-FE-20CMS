@@ -106,7 +106,6 @@ export class QuestionService {
         key: 'description',
         label: 'Have more details?',
         value: '',
-        type: 'textarea',
         order: 100
       })
     ];

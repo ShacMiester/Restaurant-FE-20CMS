@@ -5,6 +5,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { user } from 'src/shared/entities/user.entity';
 import { NavBar } from '../../entities/navbar-item.entity';
 import { Router } from '@angular/router';
+import { CartService } from 'src/shared/services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +30,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  constructor(private UserService: UserService, private navbArService: NavbarService, private routerLink: Router) { }
+  constructor(private UserService: UserService, private navbArService: NavbarService, private cartService:CartService) { }
   public animatePage = true;
 
   someBadge: number = 1;
@@ -41,15 +42,23 @@ export class NavbarComponent implements OnInit {
   getTransform() {
     return `translateY(${this.height})`
   }
+  shoppingCart : number= 0;
 
   ngOnInit(): void {
     this.getUserInfo();
     this.getNavBarConfigs();
+    this.getCartItems();
   }
   getNavBarConfigs() {
     this.navbArService.getNavBarConfigs().subscribe(navBarConfigs => {
       this.navBarConfigs = navBarConfigs
     })
+  }
+  getCartItems() {
+    this.cartService.getCartItems().subscribe(items => {
+      console.log(items)
+      this.shoppingCart = items.length;
+    });
   }
   scrollToElement(id){
     console.log(id)

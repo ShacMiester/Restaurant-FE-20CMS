@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/components/admin/services/crud.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-working-hours',
@@ -13,7 +13,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class WorkingHoursComponent extends CrudService<any, number> implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
   dataSource: any = [];
-  constructor(protected override _http: HttpClient, private MatSnackBar: MatSnackBar, private router: Router) {
+  constructor(protected override _http: HttpClient, private _snackBar: SnackbarService, private router: Router) {
     super(_http, 'WorkingHours');
   }
 
@@ -25,12 +25,8 @@ export class WorkingHoursComponent extends CrudService<any, number> implements O
     this.subscriptions.add(this.findAll().subscribe(
       {
         next: (v) => this.dataSource = v,
-        error: (err) => this.openSnackBar('An error has occurred while retrieving the data')
+        error: (err) => this._snackBar.error('An error has occurred while retrieving the data')
       }))
-  }
-
-  openSnackBar(message: string) {
-    this.MatSnackBar.open(message, 'Ok', { duration: 5000 })
   }
 
   performAction(event: { row: any, action: 'edit' | 'delete' | 'add' }) {
@@ -40,8 +36,8 @@ export class WorkingHoursComponent extends CrudService<any, number> implements O
         break;
       case 'delete':
         this.delete(event.row.id).subscribe({
-          next: () => this.openSnackBar('Item deleted successfully'),
-          error: (err) => this.openSnackBar('An error has occurred'),
+          next:()=>this._snackBar.success('Item deleted successfully'),
+          error: (err) => this._snackBar.error('An error has occurred'),
           complete: () => this.subscriptions.add(this.getWorkingHours())
         })
         break;

@@ -21,6 +21,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() editable: boolean = true;
   @Input() buttonTitle: string = 'Save';
   @Input() returnTo: any = undefined;
+  @Input() cancelText:string = "Cancel";
   image:string = '';
 
   form!: FormGroup;
