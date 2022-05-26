@@ -21,6 +21,7 @@ export class HeaderService {
       buttonLink: 'https://www.doordash.com/',
       buttons: [
         // { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'DoorDash',containsImage:true,imageLink:'../assets/images/logo/doordash-logo@logotyp.us.svg' },
+         { buttonLink: 'https://www.doordash.com/store/jasmine-grill-and-kabab-charlotte-1487002/', buttonText: 'Order Deliver' },
         { buttonLink: 'menu', buttonText: 'Order Pickup' },
       ],
     },
