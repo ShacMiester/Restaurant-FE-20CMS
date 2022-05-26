@@ -15,7 +15,7 @@ id:number;
   addToCart(item: any, obj: any, operation?: string) { // obj :  is the complete object
     const menuItem = this.cartItems.findIndex(x => x.id === item.id)
     if (menuItem == -1) {
-      this.cartItems.push({ id: item.id, name: item.name, quantity: 1, price: item.price, optionIds: obj.optionIds })
+      this.cartItems.push({ id: item.id, name: item.name, quantity: obj.quantity, price: item.price, optionIds: obj.optionIds })
     }
     else if (operation == "minus") {
       this.cartItems[menuItem].quantity -= 1;
