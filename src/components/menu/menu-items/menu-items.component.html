@@ -16,14 +16,14 @@
 
 
 
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs bg-light">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs bg-light px-5">
         <li [ngbNavItem]="i+1" *ngFor="let item of items; let i =index;">
             <a ngbNavLink class="nav-link m-0" aria-current="page" (click)="goToTarget(item.category)">{{item.category}} </a>
         </li>
     </ul>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid mx-3">
         <div class="row">
             <div class="col-md-12 col-12" *ngFor="let item of items; let i =index;">
                 <h2 class="text-primary mt-2" [id]="item.category"> {{item.category}}</h2>
@@ -34,7 +34,7 @@
                         <div class="card cursor-pointer" (click)="addToCart(menuItem)">
                             <div class="row">
 
-                                <div class="col-md-8 col-lg-8">
+                                <div class="col-md-8 col-lg-8 col-sm-12">
                                     <div class="card-body start">
                                         <h1 class="text-primary ">{{menuItem.name}}</h1>
                                         <p class="card-text text-muted my-0"> {{menuItem.description}} </p> <br>
@@ -42,7 +42,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                <div class="col-md-4 col-lg-4 col-sm-12">
                                     <img class="m-auto" [src]="menuItem.imageURL" alt="menu-item" width="100%">
 
                                 </div>
