@@ -92,10 +92,16 @@ export class CateringTableComponent extends CrudService<any, number> implements 
 
     });
   }
+  fixData(data){
+    let obj =  {id: data.id, description: data.description, numberOfPeople: data.numberOfPeople, phoneNumber: data.phoneNumber, email: data.email, rejectionReason: data.rejectionReason, branchID: data.branch.id, cateringStatus: data.cateringStatus
+    }
+    return obj;
+  }
   changeStatus(data, status: number) {
-    console.log(data)
-    data['cateringStatus'] = status
-    this.update(data, data.id).subscribe({
+    console.log(data);
+    data['cateringStatus'] = status;
+    let obj = this.fixData(data);
+    this.update(obj, data.id).subscribe({
       next: (v) => console.log(v),
       error: (e) => console.log(e),
       complete: () => { this.getCateringData() }

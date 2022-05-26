@@ -38,18 +38,27 @@
         <mat-icon>more_vert</mat-icon>
       </button>
             <mat-menu #menu="matMenu">
+
+                <button mat-menu-item (click)="changeStatus(data,0)">
+                <mat-icon>schedule</mat-icon>
+                <span>Waiting for approval</span>
+              </button>
+
                 <button mat-menu-item (click)="changeStatus(data,1)">
-          <mat-icon>check</mat-icon>
-          <span>Accept</span>
-        </button>
+                <mat-icon>check</mat-icon>
+                <span>Accept</span>
+              </button>
+
                 <button mat-menu-item (click)="changeStatus(data,3)">
-          <mat-icon>cancel</mat-icon>
-          <span>Cancel</span>
-        </button>
+                <mat-icon>cancel</mat-icon>
+                <span>Cancel</span>
+             </button>
+
                 <button mat-menu-item (click)="changeStatus(data,2)">
-          <mat-icon>delete_forever</mat-icon>
-          <span>Reject</span>
-        </button>
+                <mat-icon>delete_forever</mat-icon>
+                <span>Reject</span>
+            </button>
+
             </mat-menu>
         </ng-template>
     </app-unified-table>
