@@ -24,6 +24,7 @@ export class MenuItemOptionCategoriesComponent
   isDisabledButton: boolean = true;
   environment = environment.store + 'uploads/';
   hideOptions: boolean = false;
+  price: number = 0;
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,11 +40,13 @@ export class MenuItemOptionCategoriesComponent
   }
   onPlus(quantity: number) {
     this.quantity = quantity + 1;
+    this.calculatePrice(this.SelectedOptios);
   }
   onMinus(quantity) {
     if (quantity > 1) {
       this.quantity = quantity - 1;
     }
+    this.calculatePrice(this.SelectedOptios)
   }
 
   getCategoryOptionItem(id: number) {
@@ -100,9 +103,22 @@ export class MenuItemOptionCategoriesComponent
           this.isDisabledButton = true;
         }
       }
+     this.calculatePrice(this.SelectedOptios);
     }
+
     console.log(option.isSelected)
   }
+
+  calculatePrice(option:any[]){
+   let total_option_price = 0;
+   this.price = 0;
+    option.forEach(e =>{
+      total_option_price += e.addtionalPrice;
+   })
+     this.price = (this.menuItem.price  + total_option_price) * this.quantity;
+
+  }
+
 
   AddToCart() {
     let item = {
