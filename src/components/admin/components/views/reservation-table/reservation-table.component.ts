@@ -96,9 +96,15 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     });
   }
+  fixData(data){
+    let obj =  {id: data.id, name: data.name, notes: data.notes, numberOfPeople: data.numberOfPeople, phoneNumber: data.phoneNumber, email: data.email, rejectionReason: data.rejectionReason, branchID: data.branch.id, reservationStatus: data.reservationStatus
+    }
+    return obj;
+  }
   changeStatus(data, status: number) {
-    data['reservationStatus'] = status
-    this.update(data, data.id).subscribe({
+    data['reservationStatus'] = status;
+    let obj = this.fixData(data);
+    this.update(obj, data.id).subscribe({
       next: (v) => console.log(v),
       error: (e) => console.log(e),
       complete: () => { this.getReservationsData() }
