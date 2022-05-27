@@ -29,7 +29,7 @@
       <mat-error *ngIf="form.controls[field.key].hasError('required')">{{field.errorMessage}}</mat-error>
     </mat-form-field>
     <section *ngSwitchCase="'checkbox'">
-      <mat-checkbox *ngIf="!field.options?.length" [id]="field.key" [formControlName]="field.key" appearance="outline"
+      <mat-checkbox *ngIf="!field.options?.length"  [(ngModel)]="field.value" [id]="field.key" [formControlName]="field.key" appearance="outline"
         (change)="field.callback? field.callback(this.form.controls[field.key]):false">{{field.label}}</mat-checkbox>
       <mat-form-field style="width: 100%;" *ngIf="field.options?.length" appearance="outline">
         <mat-label>{{field.label}}</mat-label>
