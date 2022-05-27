@@ -12,39 +12,35 @@
         </div>
     </ng-template>
 </app-descriptive-block>
-<div class="container-fluid tab-container mt-5">
-
-
-
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs bg-light px-5">
+<div class="tab-container">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs bg-light px-2">
         <li [ngbNavItem]="i+1" *ngFor="let item of items; let i =index;">
             <a ngbNavLink class="nav-link m-0" aria-current="page" (click)="goToTarget(item.category)">{{item.category}} </a>
         </li>
     </ul>
 
 
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid main-items-container">
+        <div class="">
             <div class="col-md-12 col-12" *ngFor="let item of items; let i =index;">
                 <h2 class="text-primary mt-2" [id]="item.category"> {{item.category}}</h2>
-                <div class="row  align-items-center">
-                    <div class=" col-md-6 col-lg-6 col-sm-12 col-xs-12 mb-3" *ngFor="let menuItem of item.items">
+                <div class="d-flex flex-row align-items-center flex-wrap">
+                    <div class=" col-md-4 col-lg-4 col-sm-12 col-xs-12 mb-3 pl-0 menu-item-container" *ngFor="let menuItem of item.items">
 
 
                         <div class="card cursor-pointer" (click)="addToCart(menuItem)">
-                            <div class="row">
+                            <div class="d-flex flex-row">
 
                                 <div class="col-md-8 col-lg-8 col-sm-12">
-                                    <div class="card-body start">
+                                    <div class="card-body pb-0 start">
                                         <h1 class="text-primary ">{{menuItem.name}}</h1>
                                         <p class="card-text text-muted my-0"> {{menuItem.description}} </p> <br>
-                                        <p class="card-text text-primary"> {{menuItem.price}}$ </p>
+                                        <p class="card-text text-primary item-price"> {{menuItem.price}}$ </p>
 
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-12">
                                     <img class="m-auto" [src]="menuItem.imageURL" alt="menu-item" width="100%">
-
                                 </div>
                             </div>
 

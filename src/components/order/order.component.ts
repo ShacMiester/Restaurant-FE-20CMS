@@ -3,6 +3,7 @@ import { CrudService } from 'src/components/admin/services/crud.service';
 import { Order } from './services/order-status.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/shared/services/cart.service';
 
 @Component({
   selector: 'app-order',
@@ -23,7 +24,8 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
   constructor(
     protected override _http: HttpClient,
     private router: ActivatedRoute,
-    private route: Router
+    private route: Router,
+    private cartService: CartService
   ) {
     super(_http, 'Orders');
   }
@@ -46,9 +48,10 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
 
   getQueryParams() {
     this.router.queryParams.subscribe((params: any) => {
-      if (params['OrderID'] != null || params['OrderID'] != undefined){
+      if (params['OrderID'] != null || params['OrderID'] != undefined) {
         this.getOrder(params.OrderID);
-        localStorage.setItem('order',params['OrderID'])
+        localStorage.setItem('order', params['OrderID'])
+        this.cartService.deleteCart()
       }
       else this.navigateToPageNotFound();
     });
@@ -75,7 +78,7 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
         break;
     }
     setTimeout(() => {
-    this.showMatSpinner = false;
+      this.showMatSpinner = false;
     }, 400);
   }
 }

@@ -113,6 +113,10 @@ mat-icon {
 }
 
 .dialog-headline {
-    height: 500px;
+    height: 350px;
     width: 500px;
+    object-fit: cover;
+}
+.main-container{
+    z-index: 10000000000000;
 }

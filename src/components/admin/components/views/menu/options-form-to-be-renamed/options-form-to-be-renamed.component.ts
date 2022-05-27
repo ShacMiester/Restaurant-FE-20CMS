@@ -29,17 +29,17 @@ import { SnackbarService } from 'src/shared/services/snackbar.service';
 })
 export class OptionsFormToBeRenamedComponent
   extends CrudService<any, number>
-  implements OnInit
-{
+  implements OnInit {
   optionsForm: FormGroup = new FormGroup({});
   type: 'add' | 'edit';
   paramID: number = 0;
+  optionID: number;
   constructor(
     private fb: FormBuilder,
     protected override _http: HttpClient,
     private router: ActivatedRoute,
     private snackBarService: SnackbarService,
-    private route:Router
+    private route: Router
   ) {
     super(_http, 'MenuItems/CreateCategoriesWithOptions');
   }
@@ -57,19 +57,18 @@ export class OptionsFormToBeRenamedComponent
         this._http
           .get(
             environment.storeApi +
-              '/MenuItemOptionCategories/getByItemId?id=' +
-              params.id
+            '/MenuItemOptionCategories/getByItemId?id=' +
+            params.id
           )
           .subscribe((options: any) => {
-            console.log('options: ', options);
             if (options.length) {
-              options.map((opt, index) => {
-                opt['itemId'] = params.id;
+              options.forEach((opt,index) => {
+                opt['itemId'] = parseInt(params.id);
                 this.addOption(opt);
                 opt.itemOptions.map((o) => {
                   this.addOptionOptions(index, o);
-                  this.optionsForm.patchValue(opt);
-                });
+                }
+                );
               });
             } else this.type = 'add';
 
@@ -90,7 +89,7 @@ export class OptionsFormToBeRenamedComponent
   }
 
   newOption(
-    obj: any = { name: '', min: 0, max: 0, itemId: this.paramID || 0 }
+    obj: any = { name: '', min: 0, max: 0, itemId: this.paramID || 0, id:0 }
   ): FormGroup {
     return this.fb.group({
       itemId: new FormControl(this.paramID),
@@ -98,15 +97,18 @@ export class OptionsFormToBeRenamedComponent
       min: new FormControl(obj.min),
       max: new FormControl(obj.max),
       itemOptions: this.fb.array([]),
+      id: new FormControl(obj.id || 0)
     });
   }
 
   addOption(opt = {}) {
     this.options().push(this.newOption(opt));
   }
+  deletedOptions = []
 
-  removeOption(empIndex: number) {
-    this.options().removeAt(empIndex);
+  removeOption(optionIndex: number,option) {
+    this.deletedOptions.push(option.value)
+    this.options().removeAt(optionIndex);
   }
 
   optionOptions(empIndex: number): FormArray {
@@ -142,7 +144,7 @@ export class OptionsFormToBeRenamedComponent
             this.snackBarService.success(
               'Menu item options updated successfully'
             );
-            this.route.navigate(['/admin','menu-standAlone-table'])
+            this.route.navigate(['/admin', 'menu-standAlone-table'])
           },
         });
         break;
@@ -152,7 +154,12 @@ export class OptionsFormToBeRenamedComponent
             environment.storeApi + '/MenuItems/UpdateCategoriesWithOptions',
             this.optionsForm.controls['itemOptions'].value
           )
-          .subscribe();
+          .subscribe(updated=>{
+            this.deletedOptions.map(category=>{
+              this._http.delete(`${environment.storeApi}/MenuItemOptionCategories/${category.id}`).subscribe()
+
+            })
+          });
         break;
     }
   }

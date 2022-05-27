@@ -50,6 +50,14 @@ mat-option:hover {
     }
 }
 
+ul{
+    height: 55px;
+    padding-top: 5px;
+}
+.main-items-container{
+    background-color: #fbfbfc;
+}
+
 .overlay {
     opacity: 0.2 !important;
 }
@@ -110,7 +118,7 @@ mat-card {
     transition: all .2s ease-in-out;
     img {
         // border-radius: 12px;
-        height: 160px;
+        height: 140px;
         object-fit: cover;
     }
     &:hover {
@@ -139,4 +147,10 @@ a {
 
 .card-box-shadow {
     box-shadow: 0 2px 1px -1px rgb(199 185 55), 0 1px 1px 0, 0 1px 9px 0 #c59d5f;
+}
+.item-price{
+    font-size: 1.15rem;
+}
+.menu-item-container{
+    height: 100%;
 }

@@ -1,3 +1,4 @@
+<div class="main-container">
 <img [src]="menuItem.imageURL" class="dialog-headline" alt="" />
 <div class="container-fluid">
     <div class="">
@@ -83,4 +84,6 @@
     <button mat-button mat-dialog-close="true" [disabled]="isDisabledButton" class="btn btn-primary" type="button" (click)="AddToCart()">
         Add To Cart <span *ngIf="price !==0 && !isDisabledButton">{{price}}$</span>
     </button>
+</div>
+
 </div>
