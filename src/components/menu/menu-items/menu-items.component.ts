@@ -68,7 +68,7 @@ export class MenuItemsComponent
   }
   changeBranch(id: number) {
     this.selectedBranch = id
-    localStorage.setItem('Branch',id.toLocaleString())
+    localStorage.setItem('Branch',id?.toLocaleString())
   }
   changeLocation() {
     this.dialog.open(LocationComponent, { disableClose: true }).afterClosed().subscribe({next:(location)=>{

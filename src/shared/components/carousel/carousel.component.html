@@ -7,7 +7,7 @@
             <p>{{item.description}}</p>
             <div *ngIf="item?.buttons.length " class="row justify-content-center">
                 <div class="col-12 mt-3" *ngFor="let button of item.buttons">
-                    <button mat-raised-button (click)="navigateToLink(button.buttonLink)" class="btn-primary"><span *ngIf="button?.containsImage"><img [src]="button.imageLink" alt=""
+                    <button mat-raised-button (click)="navigateToLink(button.buttonLink)" class="btn-primary btn-lg"><span *ngIf="button?.containsImage"><img [src]="button.imageLink" alt=""
                 ></span> {{button.buttonText}}</button>
                 </div>
 

@@ -1,6 +1,6 @@
 <mat-sidenav-container [hidden]="currentRoute.includes('/admin')">
   <div class="overlay"></div>
-  <mat-sidenav #sidenav mode="over" [opened]="false" [position]="'end'">
+  <mat-sidenav #sidenav mode="over" [opened]="false" [position]="'end'" style="width: 300px;">
     <mat-icon (click)="sidenav.toggle()" class="mat-18 close">close</mat-icon>
     <div class="content-container d-flex h-100 flex-column">
 
@@ -32,11 +32,11 @@
 
           <div class="total-items d-flex justify-content-between flex-row">
             <p>Tax</p>
-            <p>7.5$</p>
+            <p>$0</p>
           </div>
           <div class="total-items d-flex justify-content-between flex-row">
             <p>Total</p>
-            <p>{{totalPriceItems}} $</p>
+            <p>${{totalPriceItems}}</p>
           </div>
         </ng-container>
         <div class="actions d-flex flex-row flex-wrap justify-content-around">

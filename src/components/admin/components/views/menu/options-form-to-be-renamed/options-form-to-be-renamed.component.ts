@@ -156,7 +156,9 @@ export class OptionsFormToBeRenamedComponent
           )
           .subscribe(updated=>{
             this.deletedOptions.map(category=>{
-              this._http.delete(`${environment.storeApi}/MenuItemOptionCategories/${category.id}`).subscribe()
+              this._http.delete(`${environment.storeApi}/MenuItemOptionCategories/${category.id}`).subscribe({complete:()=>{
+                this.route.navigate(['/admin','menu-standAlone-table'])
+              }})
 
             })
           });

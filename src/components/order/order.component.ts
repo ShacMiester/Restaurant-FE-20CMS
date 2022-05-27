@@ -65,10 +65,10 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
       case 'Pending':
         this.statusMessage = 'Waiting For Approval';
         break;
-      case 'Accept':
+      case 'InProgress':
         this.statusMessage = 'Your meal is being prepared';
         break;
-      case 'Ready':
+      case 'OrderReady':
         this.statusMessage = 'Your meal is waiting for you';
         break;
       case 'Delivering':

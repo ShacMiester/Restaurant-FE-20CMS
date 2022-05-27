@@ -49,7 +49,7 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
             this.preview = changes['form'].currentValue.controls[keys].value
           }
         })
-    if (this.field.key.toLocaleLowerCase().includes('image'))
+    if (this.field?.key?.toLocaleLowerCase().includes('image'))
       this.preview = this.form.controls[this.field.key].value
   }
 

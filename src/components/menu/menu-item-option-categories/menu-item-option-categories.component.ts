@@ -126,8 +126,6 @@ export class MenuItemOptionCategoriesComponent
       quantity: this.quantity,
       item: this.menuItem,
     }; // quantity
-    console.log('item', item);
-
     this.dialogRef.close(item);
   }
   CloseDialog() {

@@ -41,7 +41,7 @@ export class AdminComponent implements OnInit {
   }
 
   changeLocation(branchID: number) {
-    localStorage.setItem('Branch', branchID.toLocaleString());
+    localStorage.setItem('Branch', branchID?.toLocaleString());
   }
   doSomething($event: any) {}
 }

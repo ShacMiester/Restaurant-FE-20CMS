@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-between mb-5 mt-5 container-fluid" style="font-size: 22px">
   <p>{{ info.date | date }}</p>
   <p>Order #{{ order?.id }}</p>
-  <p>${{ order.total }}</p>
+  <p>${{ order?.total }}</p>
 </div>
 <app-hr></app-hr>
 <mat-spinner style="
@@ -37,14 +37,14 @@
 
         <img src="../../assets//images/gallery/yes.png" alt=""
           [ngClass]="{ inactive: order.status != 'Pending' ? false : true }" />
-        <mat-progress-bar [mode]="order.status == 'Accepted' ? 'indeterminate' : 'determinate'" [value]="
-            order.status != 'Accepted' && order.status != 'Pending' ? 100 : 0
+        <mat-progress-bar [mode]="order.status == 'InProgress' ? 'indeterminate' : 'determinate'" [value]="
+            order.status != 'InProgress' && order.status != 'Pending' ? 100 : 0
           "></mat-progress-bar>
 
         <img src="../../assets/images/gallery/cooking.png" alt=""
-          [ngClass]="{ inactive: order.status == 'Ready' ? false : true }" />
+          [ngClass]="{ inactive: order.status == 'OrderReady' ? false : true }" />
         <mat-progress-bar [mode]="order.status == 'Preparing' ? 'indeterminate' : 'determinate'" [value]="
-            order.status != 'Accepted' &&
+            order.status != 'InProgress' &&
             order.status != 'Pending' &&
             order.status != 'Preparing'
               ? 100
@@ -53,7 +53,7 @@
         </mat-progress-bar>
 
         <img src="../../assets/images/gallery/pickup.png" alt=""
-          [ngClass]="{ inactive: order.status == 'Ready' ? false : true }" />
+          [ngClass]="{ inactive: order.status == 'PickedUp' ? false : true }" />
       </div>
     </div>
     <div class="text-center" style="margin: 40px 0">

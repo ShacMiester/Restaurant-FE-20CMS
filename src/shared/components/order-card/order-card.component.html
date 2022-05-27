@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-4" [ngSwitch]="order.status">
-                        <button *ngSwitchCase="'New'" type="button" class="btn btn-primary" (click)="changeStatusToAccepted(order)">Accept order</button>
+                        <button *ngSwitchCase="'Pending'" type="button" class="btn btn-primary" (click)="changeStatusToAccepted(order)">Accept order</button>
                         <button *ngSwitchCase="'InProgress'" type="button" class="btn btn-primary" (click)="changeStatusToReady(order)">Ready order</button>
                         <button *ngSwitchCase="'OrderReady'" type="button" class="btn btn-primary" (click)="changeStatusToPickup(order)">PickUp Order</button>
                         <!-- <button *ngSwitchCase="'PickedUp'" type="button" class="btn btn-primary">Finish Order</button> -->

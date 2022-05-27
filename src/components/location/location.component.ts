@@ -39,6 +39,6 @@ export class LocationComponent
   }
   changeBranch(id: number) {
     this.selectedBranch = id
-    localStorage.setItem('Branch',id.toLocaleString())
+    localStorage.setItem('Branch',id?.toLocaleString())
   }
 }
