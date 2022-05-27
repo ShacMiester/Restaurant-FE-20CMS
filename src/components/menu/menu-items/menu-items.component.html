@@ -12,7 +12,7 @@
         </div>
     </ng-template>
 </app-descriptive-block>
-<div class="tab-container">
+<div class="container-fluid tab-container">
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs bg-light px-2">
         <li [ngbNavItem]="i+1" *ngFor="let item of items; let i =index;">
             <a ngbNavLink class="nav-link m-0" aria-current="page" (click)="goToTarget(item.category)">{{item.category}} </a>
