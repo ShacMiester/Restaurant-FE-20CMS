@@ -1,6 +1,7 @@
 import { fadeInUp } from './../../../animations/animations';
 import { HeaderCarouselItem } from './../../../entities/header-carousel-item.entity';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-carousel',
@@ -18,14 +19,14 @@ export class CarouselComponent implements OnInit {
   @Input() carouselItems!: HeaderCarouselItem[];
   @Input() component!: string;
 
-  constructor() { }
+  constructor(private route: Router) { }
   getHeight() {
     return { transform: `translateY(${this.height})` }
   }
   ngOnInit(): void {
   }
-  navigateToLink(link:string){
-    window.open(link)
+  navigateToLink(link: string, inNewTab: boolean) {
+    inNewTab?     window.open(link) : this.route.navigate([link])
   }
 
 }

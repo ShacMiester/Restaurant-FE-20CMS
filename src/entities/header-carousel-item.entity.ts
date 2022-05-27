@@ -10,5 +10,6 @@ export interface HeaderCarouselItem {
     buttonText?: string;
     containsImage?:boolean;
     imageLink?:string;
+    openInNewTab?:boolean;
   }[]
 }
