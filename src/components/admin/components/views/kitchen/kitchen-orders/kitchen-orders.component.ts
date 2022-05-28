@@ -41,7 +41,7 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
   }
   getPendingOrders(){
    this.pendingOrderList = this.allOrderList.filter(order =>
-      order.status == 'New'
+      order.status == 'Pending'
    );
   }
   getInProgressOrders(){
