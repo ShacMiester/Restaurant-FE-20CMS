@@ -17,20 +17,9 @@ export class CartService {
   addToCart(item: any, obj: any, operation?: string) { // obj :  is the complete object
     let menuItem ;
     let noOption: boolean = false;
-    //= this.cartItems.findIndex(x => x.id === item.id);
-   //= this.cartItems.findIndex(x => x.id === item.id)
-    console.log(obj)
-    // if(item.optionIds == undefined || item.optionIds == null ){
-    //   menuItem = this.cartItems.findIndex(x => x.id === item.id);
-    //   noOption = true;
-    //   console.log("there is nooo option")
-    // } else{
-    //  menuItem = this.cartItems.findIndex(x => {JSON.stringify(x.optionIds) === JSON.stringify(item.optionIds)
-    //  });
-    //  noOption = false;
-    //  console.log("there is option")
-    // }
-    // console.log("from Service cart", menuItem)
+    console.log(obj);
+    console.log("item", item)
+
     if(obj == undefined){
       console.log("undefind", item);
       if(item.optionIds == undefined || item.optionIds == null || item.optionIds.length == 0){
@@ -48,7 +37,8 @@ export class CartService {
         }
       }
       else{
-        menuItem = this.cartItems.findIndex(x => {JSON.stringify(x.optionIds) === JSON.stringify(item.optionIds)});
+        menuItem = this.cartItems.findIndex(x => JSON.stringify(x.optionIds) === JSON.stringify(item.optionIds));
+        console.log("menuItem", menuItem, item )
         if (operation == "minus"  ) {
 
           this.cartItems[menuItem].quantity -= 1;
@@ -62,25 +52,28 @@ export class CartService {
 
     }
     else{
-      if(item.optionIds == undefined || item.optionIds == null ){
+      if(item.itemOptionCategories == undefined || item.itemOptionCategories == null ){
 
         menuItem =  this.cartItems.findIndex(x => x.id === item.id);
         noOption = true;
+        console.log(" Here From here 0")
+
       }
       else{
-        menuItem = this.cartItems.findIndex(x => {JSON.stringify(x.optionIds) === JSON.stringify(item.optionIds)})
+        menuItem = this.cartItems.findIndex(x => JSON.stringify(x.optionIds) === JSON.stringify(obj.optionIds))
+        noOption = false;
+        console.log(" Here From here 1")
       }
-      if(menuItem == -1){
+      console.log(menuItem);
+      console.log(menuItem !== -1 && noOption == false);
+
+       if((operation =="add") || (menuItem !== -1 && noOption == false) ){
+        this.cartItems[menuItem].quantity += 1;
+      }
+      else {
         this.cartItems.push({ id: item.id, name: item.name, quantity: obj.quantity, price: item.price, optionIds: obj.optionIds, imgItem: item.imageURL })
       }
-      else if(operation =="add" || noOption ){
-        this.cartItems[menuItem].quantity += 1;
-
-      }
     }
-
-
-
   //   if (menuItem == -1) {
   //     this.cartItems.push({ id: item.id, name: item.name, quantity: obj.quantity, price: item.price, optionIds: obj.optionIds, imgItem: item.imageURL })
   //   }
