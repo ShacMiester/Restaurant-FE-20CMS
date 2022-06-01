@@ -1,31 +1,33 @@
 <div class="container-fluid position-relative main-container">
-  <div class="overlay"></div>
-  <div class="container position-relative">
-    <div class="header text-center">
-      <div class="title">
-        <h3>{{title}}</h3>
-      </div>
-      <div class="sub-title">
-        <p>{{subtitle}}
-        </p>
-      </div>
-    </div>
-    <div class="content">
-      <div *ngFor="let offer of offers" class="promotion">
-        <div class="d-flex flex-row prom-header position-relative">
-          <p class="mr-3 day">{{offer.day}}</p><span>{{offer.dayDescription}}</span>
-        </div>
-        <div class="promotion-details">
-          <div class="item-datails d-table h-100 d-flex flex-row align-items-center">
-            <div class="item-name font-weight-bold d-inline font-italic"><p>{{offer.item}}</p></div>
-            <div class="promotion-dots"></div>
-              <div class="h-100 d-flex flex-column price position-relative flex-row">
-              <span class="old-price">{{offer.oldPrice}}$</span>
-              <span style="font-size: 22px;">{{offer.newPrice}}$</span>
+    <div class="overlay"></div>
+    <div class="container position-relative">
+        <div class="header text-center">
+            <div class="title">
+                <h3>{{title}}</h3>
             </div>
-          </div>
+            <div class="sub-title">
+                <p>{{subtitle}}
+                </p>
+            </div>
         </div>
-      </div>
+        <div class="content">
+            <div *ngFor="let offer of offers" class="promotion">
+                <div class="d-flex flex-row prom-header position-relative">
+                    <p class="mr-3 day">{{offer.day}}</p><span>{{offer.dayDescription}}</span>
+                </div>
+                <div class="promotion-details">
+                    <div class="item-datails d-table h-100 d-flex flex-row align-items-center">
+                        <div class="item-name font-weight-bold d-inline font-italic">
+                            <p>{{offer.item}}</p>
+                        </div>
+                        <div class="promotion-dots"></div>
+                        <div class="h-100 d-flex flex-column price position-relative flex-row">
+                            <span class="old-price">${{offer.oldPrice}}</span>
+                            <span style="font-size: 22px;">${{offer.newPrice}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
