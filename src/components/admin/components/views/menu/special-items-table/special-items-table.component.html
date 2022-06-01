@@ -1,4 +1,4 @@
 <div class="container-fluid styled-container">
   <app-unified-table [dataSource]="dataSource" [containsTableAction]="false" [containsActionButtons]="true"
-     (action)="performAction($event)"></app-unified-table>
+     (action)="performAction($event)" [displayedColumns]="['name','imageURL','price']"></app-unified-table>
 </div>

@@ -1,63 +1,33 @@
-<!-- <div class="container-fluid box-shadow main-container">
-    <div class="title">
-        <h3>Caterings</h3>
-    </div>
-    <div class="" style="margin-top: 10px; overflow: overlay;">
-        <mat-progress-bar *ngIf="!hideBar" mode="indeterminate"></mat-progress-bar>
-        <table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
-            <ng-container *ngFor="let col of displayedColumns">
-                <ng-container matColumnDef="{{col}}" class="text-center">
-                    <th mat-header-cell *matHeaderCellDef class="text-center" style="text-align: center!important;"> {{col}}</th>
-                    <td mat-cell *matCellDef="let element" class="truncate-cell text-center">
-                        <ng-container *ngIf="col != 'status'">
-                            <ng-container *ngIf="col == 'date'">{{element[col] | date}}</ng-container>
-                            <ng-container *ngIf="col != 'date'">{{element[col]}}</ng-container>
-                        </ng-container>
-                        <ng-container *ngIf="col == 'status'">
-                            <ng-container [ngSwitch]="element[col]">
-                                <p *ngSwitchCase="'Waiting For Approval'" class="label label_attention">{{element[col]}}</p>
-                                <p *ngSwitchCase="'Accepted'" class="label label_open">{{element[col]}}</p>
-                                <p *ngSwitchCase="'Rejected'" class="label label_danger">{{element[col]}}</p>
-                                <p *ngSwitchCase="'Cancelled'" class="label label_severe ">{{element[col]}}</p>
-                            </ng-container>
-                        </ng-container>
-                    </td>
-                </ng-container>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr (click)="getRecord(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div>
-    <ng-container *ngIf="!dataSource.length">no data was found</ng-container>
-</div> -->
-
 <div class="container-fluid styled-container">
-    <app-unified-table [dataSource]="dataSource" (action)="openRecord($event)" [hideDeleteButton]="true" [containsActionButtons]="true" [containsTableAction]="true" [title]="'Catering'">
+    <app-unified-table [dataSource]="dataSource" (action)="openRecord($event)" [hideDeleteButton]="true"
+        [containsActionButtons]="true" [containsTableAction]="true" [title]="'Catering'"
+        [displayedColumns]="['name','description','phoneNumber','branchName','date','time','status']">
         <ng-template let-data="data">
-            <button mat-icon-button [matMenuTriggerFor]="menu" color="primary" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+            <button mat-icon-button [matMenuTriggerFor]="menu" color="primary"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
             <mat-menu #menu="matMenu">
 
                 <button mat-menu-item (click)="changeStatus(data,0)">
-                <mat-icon>schedule</mat-icon>
-                <span>Waiting for approval</span>
-              </button>
+                    <mat-icon>schedule</mat-icon>
+                    <span>Waiting for approval</span>
+                </button>
 
                 <button mat-menu-item (click)="changeStatus(data,1)">
-                <mat-icon>check</mat-icon>
-                <span>Accept</span>
-              </button>
+                    <mat-icon>check</mat-icon>
+                    <span>Accept</span>
+                </button>
 
                 <button mat-menu-item (click)="changeStatus(data,3)">
-                <mat-icon>cancel</mat-icon>
-                <span>Cancel</span>
-             </button>
+                    <mat-icon>cancel</mat-icon>
+                    <span>Cancel</span>
+                </button>
 
                 <button mat-menu-item (click)="changeStatus(data,2)">
-                <mat-icon>delete_forever</mat-icon>
-                <span>Reject</span>
-            </button>
+                    <mat-icon>delete_forever</mat-icon>
+                    <span>Reject</span>
+                </button>
 
             </mat-menu>
         </ng-template>

@@ -50,10 +50,12 @@ export class CateringDetailsComponent
     });
   }
   cater(event: any) {
+    event.id = this.data.item.id
     this.subscriptions.add(
       this.update(event.payload, this.data.item.id).subscribe({
-        next: (v) => this,
-        error: (e) => console.log(e),
+        error: (e) => {
+          this._snackBar.error('Error updating catering details');
+        },
         complete: () => {
           this.dialogRef.close(true);
         },

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class CartService {
   private dataSource: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   data: Observable<any> = this.dataSource.asObservable();
-id:number;
+  id: number;
   cartItems: any = [];
   total_price: number = 0;
   constructor() { }
@@ -19,15 +19,12 @@ id:number;
     }
     else if (operation == "minus") {
       this.cartItems[menuItem].quantity -= 1;
-
     }
-    else if(operation =="add") {
-
+    else if (operation == "add") {
       this.cartItems[menuItem].quantity += 1;
-      console.log("this.cartItems: ",this.cartItems)
     }
     this.calculateTotalPrice();
-    localStorage.setItem('total_price', JSON.stringify( this.total_price));
+    localStorage.setItem('total_price', JSON.stringify(this.total_price));
     this.sendData(this.total_price);
     localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
@@ -54,12 +51,10 @@ id:number;
       el => {
         totalOptions = 0;
 
-      el.optionIds.forEach( e =>{
-      totalOptions += e.addtionalPrice *el.quantity;
-    });
-    console.log("totalOptions",totalOptions, "el.:" ,el)
-    console.log(" this.total_price",  this.total_price)
-    this.total_price +=  el.price * el.quantity + totalOptions ;
+        el.optionIds.forEach(e => {
+          totalOptions += e.addtionalPrice * el.quantity;
+        });
+        this.total_price += el.price * el.quantity + totalOptions;
 
       }
     );

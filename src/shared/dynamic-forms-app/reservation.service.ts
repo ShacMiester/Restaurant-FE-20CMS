@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DropdownField } from './atoms/form-dropdown';
 import { TimeField } from './atoms/form-time';
@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 import { Validators } from '@angular/forms';
 
 @Injectable()
-export class QuestionService {
+export class Reservationervice {
   reservationForm: any
   constructor(private _http: HttpClient) { }
   applyNewField(): Observable<any> {
@@ -51,7 +51,7 @@ export class QuestionService {
         errorMessage: 'Date is required'
       }),
       new DropdownField({
-        key: 'branchID',
+        key: 'branchId',
         label: "Select Branch",
         value: '',
         order: 10,

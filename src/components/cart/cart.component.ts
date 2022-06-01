@@ -42,7 +42,6 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
 
   getCartItems() {
     this.CartService.getCartItems().subscribe({next:(v)=>{
-      console.log(v)
       this.shoppingCart = v;
     }});
   }

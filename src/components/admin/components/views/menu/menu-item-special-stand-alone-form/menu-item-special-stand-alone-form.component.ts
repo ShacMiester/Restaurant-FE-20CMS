@@ -64,7 +64,6 @@ export class MenuItemSpecialStandAloneFormComponent extends CrudService<any, num
 
 
   saveItem($event: any) {
-    console.log($event)
     switch (this.type) {
       case 'add':
         this.save($event.payload).subscribe({ next: () => this._snackBar.success('Menu item added successfully'), error: () => this._snackBar.error('error has occurred'), complete: () => this.route.navigate(['admin', 'menu-items-special-table']) })

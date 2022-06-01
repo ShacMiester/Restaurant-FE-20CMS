@@ -1,6 +1,6 @@
 <div class="container-fluid styled-container">
   <app-unified-table [dataSource]="dataSource" [button_title]="'Return to table'" [containsActionButtons]="true"
-    [button_title]="'Add menu item'" (action)="performAction($event)" [title]="'Menu Items'">
+    [button_title]="'Add menu item'" (action)="performAction($event)" [title]="'Menu Items'" [displayedColumns]="['name','imageURL','price','categoryName']">
     <ng-template let-data="data">
       <button mat-icon-button color="primary" matTooltip="edit options" (click)="editOptions(data)">
         <mat-icon> edit_attributes </mat-icon>
