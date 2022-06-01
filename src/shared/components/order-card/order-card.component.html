@@ -5,15 +5,15 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-8 col-sm-8">
                         <div class="card-text" *ngIf="order.status !='InProgress' && order.status !='PickedUp' ">
-                            <h2 class="d-inline text-secondary text-center pb-1">{{order.status}} Order</h2> <span class="ml-2 text-primary">{{order.total}}$</span>
+                            <h2 class="d-inline text-secondary text-center pb-1">{{order.status}} Order</h2> <span class="ml-2 text-primary">${{order.total}}</span>
 
                         </div>
                         <div class="card-text" *ngIf="order.status =='InProgress'">
-                            <h2 class="d-inline text-secondary text-center pb-1">Accepted Order </h2> <span class="ml-2 text-primary">{{order.total}}$</span>
+                            <h2 class="d-inline text-secondary text-center pb-1">Accepted Order </h2> <span class="ml-2 text-primary">${{order.total}}</span>
 
                         </div>
                         <div class="card-text" *ngIf="order.status =='PickedUp'">
-                            <h2 class="d-inline text-secondary text-center pb-1">Pickedup Order </h2> <span class="ml-2 text-primary">{{order.total}}$</span>
+                            <h2 class="d-inline text-secondary text-center pb-1">Pickedup Order </h2> <span class="ml-2 text-primary">${{order.total}}</span>
 
                         </div>
                     </div>

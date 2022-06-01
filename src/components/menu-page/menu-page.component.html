@@ -1,12 +1,6 @@
 <div class="app-menu">
-
     <div class="row">
         <div class="col-md-12" *ngFor="let obj of itemList">
-
-            <!-- <app-descriptive-block [title]="obj.category" [subtitle]="'Delicious'" [containsButton]="false" [styling]="{'background-image':'url(../../assets/images/mccain-fries-and-appetizers.jpg)', 'height': '300px'}">
-            </app-descriptive-block> -->
-
-
             <div class="container-fluid position-relative main-container">
                 <div class="overlay"></div>
                 <div class="container text-center position-relative text-white">
@@ -15,13 +9,27 @@
             </div>
             <app-hr></app-hr>
             <div class="container my-5" style="height: fit-content; ">
-                <h3 class="text-secondary text-center font-items mb-3">{{obj.category}} items</h3>
+                <h2 class="text-secondary text-center font-items mb-3">{{obj.category}} items</h2>
                 <div class="row">
-                    <div class="col-md-6 col-lg-6" *ngFor="let item of obj.items">
-                        <h1 class=" d-inline"> {{item.name}} </h1>
-                        <div class="menu-item-dots"></div>
-                        <span class="text-primary font-items"> {{item.price}}$</span>
-                        <p class="font-items text-muted">{{item.description}}</p>
+                    <div class="col-md-6 col-lg-6 justify-content-center" *ngFor="let item of obj.items">
+
+                        <!-- <div class="" style=" display: table;white-space: nowrap;">
+                            <h2 class=" d-inline" style="display: table-cell;"> {{item.name}} </h2>
+                            <div class="menu-item-dots" style="display: table-cell;"></div>
+                            <span class="text-primary font-items" style="display: table-cell;"> {{item.price}}$</span>
+                            <p class="font-items text-muted d-block">{{item.description}}</p>
+                        </div> -->
+
+                        <div class="menu-item">
+                            <div class="menu-item-details">
+                                <div class="menu-item-desc">
+                                    <h2 class="d-table-cell" style="display: table-cell;"> {{item.name}} </h2>
+                                    <div class="menu-item-dots" style="display: table-cell;"></div>
+                                    <span class="text-primary font-items menu-item-prices" style="display: table-cell;"> ${{item.price}}</span>
+                                    <p class="font-items text-muted d-block">{{item.description}}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
