@@ -11,7 +11,7 @@ import { CrudService } from '../admin/services/crud.service';
   selector: 'app-reseravation',
   templateUrl: './reseravation.component.html',
   styleUrls: ['./reseravation.component.scss'],
-  providers: []
+  providers: [Reservationervice]
 })
 export class ReservationComponent extends CrudService<any, number> implements OnInit {
   reservationForm$: Observable<FormBase<any>[]>;
