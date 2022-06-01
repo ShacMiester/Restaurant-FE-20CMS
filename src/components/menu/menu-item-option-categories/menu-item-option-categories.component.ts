@@ -36,6 +36,7 @@ export class MenuItemOptionCategoriesComponent
 
   ngOnInit(): void {
     this.menuItem = this.data.item;
+    this.price = this.menuItem.price;
     this.getCategoryOptionItem(this.menuItem.id);
   }
   onPlus(quantity: number) {
@@ -77,7 +78,8 @@ export class MenuItemOptionCategoriesComponent
       this._snackBar.open(
         `Please pay attention you shouldn't select more than ${category.length} options`,
         'Ok'
-      );
+      ); // no need
+      option.isSelected = false;
     } else {
       option.isSelected = !option.isSelected;
       if (option.isSelected == true) {
@@ -109,13 +111,26 @@ export class MenuItemOptionCategoriesComponent
 
   calculatePrice(option:any[]){
    let total_option_price = 0;
+   let total = 0;
    this.price = 0;
     option.forEach(e =>{
       total_option_price += e.addtionalPrice;
    })
-     this.price = (this.menuItem.price  + total_option_price) * this.quantity;
+      total = (this.menuItem.price  + total_option_price) * this.quantity;
+      //let testDec = this.decimalCount(total);
+      this.price = parseFloat(total.toFixed(2))
 
   }
+//   decimalCount( num ) {
+//     // Convert to String
+//     const numStr = String(num);
+//     // String Contains Decimal
+//     if (numStr.includes('.')) {
+//        return numStr.split('.')[1].length;
+//     };
+//     // String Does Not Contain Decimal
+//     return 0;
+//  }
 
 
   AddToCart() {

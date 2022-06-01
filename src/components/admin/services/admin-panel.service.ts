@@ -27,7 +27,7 @@ export class AdminPanelService {
       },
       {
         title: 'Caterings',
-        children: [{ title: 'Table', link: 'catering-table' }],
+        children: [{ title: 'Requests', link: 'catering-table' }],
       },
       {
         title: 'Branches',

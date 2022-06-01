@@ -31,11 +31,25 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.Subscription.add(this.getTotal());
     this.Subscription.add(this.getCartItems());
     this.CartService.data.subscribe(
-      total => {
-        if (total != null)
-          this.totalPriceItems = total;
+      (total: number) => {
+        if (total != null){
+          this.totalPriceItems = total;//parseFloat(total.toFixed(2)); //
+
+          console.log("total", this.totalPriceItems)
+        }
         else
           this.getTotal();
+      }
+    )
+    this.CartService.items.subscribe(
+      items =>{
+        if(items != null){
+          this.shoppingCart = items
+        console.log(items)
+      //
+        }
+        else
+        this.Subscription.add(this.getCartItems());
       }
     )
   }
@@ -48,7 +62,7 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
 
   getTotal() {
     this.CartService.getTotalPrice().subscribe(total => {
-      this.totalPriceItems = total;
+      this.totalPriceItems = parseFloat(total.toFixed(2)); //
     });
 
   }
@@ -59,17 +73,21 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.sidenav.toggle();
   }
   add(i, op) {
+    if(i.quantity < 50){
+    console.log("i", i)
     this.CartService.addToCart(i, op, "add");//
     this.getCartItems();
     // this.calculateTotalPrice();
     this.Subscription.add(this.getTotal());
-
+    }
   }
   minus(i, op) {
+    if(i.quantity > 1){
     this.CartService.addToCart(i, op, "minus");//
+    this.getCartItems();
     this.Subscription.add(this.getTotal());
     //this.calculateTotalPrice();
-
+    }
   }
 
   calculateTotalPrice() {
@@ -77,6 +95,7 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.shoppingCart.forEach(e => {
       this.totalPriceItems += e.price * e.quantity;
     })
+    this.totalPriceItems = parseFloat(this.totalPriceItems.toFixed(2));
     return this.totalPriceItems;
   }
   correctionData() {
