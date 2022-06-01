@@ -14,21 +14,11 @@
   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" [ngClass]="{'removeOpacity pb-3':!isCollapsed}">
     <div class="container-fluid justify-content-center">
       <div class="d-flex flex-row justify-content-center align-items-center">
-        <a [routerLink]="['']" class="navbar-brand toHide">
+        <a [routerLink]="['']" class="navbar-brand">
           <img [src]="navBarConfigs.logo" width="150" alt="" class="d-inline-block align-middle mr-2">
         <!-- <span class="text-uppercase font-weight-bold">Restaurant</span> -->
         </a>
 
-        <div class="d-flex flex-column user-container">
-          <span>
-            <button mat-button>
-              <mat-icon [matBadge]="shoppingCart"  matBadgeColor="primary">shopping_cart</mat-icon>
-            </button>
-          </span>
-          <!-- <span *ngIf="!isLoggedIn">
-            <a style="color:white" mat-button [routerLink]="['login']">login</a>
-          </span> -->
-        </div>
       </div>
       <button type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbar-collapse" aria-label="Toggle navigation"
@@ -51,6 +41,13 @@
             </li>
           </ng-container>
         </ul>
+      </div>
+      <div class="d-flex flex-column user-container">
+        <span>
+          <button mat-button>
+            <mat-icon [matBadge]="shoppingCart"  matBadgeColor="primary">shopping_cart</mat-icon>
+          </button>
+        </span>
       </div>
     </div>
   </nav>

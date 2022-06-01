@@ -19,16 +19,11 @@ export class NavbarService {
         name: 'Our Story',
         isScrollOnly: true,
         link: '/',
-        scrollTo:'story'
+        scrollTo: 'story'
       },
       {
         name: 'Menu',
         link: 'menu-page'
-      },
-      {
-        name: 'logo',
-        type: 'logo',
-        image: 'assets/images/logoCropped-removebg-preview.png'
       },
       {
         name: 'Order Now',
@@ -40,10 +35,10 @@ export class NavbarService {
         link: 'catering'
       },
       {
-        name:'Reservation',
-        link:'/',
-        isScrollOnly:true,
-        scrollTo:"reservation"
+        name: 'Reservation',
+        link: '/',
+        isScrollOnly: true,
+        scrollTo: "reservation"
       }
       ],
     })

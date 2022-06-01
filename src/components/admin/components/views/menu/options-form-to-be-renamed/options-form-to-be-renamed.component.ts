@@ -41,7 +41,7 @@ export class OptionsFormToBeRenamedComponent
     private snackBarService: SnackbarService,
     private route: Router
   ) {
-    super(_http, 'MenuItems/CreateCategoriesWithOptions');
+    super(_http, 'MenuItems/UpdateOrCreateCategoriesWithOptions');
   }
 
   ngOnInit() {
@@ -62,8 +62,8 @@ export class OptionsFormToBeRenamedComponent
           )
           .subscribe((options: any) => {
             if (options.length) {
-              options.forEach((opt,index) => {
-                opt['itemId'] = parseInt(params.id);
+              options.forEach((opt, index) => {
+                // opt['itemId'] = parseInt(params.id);
                 this.addOption(opt);
                 opt.itemOptions.map((o) => {
                   this.addOptionOptions(index, o);
@@ -89,10 +89,9 @@ export class OptionsFormToBeRenamedComponent
   }
 
   newOption(
-    obj: any = { name: '', min: 0, max: 0, itemId: this.paramID || 0, id:0 }
+    obj: any = { name: '', min: 0, max: 0, id: 0 }
   ): FormGroup {
     return this.fb.group({
-      itemId: new FormControl(this.paramID),
       name: new FormControl(obj.name, Validators.required),
       min: new FormControl(obj.min),
       max: new FormControl(obj.max),
@@ -106,7 +105,7 @@ export class OptionsFormToBeRenamedComponent
   }
   deletedOptions = []
 
-  removeOption(optionIndex: number,option) {
+  removeOption(optionIndex: number, option) {
     this.deletedOptions.push(option.value)
     this.options().removeAt(optionIndex);
   }
@@ -121,7 +120,7 @@ export class OptionsFormToBeRenamedComponent
       name: obj.name || '',
       description: obj.description || '',
       imageURL: obj.imageURL || '',
-      addtionalPrice: obj.addtionalPrice || '',
+      addtionalPrice: obj.addtionalPrice || 0,
     });
   }
 
@@ -134,35 +133,16 @@ export class OptionsFormToBeRenamedComponent
   }
 
   onSubmit() {
-    switch (this.type) {
-      case 'add':
-        this.save(this.optionsForm.controls['itemOptions'].value).subscribe({
-          error: (err) => {
-            this.snackBarService.error('An error has occurred');
-          },
-          complete: () => {
-            this.snackBarService.success(
-              'Menu item options updated successfully'
-            );
-            this.route.navigate(['/admin', 'menu-standAlone-table'])
-          },
-        });
-        break;
-      case 'edit':
-        this._http
-          .post(
-            environment.storeApi + '/MenuItems/UpdateCategoriesWithOptions',
-            this.optionsForm.controls['itemOptions'].value
-          )
-          .subscribe(updated=>{
-            this.deletedOptions.map(category=>{
-              this._http.delete(`${environment.storeApi}/MenuItemOptionCategories/${category.id}`).subscribe({complete:()=>{
-                this.route.navigate(['/admin','menu-standAlone-table'])
-              }})
-
-            })
-          });
-        break;
-    }
+    this.save(this.optionsForm.controls['itemOptions'].value, `?itemId=${this.paramID}`).subscribe({
+      error: (err) => {
+        this.snackBarService.error('An error has occurred');
+      },
+      complete: () => {
+        this.snackBarService.success(
+          'Menu item options updated successfully'
+        );
+        this.route.navigate(['/admin', 'menu-standAlone-table'])
+      },
+    });
   }
 }
