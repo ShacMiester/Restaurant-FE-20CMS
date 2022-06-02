@@ -17,16 +17,12 @@ export class CartService {
   addToCart(item: any, obj: any, operation?: string) { // obj :  is the complete object
     let menuItem ;
     let noOption: boolean = false;
-    console.log(obj);
-    console.log("item", item)
 
     if(obj == undefined){
-      console.log("undefind", item);
       if(item.optionIds == undefined || item.optionIds == null || item.optionIds.length == 0){
 
         menuItem =  this.cartItems.findIndex(x => x.id === item.id);
         noOption = true;
-        console.log("no option", menuItem);
         if (operation == "minus"  ) {
 
           this.cartItems[menuItem].quantity -= 1;
@@ -38,8 +34,7 @@ export class CartService {
       }
       else{
         menuItem = this.cartItems.findIndex(x => JSON.stringify(x.optionIds) === JSON.stringify(item.optionIds));
-        console.log("menuItem", menuItem, item )
-        if (operation == "minus"  ) {
+       if (operation == "minus"  ) {
 
           this.cartItems[menuItem].quantity -= 1;
 
@@ -52,46 +47,28 @@ export class CartService {
 
     }
     else{
-      if(item.itemOptionCategories == undefined || item.itemOptionCategories == null ){
+      if(item.itemOptionCategories == undefined || !item.itemOptionCategories.length ){
 
         menuItem =  this.cartItems.findIndex(x => x.id === item.id);
         noOption = true;
-        console.log(" Here From here 0")
 
       }
       else{
         menuItem = this.cartItems.findIndex(x => JSON.stringify(x.optionIds) === JSON.stringify(obj.optionIds))
         noOption = false;
-        console.log(" Here From here 1")
       }
-      console.log(menuItem);
-      console.log(menuItem !== -1 && noOption == false);
 
-       if((operation =="add") || (menuItem !== -1 && noOption == false) ){
-        this.cartItems[menuItem].quantity += 1;
+       if((operation =="add") || (menuItem !== -1 && this.cartItems[menuItem].quantity >= 1) ){
+        this.cartItems[menuItem].quantity +=  obj.quantity;
       }
       else {
         this.cartItems.push({ id: item.id, name: item.name, quantity: obj.quantity, price: item.price, optionIds: obj.optionIds, imgItem: item.imageURL })
       }
     }
-  //   if (menuItem == -1) {
-  //     this.cartItems.push({ id: item.id, name: item.name, quantity: obj.quantity, price: item.price, optionIds: obj.optionIds, imgItem: item.imageURL })
-  //   }
-  //  else if (operation == "minus") {
-  //    let id = this.cartItems.findIndex( x => x === item);
-  //    console.log("idd", id )
-  //     this.cartItems[menuItem].quantity -= 1;
 
-  //   }
-  //   else if(operation =="add" || noOption ) {
-  //     this.cartItems[menuItem].quantity += 1;
-  //   }
-  //   else{
-  //     this.cartItems.push({ id: item.id, name: item.name, quantity: obj.quantity, price: item.price, optionIds: obj.optionIds, imgItem: item.imageURL })
-  //   }
     this.calculateTotalPrice();
     localStorage.setItem('total_price', JSON.stringify( this.total_price));
-    this.setItem(this.cartItems);
+    this.sendItem(this.cartItems);
     this.sendData(parseFloat(this.total_price.toFixed(2)) );
     localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
@@ -119,16 +96,17 @@ export class CartService {
   calculateTotalPrice() {
     this.total_price = 0;
     let totalOptions = 0;
+    let temp = 0;
     this.cartItems.forEach(
       el => {
         totalOptions = 0;
-
+        temp = 0;
       el.optionIds.forEach( e =>{
       totalOptions += e.addtionalPrice *el.quantity;
     });
-   // console.log("totalOptions",totalOptions, "el.:" ,el)
-   // console.log(" this.total_price",  this.total_price)
     this.total_price +=  el.price * el.quantity + totalOptions ;
+    temp =  el.price * el.quantity + totalOptions;
+    el.totalItem =  parseFloat(temp.toFixed(2))
 
       }
     );
@@ -136,7 +114,7 @@ export class CartService {
   sendData(data: any) {
     this.dataSource.next(data);
   }
-  setItem(data:any){
+  sendItem(data:any){
     this.itemDataSource.next(data)
   }
 }

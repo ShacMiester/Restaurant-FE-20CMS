@@ -119,28 +119,16 @@ export class MenuItemOptionCategoriesComponent
       total_option_price += e.addtionalPrice;
    })
       total = (this.menuItem.price  + total_option_price) * this.quantity;
-      //let testDec = this.decimalCount(total);
       this.price = parseFloat(total.toFixed(2))
 
   }
-//   decimalCount( num ) {
-//     // Convert to String
-//     const numStr = String(num);
-//     // String Contains Decimal
-//     if (numStr.includes('.')) {
-//        return numStr.split('.')[1].length;
-//     };
-//     // String Does Not Contain Decimal
-//     return 0;
-//  }
-
 
   AddToCart() {
     let item = {
       optionIds: this.SelectedOptios,
       quantity: this.quantity,
       item: this.menuItem,
-    }; // quantity
+    };
     this.dialogRef.close(item);
   }
   CloseDialog() {

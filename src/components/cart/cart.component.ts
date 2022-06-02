@@ -33,9 +33,8 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.CartService.data.subscribe(
       (total: number) => {
         if (total != null){
-          this.totalPriceItems = total;//parseFloat(total.toFixed(2)); //
+          this.totalPriceItems = total;
 
-          console.log("total", this.totalPriceItems)
         }
         else
           this.getTotal();
@@ -45,13 +44,11 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
       items =>{
         if(items != null){
           this.shoppingCart = items
-        console.log(items)
-      //
         }
         else
         this.Subscription.add(this.getCartItems());
       }
-    )
+    );
   }
 
   getCartItems() {
@@ -75,10 +72,8 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
   }
   add(i, op) {
     if(i.quantity < 50){
-    console.log("i", i)
     this.CartService.addToCart(i, op, "add");//
     this.getCartItems();
-    // this.calculateTotalPrice();
     this.Subscription.add(this.getTotal());
     }
   }
@@ -87,18 +82,9 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.CartService.addToCart(i, op, "minus");//
     this.getCartItems();
     this.Subscription.add(this.getTotal());
-    //this.calculateTotalPrice();
     }
   }
 
-  calculateTotalPrice() {
-    this.totalPriceItems = 0;
-    this.shoppingCart.forEach(e => {
-      this.totalPriceItems += e.price * e.quantity;
-    })
-    this.totalPriceItems = parseFloat(this.totalPriceItems.toFixed(2));
-    return this.totalPriceItems;
-  }
   correctionData() {
     const orderItems = { orderItems: [], branchId:localStorage.getItem('Branch') }
     const item = Object.assign({}, this.shoppingCart.map((e): any => {
