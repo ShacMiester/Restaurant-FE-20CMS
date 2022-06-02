@@ -1,6 +1,6 @@
 <div class="container-fluid styled-container">
     <app-unified-table [dataSource]="dataSource" (action)="openRecord($event)" [hideDeleteButton]="true"
-        [containsActionButtons]="true" [containsTableAction]="true" [title]="'Catering'"
+        [containsActionButtons]="true" [containsTableAction]="false" [title]="'Catering'"
         [displayedColumns]="['name','description','phoneNumber','branchName','date','time','status']">
         <ng-template let-data="data">
             <button mat-icon-button [matMenuTriggerFor]="menu" color="primary"
