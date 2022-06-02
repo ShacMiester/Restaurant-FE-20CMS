@@ -1,13 +1,14 @@
 import { user } from './../entities/user.entity';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   someFakeUser
-  constructor() {
+  constructor(private http: HttpClient) {
     this.someFakeUser = {
       name: 'Abdullah',
       password: '1',
@@ -16,7 +17,7 @@ export class UserService {
     };
   }
 
-  login():Observable<any> {
+  login(): Observable<any> {
     if (this.someFakeUser.token == 'AB')
       localStorage.setItem('LoggedIn', 'true');
     return of(this.someFakeUser)

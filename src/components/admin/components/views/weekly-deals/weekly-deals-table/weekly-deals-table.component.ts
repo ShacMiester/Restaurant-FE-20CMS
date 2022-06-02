@@ -33,7 +33,7 @@ export class WeeklyDealsTableComponent extends CrudService<any, number> implemen
       next: (v) => {
         this.dataSource = v
       },
-      error: (err) => { console.log(err) },
+      error: (err) => {},
       complete: () => {
         this.toShow = false
       }

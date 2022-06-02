@@ -20,7 +20,6 @@ export class MenuPageComponent extends CrudService<any, number> implements OnIni
   }
   getAllItems(){
     this.findAll().subscribe(data => {
-      console.log(data)
       this.itemList = data;
     });
   }

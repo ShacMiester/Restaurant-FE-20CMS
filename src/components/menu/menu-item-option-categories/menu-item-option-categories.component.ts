@@ -107,8 +107,6 @@ export class MenuItemOptionCategoriesComponent
       }
      this.calculatePrice(this.SelectedOptios);
     }
-
-    console.log(option.isSelected)
   }
 
   calculatePrice(option:any[]){
@@ -133,9 +131,5 @@ export class MenuItemOptionCategoriesComponent
   }
   CloseDialog() {
     this.dialogRef.close();
-  }
-  print(event, car, opti){
-    console.log(opti.isSelected)
-console.log(event, car, opti)
   }
 }

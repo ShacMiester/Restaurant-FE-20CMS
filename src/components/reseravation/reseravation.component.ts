@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { FormBase } from 'src/shared/dynamic-forms-app/atoms/form-base';
-import { QuestionService } from 'src/shared/dynamic-forms-app/question.service';
+import { Reservationervice } from 'src/shared/dynamic-forms-app/reservation.service';
 import { SnackbarService } from 'src/shared/services/snackbar.service';
 import { CrudService } from '../admin/services/crud.service';
 
@@ -11,12 +11,12 @@ import { CrudService } from '../admin/services/crud.service';
   selector: 'app-reseravation',
   templateUrl: './reseravation.component.html',
   styleUrls: ['./reseravation.component.scss'],
-  providers: [QuestionService]
+  providers: [Reservationervice]
 })
 export class ReservationComponent extends CrudService<any, number> implements OnInit {
   reservationForm$: Observable<FormBase<any>[]>;
 
-  constructor(service: QuestionService, protected override _http: HttpClient, private _snackBar: SnackbarService) {
+  constructor(service: Reservationervice, protected override _http: HttpClient, private _snackBar: SnackbarService) {
     super(_http, 'reservations');
     this.reservationForm$ = service.getReservationForm();
   }

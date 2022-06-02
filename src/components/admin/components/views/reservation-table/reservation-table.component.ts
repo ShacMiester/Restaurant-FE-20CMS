@@ -38,7 +38,6 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
   constructTableData(tableData: any) {
     this.dataSource = tableData
-    console.log("this.dataSource", this.dataSource)
     this.hideBar = true
     this.constructColumns(tableData)
   }
@@ -78,7 +77,6 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
     });
   }
   openRecord(event) {
-    console.log(event);
     const dialogRef = this.dialog.open(ReservationDetailsComponent, {
       width: '100vw',
       minWidth: 'fit-content',
@@ -88,9 +86,7 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.update(result,result.id).subscribe();
         this.getReservationsData();
-        this._snackBar.success('Item was updated successfully')
 
       }
 
@@ -105,8 +101,6 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
     data['reservationStatus'] = status;
     let obj = this.fixData(data);
     this.update(obj, data.id).subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.log(e),
       complete: () => { this.getReservationsData() }
     })
   }

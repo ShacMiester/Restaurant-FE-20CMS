@@ -67,7 +67,6 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
    }
 
    changeStatus(event){
-     console.log("event", event)
     switch (event.status) {
       case 'InProgress':
         this.pendingOrderList = this.deleteItemFromList(this.pendingOrderList, event.id);
@@ -76,15 +75,10 @@ export class KitchenOrdersComponent extends CrudService<any, number> implements 
       case 'OrderReady':
         this.inProgressOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
         this.readyOrderList.splice(0,0, event);
-      console.log("ready",       this.readyOrderList
-      )
-        console.log("From Ready")
-
         break;
         case 'PickedUp':
           this.readyOrderList = this.deleteItemFromList(this.inProgressOrderList, event.id);
           this.pickUpOrderList.splice(0,0, event);
-          console.log("From Pickup")
           break;
 
        default:
