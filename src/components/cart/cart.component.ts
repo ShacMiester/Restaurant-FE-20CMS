@@ -31,13 +31,24 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.Subscription.add(this.getTotal());
     this.Subscription.add(this.getCartItems());
     this.CartService.data.subscribe(
-      total => {
-        if (total != null)
+      (total: number) => {
+        if (total != null){
           this.totalPriceItems = total;
+
+        }
         else
           this.getTotal();
       }
     )
+    this.CartService.items.subscribe(
+      items =>{
+        if(items != null){
+          this.shoppingCart = items
+        }
+        else
+        this.Subscription.add(this.getCartItems());
+      }
+    );
   }
 
   getCartItems() {
@@ -48,7 +59,7 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
 
   getTotal() {
     this.CartService.getTotalPrice().subscribe(total => {
-      this.totalPriceItems = total;
+      this.totalPriceItems = parseFloat(total.toFixed(2)); //
     });
 
   }
@@ -59,26 +70,20 @@ export class CartComponent extends CrudService<any, number> implements OnInit, O
     this.sidenav.toggle();
   }
   add(i, op) {
+    if(i.quantity < 50){
     this.CartService.addToCart(i, op, "add");//
     this.getCartItems();
-    // this.calculateTotalPrice();
     this.Subscription.add(this.getTotal());
-
+    }
   }
   minus(i, op) {
+    if(i.quantity > 1){
     this.CartService.addToCart(i, op, "minus");//
+    this.getCartItems();
     this.Subscription.add(this.getTotal());
-    //this.calculateTotalPrice();
-
+    }
   }
 
-  calculateTotalPrice() {
-    this.totalPriceItems = 0;
-    this.shoppingCart.forEach(e => {
-      this.totalPriceItems += e.price * e.quantity;
-    })
-    return this.totalPriceItems;
-  }
   correctionData() {
     const orderItems = { orderItems: [], branchId:localStorage.getItem('Branch') }
     const item = Object.assign({}, this.shoppingCart.map((e): any => {

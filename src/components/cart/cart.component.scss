@@ -9,11 +9,11 @@ button {
         background-color: #c59d5f;
         height: 65px;
         right: 0;
-        top:300px;
+        top: 300px;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         max-width: 32px;
-        &:hover{
+        &:hover {
             width: 150px !important;
         }
     }
@@ -41,11 +41,15 @@ mat-sidenav {
         padding: 10px 0px;
         &>img {
             // width: 100px;
+            // height: 55%;
+            // object-fit: cover;
+            // border: 2px solid #c59d5f;
+            // border-radius: 25px;
             width: 100px;
-            height: 55%;
+            height: 60px;
             object-fit: cover;
-            border: 2px solid #c59d5f;
-            border-radius: 25px;
+            border: 1px solid #c59d5f;
+            border-radius: 14px;
         }
     }
 }

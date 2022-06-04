@@ -39,6 +39,7 @@ export class OrderComponent extends CrudService<number, any> implements OnInit {
         if (order) {
           this.order = order;
           this.updateStatusMessage(order.status);
+          localStorage.removeItem("cart");
         }
         // this.order.status = 'Pending'
       },

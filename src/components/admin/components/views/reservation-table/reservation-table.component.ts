@@ -86,9 +86,7 @@ export class ReservationTableComponent extends CrudService<any, number> implemen
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.update(result,result.id).subscribe();
         this.getReservationsData();
-        this._snackBar.success('Item was updated successfully')
 
       }
 

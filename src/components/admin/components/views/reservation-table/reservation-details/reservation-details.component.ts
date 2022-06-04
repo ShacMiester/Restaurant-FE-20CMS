@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CrudService } from 'src/components/admin/services/crud.service';
+import { SnackbarService } from 'src/shared/services/snackbar.service';
 import { Reservationervice } from "../../../../../../shared/dynamic-forms-app/reservation.service";
 
 @Component({
@@ -16,7 +17,7 @@ export class ReservationDetailsComponent extends CrudService<any, number> implem
   edit: boolean = false;
 
   constructor(private reservationService: Reservationervice, protected override _http: HttpClient, public dialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) public data: any,) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private snackBaraservice: SnackbarService) {
     super(_http, 'reservations');
   }
   ngOnInit(): void {
@@ -38,7 +39,11 @@ export class ReservationDetailsComponent extends CrudService<any, number> implem
 
   reserve(event: any) {
     this.update(event.payload, this.data.item.id).subscribe({
-      complete: () => { this.dialogRef.close(true) }
+      error: (err) => { this.snackBaraservice.error('Failed to updated reservation.') },
+      complete: () => {
+        this.snackBaraservice.success('Reservation updated successfully.')
+        this.dialogRef.close(true)
+      }
     })
   }
 }

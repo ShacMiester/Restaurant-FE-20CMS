@@ -9,7 +9,7 @@ import { TextBoxField } from './atoms/form-textbox';
 import { Observable, of } from 'rxjs';
 import { Validators } from '@angular/forms';
 
-@Injectable()
+@Injectable({providedIn:'root'})
 export class Reservationervice {
   reservationForm: any
   constructor(private _http: HttpClient) { }
