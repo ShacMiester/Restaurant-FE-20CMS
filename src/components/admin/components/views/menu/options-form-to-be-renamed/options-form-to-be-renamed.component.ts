@@ -13,10 +13,10 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormArray,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,12 +30,12 @@ import { SnackbarService } from 'src/shared/services/snackbar.service';
 export class OptionsFormToBeRenamedComponent
   extends CrudService<any, number>
   implements OnInit {
-  optionsForm: FormGroup = new FormGroup({});
+  optionsForm: UntypedFormGroup = new UntypedFormGroup({});
   type: 'add' | 'edit';
   paramID: number = 0;
   optionID: number;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     protected override _http: HttpClient,
     private router: ActivatedRoute,
     private snackBarService: SnackbarService,
@@ -84,19 +84,19 @@ export class OptionsFormToBeRenamedComponent
     });
   }
 
-  options(): FormArray {
-    return this.optionsForm.get('itemOptions') as FormArray;
+  options(): UntypedFormArray {
+    return this.optionsForm.get('itemOptions') as UntypedFormArray;
   }
 
   newOption(
     obj: any = { name: '', min: 0, max: 0, id: 0 }
-  ): FormGroup {
+  ): UntypedFormGroup {
     return this.fb.group({
-      name: new FormControl(obj.name, Validators.required),
-      min: new FormControl(obj.min),
-      max: new FormControl(obj.max),
+      name: new UntypedFormControl(obj.name, Validators.required),
+      min: new UntypedFormControl(obj.min),
+      max: new UntypedFormControl(obj.max),
       itemOptions: this.fb.array([]),
-      id: new FormControl(obj.id || 0)
+      id: new UntypedFormControl(obj.id || 0)
     });
   }
 
@@ -110,11 +110,11 @@ export class OptionsFormToBeRenamedComponent
     this.options().removeAt(optionIndex);
   }
 
-  optionOptions(empIndex: number): FormArray {
-    return this.options().at(empIndex).get('itemOptions') as FormArray;
+  optionOptions(empIndex: number): UntypedFormArray {
+    return this.options().at(empIndex).get('itemOptions') as UntypedFormArray;
   }
 
-  newOptionOptions(obj: any = {}): FormGroup {
+  newOptionOptions(obj: any = {}): UntypedFormGroup {
     return this.fb.group({
       id: obj.id || 0,
       name: obj.name || '',

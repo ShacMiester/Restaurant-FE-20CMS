@@ -1,7 +1,7 @@
 import { environment } from './../../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, ViewChild, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 import { FormBase } from '../atoms/form-base';
 
@@ -16,7 +16,7 @@ export class DynamicFormFieldComponent implements OnInit, OnChanges {
   @Input() image: any
   preview!: string;
   @Input() field!: FormBase<string>;
-  @Input() form!: FormGroup;
+  @Input() form!: UntypedFormGroup;
   environmentImageEndPoint = `${environment.store}Uploads/`
   openFromIcon(timepicker: { open: () => void }) {
     timepicker.open();

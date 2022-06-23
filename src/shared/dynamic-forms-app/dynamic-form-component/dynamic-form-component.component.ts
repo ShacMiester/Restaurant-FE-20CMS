@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormBase } from '../atoms/form-base';
 import { FieldControlService } from '../field-control.service';
 
@@ -24,7 +24,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() cancelText:string = "Cancel";
   image:string = '';
 
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   payLoad = '';
 
   constructor(private qcs: FieldControlService, private routerLink: Router) { }

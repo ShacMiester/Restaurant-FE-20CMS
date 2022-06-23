@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { FormBase } from './atoms/form-base';
 
@@ -11,8 +11,8 @@ export class FieldControlService {
     const group: any = {};
 
     fields.forEach(field => {
-      group[field.key] = field.required ? new FormControl(field.value || '', Validators.required) : new FormControl(field.value || '');
+      group[field.key] = field.required ? new UntypedFormControl(field.value || '', Validators.required) : new UntypedFormControl(field.value || '');
     });
-    return new FormGroup(group);
+    return new UntypedFormGroup(group);
   }
 }
